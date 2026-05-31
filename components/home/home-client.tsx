@@ -66,7 +66,6 @@ export function HomeClient({ categories }: HomeClientProps) {
     setIsSubmitting(false);
     setShowSuccessModal(true);
 
-    // 2秒后跳转WhatsApp
     setTimeout(() => {
       const whatsappMessage = `Hi, I'm ${formData.fullName} from ${formData.company}. 
 Email: ${formData.email}
@@ -85,7 +84,6 @@ Details: ${formData.details}`;
 
   return (
     <div className="min-h-screen bg-white">
-      {/* 成功提示弹窗 */}
       {showSuccessModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
           <div className="bg-white rounded-xl p-8 max-w-md mx-4 text-center shadow-2xl">
@@ -101,15 +99,14 @@ Details: ${formData.details}`;
 
       <section className="relative min-h-screen flex items-center justify-center pt-[72px] bg-[#f5f3ef] overflow-hidden">
         <div className="absolute inset-0 bg-[#f5f3ef]">
-          {/* 背景图替换为 Next.js Image */}
           <Image
-  src="/bg.webp"
-  alt="Wholesale ceramic tableware & porcelain dinnerware bulk export supplier"
-  fill
-  priority
-  className="object-cover object-top opacity-60"
-  style={{ aspectRatio: "16/9" }}
-/>
+            src="/bg.webp"
+            alt="Wholesale ceramic tableware & porcelain dinnerware bulk export supplier"
+            fill
+            priority
+            className="object-cover object-top opacity-60"
+            sizes="100vw"
+          />
         </div>
 
         <div className="relative z-10 text-center px-6 py-20 max-w-[900px] mx-auto">
@@ -184,7 +181,6 @@ Details: ${formData.details}`;
                 <div className="bg-white rounded-2xl overflow-hidden border border-gray-100 transition-all">
                   <div className="relative aspect-[4/3] bg-gray-100">
                     {category.image ? (
-                      // 产品卡片图片替换为 Next.js Image
                       <Image 
                         src={category.image} 
                         alt={category.alt} 
@@ -238,7 +234,6 @@ Details: ${formData.details}`;
                 </div>
               </div>
               
-              {/* Visit Our Factory 按钮 */}
               <div className="mt-8">
                 <Link
                   href="/en/factory"
@@ -250,9 +245,7 @@ Details: ${formData.details}`;
               </div>
             </div>
             
-            {/* 右侧三图拼接 - 3:2宽高比，左60%大图+右40%上下两小图 */}
             <div className="flex rounded-2xl overflow-hidden" style={{ aspectRatio: '3/2' }}>
-              {/* 左侧大图 - 60%宽度 */}
               <div className="relative w-[60%] h-full">
                 <Image 
                   src="/chinese-ceraimc-manufacturer.webp" 
@@ -262,9 +255,7 @@ Details: ${formData.details}`;
                   sizes="(max-width: 1024px) 60vw, 30vw"
                 />
               </div>
-              {/* 右侧上下两图 - 40%宽度 */}
               <div className="flex flex-col w-[40%] h-full">
-                {/* 右上 - 工厂外观 */}
                 <div className="relative h-1/2">
                   <Image 
                     src="/ceramic-manufacturer.webp" 
@@ -274,10 +265,9 @@ Details: ${formData.details}`;
                     sizes="(max-width: 1024px) 40vw, 20vw"
                   />
                 </div>
-                {/* 右下 - 彩色咖啡杯 */}
                 <div className="relative h-1/2">
                   <Image 
-                    src="high-quality-ceramic-manufacturer.webp" 
+                    src="/high-quality-ceramic-manufacturer.webp" 
                     alt="Colorful ceramic coffee cups and saucers" 
                     fill
                     className="object-cover"
@@ -290,7 +280,6 @@ Details: ${formData.details}`;
         </div>
       </section>
 
-      {/* Who We Serve - 产品适用场景 */}
       <section className="py-20 bg-white">
         <div className="max-w-[1280px] mx-auto px-6">
           <div className="text-center mb-12">
@@ -304,7 +293,6 @@ Details: ${formData.details}`;
             </p>
           </div>
           
-          {/* 8张图片卡片 - 2行4列 */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
             {[
               { title: "Hotels & Resorts", image: "/porcelain-tableware-for-hotel-restore.webp", alt: "Ceramic tableware for hotels and resorts" },
@@ -326,6 +314,7 @@ Details: ${formData.details}`;
                   alt={item.alt}
                   fill
                   className="object-cover transition-transform duration-300 group-hover:scale-105"
+                  sizes="(max-width: 640px) 50vw, 25vw"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-4">
@@ -378,7 +367,6 @@ Details: ${formData.details}`;
             </div>
           </div>
           
-          {/* 内链按钮组 */}
           <div className="flex flex-col sm:flex-row gap-4">
             <Link
               href="/en/products"
@@ -398,7 +386,6 @@ Details: ${formData.details}`;
         </div>
       </section>
 
-      {/* Trusted By International Partners */}
       <section className="py-20 bg-white">
         <div className="max-w-[1280px] mx-auto px-6">
           <div className="text-center mb-12">
@@ -413,7 +400,6 @@ Details: ${formData.details}`;
             </p>
           </div>
           
-          {/* 6张图片卡片 - 2行3列 */}
           <div className="grid grid-cols-2 md:grid-cols-3 gap-5">
             {[
               { title: "Europe", subtitle: "UK, Germany, France & more", image: "/alice.webp" },
@@ -432,6 +418,7 @@ Details: ${formData.details}`;
                   alt={`Ceramic tableware export to ${item.title}`}
                   fill
                   className="object-cover transition-transform duration-300 group-hover:scale-105"
+                  sizes="(max-width: 640px) 50vw, 33vw"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-5">
@@ -444,7 +431,6 @@ Details: ${formData.details}`;
         </div>
       </section>
 
-      {/* News & Blog */}
       <section className="py-20 bg-gray-50">
         <div className="max-w-[1280px] mx-auto px-6">
           <div className="text-center mb-12">
@@ -457,7 +443,6 @@ Details: ${formData.details}`;
             </p>
           </div>
           
-          {/* 4张博客卡片 */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {[
               { 
@@ -491,6 +476,7 @@ Details: ${formData.details}`;
                   alt={post.title}
                   fill
                   className="object-cover transition-transform duration-300 group-hover:scale-105"
+                  sizes="(max-width: 640px) 50vw, 25vw"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-5">
@@ -501,7 +487,6 @@ Details: ${formData.details}`;
             ))}
           </div>
           
-          {/* View All 按钮 */}
           <div className="mt-10 text-center">
             <Link
               href="/en/blog"
