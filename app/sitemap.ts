@@ -1,17 +1,10 @@
 import { MetadataRoute } from 'next'
-import { createClient } from '@supabase/supabase-js'
-
-const baseUrl = 'https://www.adaceramics.com'
-
-// 用 SERVICE ROLE 建服务端客户端
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.SUPABASE_SERVICE_ROLE_KEY!
-)
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  // 1. 静态页面
-  const staticPages: MetadataRoute.Sitemap = [
+  const baseUrl = 'https://www.adaceramics.com'
+
+  // 你的固定页面（保留）
+  const staticPages = [
     { url: baseUrl, lastModified: new Date() },
     { url: `${baseUrl}/about`, lastModified: new Date() },
     { url: `${baseUrl}/products`, lastModified: new Date() },
@@ -21,23 +14,38 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${baseUrl}/contact`, lastModified: new Date() },
   ]
 
-  // 2. 从 products 表拿 active 产品的 slug + updated_at
-  const { data: products, error } = await supabase
-    .from('products')
-    .select('slug, updated_at')
-    .eq('is_active', true)
+  // 👇 在这里把你所有产品分类 + 产品手动加进去
+  const productPages = [
+    // 一级分类
+    "/products/wholesale-plates",
+    "/products/wholesale-bowls",
+    "/products/wholesale-dinnerware-sets",
+    "/products/wholesale-cups-mugs",
+    "/products/wholesale-bakeware",
 
-  if (error) {
-    console.error('Sitemap query error:', error)
-    return staticPages
-  }
+    // 二级分类
+    "/products/dinner-plates",
+    "/products/dessert-side-plates",
+    "/products/soup-plates",
+    "/products/oval-serving-plates",
+    "/products/soup-bowls",
+    "/products/salad-bowls",
+    "/products/ramen-bowls",
+    "/products/snack-bowls",
+    "/products/daily-tableware-sets",
+    "/products/restaurant-catering-sets",
+    "/products/ceramic-mugs",
+    "/products/coffee-cups-saucers",
+    "/products/water-cups",
+    "/products/baking-dishes",
+    "/products/ramekins",
+    "/products/pie-pizza-plates",
+  ]
 
-  // 3. 拼接成 /products/[slug]
-  const productUrls: MetadataRoute.Sitemap = (products || []).map((p) => ({
-    url: `${baseUrl}/products/${p.slug}`,
-    lastModified: p.updated_at ? new Date(p.updated_at) : new Date(),
+  const productUrls = productPages.map((path) => ({
+    url: `${baseUrl}${path}`,
+    lastModified: new Date(),
   }))
 
-  // 静态 + 动态产品页合并
   return [...staticPages, ...productUrls]
 }
