@@ -103,12 +103,13 @@ Details: ${formData.details}`;
         <div className="absolute inset-0 bg-[#f5f3ef]">
           {/* 背景图替换为 Next.js Image */}
           <Image
-            src="/bg.webp"
-            alt="Wholesale ceramic tableware & porcelain dinnerware bulk export supplier"
-            fill
-            priority
-            className="object-cover object-top opacity-60"
-          />
+  src="/bg.webp"
+  alt="Wholesale ceramic tableware & porcelain dinnerware bulk export supplier"
+  fill
+  priority
+  className="object-cover object-top opacity-60"
+  style={{ aspectRatio: "16/9" }}
+/>
         </div>
 
         <div className="relative z-10 text-center px-6 py-20 max-w-[900px] mx-auto">
