@@ -118,7 +118,7 @@ export function BlogList({ posts, error }: BlogListProps) {
                       >
                         <Image
                           src={post.coverImage || "/alice.webp"}
-                          alt=${post.title}-ADA Ceramics
+                          alt={`${post.title} - ADA Ceramics`}
                           fill
                           className="object-cover group-hover:scale-105 transition-transform duration-300"
                           sizes="(max-width: 640px) 100vw, 320px"
