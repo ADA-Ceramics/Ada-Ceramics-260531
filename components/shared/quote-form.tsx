@@ -123,8 +123,8 @@ Message: ${formData.message}`;
                       <p className="text-xs text-[#9ca3af] mb-1">Address</p>
                       <p className="text-sm font-medium text-[#1a1a1a] leading-relaxed">
                         Tangbian, Shuanggang Village<br />
-                        Fengtang Town, Chao'an District<br />
-                        Chaozhou, Guangdong Province, China 515646
+  Fengtang Town, Chao'an District<br />
+  Chaozhou, Guangdong Province, China 515646
                       </p>
                     </div>
                   </div>
