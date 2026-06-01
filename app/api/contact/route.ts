@@ -28,14 +28,14 @@ export async function POST(req: Request) {
     const res = await fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${RESEND_API_KEY},
+        'Authorization': `Bearer ${RESEND_API_KEY}`,
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        from: 'Ada Ceramics <info@adaceramics.com>', // 更规范
-        to: 'sukichoi@adaceramics.com', // 你收到
-        bcc: email, // 客户同时收到确认信（超级重要）
-        subject: `New Quote Request from ${fullName}`,
+        from: 'Ada Ceramics <info@adaceramics.com>',
+        to: 'sukichoi@adaceramics.com',
+        bcc: email,
+        subject: `New Quote Request from ${fullName}`, // 这里是英文反引号
         html: `
 <div style="font-family:Arial; font-size:16px; line-height:1.8;">
   <h3>New Request a Quote</h3>
