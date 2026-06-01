@@ -122,9 +122,9 @@ Message: ${formData.message}`;
                     <div>
                       <p className="text-xs text-[#9ca3af] mb-1">Address</p>
                       <p className="text-sm font-medium text-[#1a1a1a] leading-relaxed">
-                        No.88 West Hong Road<br />
-                        Fengcheng Street<br />
-                        Chaozhou City, Guangdong, China
+                        Tangbian, Shuanggang Village<br />
+                        Fengtang Town, Chao'an District<br />
+                        Chaozhou, Guangdong Province, China 515646
                       </p>
                     </div>
                   </div>
