@@ -23,33 +23,44 @@ export function ContactClient() {
     setIsSubmitting(true)
 
     try {
-      await fetch("/api/contact", {
+      const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       })
-    } catch (err) {
-      console.error("Error:", err)
-    }
 
-    setIsSubmitting(false)
-    setShowSuccessModal(true)
+      const data = await res.json()
 
-    // 2秒后跳转WhatsApp
-    setTimeout(() => {
-      const whatsappMessage = `Hi, I'm ${formData.fullName} from ${formData.company}. 
+      // 只有真正发送成功才显示弹窗
+      if (res.ok && data.success) {
+        setShowSuccessModal(true)
+
+        // 2秒后跳转 WhatsApp
+        setTimeout(() => {
+          const whatsappMessage = `Hi, I'm ${formData.fullName} from ${formData.company}. 
 Email: ${formData.email}
 Phone: ${formData.phone}
 Product Category: ${formData.category}
 Quantity: ${formData.quantity}
-Details: ${formData.details}`;
-      
-      window.open(
-        `https://wa.me/8615919512131?text=${encodeURIComponent(whatsappMessage)}`,
-        "_blank"
-      );
-      setShowSuccessModal(false)
-    }, 2000)
+Details: ${formData.details}`
+          
+          window.open(
+            `https://wa.me/8615919512131?text=${encodeURIComponent(whatsappMessage)}`,
+            "_blank"
+          )
+          setShowSuccessModal(false)
+        }, 2000)
+      } else {
+        console.error("提交失败", data)
+        alert("Failed to send message: " + (data.error || "Please try again"))
+      }
+
+    } catch (err) {
+      console.error("Error submitting form:", err)
+      alert("Network error, please try again later")
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
