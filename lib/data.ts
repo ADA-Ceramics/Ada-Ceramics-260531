@@ -5,9 +5,9 @@ export const companyInfo = {
   email: "sukichoi@adaceramics.com",
   phone: "+86 15919512131",
   address: {
-    line1: "Ceramic Industrial Zone",
-    line2: "Chaozhou, Guangdong",
-    line3: "China 521000",
+    line1: "Tangbian, Shuanggang Village",
+    line2: "Fengtang Town, Chao'an District",
+    line3: "Chaozhou, Guangdong Province, China 515646",
   },
   businessHours: "Monday - Saturday, 9:00 AM - 6:00 PM (GMT+8)",
   stats: {
