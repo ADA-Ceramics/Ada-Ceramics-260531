@@ -31,12 +31,13 @@ export function AboutClient() {
   ]
 
   const timeline = [
-    { year: "2003", event: "Founded ADA Ceramics" },
+    { year: "2003", event: "Small workshop established" },
     { year: "2008", event: "Expanded factory production line" },
     { year: "2012", event: "Obtained international certifications" },
     { year: "2015", event: "Started OEM/ODM service" },
-    { year: "2018", event: "Exported to over 50 countries" },
-    { year: "2020", event: "Upgraded fully automatic production line" },
+    { year: "2018", event: "Exported to over 30 countries" },
+    { year: "2020", event: "Upgraded fully automatic production lines" },
+    { year: "2022", event: "ADA Ceramics officially registered & launched" },
     { year: "2023", event: "20+ years of excellence in ceramic industry" },
   ]
 
