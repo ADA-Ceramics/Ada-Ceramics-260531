@@ -29,13 +29,13 @@ export const metadata: Metadata = {
     siteName: "ADA Ceramics",
     title: "ADA Ceramics | Wholesale Ceramic Mugs & Tableware",
     description: "Professional ceramic manufacturer & supplier. Wholesale ceramic tableware, porcelain dinnerware, custom OEM/ODM mugs and bowls from China factory.",
-    images: ["/bg.webp"],
+    images: ["/premium_beige_ceramic_plate_.webp"],
   },
   twitter: {
     card: "summary_large_image",
     title: "ADA Ceramics | Wholesale Ceramic Mugs & Tableware",
     description: "Professional ceramic manufacturer & supplier from China.",
-    images: ["/bg.webp"],
+    images: ["/premium_beige_ceramic_plate_.webp"],
   },
   robots: {
     index: true,
