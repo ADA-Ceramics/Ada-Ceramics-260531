@@ -30,8 +30,8 @@ export function OemOdmClient() {
     {
       title: "Custom Shape & Design",
       description: "Unique shapes, sizes and styles tailored to your brand",
-      image: "/image/oem-odm/ceramic-custom-shape-design.webp",
-      imageAlt: "Custom ceramic shape and design, 3D modeling, prototype development"
+       image: "/image/oem-odm/ceramic-custom-shape-design.webp",
+  imageAlt: "Custom ceramic shape and design, 3D modeling, prototype development", // 加逗号
       features: ["3D modeling", "Prototype development", "Exclusive molds"]
     },
     {
