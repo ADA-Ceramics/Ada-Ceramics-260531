@@ -28,22 +28,38 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   const seoTitle = `${product.name} | Wholesale Ceramic Tableware | ADA Ceramics`
   const seoDescription = product.description
-    ? `${product.description.slice(0, 120)}... Factory direct pricing, low MOQ, FDA/LFGB certified. Request a quote today!`
+    ? `${product.description.slice(0, 150)}`
     : `Wholesale ${product.name} from ADA Ceramics. Premium quality ceramic tableware for restaurants, hotels and catering.`
 
   return {
     title: seoTitle,
     description: seoDescription,
-    keywords: [product.name, "wholesale ceramic", "bulk tableware", "restaurant supplies", "hotel dinnerware"].join(", "),
+    keywords: [
+      product.name,
+      "wholesale ceramic",
+      "bulk tableware",
+      "restaurant supplies",
+      "hotel dinnerware",
+      "FDA certified",
+      "LFGB certified"
+    ].join(", "),
     openGraph: {
       title: seoTitle,
       description: seoDescription,
       type: "website",
       locale: locale === "zh" ? "zh_CN" : "en_US",
-      images: product.main_image ? [{ url: product.main_image, width: 800, height: 800, alt: product.name }] : [],
+      siteName: "ADA Ceramics",
+      images: product.main_image
+        ? [{
+          url: product.main_image,
+          width: 1000,
+          height: 1000,
+          alt: product.name,
+        }]
+        : [],
     },
     alternates: {
-      canonical: `https://adaceramics.com/${locale}/products/${subcategory}/${product.slug}`,
+      canonical: `https://www.adaceramics.com/${locale}/products/${subcategory}/${slug}`,
     },
   }
 }
@@ -110,12 +126,10 @@ export default async function ProductDetailPage({ params }: PageProps) {
   const { locale, subcategory, slug } = await params
   const product = await getProductBySlug(slug)
 
-  // 只在产品不存在时才 notFound
   if (!product) {
     notFound()
   }
 
-  // 查找当前分类信息
   const findCurrentCategory = () => {
     for (const parent of categoryTree) {
       if (parent.slug === subcategory) {
@@ -126,14 +140,12 @@ export default async function ProductDetailPage({ params }: PageProps) {
         return { parent, child }
       }
     }
-    // 不存在的分类也不崩溃
     return { parent: categoryTree[0], child: null }
   }
 
   const { parent: currentParent, child: currentChild } = findCurrentCategory()
   const categoryName = currentChild?.name || currentParent?.name || "Products"
 
-  // 获取同类目下的相关产品（排除当前产品，最多5个）
   const allCategoryProducts = await getProductsByCategory(currentParent.slug)
   const relatedProducts = allCategoryProducts
     .filter(p => p.slug !== product.slug)
@@ -142,7 +154,9 @@ export default async function ProductDetailPage({ params }: PageProps) {
   const specifications = product.specifications || {}
   const features = product.features || []
 
-  // JSON-LD 结构化数据
+  // ==============================================
+  // ✅ GOOGLE 最强 JSON-LD 结构化数据
+  // ==============================================
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Product",
@@ -150,21 +164,39 @@ export default async function ProductDetailPage({ params }: PageProps) {
     description: product.description || `Wholesale ${product.name} from ADA Ceramics`,
     image: product.main_image || "",
     sku: product.id,
-    brand: { "@type": "Brand", name: "ADA Ceramics" },
-    manufacturer: { "@type": "Organization", name: "ADA Ceramics", url: "https://adaceramics.com" },
+    brand: {
+      "@type": "Brand",
+      name: "ADA Ceramics"
+    },
+    manufacturer: {
+      "@type": "Organization",
+      name: "ADA Ceramics",
+      url: "https://www.adaceramics.com"
+    },
+    offers: {
+      "@type": "AggregateOffer",
+      priceCurrency: "USD",
+      availability: "https://schema.org/InStock",
+      seller: {
+        "@type": "Organization",
+        name: "ADA Ceramics"
+      }
+    },
     category: categoryName,
   }
 
   return (
     <div className="min-h-screen bg-background">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
 
       <Header />
 
       {/* Hero Section */}
       <section className="pt-32 pb-6 bg-[#f5f3ef]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Breadcrumb - 使用正确的链接格式 */}
           <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-sm text-muted-foreground mb-4">
             <Link href={`/${locale}`} className="hover:text-foreground transition-colors">Home</Link>
             <ChevronRight className="w-4 h-4" />
@@ -185,7 +217,6 @@ export default async function ProductDetailPage({ params }: PageProps) {
             <span className="text-foreground font-medium truncate max-w-[200px]">{product.name}</span>
           </nav>
 
-          {/* Selling Points Bar */}
           <div className="flex flex-wrap justify-center gap-6 sm:gap-10 lg:gap-14 py-4">
             {sellingPoints.map((point) => {
               const IconComponent = point.icon
@@ -205,7 +236,6 @@ export default async function ProductDetailPage({ params }: PageProps) {
       {/* Main Content */}
       <section className="py-8 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Product Content - Full Width Layout */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
 
             {/* Product Image */}
@@ -218,6 +248,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
                     fill
                     className="object-cover"
                     sizes="(max-width: 768px) 100vw, 50vw"
+                    quality={75}
                     priority
                   />
                 ) : (
@@ -225,13 +256,6 @@ export default async function ProductDetailPage({ params }: PageProps) {
                     <Package className="w-24 h-24 text-[#d1d5db]" />
                   </div>
                 )}
-              </div>
-              <div className="flex gap-3">
-                {[1, 2, 3, 4].map((i) => (
-                  <div key={i} className="w-20 h-20 bg-[#f9fafb] rounded border border-[#e5e7eb] flex items-center justify-center">
-                    <Package className="w-8 h-8 text-[#d1d5db]" />
-                  </div>
-                ))}
               </div>
             </div>
 
@@ -334,7 +358,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
         </div>
       </section>
 
-      {/* Related Products Section */}
+      {/* Related Products */}
       {relatedProducts.length > 0 && (
         <section className="py-16 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -343,11 +367,11 @@ export default async function ProductDetailPage({ params }: PageProps) {
                 Related Products
               </h2>
               <p className="text-muted-foreground max-w-2xl mx-auto">
-                Explore more wholesale {categoryName.toLowerCase()} from our collection. 
+                Explore more wholesale {categoryName.toLowerCase()} from our collection.
                 All products are FDA/LFGB certified with factory-direct pricing.
               </p>
             </div>
-            
+
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5">
               {relatedProducts.map((relatedProduct) => (
                 <Link
@@ -362,6 +386,8 @@ export default async function ProductDetailPage({ params }: PageProps) {
                       fill
                       className="object-cover group-hover:scale-105 transition-transform duration-300"
                       sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 20vw"
+                      quality={70}
+                      loading="lazy"
                     />
                   </div>
                   <div className="p-4">
@@ -377,7 +403,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
                 </Link>
               ))}
             </div>
-            
+
             <div className="mt-10 text-center">
               <Link
                 href={`/${locale}/products/${currentParent.slug}`}
