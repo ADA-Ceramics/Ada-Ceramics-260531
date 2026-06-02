@@ -30,26 +30,29 @@ export function OemOdmClient() {
     {
       title: "Custom Shape & Design",
       description: "Unique shapes, sizes and styles tailored to your brand",
-       image: "/image/oem-odm/ceramic-custom-shape-design.webp",
-  imageAlt: "Custom ceramic shape and design, 3D modeling, prototype development", // 加逗号
+      image: "/image/oem-odm/ceramic-custom-shape-design.webp",
+      imageAlt: "Custom ceramic shape and design, 3D modeling, prototype development",
       features: ["3D modeling", "Prototype development", "Exclusive molds"]
     },
     {
       title: "Logo & Pattern Printing",
       description: "High-quality decal, screen printing and embossing",
       image: "/color-glaze.webp",
+      imageAlt: "Custom logo printing on ceramic mugs and tableware",
       features: ["Full-color printing", "Gold/silver accents", "Under-glaze safe"]
     },
     {
       title: "Custom Colors & Glazes",
       description: "Exclusive colors, textures and reactive glazes",
       image: "/kiln-transformation.webp",
+      imageAlt: "Custom color glaze and finish for ceramic tableware",
       features: ["Pantone matching", "Matte/glossy finish", "Reactive glazes"]
     },
     {
       title: "Private Label Packaging",
       description: "Complete branding with custom packaging solutions",
       image: "/alice.webp",
+      imageAlt: "Custom private label packaging for ceramic products",
       features: ["Gift boxes", "Retail packaging", "Bulk cartons"]
     }
   ]
@@ -200,6 +203,7 @@ export function OemOdmClient() {
                 src="/color-glaze.webp"
                 alt="ADA Ceramics OEM ODM service - custom ceramic tableware production"
                 fill
+                sizes="(max-width:1024px) 100vw, 50vw"
                 className="object-cover"
               />
             </div>
@@ -230,11 +234,12 @@ export function OemOdmClient() {
                 <div className="relative aspect-[16/10] overflow-hidden">
                   <Image
                     src={service.image}
-                    alt={`${service.title} - ceramic customization example`}
+                    alt={service.imageAlt}
                     fill
+                    sizes="(max-width:768px) 100vw, 50vw"
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
                   />
-                  {/* ���号标签 */}
+                  {/* 编号标签 */}
                   <div className="absolute top-4 left-4 w-10 h-10 rounded-full bg-[#8b7355] flex items-center justify-center text-white font-semibold text-lg">
                     {index + 1}
                   </div>
@@ -398,6 +403,7 @@ export function OemOdmClient() {
                   src={image.src}
                   alt={image.alt}
                   fill
+                  sizes="(max-width:640px) 100vw, (max-width:1024px) 50vw, 33vw"
                   className="object-cover transition-transform duration-300 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors" />
@@ -428,6 +434,7 @@ export function OemOdmClient() {
                 src="/kiln-transformation.webp"
                 alt="ADA Ceramics factory - modern ceramic production facility"
                 fill
+                sizes="(max-width:1024px) 100vw, 50vw"
                 className="object-cover"
               />
             </div>
