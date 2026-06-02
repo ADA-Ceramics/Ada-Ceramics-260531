@@ -2,28 +2,63 @@ import { MetadataRoute } from 'next'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://www.adaceramics.com'
+  const now = new Date()
 
-  // 你的固定页面（保留）
+  // 首页/核心固定页（高权重）
   const staticPages = [
-    { url: baseUrl, lastModified: new Date() },
-    { url: `${baseUrl}/about`, lastModified: new Date() },
-    { url: `${baseUrl}/products`, lastModified: new Date() },
-    { url: `${baseUrl}/oem-odm`, lastModified: new Date() },
-    { url: `${baseUrl}/factory`, lastModified: new Date() },
-    { url: `${baseUrl}/blog`, lastModified: new Date() },
-    { url: `${baseUrl}/contact`, lastModified: new Date() },
+    {
+      url: baseUrl,
+      lastModified: now,
+      changeFrequency: 'daily' as const,
+      priority: 1.0
+    },
+    {
+      url: `${baseUrl}/products`,
+      lastModified: now,
+      changeFrequency: 'weekly' as const,
+      priority: 0.9
+    },
+    {
+      url: `${baseUrl}/oem-odm`,
+      lastModified: now,
+      changeFrequency: 'monthly' as const,
+      priority: 0.8
+    },
+    {
+      url: `${baseUrl}/factory`,
+      lastModified: now,
+      changeFrequency: 'monthly' as const,
+      priority: 0.7
+    },
+    {
+      url: `${baseUrl}/about`,
+      lastModified: now,
+      changeFrequency: 'yearly' as const,
+      priority: 0.6
+    },
+    {
+      url: `${baseUrl}/blog`,
+      lastModified: now,
+      changeFrequency: 'weekly' as const,
+      priority: 0.85
+    },
+    {
+      url: `${baseUrl}/contact`,
+      lastModified: now,
+      changeFrequency: 'yearly' as const,
+      priority: 0.65
+    },
   ]
 
-  // 👇 在这里把你所有产品分类 + 产品手动加进去
+  // 产品分类路径
   const productPages = [
-    // 一级分类
+    // 一级大类
     "/products/wholesale-plates",
     "/products/wholesale-bowls",
     "/products/wholesale-dinnerware-sets",
     "/products/wholesale-cups-mugs",
     "/products/wholesale-bakeware",
-
-    // 二级分类
+    // 二级细分
     "/products/dinner-plates",
     "/products/dessert-side-plates",
     "/products/soup-plates",
@@ -42,9 +77,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/products/pie-pizza-plates",
   ]
 
+  // 产品统一配置：每周抓取、权重0.8
   const productUrls = productPages.map((path) => ({
     url: `${baseUrl}${path}`,
-    lastModified: new Date(),
+    lastModified: now,
+    changeFrequency: 'weekly' as const,
+    priority: 0.8
   }))
 
   return [...staticPages, ...productUrls]
