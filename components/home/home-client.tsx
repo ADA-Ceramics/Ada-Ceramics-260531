@@ -100,7 +100,7 @@ Details: ${formData.details}`;
       <section className="relative min-h-screen flex items-center justify-center pt-[72px] bg-[#f5f3ef] overflow-hidden">
         <div className="absolute inset-0 bg-[#f5f3ef]">
           <Image
-            src="/bg.webp"
+            src="/premium_beige_ceramic_plate_.webp"
             alt="Wholesale ceramic tableware & porcelain dinnerware bulk export supplier"
             fill
             priority
