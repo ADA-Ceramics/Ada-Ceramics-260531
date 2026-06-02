@@ -1,6 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // 保留你原来的配置，不动！
   typescript: {
     ignoreBuildErrors: true,
   },
@@ -15,9 +14,12 @@ const nextConfig = {
       },
     ],
   },
+  productionBrowserSourceMaps: false,
 
-  // 安全的优化（不会报错）
-  productionBrowserSourceMaps: false, // 关闭source map，加快加载
+  // 新增：官方CSS优化，自动内联关键CSS、消除渲染阻塞，SEO友好
+  experimental: {
+    optimizeCss: true
+  }
 }
 
 export default nextConfig
