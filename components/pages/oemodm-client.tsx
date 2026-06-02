@@ -230,20 +230,19 @@ export function OemOdmClient() {
                 key={service.title}
                 className="group relative bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300"
               >
-                {/* 图片区域 */}
-                <div className="relative aspect-[16/10] overflow-hidden">
-                  <Image
-                    src={service.image}
-                    alt={service.imageAlt}
-                    fill
-                    sizes="(max-width:768px) 100vw, 50vw"
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  {/* 编号标签 */}
-                  <div className="absolute top-4 left-4 w-10 h-10 rounded-full bg-[#8b7355] flex items-center justify-center text-white font-semibold text-lg">
-                    {index + 1}
-                  </div>
-                </div>
+                <div className="relative overflow-hidden">
+  <Image
+    src={service.image}
+    alt={service.imageAlt}
+    fill
+    sizes="(max-width:768px) 100vw, 50vw"
+    className="object-contain w-full h-auto group-hover:scale-105 transition-transform duration-500"
+  />
+  {/* 编号标签 */}
+  <div className="absolute top-4 left-4 w-10 h-10 rounded-full bg-[#8b7355] flex items-center justify-center text-white font-semibold text-lg">
+    {index + 1}
+  </div>
+</div>
                 
                 {/* 内容区域 */}
                 <div className="p-6 lg:p-8">
