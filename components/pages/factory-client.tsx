@@ -53,7 +53,7 @@ export function FactoryClient() {
               </span>
             </h1>
             <p className="text-lg md:text-xl leading-relaxed" style={{ color: '#6b7280' }}>
-              30,000㎡ professional ceramic production base with advanced equipment, strict quality control, and certified production lines.
+              46,000㎡ professional ceramic production base with advanced equipment, strict quality control, and certified production lines.
             </p>
           </div>
         </div>
@@ -65,15 +65,15 @@ export function FactoryClient() {
           <div className="bg-card rounded-2xl shadow-xl border border-border p-8">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
               <div className="text-center">
-                <p className="text-4xl md:text-5xl font-bold text-primary">30,000</p>
+                <p className="text-4xl md:text-5xl font-bold text-primary">46,000</p>
                 <p className="text-muted-foreground mt-2">Sq. Meters</p>
               </div>
               <div className="text-center">
-                <p className="text-4xl md:text-5xl font-bold text-primary">200+</p>
+                <p className="text-4xl md:text-5xl font-bold text-primary">340+</p>
                 <p className="text-muted-foreground mt-2">Workers</p>
               </div>
               <div className="text-center">
-                <p className="text-4xl md:text-5xl font-bold text-primary">8+</p>
+                <p className="text-4xl md:text-5xl font-bold text-primary">13+</p>
                 <p className="text-muted-foreground mt-2">Production Lines</p>
               </div>
               <div className="text-center">
