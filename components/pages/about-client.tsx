@@ -31,14 +31,15 @@ export function AboutClient() {
   ]
 
   const timeline = [
-    { year: "2003", event: "Founded as a small ceramic workshop" },
-    { year: "2008", event: "Expanded factory scale and production lines" },
-    { year: "2012", event: "Obtained international food-safe certifications" },
-    { year: "2015", event: "Launched OEM/ODM services for global brands" },
-    { year: "2018", event: "Exported to over 30 countries worldwide" },
-    { year: "2020", event: "Upgraded fully automatic production lines" },
-    { year: "2022", event: "ADA Ceramics officially registered & launched" },
-    { year: "2023", event: "20+ years of excellence in ceramic industry" },
+    { year: "1990", event: "Jinhua Ceramics founded in Chaozhou as a family-run ceramic workshop" },
+    { year: "1995", event: "Built first standardized production plant and expanded tableware lines" },
+    { year: "2008", event: "Introduced first automated production lines to boost capacity" },
+    { year: "2012", event: "Obtained EU LFGB & US FDA food-safe certifications for global market access" },
+    { year: "2015", event: "Set up in-house foreign trade team to launch OEM/ODM services for global brands" },
+    { year: "2018", event: "Jinhua's tableware products exported to over 30 countries across Europe and North America" },
+    { year: "2020", event: "Upgraded smart production workshop to support large custom orders" },
+    { year: "2022", event: "ADA Ceramics spun off from Jinhua's trade division for independent overseas operations" },
+    { year: "2023", event: "30+ years of excellence in ceramic industry" },
   ]
 
   return (
