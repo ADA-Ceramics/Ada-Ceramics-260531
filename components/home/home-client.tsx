@@ -212,20 +212,20 @@ Details: ${formData.details}`;
               <p className="text-[#8b7355] text-sm font-semibold uppercase tracking-wider mb-3">Our Facility</p>
               <h2 className="font-serif text-4xl text-[#1a1a1a] mb-6">State-of-the-Art Manufacturing</h2>
               <p className="text-gray-600 text-base mb-8 leading-relaxed">
-                Our 30,000 sqm facility combines traditional craftsmanship with modern technology, featuring 8+ production lines and a dedicated team of 200+ skilled workers.
+                Our 46,000 sqm facility combines traditional craftsmanship with modern technology, featuring 8+ production lines and a dedicated team of 340+ skilled workers.
               </p>
               
               <div className="grid grid-cols-2 gap-5">
                 <div className="bg-gray-50 rounded-xl p-5 text-center">
-                  <div className="font-serif text-3xl text-[#1a1a1a] mb-1">30,000</div>
+                  <div className="font-serif text-3xl text-[#1a1a1a] mb-1">46,000</div>
                   <div className="text-gray-600 text-sm">sqm Factory</div>
                 </div>
                 <div className="bg-gray-50 rounded-xl p-5 text-center">
-                  <div className="font-serif text-3xl text-[#1a1a1a] mb-1">200+</div>
+                  <div className="font-serif text-3xl text-[#1a1a1a] mb-1">340+</div>
                   <div className="text-gray-600 text-sm">Skilled Workers</div>
                 </div>
                 <div className="bg-gray-50 rounded-xl p-5 text-center">
-                  <div className="font-serif text-3xl text-[#1a1a1a] mb-1">8+</div>
+                  <div className="font-serif text-3xl text-[#1a1a1a] mb-1">13+</div>
                   <div className="text-gray-600 text-sm">Production Lines</div>
                 </div>
                 <div className="bg-gray-50 rounded-xl p-5 text-center">
