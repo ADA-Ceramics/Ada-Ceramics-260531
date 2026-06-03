@@ -72,11 +72,11 @@ export function AboutClient() {
             <div>
               <p className="text-primary font-semibold mb-2">Our Story</p>
               <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
-                20+ Years of Ceramic Excellence
+                30+ Years of Ceramic Excellence
               </h2>
               <div className="space-y-4 text-muted-foreground">
-                <p>ADA Ceramics was founded in 2003 with a vision to produce high-quality ceramic tableware for both domestic and international markets.</p>
-                <p>Over the past two decades, we have grown into a trusted manufacturer with advanced production lines, strict quality control, and a professional R&D team.</p>
+                <p>ADA Ceramics was spun off from jinhua ceramics in 2022 with a vision to supplies premium ceramic tableware and expand online global markets with dedicated customer service.</p>
+                <p>Over the past three decades, we have grown into a trusted manufacturer with advanced production lines, strict quality control, and a professional R&D team.</p>
                 <p>Today, our products are exported to more than 50 countries around the world, serving restaurants, hotels, chain brands, and wholesalers with reliable OEM/ODM services.</p>
               </div>
             </div>
