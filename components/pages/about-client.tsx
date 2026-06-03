@@ -31,11 +31,11 @@ export function AboutClient() {
   ]
 
   const timeline = [
-    { year: "2003", event: "Small workshop established" },
-    { year: "2008", event: "Expanded factory production line" },
-    { year: "2012", event: "Obtained international certifications" },
-    { year: "2015", event: "Started OEM/ODM service" },
-    { year: "2018", event: "Exported to over 30 countries" },
+    { year: "2003", event: "Founded as a small ceramic workshop" },
+    { year: "2008", event: "Expanded factory scale and production lines" },
+    { year: "2012", event: "Obtained international food-safe certifications" },
+    { year: "2015", event: "Launched OEM/ODM services for global brands" },
+    { year: "2018", event: "Exported to over 30 countries worldwide" },
     { year: "2020", event: "Upgraded fully automatic production lines" },
     { year: "2022", event: "ADA Ceramics officially registered & launched" },
     { year: "2023", event: "20+ years of excellence in ceramic industry" },
