@@ -11,7 +11,7 @@ export const companyInfo = {
   },
   businessHours: "Monday - Saturday, 9:00 AM - 6:00 PM (GMT+8)",
   stats: {
-    yearsExperience: "20+",
+    yearsExperience: "30+",
     globalClients: "500+",
     countriesServed: "50+",
     productsDelivered: "10M+",
