@@ -18,7 +18,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     'hero.badge': 'Trusted by 500+ Global Brands',
     'hero.title1': 'Food Grade Ceramic',
     'hero.title2': 'Custom OEM ODM',
-    'hero.description': 'FDA & LFGB Certified premium ceramic manufacturer with 20+ years of expertise. From tableware to custom designs, we deliver excellence in every piece.',
+    'hero.description': 'FDA & LFGB Certified premium ceramic manufacturer with 30+ years of expertise. From tableware to custom designs, we deliver excellence in every piece.',
     'hero.requestQuote': 'Request a Quote',
     'hero.viewProducts': 'View Products',
     'hero.fdaCertified': 'FDA Certified',
@@ -34,7 +34,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     'why.subtitle': 'WHY CHOOSE US',
     'why.title': 'Your Trusted Ceramic Partner',
     'why.description': 'We combine traditional craftsmanship with modern technology to deliver exceptional ceramic products for the global market.',
-    'why.experience.title': '20+ Years Experience',
+    'why.experience.title': '30+ Years Experience',
     'why.experience.desc': 'Over 20 years of ceramic manufacturing expertise, serving global brands with consistent quality and reliability.',
     'why.certified.title': 'Food Grade Certified',
     'why.certified.desc': 'All products meet strict international food safety standards including FDA, LFGB, and CA65 certifications.',
@@ -80,7 +80,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     'contact.success.desc': 'Thank you for contacting us. We will reply you soon.',
 
     // Footer
-    'footer.description': 'FDA & LFGB Certified premium ceramic manufacturer with 20+ years of expertise. From tableware to custom designs, we deliver excellence in every piece.',
+    'footer.description': 'FDA & LFGB Certified premium ceramic manufacturer with 30+ years of expertise. From tableware to custom designs, we deliver excellence in every piece.',
     'footer.products': 'Products',
     'footer.quickLinks': 'Quick Links',
     'footer.contactUs': 'Contact Us',
@@ -320,7 +320,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     'oemodm.step8.desc': 'Careful packaging and shipping with full tracking.',
     
     // OEM/ODM advantages
-    'oemodm.adv.experience.title': '20+ Years OEM/ODM Experience',
+    'oemodm.adv.experience.title': '30+ Years OEM/ODM Experience',
     'oemodm.adv.experience.desc': 'Extensive experience working with global brands across diverse product categories.',
     'oemodm.adv.team.title': 'In-house Design Team',
     'oemodm.adv.team.desc': 'Dedicated R&D and design team to support your product development needs.',
@@ -421,7 +421,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     'why.subtitle': 'WARUM WIR',
     'why.title': 'Ihr Vertrauenswürdiger Keramikpartner',
     'why.description': 'Wir verbinden traditionelle Handwerkskunst mit moderner Technologie, um außergewöhnliche Keramikprodukte für den globalen Markt zu liefern.',
-    'why.experience.title': '20+ Jahre Erfahrung',
+    'why.experience.title': '30+ Jahre Erfahrung',
     'why.experience.desc': 'Über 20 Jahre Keramikherstellungs-Expertise, globale Marken mit konstanter Qualität und Zuverlässigkeit bedienend.',
     'why.certified.title': 'Lebensmittelzertifiziert',
     'why.certified.desc': 'Alle Produkte erfüllen strenge internationale Lebensmittelsicherheitsstandards einschließlich FDA, LFGB und CA65 Zertifizierungen.',
@@ -707,7 +707,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     'oemodm.step8.desc': 'Sorgfältige Verpackung und Versand mit Tracking.',
     
     // OEM/ODM advantages
-    'oemodm.adv.experience.title': '20+ Jahre OEM/ODM Erfahrung',
+    'oemodm.adv.experience.title': '30+ Jahre OEM/ODM Erfahrung',
     'oemodm.adv.experience.desc': 'Umfangreiche Erfahrung mit globalen Marken.',
     'oemodm.adv.team.title': 'Internes Designteam',
     'oemodm.adv.team.desc': 'Dediziertes F&E- und Designteam für Produktentwicklung.',
@@ -808,7 +808,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     'why.subtitle': 'POURQUOI NOUS CHOISIR',
     'why.title': 'Votre Partenaire Céramique de Confiance',
     'why.description': 'Nous combinons l\'artisanat traditionnel avec la technologie moderne pour livrer des produits céramiques exceptionnels pour le marché mondial.',
-    'why.experience.title': '20+ Ans d\'Expérience',
+    'why.experience.title': '30+ Ans d\'Expérience',
     'why.experience.desc': 'Plus de 20 ans d\'expertise en fabrication de céramique, servant des marques mondiales avec une qualité et une fiabilité constantes.',
     'why.certified.title': 'Certifié Alimentaire',
     'why.certified.desc': 'Tous les produits répondent aux normes internationales strictes de sécurité alimentaire, y compris les certifications FDA, LFGB et CA65.',
@@ -1094,7 +1094,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     'oemodm.step8.desc': 'Emballage soigné et expédition avec suivi.',
     
     // OEM/ODM advantages
-    'oemodm.adv.experience.title': '20+ Ans d\'Expérience OEM/ODM',
+    'oemodm.adv.experience.title': '30+ Ans d\'Expérience OEM/ODM',
     'oemodm.adv.experience.desc': 'Vaste expérience avec des marques mondiales.',
     'oemodm.adv.team.title': 'Équipe Design Interne',
     'oemodm.adv.team.desc': 'Équipe R&D et design dédiée pour vos besoins.',
@@ -1195,7 +1195,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     'why.subtitle': 'POR QUÉ ELEGIRNOS',
     'why.title': 'Su Socio Cerámico de Confianza',
     'why.description': 'Combinamos la artesanía tradicional con la tecnología moderna para entregar productos cerámicos excepcionales para el mercado global.',
-    'why.experience.title': '20+ Años de Experiencia',
+    'why.experience.title': '30+ Años de Experiencia',
     'why.experience.desc': 'Más de 20 años de experiencia en fabricación de cerámica, sirviendo marcas globales con calidad y confiabilidad constantes.',
     'why.certified.title': 'Certificado Alimenticio',
     'why.certified.desc': 'Todos los productos cumplen con estrictos estándares internacionales de seguridad alimentaria, incluyendo certificaciones FDA, LFGB y CA65.',
@@ -1481,7 +1481,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     'oemodm.step8.desc': 'Embalaje cuidadoso y envío con seguimiento.',
     
     // OEM/ODM advantages
-    'oemodm.adv.experience.title': '20+ Años de Experiencia OEM/ODM',
+    'oemodm.adv.experience.title': '30+ Años de Experiencia OEM/ODM',
     'oemodm.adv.experience.desc': 'Amplia experiencia con marcas globales.',
     'oemodm.adv.team.title': 'Equipo de Diseño Interno',
     'oemodm.adv.team.desc': 'Equipo I+D y diseño dedicado para sus necesidades.',
@@ -1582,7 +1582,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     'why.subtitle': 'PERCHÉ SCEGLIERCI',
     'why.title': 'Il Tuo Partner Ceramico di Fiducia',
     'why.description': 'Combiniamo l\'artigianato tradizionale con la tecnologia moderna per consegnare prodotti ceramici eccezionali per il mercato globale.',
-    'why.experience.title': '20+ Anni di Esperienza',
+    'why.experience.title': '30+ Anni di Esperienza',
     'why.experience.desc': 'Oltre 20 anni di esperienza nella produzione di ceramica, servendo marchi globali con qualità e affidabilità costanti.',
     'why.certified.title': 'Certificato Alimentare',
     'why.certified.desc': 'Tutti i prodotti rispettano rigorosi standard internazionali di sicurezza alimentare, incluse le certificazioni FDA, LFGB e CA65.',
@@ -1868,7 +1868,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     'oemodm.step8.desc': 'Imballaggio accurato e spedizione con tracciamento.',
     
     // OEM/ODM advantages
-    'oemodm.adv.experience.title': '20+ Anni di Esperienza OEM/ODM',
+    'oemodm.adv.experience.title': '30+ Anni di Esperienza OEM/ODM',
     'oemodm.adv.experience.desc': 'Vasta esperienza con marchi globali.',
     'oemodm.adv.team.title': 'Team Design Interno',
     'oemodm.adv.team.desc': 'Team R&D e design dedicato per le tue esigenze.',
