@@ -124,7 +124,7 @@ const businessSolutions = [
 
 // Why choose us
 const whyChooseUs = [
-  { icon: Clock, title: "20+ Years Export to EU/US", href: "/about-us" },
+  { icon: Clock, title: "30+ Years Export to EU/US", href: "/about-us" },
   { icon: Award, title: "FDA/LFGB Certified", href: "/en/products" },
   { icon: Package, title: "Flexible MOQ & Fast Samples", href: "/en/custom-oem-odm" },
   { icon: Truck, title: "45-50Day On-Time Delivery", href: "/en/products" },
