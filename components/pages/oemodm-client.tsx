@@ -66,7 +66,7 @@ export function OemOdmClient() {
 
   // 工厂优势数据
   const factoryAdvantages = [
-    "15+ years of ceramic manufacturing experience",
+    "30+ years of ceramic manufacturing experience",
     "FDA, LFGB, CA65 certified production facility",
     "In-house design team with 3D modeling capability",
     "Flexible MOQ starting from 500 pieces",
@@ -220,12 +220,20 @@ export function OemOdmClient() {
           </div>
           
           {/* 2x2 图片网格布局 */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-            {customServices.map((service, index) => (
-              <div 
-                key={service.title}
-                className="group relative bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300"
-              >
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+  {customServices.map((service, index) => (
+    <div
+      key={service.title}
+      className="group relative bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300"
+    >
+      <div className="relative aspect-[16/10] overflow-hidden">
+        <Image
+          src={service.image}
+          alt={`${service.title} - ceramic customization example`}
+          fill
+          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+        />
+      </div>
                 {/* 图片区域 */}
                 <div className="relative aspect-[16/10] overflow-hidden">
                   <Image
