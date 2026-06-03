@@ -220,20 +220,12 @@ export function OemOdmClient() {
           </div>
           
           {/* 2x2 图片网格布局 */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-  {customServices.map((service, index) => (
-    <div
-      key={service.title}
-      className="group relative bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300"
-    >
-      <div className="relative aspect-[16/10] overflow-hidden">
-        <Image
-          src={service.image}
-          alt={`${service.title} - ceramic customization example`}
-          fill
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-        />
-      </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+            {customServices.map((service, index) => (
+              <div 
+                key={service.title}
+                className="group relative bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300"
+              >
                 {/* 图片区域 */}
                 <div className="relative aspect-[16/10] overflow-hidden">
                   <Image
