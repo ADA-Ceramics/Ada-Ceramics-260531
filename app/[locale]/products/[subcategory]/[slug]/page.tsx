@@ -7,7 +7,7 @@ import { getProductBySlug, getProductsByCategory } from "@/lib/supabase/products
 import { Header } from "@/components/layout/header"
 import { Footer } from "@/components/layout/footer"
 import { QuoteForm } from "@/components/shared/quote-form"
-import ProductImageGallery from "@/components/product/ProductImageGallery"
+import ProductImageGallery from "@/components/products/ProductImageGallery"
 
 // ============================================================
 // SEO Metadata
