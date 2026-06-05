@@ -28,22 +28,42 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   const seoTitle = `${product.name} | Wholesale Ceramic Tableware | ADA Ceramics`
   const seoDescription = product.description
-    ? `${product.description.slice(0, 120)}... Factory direct pricing, low MOQ, FDA/LFGB certified. Request a quote today!`
+    ? `${product.description.slice(0, 150)}`
     : `Wholesale ${product.name} from ADA Ceramics. Premium quality ceramic tableware for restaurants, hotels and catering.`
+
+  // OG多图配置
+  const ogImages: { url: string; width: number; height: number; alt: string }[] = []
+  if (product.main_image) {
+    ogImages.push({ url: product.main_image, width: 1000, height: 1000, alt: product.name })
+  }
+  if (Array.isArray(product.gallery_images)) {
+    product.gallery_images.forEach(img => {
+      ogImages.push({ url: img, width: 1000, height: 1000, alt: `${product.name} detail photo` })
+    })
+  }
 
   return {
     title: seoTitle,
     description: seoDescription,
-    keywords: [product.name, "wholesale ceramic", "bulk tableware", "restaurant supplies", "hotel dinnerware"].join(", "),
+    keywords: [
+      product.name,
+      "wholesale ceramic",
+      "bulk tableware",
+      "restaurant supplies",
+      "hotel dinnerware",
+      "FDA certified",
+      "LFGB certified"
+    ].join(", "),
     openGraph: {
       title: seoTitle,
       description: seoDescription,
       type: "website",
       locale: locale === "zh" ? "zh_CN" : "en_US",
-      images: product.main_image ? [{ url: product.main_image, width: 800, height: 800, alt: product.name }] : [],
+      siteName: "ADA Ceramics",
+      images: ogImages,
     },
     alternates: {
-      canonical: `https://adaceramics.com/${locale}/products/${subcategory}/${product.slug}`,
+      canonical: `https://www.adaceramics.com/${locale}/products/${subcategory}/${slug}`,
     },
   }
 }
@@ -110,12 +130,10 @@ export default async function ProductDetailPage({ params }: PageProps) {
   const { locale, subcategory, slug } = await params
   const product = await getProductBySlug(slug)
 
-  // 只在产品不存在时才 notFound
   if (!product) {
     notFound()
   }
 
-  // 查找当前分类信息
   const findCurrentCategory = () => {
     for (const parent of categoryTree) {
       if (parent.slug === subcategory) {
@@ -126,14 +144,12 @@ export default async function ProductDetailPage({ params }: PageProps) {
         return { parent, child }
       }
     }
-    // 不存在的分类也不崩溃
     return { parent: categoryTree[0], child: null }
   }
 
   const { parent: currentParent, child: currentChild } = findCurrentCategory()
   const categoryName = currentChild?.name || currentParent?.name || "Products"
 
-  // 获取同类目下的相关产品（排除当前产品，最多5个）
   const allCategoryProducts = await getProductsByCategory(currentParent.slug)
   const relatedProducts = allCategoryProducts
     .filter(p => p.slug !== product.slug)
@@ -142,35 +158,51 @@ export default async function ProductDetailPage({ params }: PageProps) {
   const specifications = product.specifications || {}
   const features = product.features || []
 
-  // =====修复JSON-LD：安全处理图片数组，不再报错=====
+  // JSON-LD 多图SEO（使用正确字段 gallery_images）
   const imgArr: string[] = []
-  if(product.main_image) imgArr.push(product.main_image)
-  if(Array.isArray(product.images)){
-    imgArr.push(...product.images)
-  }
+  if (product.main_image) imgArr.push(product.main_image)
+  if (Array.isArray(product.gallery_images)) imgArr.push(...product.gallery_images)
 
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Product",
     name: product.name,
     description: product.description || `Wholesale ${product.name} from ADA Ceramics`,
-    image: imgArr.length > 0 ? imgArr : product.main_image ?? "",
+    image: imgArr.length > 0 ? imgArr : product.main_image || "",
     sku: product.id,
-    brand: { "@type": "Brand", name: "ADA Ceramics" },
-    manufacturer: { "@type": "Organization", name: "ADA Ceramics", url: "https://adaceramics.com" },
+    brand: {
+      "@type": "Brand",
+      name: "ADA Ceramics"
+    },
+    manufacturer: {
+      "@type": "Organization",
+      name: "ADA Ceramics",
+      url: "https://www.adaceramics.com"
+    },
+    offers: {
+      "@type": "AggregateOffer",
+      priceCurrency: "USD",
+      availability: "https://schema.org/InStock",
+      seller: {
+        "@type": "Organization",
+        name: "ADA Ceramics"
+      }
+    },
     category: categoryName,
   }
 
   return (
     <div className="min-h-screen bg-background">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
 
       <Header />
 
       {/* Hero Section */}
       <section className="pt-32 pb-6 bg-[#f5f3ef]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Breadcrumb - 使用正确的链接格式 */}
           <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-sm text-muted-foreground mb-4">
             <Link href={`/${locale}`} className="hover:text-foreground transition-colors">Home</Link>
             <ChevronRight className="w-4 h-4" />
@@ -191,7 +223,6 @@ export default async function ProductDetailPage({ params }: PageProps) {
             <span className="text-foreground font-medium truncate max-w-[200px]">{product.name}</span>
           </nav>
 
-          {/* Selling Points Bar */}
           <div className="flex flex-wrap justify-center gap-6 sm:gap-10 lg:gap-14 py-4">
             {sellingPoints.map((point) => {
               const IconComponent = point.icon
@@ -211,10 +242,9 @@ export default async function ProductDetailPage({ params }: PageProps) {
       {/* Main Content */}
       <section className="py-8 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Product Content - Full Width Layout */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
 
-            {/* Product Image */}
+            {/* Product Image 【细节图字段：gallery_images】 */}
             <div className="space-y-4">
               <div className="aspect-square relative bg-[#f9fafb] rounded-lg overflow-hidden border border-[#e5e7eb]">
                 {product.main_image ? (
@@ -224,6 +254,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
                     fill
                     className="object-cover"
                     sizes="(max-width: 768px) 100vw, 50vw"
+                    quality={75}
                     priority
                   />
                 ) : (
@@ -233,14 +264,14 @@ export default async function ProductDetailPage({ params }: PageProps) {
                 )}
               </div>
 
-              {/* =========真实细节缩略图（带SEO alt，无报错，无数据自动隐藏）========= */}
-              {product.images && Array.isArray(product.images) && product.images.length > 0 && (
-                <div className="flex gap-3 overflow-x-auto pb-1">
-                  {product.images.map((img: string, idx: number) => (
-                    <div key={idx} className="w-20 h-20 rounded overflow-hidden border border-[#e5e7eb] flex-shrink-0">
+              {/* 从gallery_images读取细节缩略图，和截图4个方框位置一致 */}
+              {Array.isArray(product.gallery_images) && product.gallery_images.length > 0 && (
+                <div className="flex gap-3 overflow-x-auto pb-2">
+                  {product.gallery_images.map((imgUrl: string, idx: number) => (
+                    <div key={idx} className="w-20 h-20 rounded border border-gray-200 overflow-hidden flex-shrink-0 bg-white">
                       <Image
-                        src={img}
-                        alt={`${product.name} detail picture ${idx+1}, wholesale ceramic tableware`}
+                        src={imgUrl}
+                        alt={`${product.name} detail ${idx + 1}, wholesale ceramic tableware`}
                         width={80}
                         height={80}
                         className="w-full h-full object-cover"
@@ -350,7 +381,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
         </div>
       </section>
 
-      {/* Related Products Section */}
+      {/* Related Products */}
       {relatedProducts.length > 0 && (
         <section className="py-16 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -374,10 +405,12 @@ export default async function ProductDetailPage({ params }: PageProps) {
                   <div className="relative aspect-square overflow-hidden bg-gray-50">
                     <Image
                       src={relatedProduct.main_image || "/alice.webp"}
-                      alt={`${relatedProduct.name} - Wholesale ceramic tableware bulk supply`}
+                      alt={`${relatedProduct.name} - Wholesale ceramic tableware`}
                       fill
                       className="object-cover group-hover:scale-105 transition-transform duration-300"
                       sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 20vw"
+                      quality={70}
+                      loading="lazy"
                     />
                   </div>
                   <div className="p-4">
