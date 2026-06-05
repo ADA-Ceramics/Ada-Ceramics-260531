@@ -7,65 +7,7 @@ import { getProductBySlug, getProductsByCategory } from "@/lib/supabase/products
 import { Header } from "@/components/layout/header"
 import { Footer } from "@/components/layout/footer"
 import { QuoteForm } from "@/components/shared/quote-form"
-
-// ============================================================
-// 客户端图片画廊组件（点击缩略图切换主图）
-// ============================================================
-'use client'
-import { useState } from 'react'
-function ProductImageGallery({ product }) {
-  const allImages = [
-    product.main_image,
-    ...(product.gallery_images || [])
-  ].filter(Boolean)
-
-  const [activeImage, setActiveImage] = useState(allImages[0] || "")
-
-  return (
-    <div className="space-y-4">
-      {/* 主图 */}
-      <div className="aspect-square relative bg-[#f9fafb] rounded-lg overflow-hidden border border-[#e5e7eb]">
-        {activeImage ? (
-          <Image
-            src={activeImage}
-            alt={product.name}
-            fill
-            className="object-cover"
-            sizes="(max-width: 640px) 100vw, 50vw"
-            quality={75}
-            priority
-          />
-        ) : (
-          <div className="absolute inset-0 flex items-center justify-center">
-            <Package className="w-24 h-24 text-[#d1d5db]" />
-          </div>
-        )}
-      </div>
-
-      {/* 缩略图：点击切换 */}
-      {allImages.length > 1 && (
-        <div className="flex gap-3 overflow-x-auto pb-2">
-          {allImages.map((img, idx) => (
-            <div
-              key={idx}
-              onClick={() => setActiveImage(img)}
-              className={`w-20 h-20 rounded border-2 overflow-hidden flex-shrink-0 cursor-pointer transition-all
-                ${activeImage === img ? 'border-[#8b7355]' : 'border-gray-200 hover:border-gray-400'}`}
-            >
-              <Image
-                src={img}
-                alt={`${product.name} detail ${idx + 1}`}
-                width={80}
-                height={80}
-                className="w-full h-full object-cover"
-              />
-            </div>
-          ))}
-        </div>
-      )}
-    </div>
-  )
-}
+import ProductImageGallery from "@/components/product/ProductImageGallery"
 
 // ============================================================
 // SEO Metadata
@@ -298,7 +240,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
 
-            {/* ✅ 这里替换成了可点击切换的图片画廊 */}
+            {/* ✅ 已替换：点击缩略图切换主图 */}
             <ProductImageGallery product={product} />
 
             <div className="space-y-6">
@@ -313,7 +255,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
               {product.description && (
                 <div>
                   <h2 className="text-lg font-semibold text-[#1a1a1a] mb-2">Product Description</h2>
-                  <p className="text-[#4b5563] leading-relaxed">{product.description}</p>
+                  <p className="text-[#4b563] leading-relaxed">{product.description}</p>
                 </div>
               )}
 
@@ -324,7 +266,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
                     {features.map((feature: string, index: number) => (
                       <li key={index} className="flex items-start gap-2">
                         <Check className="w-5 h-5 text-[#8b7355] flex-shrink-0 mt-0.5" />
-                        <span className="text-[#4b5563]">{feature}</span>
+                        <span className="text-[#4b563]">{feature}</span>
                       </li>
                     ))}
                   </ul>
@@ -382,7 +324,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
             <h2 className="text-xl font-serif font-normal text-[#1a1a1a] mb-4">
               Why Choose ADA Ceramics for Wholesale {categoryName}?
             </h2>
-            <div className="prose prose-sm max-w-none text-[#4b5563]">
+            <div className="prose prose-sm max-w-none text-[#4b563]">
               <p>
                 As a leading ceramic tableware manufacturer in China, ADA Ceramics specializes in producing
                 high-quality {categoryName.toLowerCase()} for the global hospitality industry.
