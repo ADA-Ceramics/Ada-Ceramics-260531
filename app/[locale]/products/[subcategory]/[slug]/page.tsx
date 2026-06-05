@@ -9,6 +9,65 @@ import { Footer } from "@/components/layout/footer"
 import { QuoteForm } from "@/components/shared/quote-form"
 
 // ============================================================
+// 客户端图片画廊组件（点击缩略图切换主图）
+// ============================================================
+'use client'
+import { useState } from 'react'
+function ProductImageGallery({ product }) {
+  const allImages = [
+    product.main_image,
+    ...(product.gallery_images || [])
+  ].filter(Boolean)
+
+  const [activeImage, setActiveImage] = useState(allImages[0] || "")
+
+  return (
+    <div className="space-y-4">
+      {/* 主图 */}
+      <div className="aspect-square relative bg-[#f9fafb] rounded-lg overflow-hidden border border-[#e5e7eb]">
+        {activeImage ? (
+          <Image
+            src={activeImage}
+            alt={product.name}
+            fill
+            className="object-cover"
+            sizes="(max-width: 640px) 100vw, 50vw"
+            quality={75}
+            priority
+          />
+        ) : (
+          <div className="absolute inset-0 flex items-center justify-center">
+            <Package className="w-24 h-24 text-[#d1d5db]" />
+          </div>
+        )}
+      </div>
+
+      {/* 缩略图：点击切换 */}
+      {allImages.length > 1 && (
+        <div className="flex gap-3 overflow-x-auto pb-2">
+          {allImages.map((img, idx) => (
+            <div
+              key={idx}
+              onClick={() => setActiveImage(img)}
+              className={`w-20 h-20 rounded border-2 overflow-hidden flex-shrink-0 cursor-pointer transition-all
+                ${activeImage === img ? 'border-[#8b7355]' : 'border-gray-200 hover:border-gray-400'}`}
+            >
+              <Image
+                src={img}
+                alt={`${product.name} detail ${idx + 1}`}
+                width={80}
+                height={80}
+                className="w-full h-full object-cover"
+              />
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  )
+}
+
+// ============================================================
 // SEO Metadata
 // ============================================================
 interface PageProps {
@@ -31,7 +90,6 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     ? `${product.description.slice(0, 150)}`
     : `Wholesale ${product.name} from ADA Ceramics. Premium quality ceramic tableware for restaurants, hotels and catering.`
 
-  // OG多图配置
   const ogImages: { url: string; width: number; height: number; alt: string }[] = []
   if (product.main_image) {
     ogImages.push({ url: product.main_image, width: 1000, height: 1000, alt: product.name })
@@ -71,7 +129,6 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 // ============================================================
 // 静态数据
 // ============================================================
-
 const sellingPoints = [
   { icon: Layers, title: "Low MOQ", description: "From 100 pieces" },
   { icon: ShieldCheck, title: "FDA/LFGB Certified", description: "Food-safe quality" },
@@ -158,7 +215,6 @@ export default async function ProductDetailPage({ params }: PageProps) {
   const specifications = product.specifications || {}
   const features = product.features || []
 
-  // JSON-LD 多图SEO（使用正确字段 gallery_images）
   const imgArr: string[] = []
   if (product.main_image) imgArr.push(product.main_image)
   if (Array.isArray(product.gallery_images)) imgArr.push(...product.gallery_images)
@@ -200,7 +256,6 @@ export default async function ProductDetailPage({ params }: PageProps) {
 
       <Header />
 
-      {/* Hero Section */}
       <section className="pt-32 pb-6 bg-[#f5f3ef]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-sm text-muted-foreground mb-4">
@@ -239,50 +294,13 @@ export default async function ProductDetailPage({ params }: PageProps) {
         </div>
       </section>
 
-      {/* Main Content */}
       <section className="py-8 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
 
-            {/* Product Image 【细节图字段：gallery_images】 */}
-            <div className="space-y-4">
-              <div className="aspect-square relative bg-[#f9fafb] rounded-lg overflow-hidden border border-[#e5e7eb]">
-                {product.main_image ? (
-                  <Image
-                    src={product.main_image}
-                    alt={product.name}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                    quality={75}
-                    priority
-                  />
-                ) : (
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <Package className="w-24 h-24 text-[#d1d5db]" />
-                  </div>
-                )}
-              </div>
+            {/* ✅ 这里替换成了可点击切换的图片画廊 */}
+            <ProductImageGallery product={product} />
 
-              {/* 从gallery_images读取细节缩略图，和截图4个方框位置一致 */}
-              {Array.isArray(product.gallery_images) && product.gallery_images.length > 0 && (
-                <div className="flex gap-3 overflow-x-auto pb-2">
-                  {product.gallery_images.map((imgUrl: string, idx: number) => (
-                    <div key={idx} className="w-20 h-20 rounded border border-gray-200 overflow-hidden flex-shrink-0 bg-white">
-                      <Image
-                        src={imgUrl}
-                        alt={`${product.name} detail ${idx + 1}, wholesale ceramic tableware`}
-                        width={80}
-                        height={80}
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
-
-            {/* Product Info */}
             <div className="space-y-6">
               <div>
                 <p className="text-sm text-[#8b7355] font-medium mb-2">{categoryName}</p>
@@ -329,7 +347,6 @@ export default async function ProductDetailPage({ params }: PageProps) {
                 </div>
               )}
 
-              {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
                 <Link
                   href="#quote-form"
@@ -346,7 +363,6 @@ export default async function ProductDetailPage({ params }: PageProps) {
                 </Link>
               </div>
 
-              {/* Trust Badges */}
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-4 border-t border-[#e5e7eb]">
                 {sellingPoints.map((point) => {
                   const IconComponent = point.icon
@@ -362,7 +378,6 @@ export default async function ProductDetailPage({ params }: PageProps) {
             </div>
           </div>
 
-          {/* SEO Content */}
           <div className="mt-12 pt-8 border-t border-[#e5e7eb]">
             <h2 className="text-xl font-serif font-normal text-[#1a1a1a] mb-4">
               Why Choose ADA Ceramics for Wholesale {categoryName}?
@@ -381,7 +396,6 @@ export default async function ProductDetailPage({ params }: PageProps) {
         </div>
       </section>
 
-      {/* Related Products */}
       {relatedProducts.length > 0 && (
         <section className="py-16 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
