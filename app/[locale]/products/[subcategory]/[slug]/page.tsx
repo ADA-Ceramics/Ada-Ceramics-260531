@@ -34,11 +34,21 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   const ogImages: { url: string; width: number; height: number; alt: string }[] = []
   if (product.main_image) {
-    ogImages.push({ url: product.main_image, width: 1000, height: 1000, alt: product.name })
+    ogImages.push({ 
+      url: product.main_image, 
+      width: 1000, 
+      height: 1000, 
+      alt: product.main_image_alt || product.name 
+    })
   }
   if (Array.isArray(product.gallery_images)) {
-    product.gallery_images.forEach(img => {
-      ogImages.push({ url: img, width: 1000, height: 1000, alt: `${product.name} detail photo` })
+    product.gallery_images.forEach((img, i) => {
+      ogImages.push({ 
+        url: img, 
+        width: 1000, 
+        height: 1000, 
+        alt: product.gallery_images_alt?.[i] || `${product.name} detail photo` 
+      })
     })
   }
 
@@ -57,6 +67,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     openGraph: {
       title: seoTitle,
       description: seoDescription,
+      alt: product.main_image_alt || product.name,
       type: "website",
       locale: locale === "zh" ? "zh_CN" : "en_US",
       siteName: "ADA Ceramics",
@@ -361,7 +372,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
                   <div className="relative aspect-square overflow-hidden bg-gray-50">
                     <Image
                       src={relatedProduct.main_image || "/alice.webp"}
-                      alt={`${relatedProduct.name} - Wholesale ceramic tableware`}
+                      alt={relatedProduct.main_image_alt || relatedProduct.name}
                       fill
                       className="object-cover group-hover:scale-105 transition-transform duration-300"
                       sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 20vw"
