@@ -4,11 +4,17 @@ import { useState } from "react"
 import Link from "next/link"
 import { ChevronDown } from "lucide-react"
 
+interface ChildCategory {
+  id: string
+  name: string
+  slug: string
+}
+
 interface Category {
   id: string
   name: string
   slug: string
-  children: { id: string; name: string; slug: string }[]
+  children: ChildCategory[]
 }
 
 interface CategorySidebarProps {
@@ -18,15 +24,21 @@ interface CategorySidebarProps {
   currentChildId?: string
 }
 
-export function CategorySidebar({ locale, categoryTree, currentParentId, currentChildId }: CategorySidebarProps) {
+export function CategorySidebar({
+  locale,
+  categoryTree,
+  currentParentId,
+  currentChildId,
+}: CategorySidebarProps) {
+  // 默认全部展开
   const [expandedCategories, setExpandedCategories] = useState<string[]>(
-    categoryTree.map(cat => cat.id) // 默认全部展开
+    () => categoryTree.map((cat) => cat.id)
   )
 
   const toggleCategory = (categoryId: string) => {
-    setExpandedCategories(prev =>
+    setExpandedCategories((prev) =>
       prev.includes(categoryId)
-        ? prev.filter(id => id !== categoryId)
+        ? prev.filter((id) => id !== categoryId)
         : [...prev, categoryId]
     )
   }
@@ -44,11 +56,12 @@ export function CategorySidebar({ locale, categoryTree, currentParentId, current
 
             return (
               <div key={category.id}>
-                {/* Parent Category */}
+                {/* 父分类：按钮 + Link */}
                 <div className="flex items-center">
                   <button
                     onClick={() => toggleCategory(category.id)}
                     className="p-1 hover:bg-[#e5e1db] rounded transition-colors"
+                    aria-label="Toggle category"
                   >
                     <ChevronDown
                       className={`w-4 h-4 text-[#6b7280] transition-transform ${
@@ -68,7 +81,7 @@ export function CategorySidebar({ locale, categoryTree, currentParentId, current
                   </Link>
                 </div>
 
-                {/* Children */}
+                {/* 子分类 */}
                 {isExpanded && (
                   <div className="ml-6 mt-1 space-y-1">
                     {category.children.map((child) => {
