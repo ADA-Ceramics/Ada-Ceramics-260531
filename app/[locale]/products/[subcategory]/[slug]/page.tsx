@@ -203,10 +203,13 @@ export default async function ProductDetailPage({ params }: PageProps) {
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
 
-              {/* 图片区域（静态渲染 + 纯HTML 实现图片切换，无 use client） */}
+              {/* 🔥 图片区域 - 点击小图切换大图（已修改完成） */}
               <div className="space-y-4">
-                <div className="aspect-square relative bg-[#f9fafb] rounded-lg overflow-hidden border border-[#e5e7eb]">
+                <div 
+                  className="aspect-square relative bg-[#f9fafb] rounded-lg overflow-hidden border border-[#e5e7eb]"
+                >
                   <Image
+                    id="mainImage"
                     src={allImages[0]?.url}
                     alt={allImages[0]?.alt || product.name}
                     fill
@@ -215,11 +218,20 @@ export default async function ProductDetailPage({ params }: PageProps) {
                     priority
                   />
                 </div>
+
                 <div className="flex gap-3 overflow-x-auto pb-2">
                   {allImages.map((img: any, idx: number) => (
                     <div
                       key={idx}
-                      className="w-20 h-20 flex-shrink-0 rounded border border-[#8b7355] overflow-hidden cursor-pointer"
+                      onClick={() => {
+                        const mainImg = document.getElementById('mainImage') as any
+                        if (mainImg) {
+                          mainImg.src = img.url
+                          mainImg.alt = img.alt
+                        }
+                      }}
+                      className={`w-20 h-20 flex-shrink-0 rounded border overflow-hidden cursor-pointer transition-all 
+                        ${idx === 0 ? 'border-[#8b7355] ring-2 ring-[#8b7355]/20' : 'border-gray-300 hover:border-[#8b7355]'}`}
                     >
                       <Image
                         src={img.url}
