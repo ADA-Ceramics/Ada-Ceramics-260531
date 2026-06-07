@@ -1,94 +1,132 @@
 import { Metadata } from "next"
-import { notFound } from "next/navigation"
 import Link from "next/link"
-import Image from "next/image"
-import { ChevronRight, Layers, ShieldCheck, Settings, Zap, Check, Package, MessageCircle } from "lucide-react"
-import { getProductBySlug, getProductsByCategory } from "@/lib/supabase/products"
+import { ChevronRight, Package, Layers, ShieldCheck, Settings, Zap } from "lucide-react"
+import { getProductsByCategory, getAllProducts } from "@/lib/supabase/products"
 import { Header } from "@/components/layout/header"
 import { Footer } from "@/components/layout/footer"
-import { QuoteForm } from "@/components/shared/quote-form"
-import ProductImageGallery from "@/components/products/ProductImageGallery"
+import { CategorySidebar } from "./CategorySidebar"
 
 // ============================================================
-// SEO Metadata
+// 动态 Metadata
 // ============================================================
 interface PageProps {
-  params: Promise<{ locale: string; subcategory: string; slug: string }>
+  params: Promise<{ locale: string; subcategory: string }>
+}
+
+// 分类内容配置
+const subcategoryContent: Record<string, { title: string; description: string }> = {
+  "plates": {
+    title: "Wholesale Ceramic Plates For Bulk Food Service",
+    description: "We supply durable, food-safe dinner plates, soup plates and serving platters for restaurants and caterers. All products meet FDA/LFGB standards with custom designs available."
+  },
+  "dinner-plates": {
+    title: "Wholesale Dinner Plates | Bulk Ceramic Tableware",
+    description: "Premium quality ceramic dinner plates for restaurants, hotels and catering businesses. Available in various sizes, shapes and designs with low MOQ and fast delivery."
+  },
+  "dessert-side-plates": {
+    title: "Wholesale Dessert & Side Plates | Ceramic Tableware",
+    description: "Elegant dessert and side plates perfect for appetizers, salads and pastries. Food-safe ceramic with custom branding options."
+  },
+  "soup-plates": {
+    title: "Wholesale Soup Plates | Deep Ceramic Bowls",
+    description: "Deep soup plates ideal for soups, pasta and risotto service. Durable ceramic construction with professional-grade quality."
+  },
+  "oval-serving-plates": {
+    title: "Wholesale Oval & Serving Platters | Ceramic",
+    description: "Large oval platters and serving dishes for family-style dining and buffet service. Available in multiple sizes."
+  },
+  "bowls": {
+    title: "Wholesale Ceramic Bowls For Commercial Use",
+    description: "High-quality ceramic bowls for soup, salad, ramen and snacks. Perfect for restaurants, hotels and food service businesses."
+  },
+  "soup-bowls": {
+    title: "Wholesale Soup Bowls | Ceramic Restaurant Ware",
+    description: "Deep ceramic soup bowls designed for commercial food service. Stackable, chip-resistant and dishwasher safe."
+  },
+  "salad-bowls": {
+    title: "Wholesale Salad Bowls | Fresh Food Service",
+    description: "Versatile ceramic salad bowls in various sizes for fresh food presentation. Ideal for restaurants and cafes."
+  },
+  "ramen-bowls": {
+    title: "Wholesale Ramen Bowls | Asian Restaurant Supply",
+    description: "Traditional-style ramen bowls perfect for noodle dishes and Asian cuisine. Large capacity with authentic designs."
+  },
+  "snack-bowls": {
+    title: "Wholesale Snack Bowls | Small Ceramic Dishes",
+    description: "Compact snack and dipping bowls for appetizers and condiments. Perfect for tapas and shared dining."
+  },
+  "dinnerware-sets": {
+    title: "Wholesale Dinnerware Sets | Complete Tableware Collections",
+    description: "Complete ceramic dinnerware sets for daily use and professional catering. Coordinated designs with plates and bowls."
+  },
+  "daily-tableware-sets": {
+    title: "Wholesale Daily Tableware Sets | Home & Hospitality",
+    description: "Everyday dinnerware sets for hotels, B&Bs and retail. Durable ceramic construction with elegant designs."
+  },
+  "restaurant-catering-sets": {
+    title: "Wholesale Restaurant & Catering Sets | Professional Grade",
+    description: "Commercial-grade dinnerware sets designed for high-volume restaurant and catering use."
+  },
+  "cups-mugs": {
+    title: "Wholesale Ceramic Cups & Mugs | Coffee Service",
+    description: "Premium ceramic mugs and coffee cups for cafes, restaurants and corporate gifting."
+  },
+  "ceramic-mugs": {
+    title: "Wholesale Ceramic Mugs | Custom Branded Drinkware",
+    description: "Classic ceramic mugs perfect for coffee shops, offices and promotional merchandise."
+  },
+  "coffee-cups-saucers": {
+    title: "Wholesale Coffee Cups & Saucers | Espresso Sets",
+    description: "Elegant coffee cup and saucer sets for cafes and fine dining. Espresso, cappuccino and latte sizes."
+  },
+  "water-cups": {
+    title: "Wholesale Water Cups | Ceramic Drinkware",
+    description: "Simple and elegant ceramic water cups for restaurants and hospitality."
+  },
+  "bakeware": {
+    title: "Wholesale Ceramic Bakeware | Oven-Safe Dishes",
+    description: "Professional ceramic bakeware for commercial kitchens and retail. Oven-safe, freezer-safe."
+  },
+  "baking-dishes": {
+    title: "Wholesale Baking Dishes | Ceramic Casserole Pans",
+    description: "Versatile ceramic baking dishes for casseroles, lasagna and roasted dishes."
+  },
+  "ramekins": {
+    title: "Wholesale Ramekins | Individual Baking Cups",
+    description: "Classic ceramic ramekins for soufflés, crème brûlée and individual portions."
+  },
+  "pie-pizza-plates": {
+    title: "Wholesale Pie & Pizza Plates | Ceramic Baking",
+    description: "Ceramic pie plates and pizza stones for bakeries and restaurants."
+  },
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const { slug, locale, subcategory } = await params
-  const product = await getProductBySlug(slug)
-
-  if (!product) {
-    return {
-      title: "Product Not Found | ADA Ceramics",
-      description: "The requested product could not be found.",
-    }
+  const { subcategory } = await params
+  const content = subcategoryContent[subcategory] || {
+    title: `Wholesale ${subcategory} | Ceramic Tableware`,
+    description: `High-quality ceramic ${subcategory} for restaurants and hotels. Factory direct with low MOQ.`
   }
-
-  const seoTitle = `${product.name} | Wholesale Ceramic Tableware | ADA Ceramics`
-  const seoDescription = product.description
-    ? `${product.description.slice(0, 150)}`
-    : `Wholesale ${product.name} from ADA Ceramics. Premium quality ceramic tableware for restaurants, hotels and catering.`
-
-  const ogImages: { url: string; width: number; height: number; alt: string }[] = []
-  if (product.main_image) {
-    ogImages.push({ 
-      url: product.main_image, 
-      width: 1000, 
-      height: 1000, 
-      alt: product.main_image_alt || product.name 
-    })
-  }
-  if (Array.isArray(product.gallery_images)) {
-    product.gallery_images.forEach((img, i) => {
-      ogImages.push({ 
-        url: img, 
-        width: 1000, 
-        height: 1000, 
-        alt: product.gallery_images_alt?.[i] || `${product.name} detail photo` 
-      })
-    })
-  }
-
+  
   return {
-    title: seoTitle,
-    description: seoDescription,
-    keywords: [
-      product.name,
-      "wholesale ceramic",
-      "bulk tableware",
-      "restaurant supplies",
-      "hotel dinnerware",
-      "FDA certified",
-      "LFGB certified"
-    ].join(", "),
-    openGraph: {
-      title: seoTitle,
-      description: seoDescription,
-      alt: product.main_image_alt || product.name,
-      type: "website",
-      locale: locale === "zh" ? "zh_CN" : "en_US",
-      siteName: "ADA Ceramics",
-      images: ogImages,
-    },
-    alternates: {
-      canonical: `https://www.adaceramics.com/${locale}/products/${subcategory}/${slug}`,
-    },
+    title: `${content.title} | ADA Ceramics`,
+    description: content.description,
+    keywords: `wholesale ${subcategory}, ceramic ${subcategory}, bulk tableware, restaurant supplies`,
   }
 }
 
 // ============================================================
 // 静态数据
 // ============================================================
+
 const sellingPoints = [
-  { icon: Layers, title: "Low MOQ", description: "From 100 pieces" },
-  { icon: ShieldCheck, title: "FDA/LFGB Certified", description: "Food-safe quality" },
-  { icon: Settings, title: "Custom OEM/ODM", description: "Your design welcome" },
-  { icon: Zap, title: "Fast Delivery", description: "15-30 days" },
+  { icon: Layers, title: "Low MOQ" },
+  { icon: ShieldCheck, title: "FDA/LFGB Certified" },
+  { icon: Settings, title: "Custom OEM/ODM" },
+  { icon: Zap, title: "Fast Delivery" },
 ]
 
+// 分类树
 const categoryTree = [
   {
     id: "plates", name: "Wholesale Plates", slug: "plates",
@@ -136,14 +174,10 @@ const categoryTree = [
 // ============================================================
 // 页面组件
 // ============================================================
-export default async function ProductDetailPage({ params }: PageProps) {
-  const { locale, subcategory, slug } = await params
-  const product = await getProductBySlug(slug)
+export default async function SubcategoryPage({ params }: PageProps) {
+  const { locale, subcategory } = await params
 
-  if (!product) {
-    notFound()
-  }
-
+  // 查找当前分类信息
   const findCurrentCategory = () => {
     for (const parent of categoryTree) {
       if (parent.slug === subcategory) {
@@ -158,86 +192,77 @@ export default async function ProductDetailPage({ params }: PageProps) {
   }
 
   const { parent: currentParent, child: currentChild } = findCurrentCategory()
-  const categoryName = currentChild?.name || currentParent?.name || "Products"
+  const displayName = currentChild?.name || currentParent?.name || "All Products"
 
-  const allCategoryProducts = await getProductsByCategory(currentParent.slug)
-  const relatedProducts = allCategoryProducts
-    .filter(p => p.slug !== product.slug)
-    .slice(0, 5)
+  // ✅ 直接获取分类 + 子分类产品
+  let products = await getProductsByCategory(subcategory)
 
-  const specifications = product.specifications || {}
-  const features = product.features || []
-
-  const imgArr: string[] = []
-  if (product.main_image) imgArr.push(product.main_image)
-  if (Array.isArray(product.gallery_images)) imgArr.push(...product.gallery_images)
-
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Product",
-    name: product.name,
-    description: product.description || `Wholesale ${product.name} from ADA Ceramics`,
-    image: imgArr.length > 0 ? imgArr : product.main_image || "",
-    sku: product.id,
-    brand: {
-      "@type": "Brand",
-      name: "ADA Ceramics"
-    },
-    manufacturer: {
-      "@type": "Organization",
-      name: "ADA Ceramics",
-      url: "https://www.adaceramics.com"
-    },
-    offers: {
-      "@type": "AggregateOffer",
-      priceCurrency: "USD",
-      availability: "https://schema.org/InStock",
-      seller: {
-        "@type": "Organization",
-        name: "ADA Ceramics"
-      }
-    },
-    category: categoryName,
+  // 容错：如果为空，获取所有产品再过滤
+  if (products.length === 0) {
+    const allProducts = await getAllProducts()
+    products = allProducts.filter(p => p.category_slug === subcategory)
   }
+
+  // 获取当前分类的标题和描述
+  const currentContent = subcategoryContent[subcategory] || {
+    title: `Wholesale ${displayName} | Ceramic Tableware`,
+    description: `High-quality ceramic ${displayName.toLowerCase()} for restaurants, hotels and catering businesses. Factory direct with low MOQ and custom designs available.`
+  }
+
+  // 占位数据
+  const displayProducts = products.length > 0 ? products : [
+    { id: "1", name: "Classic Round Plate", slug: "classic-round-plate", main_image: null },
+    { id: "2", name: "Elegant Rim Plate", slug: "elegant-rim-plate", main_image: null },
+    { id: "3", name: "Coupe Style Plate", slug: "coupe-style-plate", main_image: null },
+    { id: "4", name: "Square Modern Plate", slug: "square-modern-plate", main_image: null },
+    { id: "5", name: "Oval Serving Platter", slug: "oval-serving-platter", main_image: null },
+    { id: "6", name: "Deep Soup Plate", slug: "deep-soup-plate", main_image: null },
+  ]
 
   return (
     <div className="min-h-screen bg-background">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-
       <Header />
 
-      <section className="pt-32 pb-6 bg-[#f5f3ef]">
+      {/* Hero Section */}
+      <section className="pt-32 pb-8 bg-[#f5f3ef]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-sm text-muted-foreground mb-4">
+          {/* Breadcrumb */}
+          <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-sm text-muted-foreground mb-6">
             <Link href={`/${locale}`} className="hover:text-foreground transition-colors">Home</Link>
             <ChevronRight className="w-4 h-4" />
             <Link href={`/${locale}/products`} className="hover:text-foreground transition-colors">Products</Link>
             <ChevronRight className="w-4 h-4" />
-            <Link href={`/${locale}/products/${currentParent.slug}`} className="hover:text-foreground transition-colors">
-              {currentParent.name}
-            </Link>
-            {currentChild && (
+            {currentChild ? (
               <>
-                <ChevronRight className="w-4 h-4" />
-                <Link href={`/${locale}/products/${currentChild.slug}`} className="hover:text-foreground transition-colors">
-                  {currentChild.name}
+                <Link href={`/${locale}/products/${currentParent.slug}`} className="hover:text-foreground transition-colors">
+                  {currentParent.name}
                 </Link>
+                <ChevronRight className="w-4 h-4" />
+                <span className="text-foreground">{currentChild.name}</span>
               </>
+            ) : (
+              <span className="text-foreground">{displayName}</span>
             )}
-            <ChevronRight className="w-4 h-4" />
-            <span className="text-foreground font-medium truncate max-w-[200px]">{product.name}</span>
           </nav>
 
-          <div className="flex flex-wrap justify-center gap-6 sm:gap-10 lg:gap-14 py-4">
+          {/* H1 Title */}
+          <h1 className="text-3xl sm:text-4xl font-serif font-normal text-foreground mb-4">
+            {currentContent.title}
+          </h1>
+
+          {/* Description */}
+          <p className="text-muted-foreground mb-8 max-w-4xl">
+            {currentContent.description}
+          </p>
+
+          {/* Selling Points */}
+          <div className="flex flex-wrap justify-center gap-8 sm:gap-12 lg:gap-16">
             {sellingPoints.map((point) => {
               const IconComponent = point.icon
               return (
-                <div key={point.title} className="flex items-center gap-2">
-                  <div className="w-10 h-10 rounded-full border-2 border-[#8b7355] flex items-center justify-center">
-                    <IconComponent className="w-5 h-5 text-[#8b7355]" strokeWidth={1.5} />
+                <div key={point.title} className="flex flex-col items-center">
+                  <div className="w-16 h-16 rounded-full border-2 border-[#8b7355] flex items-center justify-center mb-3">
+                    <IconComponent className="w-7 h-7 text-[#8b7355]" strokeWidth={1.5} />
                   </div>
                   <span className="text-sm font-medium text-[#1a1a1a]">{point.title}</span>
                 </div>
@@ -247,169 +272,75 @@ export default async function ProductDetailPage({ params }: PageProps) {
         </div>
       </section>
 
+      {/* Main Content: Two Column Layout */}
       <section className="py-8 bg-white">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col lg:flex-row gap-8">
 
-            {/* ✅ 已替换：点击缩略图切换主图 */}
-            <ProductImageGallery product={product} />
+            {/* Left Sidebar - Category Tree */}
+            <CategorySidebar
+              locale={locale}
+              categoryTree={categoryTree}
+              currentParentId={currentParent?.id}
+              currentChildId={currentChild?.id}
+            />
 
-            <div className="space-y-6">
-              <div>
-                <p className="text-sm text-[#8b7355] font-medium mb-2">{categoryName}</p>
-                <h1 className="text-2xl sm:text-3xl font-serif font-normal text-[#1a1a1a] mb-3">
-                  {product.name}
-                </h1>
-                <p className="text-sm text-[#6b7280]">SKU: {product.id}</p>
+            {/* Right Content - Product Grid */}
+            <main className="flex-1">
+              {/* Category Header */}
+              <div className="mb-8">
+                <h2 className="text-2xl md:text-3xl font-serif font-normal text-[#1a1a1a] mb-2">
+                  {displayName}
+                </h2>
+                <p className="text-[#6b7280]">
+                  Showing {displayProducts.length} products
+                </p>
               </div>
 
-              {product.description && (
-                <div>
-                  <h2 className="text-lg font-semibold text-[#1a1a1a] mb-2">Product Description</h2>
-                  <p className="text-[#4b563] leading-relaxed">{product.description}</p>
-                </div>
-              )}
-
-              {features.length > 0 && (
-                <div>
-                  <h2 className="text-lg font-semibold text-[#1a1a1a] mb-3">Key Features</h2>
-                  <ul className="space-y-2">
-                    {features.map((feature: string, index: number) => (
-                      <li key={index} className="flex items-start gap-2">
-                        <Check className="w-5 h-5 text-[#8b7355] flex-shrink-0 mt-0.5" />
-                        <span className="text-[#4b563]">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-
-              {Object.keys(specifications).length > 0 && (
-                <div>
-                  <h2 className="text-lg font-semibold text-[#1a1a1a] mb-3">Specifications</h2>
-                  <div className="bg-[#f9fafb] rounded-lg p-4">
-                    <dl className="grid grid-cols-2 gap-x-4 gap-y-2 text-sm">
-                      {Object.entries(specifications).map(([key, value]) => (
-                        <div key={key} className="contents">
-                          <dt className="text-[#6b7280]">{key}</dt>
-                          <dd className="text-[#1a1a1a] font-medium">{value as string}</dd>
+              {/* Product Grid */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
+                {displayProducts.map((product: any) => (
+                  <Link
+                    key={product.id}
+                    href={`/${locale}/products/${subcategory}/${product.slug}`}
+                    className="group border border-[#e5e7eb] rounded-lg overflow-hidden bg-white hover:shadow-lg transition-all"
+                  >
+                    <div className="aspect-square relative bg-[#f9fafb]">
+                      {product.main_image ? (
+                        <img
+                          src={product.main_image}
+                          alt={product.name}
+                          className="w-full h-full object-cover"
+                        />
+                      ) : (
+                        <div className="absolute inset-0 flex items-center justify-center text-[#9ca3af]">
+                          <Package className="w-16 h-16 opacity-30" />
                         </div>
-                      ))}
-                    </dl>
-                  </div>
-                </div>
-              )}
-
-              <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                <Link
-                  href="#quote-form"
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3 text-base font-medium text-white bg-[#8b7355] rounded-md hover:bg-[#6d5a43] transition-colors"
-                >
-                  <MessageCircle className="w-5 h-5" />
-                  Request a Quote
-                </Link>
-                <Link
-                  href={`/${locale}/products/${subcategory}`}
-                  className="inline-flex items-center justify-center px-6 py-3 text-base font-medium text-[#8b7355] border border-[#8b7355] rounded-md hover:bg-[#8b7355] hover:text-white transition-colors"
-                >
-                  View More Products
-                </Link>
-              </div>
-
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-4 border-t border-[#e5e7eb]">
-                {sellingPoints.map((point) => {
-                  const IconComponent = point.icon
-                  return (
-                    <div key={point.title} className="text-center">
-                      <IconComponent className="w-6 h-6 text-[#8b7355] mx-auto mb-1" strokeWidth={1.5} />
-                      <p className="text-xs font-medium text-[#1a1a1a]">{point.title}</p>
-                      <p className="text-xs text-[#6b7280]">{point.description}</p>
+                      )}
                     </div>
-                  )
-                })}
-              </div>
-            </div>
-          </div>
 
-          <div className="mt-12 pt-8 border-t border-[#e5e7eb]">
-            <h2 className="text-xl font-serif font-normal text-[#1a1a1a] mb-4">
-              Why Choose ADA Ceramics for Wholesale {categoryName}?
-            </h2>
-            <div className="prose prose-sm max-w-none text-[#4b563]">
-              <p>
-                As a leading ceramic tableware manufacturer in China, ADA Ceramics specializes in producing
-                high-quality {categoryName.toLowerCase()} for the global hospitality industry.
-              </p>
-              <p className="mt-3">
-                All our ceramic products are FDA and LFGB certified, ensuring they meet the highest food
-                safety standards. We offer competitive factory-direct pricing with flexible MOQ options.
-              </p>
-            </div>
+                    <div className="p-5">
+                      <h3 className="text-base font-medium text-[#1a1a1a] mb-4 group-hover:text-[#8b7355] transition-colors">
+                        {product.name}
+                      </h3>
+                      <span className="inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white bg-[#8b7355] rounded-md group-hover:bg-[#6d5a43] transition-colors">
+                        View Details
+                      </span>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+
+              {/* Load More */}
+              <div className="mt-10 text-center">
+                <button className="px-6 py-3 text-sm font-medium text-[#8b7355] border border-[#8b7355] rounded-md hover:bg-[#8b7355] hover:text-white transition-colors">
+                  Load More Products
+                </button>
+              </div>
+            </main>
           </div>
         </div>
       </section>
-
-      {relatedProducts.length > 0 && (
-        <section className="py-16 bg-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-10">
-              <h2 className="text-3xl font-serif font-normal text-[#1a1a2e] mb-3">
-                Related Products
-              </h2>
-              <p className="text-muted-foreground max-w-2xl mx-auto">
-                Explore more wholesale {categoryName.toLowerCase()} from our collection.
-                All products are FDA/LFGB certified with factory-direct pricing.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5">
-              {relatedProducts.map((relatedProduct) => (
-                <Link
-                  key={relatedProduct.id}
-                  href={`/${locale}/products/${subcategory}/${relatedProduct.slug}`}
-                  className="group block bg-white rounded-xl overflow-hidden border border-gray-100 hover:shadow-lg transition-all duration-300"
-                >
-                  <div className="relative aspect-square overflow-hidden bg-gray-50">
-                    <Image
-                      src={relatedProduct.main_image || "/alice.webp"}
-                      alt={relatedProduct.main_image_alt || relatedProduct.name}
-                      fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-300"
-                      sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 20vw"
-                      quality={70}
-                      loading="lazy"
-                    />
-                  </div>
-                  <div className="p-4">
-                    <h3 className="text-sm font-medium text-[#1a1a2e] line-clamp-2 group-hover:text-[#8b7355] transition-colors">
-                      {relatedProduct.name}
-                    </h3>
-                    {relatedProduct.min_order_quantity && (
-                      <p className="text-xs text-muted-foreground mt-1">
-                        MOQ: {relatedProduct.min_order_quantity} pcs
-                      </p>
-                    )}
-                  </div>
-                </Link>
-              ))}
-            </div>
-
-            <div className="mt-10 text-center">
-              <Link
-                href={`/${locale}/products/${currentParent.slug}`}
-                className="inline-flex items-center gap-2 px-6 py-3 text-[#8b7355] border border-[#8b7355] rounded-lg hover:bg-[#8b7355] hover:text-white transition-colors"
-              >
-                View All {currentParent.name}
-                <ChevronRight className="w-4 h-4" />
-              </Link>
-            </div>
-          </div>
-        </section>
-      )}
-
-      <div id="quote-form">
-        <QuoteForm />
-      </div>
 
       <Footer />
     </div>
