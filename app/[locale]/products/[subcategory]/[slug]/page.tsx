@@ -1,3 +1,6 @@
+'use client'
+import { useState, useEffect } from "react"
+import { useParams } from "next/navigation"
 import { notFound } from "next/navigation"
 import Link from "next/link"
 import Image from "next/image"
@@ -8,47 +11,7 @@ import { Footer } from "@/components/layout/footer"
 import { QuoteForm } from "@/components/shared/quote-form"
 
 // ============================================================
-// 1. 服务端 Metadata（SEO 友好）
-// ============================================================
-interface PageProps {
-  params: Promise<{ locale: string; subcategory: string; slug: string }>
-}
-
-export async function generateMetadata({ params }: PageProps) {
-  const { slug, locale, subcategory } = await params
-  const product = await getProductBySlug(slug)
-
-  if (!product) {
-    return {
-      title: "Product Not Found | ADA Ceramics",
-      description: "The requested product could not be found.",
-    }
-  }
-
-  const seoTitle = `${product.name} | Wholesale Ceramic Tableware | ADA Ceramics`
-  const seoDescription = product.description
-    ? `${product.description.slice(0, 120)}... Factory direct pricing, low MOQ, FDA/LFGB certified. Request a quote today!`
-    : `Wholesale ${product.name} from ADA Ceramics. Premium quality ceramic tableware for restaurants, hotels and catering.`
-
-  return {
-    title: seoTitle,
-    description: seoDescription,
-    keywords: [product.name, "wholesale ceramic", "bulk tableware", "restaurant supplies", "hotel dinnerware"].join(", "),
-    openGraph: {
-      title: seoTitle,
-      description: seoDescription,
-      type: "website",
-      locale: locale === "zh" ? "zh_CN" : "en_US",
-      images: product.main_image ? [{ url: product.main_image, width: 800, height: 800, alt: product.main_image_alt || product.name }] : [],
-    },
-    alternates: {
-      canonical: `https://adaceramics.com/${locale}/products/${subcategory}/${product.slug}`,
-    },
-  }
-}
-
-// ============================================================
-// 2. 静态数据
+// 静态数据
 // ============================================================
 const sellingPoints = [
   { icon: Layers, title: "Low MOQ", description: "From 100 pieces" },
@@ -102,25 +65,48 @@ const categoryTree = [
 ]
 
 // ============================================================
-// 3. 页面主体（服务端渲染）
+// 页面主体
 // ============================================================
-export default async function ProductDetailPage({ params }: PageProps) {
-  const { locale, subcategory, slug } = await params
-  const product = await getProductBySlug(slug)
+export default function ProductDetailPage() {
+  const params = useParams()
+  const { locale, subcategory, slug } = params as { locale: string; subcategory: string; slug: string }
 
-  if (!product) notFound()
+  const [product, setProduct] = useState<any>(null)
+  const [allImages, setAllImages] = useState<any[]>([])
+  const [selectedIndex, setSelectedIndex] = useState(0)
+  const [relatedProducts, setRelatedProducts] = useState<any[]>([])
 
-  // 合并所有图片（主图 + 细节图）
-  const allImages = [
-    {
-      url: product.main_image,
-      alt: product.main_image_alt || product.name
-    },
-    ...(product.gallery_images || []).map((url: string, index: number) => ({
-      url,
-      alt: product.gallery_images_alt?.[index] || `${product.name} - detail ${index + 1}`
-    })),
-  ].filter(item => item.url)
+  // 加载产品数据
+  useEffect(() => {
+    const loadProduct = async () => {
+      const data = await getProductBySlug(slug)
+      if (!data) {
+        notFound()
+      }
+      setProduct(data)
+
+      // 合并图片（主图 + 细节图）
+      const images = [
+        {
+          url: data.main_image,
+          alt: data.main_image_alt || data.name
+        },
+        ...(data.gallery_images || []).map((url: string, index: number) => ({
+          url,
+          alt: data.gallery_images_alt?.[index] || `${data.name} - detail ${index + 1}`
+        })),
+      ].filter(item => item.url)
+      setAllImages(images)
+
+      // 加载相关产品
+      const currentParent = categoryTree.find(c => c.slug === subcategory) || categoryTree[0]
+      const categoryProducts = await getProductsByCategory(currentParent.slug)
+      setRelatedProducts(categoryProducts.filter(p => p.slug !== slug).slice(0, 5))
+    }
+    loadProduct()
+  }, [slug, subcategory])
+
+  if (!product) return null
 
   // 查找分类
   const findCurrentCategory = () => {
@@ -134,13 +120,6 @@ export default async function ProductDetailPage({ params }: PageProps) {
 
   const { parent: currentParent, child: currentChild } = findCurrentCategory()
   const categoryName = currentChild?.name || currentParent?.name || "Products"
-
-  // 相关产品
-  const allCategoryProducts = await getProductsByCategory(currentParent.slug)
-  const relatedProducts = allCategoryProducts
-    .filter(p => p.slug !== product.slug)
-    .slice(0, 5)
-
   const specifications = product.specifications || {}
   const features = product.features || []
 
@@ -203,35 +182,29 @@ export default async function ProductDetailPage({ params }: PageProps) {
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
 
-              {/* 🔥 图片区域 - 点击小图切换大图（已修改完成） */}
+              {/* 图片区域 - 用状态管理实现切换 */}
               <div className="space-y-4">
-                <div 
-                  className="aspect-square relative bg-[#f9fafb] rounded-lg overflow-hidden border border-[#e5e7eb]"
-                >
-                  <Image
-                    id="mainImage"
-                    src={allImages[0]?.url}
-                    alt={allImages[0]?.alt || product.name}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                    priority
-                  />
+                <div className="aspect-square relative bg-[#f9fafb] rounded-lg overflow-hidden border border-[#e5e7eb]">
+                  {allImages[selectedIndex] && (
+                    <Image
+                      src={allImages[selectedIndex].url}
+                      alt={allImages[selectedIndex].alt || product.name}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                      priority
+                    />
+                  )}
                 </div>
 
                 <div className="flex gap-3 overflow-x-auto pb-2">
                   {allImages.map((img: any, idx: number) => (
                     <div
                       key={idx}
-                      onClick={() => {
-                        const mainImg = document.getElementById('mainImage') as any
-                        if (mainImg) {
-                          mainImg.src = img.url
-                          mainImg.alt = img.alt
-                        }
-                      }}
-                      className={`w-20 h-20 flex-shrink-0 rounded border overflow-hidden cursor-pointer transition-all 
-                        ${idx === 0 ? 'border-[#8b7355] ring-2 ring-[#8b7355]/20' : 'border-gray-300 hover:border-[#8b7355]'}`}
+                      onClick={() => setSelectedIndex(idx)}
+                      className={`w-20 h-20 flex-shrink-0 rounded border overflow-hidden cursor-pointer transition-all hover:border-[#8b7355] ${
+                        selectedIndex === idx ? 'border-[#8b7355] ring-2 ring-[#8b7355]/20' : 'border-gray-300'
+                      }`}
                     >
                       <Image
                         src={img.url}
