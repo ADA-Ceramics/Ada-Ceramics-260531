@@ -3,6 +3,8 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
+  // 开启 Gzip/Brotli 压缩（Pingdom 那个 F 级关键项）
+  compress: true,
   images: {
     unoptimized: false,
     formats: ['image/webp'],
@@ -16,7 +18,7 @@ const nextConfig = {
   },
   productionBrowserSourceMaps: false,
 
-  // 新增：官方CSS优化，自动内联关键CSS、消除渲染阻塞，SEO友好
+  // 官方CSS优化，自动内联关键CSS、消除渲染阻塞，SEO友好
   experimental: {
     optimizeCss: true
   }
