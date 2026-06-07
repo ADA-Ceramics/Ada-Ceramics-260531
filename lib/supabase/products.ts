@@ -1,4 +1,3 @@
-// lib/supabase/products.ts
 import { createClient } from './server'
 
 export type Product = {
@@ -127,13 +126,13 @@ export async function getProductBySlug(slug: string) {
   return data
 }
 
-// ✅ 新增：获取完整分类树（动态从数据库读取）
+// ✅ 已修改：分类 固定顺序，不再按字母排序
 export async function getCategoryTree() {
   const supabase = await createClient()
   const { data: categories } = await supabase
     .from('product_categories')
     .select('id, name, slug, parent_id')
-    .order('name')
+    // 已删除 .order('name') → 顺序永远固定
 
   if (!categories) return []
 
