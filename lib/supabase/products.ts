@@ -1,162 +1,132 @@
-import { createClient } from './server'
-import type { Product } from './types'
-import { CATEGORY_INFO } from './types'
+// lib/supabase/products.ts
+import { createClient } from "@/lib/supabaseClient"
 
-// ============ 辅助：获取指定分类及其所有子分类的 slug 列表 ============
-async function getCategoryAndChildSlugs(rootSlug: string): Promise<string[]> {
-  const supabase = await createClient()
+export type Product = {
+  id: string
+  name: string
+  slug: string
+  main_image: string | null
+  category: string // 一级分类ID（UUID）
+  subcategory: string | null // 二级分类ID（UUID）
+  is_active: boolean
+  sort_order: number
+  created_at: string
+  updated_at: string
+  // 你表里有的其他字段也可以加上
+}
 
+// 拿到：当前slug对应的分类ID + 它所有子分类ID
+async function getCategoryAndChildIds(rootSlug: string): Promise<string[]> {
+  const supabase = createClient()
+
+  // 1. 先拿到 root 分类（根据 slug）
+  const { data: rootCat } = await supabase
+    .from("product_categories")
+    .select("id, slug")
+    .eq("slug", rootSlug)
+    .single()
+
+  if (!rootCat) return []
+
+  // 2. 拿到所有分类，用于递归找子分类
   const { data: allCats } = await supabase
-    .from('product_categories')
-    .select('id, slug, parent_id')
+    .from("product_categories")
+    .select("id, parent_id")
 
-  if (!allCats) return [rootSlug]
+  if (!allCats) return [rootCat.id]
 
-  const root = allCats.find(c => c.slug === rootSlug)
-  if (!root) return [rootSlug]
-
+  // 3. 递归收集所有子分类 id
   const childIds: string[] = []
-  const stack = allCats.filter(c => c.parent_id === root.id)
+  const stack = allCats.filter(c => c.parent_id === rootCat.id)
+
   while (stack.length > 0) {
     const curr = stack.pop()!
     childIds.push(curr.id)
     stack.push(...allCats.filter(c => c.parent_id === curr.id))
   }
 
-  const childSlugs = allCats
-    .filter(c => childIds.includes(c.id))
-    .map(c => c.slug)
-
-  return [rootSlug, ...childSlugs]
+  // 返回：当前分类ID + 所有子分类ID
+  return [rootCat.id, ...childIds]
 }
 
-// ============ 获取所有产品 ============
-export async function getAllProducts(): Promise<(Product & { category_slug: string })[]> {
-  const supabase = await createClient()
-  
+// 核心：根据 slug（一级/二级）获取对应产品
+export async function getProductsByCategory(slug: string): Promise<Product[]> {
+  const supabase = createClient()
+
+  // 1. 先查这个 slug 是一级还是二级分类
+  const { data: cat } = await supabase
+    .from("product_categories")
+    .select("id, parent_id")
+    .eq("slug", slug)
+    .single()
+
+  if (!cat) return []
+
+  let ids: string[]
+
+  // 2. 分两种情况：
+  // 情况A：一级分类（parent_id 为 null）→ 包含自己+所有子分类
+  if (cat.parent_id === null) {
+    ids = await getCategoryAndChildIds(slug)
+    // 产品存在 products.category 字段
+    const { data, error } = await supabase
+      .from("products")
+      .select("*")
+      .eq("is_active", true)
+      .in("category", ids)
+      .order("sort_order", { ascending: true })
+
+    if (error) {
+      console.error("getProductsByCategory (一级):", error)
+      return []
+    }
+    return data || []
+  }
+
+  // 情况B：二级分类（parent_id 不为 null）→ 只查 subcategory = 自己id
   const { data, error } = await supabase
-    .from('products')
-    .select(`
-      *,
-      product_categories!products_category_fkey(slug)
-    `)
-    .eq('is_active', true)
-    .order('sort_order', { ascending: true })
-  
+    .from("products")
+    .select("*")
+    .eq("is_active", true)
+    .eq("subcategory", cat.id)
+    .order("sort_order", { ascending: true })
+
   if (error) {
-    console.error('Error fetching products:', error)
+    console.error("getProductsByCategory (二级):", error)
     return []
   }
-  
-  return (data || []).map(item => ({
-    ...item,
-    category_slug: item.product_categories?.slug || ''
-  }))
-}
-
-// ============ 获取指定分类（含所有子分类）的产品 ============
-export async function getProductsByCategory(categorySlug: string) {
-  const supabase = await createClient()
-
-  const slugs = await getCategoryAndChildSlugs(categorySlug)
-  
-  const { data, error } = await supabase
-    .from('products')
-    .select(`
-      *,
-      product_categories!products_category_fkey(slug)
-    `)
-    .eq('is_active', true)
-    .in('product_categories.slug', slugs)
-    .order('sort_order', { ascending: true })
-  
-  if (error) {
-    console.error('Error fetching products by category:', error)
-    return []
-  }
-  
   return data || []
 }
 
-// ============ 获取单个产品 ============
-export async function getProductBySlug(slug: string): Promise<Product | null> {
-  const supabase = await createClient()
-  
-  const decodedSlug = decodeURIComponent(slug)
-  
+// 可选：获取所有产品（用于首页/全部产品页）
+export async function getAllProducts(): Promise<Product[]> {
+  const supabase = createClient()
   const { data, error } = await supabase
-    .from('products')
-    .select(`
-      *,
-      product_categories!products_category_fkey(slug)
-    `)
-    .eq('slug', decodedSlug)
-    .eq('is_active', true)
+    .from("products")
+    .select("*")
+    .eq("is_active", true)
+    .order("sort_order", { ascending: true })
+
+  if (error) {
+    console.error("getAllProducts:", error)
+    return []
+  }
+  return data || []
+}
+
+// 可选：获取单个产品详情
+export async function getProductBySlug(slug: string): Promise<Product | null> {
+  const supabase = createClient()
+  const { data, error } = await supabase
+    .from("products")
+    .select("*")
+    .eq("slug", slug)
+    .eq("is_active", true)
     .single()
 
-  if (!error && data) {
-    return {
-      ...data,
-      category_slug: data.product_categories?.slug || ''
-    }
-  }
-  
-  const baseSlug = decodedSlug.replace(/-\d+$/, '')
-  
-  const { data: fuzzyData, error: fuzzyError } = await supabase
-    .from('products')
-    .select(`
-      *,
-      product_categories!products_category_fkey(slug)
-    `)
-    .ilike('slug', `%${baseSlug}%`)
-    .eq('is_active', true)
-    .limit(1)
-    .single()
-  
-  if (fuzzyError || !fuzzyData) {
+  if (error) {
+    console.error("getProductBySlug:", error)
     return null
   }
-  
-  return {
-    ...fuzzyData,
-    category_slug: fuzzyData.product_categories?.slug || ''
-  }
-}
-
-// ============ 获取分类下的产品数量 ============
-export async function getProductCountByCategory(categorySlug: string): Promise<number> {
-  const supabase = await createClient()
-
-  const slugs = await getCategoryAndChildSlugs(categorySlug)
-  
-  const { count, error } = await supabase
-    .from('products')
-    .select('*, product_categories!products_category_fkey(slug)', { count: 'exact', head: true })
-    .eq('is_active', true)
-    .in('product_categories.slug', slugs)
-  
-  if (error) {
-    console.error('Error fetching product count:', error)
-    return 0
-  }
-  
-  return count || 0
-}
-
-// ============ 从数据库获取所有分类 ============
-export async function getCategories() {
-  const supabase = await createClient()
-  
-  const { data, error } = await supabase
-    .from('product_categories')
-    .select('slug, name, description')
-    .order('name')
-  
-  if (error) {
-    console.error('Error fetching categories:', error)
-    return []
-  }
-  
-  return data || []
+  return data
 }
