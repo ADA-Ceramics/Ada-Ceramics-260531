@@ -4,7 +4,7 @@ import { ChevronRight, Package, Layers, ShieldCheck, Settings, Zap } from "lucid
 import { getProductsByCategory, getAllProducts } from "@/lib/supabase/products"
 import { Header } from "@/components/layout/header"
 import { Footer } from "@/components/layout/footer"
-import { CategorySidebar } from "./CategorySidebar"
+import { CategorySidebar } from "../CategorySidebar"
 
 // ============================================================
 // 动态 Metadata
