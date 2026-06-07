@@ -2,7 +2,35 @@ import { createClient } from './server'
 import type { Product } from './types'
 import { CATEGORY_INFO } from './types'
 
-// 获取所有产品 关联分类表拿到slug
+// ============ 辅助：获取指定分类及其所有子分类的 slug 列表 ============
+async function getCategoryAndChildSlugs(rootSlug: string): Promise<string[]> {
+  const supabase = await createClient()
+
+  const { data: allCats } = await supabase
+    .from('product_categories')
+    .select('id, slug, parent_id')
+
+  if (!allCats) return [rootSlug]
+
+  const root = allCats.find(c => c.slug === rootSlug)
+  if (!root) return [rootSlug]
+
+  const childIds: string[] = []
+  const stack = allCats.filter(c => c.parent_id === root.id)
+  while (stack.length > 0) {
+    const curr = stack.pop()!
+    childIds.push(curr.id)
+    stack.push(...allCats.filter(c => c.parent_id === curr.id))
+  }
+
+  const childSlugs = allCats
+    .filter(c => childIds.includes(c.id))
+    .map(c => c.slug)
+
+  return [rootSlug, ...childSlugs]
+}
+
+// ============ 获取所有产品 ============
 export async function getAllProducts(): Promise<(Product & { category_slug: string })[]> {
   const supabase = await createClient()
   
@@ -20,16 +48,17 @@ export async function getAllProducts(): Promise<(Product & { category_slug: stri
     return []
   }
   
-  // 把分类slug挂到产品上
   return (data || []).map(item => ({
     ...item,
     category_slug: item.product_categories?.slug || ''
   }))
 }
 
-// 获取指定分类的产品
+// ============ 获取指定分类（含所有子分类）的产品 ============
 export async function getProductsByCategory(categorySlug: string) {
   const supabase = await createClient()
+
+  const slugs = await getCategoryAndChildSlugs(categorySlug)
   
   const { data, error } = await supabase
     .from('products')
@@ -38,7 +67,7 @@ export async function getProductsByCategory(categorySlug: string) {
       product_categories!products_category_fkey(slug)
     `)
     .eq('is_active', true)
-    .eq('product_categories.slug', categorySlug)
+    .in('product_categories.slug', slugs)
     .order('sort_order', { ascending: true })
   
   if (error) {
@@ -49,14 +78,12 @@ export async function getProductsByCategory(categorySlug: string) {
   return data || []
 }
 
-// 获取单个产品 - 支持精确匹配和模糊匹配
+// ============ 获取单个产品 ============
 export async function getProductBySlug(slug: string): Promise<Product | null> {
   const supabase = await createClient()
   
-  // 尝试解码slug（处理URL编码的特殊字符）
   const decodedSlug = decodeURIComponent(slug)
   
-  // 首先尝试精确匹配
   const { data, error } = await supabase
     .from('products')
     .select(`
@@ -74,8 +101,6 @@ export async function getProductBySlug(slug: string): Promise<Product | null> {
     }
   }
   
-  // 如果精确匹配失败，尝试模糊匹配（处理slug末尾可能有数字后缀的情况）
-  // 移除末尾的数字后缀（如 -03, -02 等）进行模糊匹配
   const baseSlug = decodedSlug.replace(/-\d+$/, '')
   
   const { data: fuzzyData, error: fuzzyError } = await supabase
@@ -99,16 +124,17 @@ export async function getProductBySlug(slug: string): Promise<Product | null> {
   }
 }
 
-// 获取分类下的产品数量
-export async function getProductCountByCategory(categorySlug: string): Promise<number>
-{
+// ============ 获取分类下的产品数量 ============
+export async function getProductCountByCategory(categorySlug: string): Promise<number> {
   const supabase = await createClient()
+
+  const slugs = await getCategoryAndChildSlugs(categorySlug)
   
   const { count, error } = await supabase
     .from('products')
     .select('*, product_categories!products_category_fkey(slug)', { count: 'exact', head: true })
     .eq('is_active', true)
-    .eq('product_categories.slug', categorySlug)
+    .in('product_categories.slug', slugs)
   
   if (error) {
     console.error('Error fetching product count:', error)
@@ -118,7 +144,7 @@ export async function getProductCountByCategory(categorySlug: string): Promise<n
   return count || 0
 }
 
-// 从数据库获取所有分类
+// ============ 从数据库获取所有分类 ============
 export async function getCategories() {
   const supabase = await createClient()
   
