@@ -6,7 +6,9 @@ import { Package } from 'lucide-react'
 
 interface Product {
   main_image: string
+  main_image_alt?: string | null // 👈 新增
   gallery_images?: string[]
+  gallery_images_alt?: string[] | null // 👈 新增
   name: string
 }
 
@@ -15,6 +17,12 @@ export default function ProductImageGallery({ product }: { product: Product }) {
     product.main_image,
     ...(product.gallery_images || [])
   ].filter(Boolean)
+
+  // 👇 拼接所有 alt（主图 alt + 多图 alt）
+  const allAlts = [
+    product.main_image_alt,
+    ...(product.gallery_images_alt || [])
+  ]
 
   const [activeImage, setActiveImage] = useState(allImages[0] || '')
 
@@ -25,7 +33,8 @@ export default function ProductImageGallery({ product }: { product: Product }) {
         {activeImage ? (
           <Image
             src={activeImage}
-            alt={product.name}
+            // 👇 只改了这里：优先用后台 alt，没有就用产品名
+            alt={allAlts[allImages.indexOf(activeImage)] || product.name}
             fill
             className="object-cover"
             sizes="(max-width: 640px) 100vw, 50vw"
@@ -51,7 +60,8 @@ export default function ProductImageGallery({ product }: { product: Product }) {
             >
               <Image
                 src={img}
-                alt={`${product.name} detail ${idx + 1}`}
+                // 👇 只改了这里：优先用后台 alt，没有就用产品名
+                alt={allAlts[idx] || `${product.name} detail ${idx + 1}`}
                 width={80}
                 height={80}
                 className="w-full h-full object-cover"
