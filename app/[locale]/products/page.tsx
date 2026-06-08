@@ -216,16 +216,25 @@ export default async function ProductsPage({ params }: PageProps) {
         </div>
       </section>
 
-      {/* Category Tabs and Product Cards - 客户端交互组件 */}
-      <ProductCategoryTabs
-        locale={locale}
-        categoryTabs={categoryTabs}
-        categoryProducts={categoryProducts}
-      />
+      {/* Category Tabs + Custom Solutions Button */}
+      <section className="py-8 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between gap-4">
+            <ProductCategoryTabs
+              locale={locale}
+              categoryTabs={categoryTabs}
+              categoryProducts={categoryProducts}
+            />
+            <Link 
+              href="/oem-odm" 
+              className="flex-shrink-0 px-5 py-2 bg-amber-500 text-white rounded-lg text-sm font-medium hover:bg-amber-600 transition-colors whitespace-nowrap"
+            >
+              Custom Solutions
+            </Link>
+          </div>
+        </div>
+      </section>
 
-      <Link href="/oem-odm" className="flex-shrink-0 ml-auto px-5 py-2 bg-amber-500 text-white rounded-lg text-sm font-medium hover:bg-amber-600 transition-colors">
-  Custom Solutions
-</Link>
       {/* Solutions For Your Business */}
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
