@@ -3,52 +3,52 @@ import { Metadata } from "next";
 
 // 👇 这就是你要的新 SEO 标题 + 描述
 export const metadata: Metadata = {
-  title: "ADA Ceramics | Wholesale Ceramic Mugs & Tableware",
+  title: "ADA Ceramics | Wholesale Ceramic Tableware & Mugs",
   description:
     "Professional ceramic manufacturer & supplier. Wholesale high-quality ceramic mugs, dinnerware, teapots. Custom OEM/ODM available. Contact us!",
 };
 
 const fixedCategories = [
   {
-    name: "Wholesale Ceramics",
-    description: "Explore our complete collection of ceramic tableware for hotels, restaurants and retail.",
+    name: "Wholesale Ceramic Tableware",
+    description: "Explore durable bulk ceramic tableware for hotels, restaurants and retail brands.",
     image: "/wholesale-ceramics-supplier.webp",
-    alt: "wholesale ceramic tableware collection for bulk order",
+    alt: "bulk ceramic tableware for hotels restaurants and retail",
     slug: "all",
   },
   {
     name: "Wholesale Plates",
-    description: "Durable dinner plates, soup plates and serving platters for commercial food service.",
+    description: "Chip-resistant dinner plates for busy restaurants and catering services.",
     image: "/wholesale-plates.webp",
-    alt: "wholesale ceramic plates for restaurants and hotels",
+    alt: "wholesale ceramic plates for busy restaurants and catering",
     slug: "plates",
   },
   {
     name: "Wholesale Bowls",
-    description: "Versatile soup bowls, salad bowls and ramen bowls for professional kitchens.",
+    description: "Versatile soup & salad bowls, food-safe for busy commercial kitchens.",
     image: "/wholesale-bowls.webp",
-    alt: "wholesale ceramic bowls for food service industry",
+    alt: "versatile ceramic soup bowls for busy commercial kitchens",
     slug: "bowls",
   },
   {
     name: "Wholesale Dinnerware Sets",
-    description: "Complete tableware sets for hotels, B&Bs and restaurant catering services.",
+    description: "Coordinated hotel & restaurant tableware collections for hospitality.",
     image: "/wholesale-dinnerware-sets.webp",
     alt: "wholesale ceramic dinnerware sets for hospitality",
     slug: "dinnerware-sets",
   },
   {
     name: "Wholesale Cups & Mugs",
-    description: "Premium ceramic mugs and coffee cups for cafes, offices and promotional use.",
+    description: "Branded-ready ceramic drinkware for cafes and corporate gifting.",
     image: "/wholesale-cups-mugs.webp",
     alt: "wholesale ceramic cups and mugs for cafes",
     slug: "cups-mugs",
   },
   {
     name: "Wholesale Bakeware",
-    description: "Oven-safe baking dishes, ramekins and pie plates for commercial kitchens.",
+    description: "Oven-safe ceramic baking tools for commercial kitchens and bakeries.",
     image: "/wholesale-bakeware.webp",
-    alt: "wholesale ceramic bakeware for professional baking",
+    alt: "wholesale ceramic bakeware for commercial bakeries",
     slug: "bakeware",
   },
 ];
