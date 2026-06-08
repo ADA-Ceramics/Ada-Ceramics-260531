@@ -406,10 +406,23 @@ Details: ${formData.details}`;
           {/* 修改点：卡片边框改为 border-gray-200 */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
             {[
-              { title: "Logo & Brand Customization", subtitle: "Custom logo printing, laser engraving, and hand-painted branding to match your brand identity.", image: "/alice.webp" },
-              { title: "Color & Glaze Customization", subtitle: "Matte, glossy, reactive, and custom glaze finishes, including FDA/LFGB-safe color options.", image: "/color-glaze.webp" },
-              { title: "Shape & Size Development", subtitle: "Custom mold making, 3D sampling, and unique shape design for plates, bowls, mugs, and more.", image: "/kiln-transformation.webp" },
-              { title: "Packaging & Labeling", subtitle: "Custom boxes, gift sets, hang tags, and retail-ready packaging solutions.", image: "/alice.webp" },
+              { title: "Logo & Brand Customization", 
+               subtitle: "Custom logo printing, laser engraving, and hand-painted branding to match your brand identity.", 
+               image: "/custom-ceramic-tableware-logo-branding-services.webp",
+              alt: "Custom ceramic tableware logo and branding services, including printing, laser engraving, and hand-painted design."},
+              { title: "Color & Glaze Customization", 
+               subtitle: "Matte, glossy, reactive, and custom glaze finishes, including FDA/LFGB-safe color options.", 
+               image: "/color-glaze.webp",
+               alt: "Ceramic tableware color and glaze customization, including matte, glossy, and FDA/LFGB-safe finishes."
+            },
+              { title: "Shape & Size Development", 
+               subtitle: "Custom mold making, 3D sampling, and unique shape design for plates, bowls, mugs, and more.", 
+               image: "/kiln-transformation.webp",
+              alt: "Custom ceramic tableware shape and size development, including mold making, 3D sampling, and unique design."},
+              { title: "Packaging & Labeling", 
+               subtitle: "Custom boxes, gift sets, hang tags, and retail-ready packaging solutions.", 
+               image: "/alice.webp"，
+              alt: "Custom ceramic tableware packaging and labeling services, including gift boxes, hang tags, and retail-ready solutions."},
             ].map((item, index) => (
               <div 
                 key={index}
