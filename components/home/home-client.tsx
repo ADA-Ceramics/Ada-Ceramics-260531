@@ -403,14 +403,13 @@ Details: ${formData.details}`;
             </p>
           </div>
           
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-5">
+          {/* 修改后的卡片布局：一行4列，删掉了两个地区卡片 */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
             {[
               { title: "Logo & Brand Customization", subtitle: "Custom logo printing, laser engraving, and hand-painted branding to match your brand identity.", image: "/alice.webp" },
               { title: "Color & Glaze Customization", subtitle: "Matte, glossy, reactive, and custom glaze finishes, including FDA/LFGB-safe color options.", image: "/color-glaze.webp" },
               { title: "Shape & Size Development", subtitle: "Custom mold making, 3D sampling, and unique shape design for plates, bowls, mugs, and more.", image: "/kiln-transformation.webp" },
               { title: "Packaging & Labeling", subtitle: "Custom boxes, gift sets, hang tags, and retail-ready packaging solutions.", image: "/alice.webp" },
-              { title: "South America", subtitle: "Brazil, Chile & Argentina", image: "/color-glaze.webp" },
-              { title: "Africa", subtitle: "South Africa, Nigeria & Egypt", image: "/kiln-transformation.webp" },
             ].map((item, index) => (
               <div 
                 key={index}
@@ -421,7 +420,7 @@ Details: ${formData.details}`;
                   alt={`Ceramic tableware export to ${item.title}`}
                   fill
                   className="object-cover transition-transform duration-300 group-hover:scale-105"
-                  sizes="(max-width: 640px) 50vw, 33vw"
+                  sizes="(max-width: 640px) 50vw, 25vw"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-5">
