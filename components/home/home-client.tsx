@@ -443,6 +443,16 @@ Details: ${formData.details}`;
               </div>
             ))}
           </div>
+           {/* 新增的按钮区域，和原图一的按钮样式完全一致 */}
+    <div className="mt-10 flex flex-col sm:flex-row gap-4">
+      <Link
+        href="/en/oem-odm"
+        className="inline-flex items-center gap-2 px-6 py-3 bg-[#8b7355] text-white font-medium rounded-lg hover:bg-[#6d5a43] transition-colors"
+      >
+        Get Custom Services
+        <ArrowRight className="w-5 h-5" />
+      </Link>
+         </div>
         </div>
       </section>
 
