@@ -216,21 +216,41 @@ export default async function ProductsPage({ params }: PageProps) {
         </div>
       </section>
 
-      {/* Category Tabs + Custom Solutions Button */}
+      {/* Category Tabs + Custom Solutions Button - 关键修改 */}
       <section className="py-8 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between gap-4">
+          <div className="flex items-center gap-4 overflow-x-auto pb-2">
+            {/* 分类标签 */}
+            <div className="flex items-center gap-2">
+              {categoryTabs.map((tab) => (
+                <button
+                  key={tab.id}
+                  className={`px-4 py-2 rounded-full text-sm font-medium transition-colors whitespace-nowrap ${
+                    tab.id === "all"
+                      ? "bg-[#8b7355] text-white"
+                      : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                  }`}
+                >
+                  {tab.name}
+                </button>
+              ))}
+            </div>
+            {/* Custom Solutions 按钮 */}
+            <Link
+              href="/oem-odm"
+              className="flex-shrink-0 px-5 py-2 bg-amber-500 text-white rounded-lg text-sm font-medium hover:bg-amber-600 transition-colors whitespace-nowrap"
+            >
+              Custom Solutions
+            </Link>
+          </div>
+          
+          {/* 产品卡片 */}
+          <div className="mt-6">
             <ProductCategoryTabs
               locale={locale}
               categoryTabs={categoryTabs}
               categoryProducts={categoryProducts}
             />
-            <Link 
-              href="/oem-odm" 
-              className="flex-shrink-0 px-5 py-2 bg-amber-500 text-white rounded-lg text-sm font-medium hover:bg-amber-600 transition-colors whitespace-nowrap"
-            >
-              Custom Solutions
-            </Link>
           </div>
         </div>
       </section>
@@ -253,7 +273,7 @@ export default async function ProductsPage({ params }: PageProps) {
                 href={solution.href}
                 className="group border border-[#e5e7eb] rounded-lg overflow-hidden bg-white hover:shadow-lg transition-all"
               >
-                <div className="aspect-[4/3] relative bg-[#f5f3ef]">
+                <div className="aspect-[4/3] relative bg-[#]">
                   <Image
                     src={solution.image}
                     alt={solution.alt}
