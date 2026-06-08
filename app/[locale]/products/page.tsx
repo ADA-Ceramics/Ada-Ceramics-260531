@@ -46,80 +46,48 @@ const categoryTabs = [
 ]
 
 // 静态分类产品（作为后备数据，当Supabase无数据时使用）
-// SEO优化：alt文本包含长尾关键词、品牌词（China factory/supplier）、产品特性和使用场景
 const fallbackCategoryProducts: Record<string, { name: string; slug: string; image: string; alt: string }[]> = {
   all: [
-    { name: "Dinner Plates", slug: "dinner-plates", image: "/images/categories/dinner-plates.webp", alt: "Wholesale ceramic dinner plates from China factory - bulk porcelain main course plates 10 inch for hotels restaurants and catering services" },
-    { name: "Dessert & Side Plates", slug: "dessert-side-plates", image: "/images/categories/side-plates.webp", alt: "Ceramic dessert plates wholesale supplier - 6 inch porcelain side plates for appetizers bread and desserts bulk order from China" },
-    { name: "Soup Plates", slug: "soup-plates", image: "/images/categories/soup-plates.webp", alt: "Deep rim ceramic soup plates wholesale - porcelain pasta bowls and soup dishes for restaurant foodservice from China manufacturer" },
-    { name: "Oval & Serving Plates", slug: "oval-serving-plates", image: "/images/categories/oval-plates.webp", alt: "Large oval ceramic serving platters wholesale - porcelain fish plates and buffet serving dishes from China B2B supplier" },
-    { name: "Soup Bowls", slug: "soup-bowls", image: "/images/categories/ceramic-soup-bowl.webp", alt: "Ceramic soup bowls wholesale from China - deep porcelain bowls for restaurants hotels and commercial foodservice bulk orders" },
-    { name: "Salad Bowls", slug: "salad-bowls", image: "/images/categories/ceramic-salad-bowl.webp", alt: "Large ceramic salad bowls wholesale supplier - porcelain mixing and serving bowls for commercial kitchen from China factory" },
-    { name: "Ramen Bowls", slug: "ramen-bowls", image: "/images/categories/ceramic-ramen-bowl.webp", alt: "Asian ceramic ramen bowls wholesale - large porcelain noodle bowls for Japanese restaurants and Asian cuisine from China" },
-    { name: "Snack Bowls", slug: "snack-bowls", image: "/images/categories/ceramic-snack-bowl.webp", alt: "Small ceramic snack bowls wholesale - porcelain dip bowls and appetizer dishes for restaurants from China manufacturer" },
-    { name: "Daily Tableware Sets", slug: "daily-tableware-sets", image: "/images/categories/ceramic-daily-tableware-set.webp", alt: "Complete ceramic dinnerware sets wholesale - 16 piece porcelain plate bowl set for hotels and households from China supplier" },
-    { name: "Restaurant & Catering Sets", slug: "restaurant-catering-sets", image: "/images/categories/ceramic-restaurant-catering-set.webp", alt: "Professional restaurant tableware sets wholesale - commercial grade porcelain dinnerware collection for catering from China factory" },
-    { name: "Ceramic Mugs", slug: "ceramic-mugs", image: "/images/categories/ceramic-mug.webp", alt: "Custom ceramic coffee mugs wholesale - OEM logo printed porcelain mugs for corporate gifts promotional items from China" },
-    { name: "Coffee Cups & Saucers", slug: "coffee-cups-saucers", image: "/images/categories/ceramic-coffee-cup-saucer.webp", alt: "Elegant ceramic coffee cups with saucers wholesale - espresso cappuccino cup sets for cafes hotels from China manufacturer" },
-    { name: "Water Cups", slug: "water-cups", image: "/images/categories/ceramic-water-cup.webp", alt: "Ceramic water cups wholesale supplier - stackable porcelain drinking cups for restaurants and hotels bulk order from China" },
-    { name: "Baking Dishes", slug: "baking-dishes", image: "/images/categories/ceramic-baking-dish.webp", alt: "Ceramic baking dishes wholesale - oven safe porcelain casserole dishes lasagna pans for commercial kitchens from China factory" },
-    { name: "Ramekins", slug: "ramekins", image: "/images/categories/ceramic-ramekin.webp", alt: "Small ceramic ramekins wholesale - porcelain souffle cups creme brulee dishes for restaurants bakeries from China supplier" },
-    { name: "Pie & Pizza Plates", slug: "pie-pizza-plates", image: "/images/categories/ceramic-pie-pizza-plate.webp", alt: "Ceramic pie and pizza plates wholesale - deep dish baking plates for pizzerias bakeries and restaurants from China manufacturer" },
+    { name: "Dinner Plates", slug: "dinner-plates", image: "/images/categories/dinner-plates.webp", alt: "Wholesale ceramic dinner plates" },
+    { name: "Dessert & Side Plates", slug: "dessert-side-plates", image: "/images/categories/side-plates.webp", alt: "Ceramic dessert plates wholesale" },
+    { name: "Soup Plates", slug: "soup-plates", image: "/images/categories/soup-plates.webp", alt: "Deep rim ceramic soup plates" },
+    { name: "Oval & Serving Plates", slug: "oval-serving-plates", image: "/images/categories/oval-plates.webp", alt: "Large oval ceramic serving platters" },
+    { name: "Soup Bowls", slug: "soup-bowls", image: "/images/categories/ceramic-soup-bowl.webp", alt: "Ceramic soup bowls wholesale" },
+    { name: "Salad Bowls", slug: "salad-bowls", image: "/images/categories/ceramic-salad-bowl.webp", alt: "Large ceramic salad bowls" },
+    { name: "Ramen Bowls", slug: "ramen-bowls", image: "/images/categories/ceramic-ramen-bowl.webp", alt: "Asian ceramic ramen bowls" },
+    { name: "Snack Bowls", slug: "snack-bowls", image: "/images/categories/ceramic-snack-bowl.webp", alt: "Small ceramic snack bowls" },
+    { name: "Daily Tableware Sets", slug: "daily-tableware-sets", image: "/images/categories/ceramic-daily-tableware-set.webp", alt: "Complete ceramic dinnerware sets" },
+    { name: "Restaurant & Catering Sets", slug: "restaurant-catering-sets", image: "/images/categories/ceramic-restaurant-catering-set.webp", alt: "Professional restaurant tableware sets" },
+    { name: "Ceramic Mugs", slug: "ceramic-mugs", image: "/images/categories/ceramic-mug.webp", alt: "Custom ceramic coffee mugs wholesale" },
+    { name: "Coffee Cups & Saucers", slug: "coffee-cups-saucers", image: "/images/categories/ceramic-coffee-cup-saucer.webp", alt: "Elegant ceramic coffee cups with saucers" },
+    { name: "Water Cups", slug: "water-cups", image: "/images/categories/ceramic-water-cup.webp", alt: "Ceramic water cups wholesale supplier" },
+    { name: "Baking Dishes", slug: "baking-dishes", image: "/images/categories/ceramic-baking-dish.webp", alt: "Ceramic baking dishes wholesale" },
+    { name: "Ramekins", slug: "ramekins", image: "/images/categories/ceramic-ramekin.webp", alt: "Small ceramic ramekins wholesale" },
+    { name: "Pie & Pizza Plates", slug: "pie-pizza-plates", image: "/images/categories/ceramic-pie-pizza-plate.webp", alt: "Ceramic pie and pizza plates wholesale" },
   ],
   plates: [
-    { name: "Dinner Plates", slug: "dinner-plates", image: "/images/categories/dinner-plates.webp", alt: "Wholesale ceramic dinner plates from China factory - bulk porcelain main course plates 10 inch for hotels restaurants and catering services" },
-    { name: "Dessert & Side Plates", slug: "dessert-side-plates", image: "/images/categories/side-plates.webp", alt: "Ceramic dessert plates wholesale supplier - 6 inch porcelain side plates for appetizers bread and desserts bulk order from China" },
-    { name: "Soup Plates", slug: "soup-plates", image: "/images/categories/soup-plates.webp", alt: "Deep rim ceramic soup plates wholesale - porcelain pasta bowls and soup dishes for restaurant foodservice from China manufacturer" },
-    { name: "Oval & Serving Plates", slug: "oval-serving-plates", image: "/images/categories/oval-plates.webp", alt: "Large oval ceramic serving platters wholesale - porcelain fish plates and buffet serving dishes from China B2B supplier" },
+    { name: "Dinner Plates", slug: "dinner-plates", image: "/images/categories/dinner-plates.webp", alt: "Wholesale ceramic dinner plates" },
   ],
   bowls: [
-    { name: "Soup Bowls", slug: "soup-bowls", image: "/images/categories/ceramic-soup-bowl.webp", alt: "Ceramic soup bowls wholesale from China - deep porcelain bowls for restaurants hotels and commercial foodservice bulk orders" },
-    { name: "Salad Bowls", slug: "salad-bowls", image: "/images/categories/ceramic-salad-bowl.webp", alt: "Large ceramic salad bowls wholesale supplier - porcelain mixing and serving bowls for commercial kitchen from China factory" },
-    { name: "Ramen Bowls", slug: "ramen-bowls", image: "/images/categories/ceramic-ramen-bowl.webp", alt: "Asian ceramic ramen bowls wholesale - large porcelain noodle bowls for Japanese restaurants and Asian cuisine from China" },
-    { name: "Snack Bowls", slug: "snack-bowls", image: "/images/categories/ceramic-snack-bowl.webp", alt: "Small ceramic snack bowls wholesale - porcelain dip bowls and appetizer dishes for restaurants from China manufacturer" },
+    { name: "Soup Bowls", slug: "soup-bowls", image: "/images/categories/ceramic-soup-bowl.webp", alt: "Ceramic soup bowls wholesale" },
   ],
   sets: [
-    { name: "Daily Tableware Sets", slug: "daily-tableware-sets", image: "/images/categories/ceramic-daily-tableware-set.webp", alt: "Complete ceramic dinnerware sets wholesale - 16 piece porcelain plate bowl set for hotels and households from China supplier" },
-    { name: "Restaurant & Catering Sets", slug: "restaurant-catering-sets", image: "/images/categories/ceramic-restaurant-catering-set.webp", alt: "Professional restaurant tableware sets wholesale - commercial grade porcelain dinnerware collection for catering from China factory" },
+    { name: "Daily Tableware Sets", slug: "daily-tableware-sets", image: "/images/categories/ceramic-daily-tableware-set.webp", alt: "Complete ceramic dinnerware sets" },
   ],
   cups: [
-    { name: "Ceramic Mugs", slug: "ceramic-mugs", image: "/images/categories/ceramic-mug.webp", alt: "Custom ceramic coffee mugs wholesale - OEM logo printed porcelain mugs for corporate gifts promotional items from China" },
-    { name: "Coffee Cups & Saucers", slug: "coffee-cups-saucers", image: "/images/categories/ceramic-coffee-cup-saucer.webp", alt: "Elegant ceramic coffee cups with saucers wholesale - espresso cappuccino cup sets for cafes hotels from China manufacturer" },
-    { name: "Water Cups", slug: "water-cups", image: "/images/categories/ceramic-water-cup.webp", alt: "Ceramic water cups wholesale supplier - stackable porcelain drinking cups for restaurants and hotels bulk order from China" },
+    { name: "Ceramic Mugs", slug: "ceramic-mugs", image: "/images/categories/ceramic-mug.webp", alt: "Custom ceramic coffee mugs wholesale" },
   ],
   bakeware: [
-    { name: "Baking Dishes", slug: "baking-dishes", image: "/images/categories/ceramic-baking-dish.webp", alt: "Ceramic baking dishes wholesale - oven safe porcelain casserole dishes lasagna pans for commercial kitchens from China factory" },
-    { name: "Ramekins", slug: "ramekins", image: "/images/categories/ceramic-ramekin.webp", alt: "Small ceramic ramekins wholesale - porcelain souffle cups creme brulee dishes for restaurants bakeries from China supplier" },
-    { name: "Pie & Pizza Plates", slug: "pie-pizza-plates", image: "/images/categories/ceramic-pie-pizza-plate.webp", alt: "Ceramic pie and pizza plates wholesale - deep dish baking plates for pizzerias bakeries and restaurants from China manufacturer" },
+    { name: "Baking Dishes", slug: "baking-dishes", image: "/images/categories/ceramic-baking-dish.webp", alt: "Ceramic baking dishes wholesale" },
   ],
 }
 
-// Business solutions - SEO优化：alt文本包含业务场景、目标客户和产品特性
+// Business solutions
 const businessSolutions = [
-  { 
-    title: "Hotel & Restaurant Bulk Supplies", 
-    href: "/en/products", 
-    image: "/porcelain-tableware-for-hotel-restore.webp",
-    alt: "Wholesale porcelain tableware for hotels and restaurants from China - bulk white ceramic plates bowls dinnerware sets for commercial foodservice B2B supplier"
-  },
-  { 
-    title: "Amazon & Retail Packaging", 
-    href: "/en/products", 
-    image: "/amazon-hotsell-ceramic.webp",
-    alt: "Best-selling ceramic tableware for Amazon FBA and retail stores - trending stoneware plates bowls with retail-ready gift box packaging from China factory"
-  },
-  { 
-    title: "Wedding & Event Catering", 
-    href: "/en/products", 
-    image: "/ceramic-plates-for-catering-service.webp",
-    alt: "Elegant ceramic plates for wedding catering and event services - bulk porcelain dinnerware rental sets for banquets parties from China wholesale supplier"
-  },
-  { 
-    title: "Custom Corporate Gifting", 
-    href: "/en/custom-oem-odm", 
-    image: "/ceramic-gift-mug.webp",
-    alt: "Custom printed ceramic gift mugs for corporate branding OEM ODM - personalized promotional drinkware with company logo from China manufacturer"
-  },
+  { title: "Hotel & Restaurant Bulk Supplies", href: "/en/products", image: "/porcelain-tableware-for-hotel-restore.webp", alt: "Hotel tableware" },
+  { title: "Amazon & Retail Packaging", href: "/en/products", image: "/amazon-hotsell-ceramic.webp", alt: "Retail ceramic" },
+  { title: "Wedding & Event Catering", href: "/en/products", image: "/ceramic-plates-for-catering-service.webp", alt: "Catering plates" },
+  { title: "Custom Corporate Gifting", href: "/en/custom-oem-odm", image: "/ceramic-gift-mug.webp", alt: "Gift mugs" },
 ]
 
 // Why choose us
@@ -132,32 +100,12 @@ const whyChooseUs = [
 
 // FAQ
 const faqItems = [
-  {
-    question: "Do your products meet FDA (US) and LFGB (EU) food contact safety standards?",
-    answer: "Yes. All our ceramics pass FDA & LFGB lead/cadmium migration tests, with SGS/Intertek reports available.",
-  },
-  {
-    question: "Are your ceramics microwave & dishwasher safe?",
-    answer: "Most items are microwave & dishwasher safe; gold trim items are handwash only.",
-  },
-  {
-    question: "What is your sample lead time and mass production delivery time?",
-    answer: "Sample: Normally 10–15 days; Mass production: 45–55 days after sample approval.",
-  },
-  {
-    question: "Can you do custom designs/logo? What's the MOQ?",
-    answer: "Yes, OEM/ODM available. MOQ: 500–1000 pcs (depends on item).",
-  },
-  {
-    question: "What's your packaging? Can you provide COC/DoC and test reports?",
-    answer: "Safe export packaging (brown box/color box). We can provide SGS test reports as requested.",
-  },
+  { question: "Do your products meet FDA (US) and LFGB (EU)?", answer: "Yes, all pass FDA & LFGB tests." },
+  { question: "Microwave & dishwasher safe?", answer: "Yes, except gold trim items." },
+  { question: "Sample & production time?", answer: "Sample 10-15 days, production 45-55 days." },
+  { question: "Custom design & MOQ?", answer: "Yes, MOQ 500-1000pcs." },
+  { question: "Packaging & reports?", answer: "Safe export packing, test reports available." },
 ]
-
-// ============================================================
-// 客户端交互组件（分类标签切换）
-// ============================================================
-import { ProductCategoryTabs } from "./ProductCategoryTabs"
 
 // ============================================================
 // 页面组件
@@ -168,15 +116,9 @@ interface PageProps {
 
 export default async function ProductsPage({ params }: PageProps) {
   const { locale } = await params
-
-  // 获取所有产品（用于统计，未来可展示真实数据）
   const products = await getAllProducts()
-  
-  // 从 Supabase 获取分类卡片数据，如果没有数据则使用后备静态数据
   const supabaseCategoryCards = await getCategoryCardsGrouped()
-  const categoryProducts = supabaseCategoryCards.all.length > 0 
-    ? supabaseCategoryCards 
-    : fallbackCategoryProducts
+  const categoryProducts = supabaseCategoryCards.all.length > 0 ? supabaseCategoryCards : fallbackCategoryProducts
 
   return (
     <div className="min-h-screen bg-background">
@@ -185,30 +127,24 @@ export default async function ProductsPage({ params }: PageProps) {
       {/* Hero Section */}
       <section className="pt-32 pb-12 bg-[#f5f3ef]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Breadcrumb */}
           <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-sm text-muted-foreground mb-6">
-            <Link href={`/${locale}`} className="hover:text-foreground transition-colors">Home</Link>
+            <Link href={`/${locale}`} className="hover:text-foreground">Home</Link>
             <ChevronRight className="w-4 h-4" />
             <span className="text-foreground">Products</span>
           </nav>
 
-          <h1 className="text-3xl sm:text-4xl font-serif font-normal text-foreground mb-4">
-            Wholesale Ceramic Tableware | Factory Direct Manufacturing
-          </h1>
-          <p className="text-muted-foreground mb-8 max-w-4xl">
-            We are a professional ceramic factory supplying a full range of wholesale tableware. Our products include plates, bowls, coffee cup set & mugs and bakeware, all made with food-safe materials and durable glaze. We offer bulk orders, custom designs, low MOQ and fast delivery for global wholesalers.
-          </p>
+          <h1 className="text-3xl sm:text-4xl font-serif mb-4">Wholesale Ceramic Tableware</h1>
+          <p className="text-muted-foreground mb-8 max-w-4xl">Professional ceramic factory supplying wholesale tableware.</p>
 
-          {/* Selling Points */}
-          <div className="flex flex-wrap justify-center gap-8 sm:gap-12 lg:gap-16">
+          <div className="flex flex-wrap justify-center gap-8">
             {sellingPoints.map((point) => {
-              const IconComponent = point.icon
+              const Icon = point.icon
               return (
                 <div key={point.title} className="flex flex-col items-center">
                   <div className="w-16 h-16 rounded-full border-2 border-[#8b7355] flex items-center justify-center mb-3">
-                    <IconComponent className="w-7 h-7 text-[#8b7355]" strokeWidth={1.5} />
+                    <Icon className="w-7 h-7 text-[#8b7355]" />
                   </div>
-                  <span className="text-sm font-medium text-[#1a1a1a]">{point.title}</span>
+                  <span className="text-sm font-medium">{point.title}</span>
                 </div>
               )
             })}
@@ -216,113 +152,66 @@ export default async function ProductsPage({ params }: PageProps) {
         </div>
       </section>
 
-      {/* 关键修改：删除了多余的一行标签，只保留ProductCategoryTabs组件，并把Custom Solutions按钮放在组件内 */}
-      <ProductCategoryTabs
-        locale={locale}
-        categoryTabs={categoryTabs}
-        categoryProducts={categoryProducts}
-      />
-
-      {/* Solutions For Your Business */}
-      <section className="py-16 bg-white">
+      {/* ===================== 核心修复：一行标签 + 右侧按钮 ===================== */}
+      <section className="py-8 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <p className="text-[#8b7355] text-xs font-medium mb-3 tracking-widest uppercase">
-              BUSINESS SOLUTIONS
-            </p>
-            <h2 className="font-serif text-3xl md:text-4xl font-normal text-[#1a1a1a]">
-              Solutions For Your Business
-            </h2>
+          <div className="flex items-center justify-between gap-4 mb-6">
+            {/* 分类标签（可横向滚动） */}
+            <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-hide">
+              {categoryTabs.map((tab) => (
+                <button
+                  key={tab.id}
+                  className="px-4 py-2 rounded-full bg-gray-100 text-sm font-medium hover:bg-[#8b7355] hover:text-white transition-colors whitespace-nowrap"
+                >
+                  {tab.name}
+                </button>
+              ))}
+            </div>
+
+            {/* Custom Solutions 按钮（固定右侧，必显示） */}
+            <Link
+              href="/oem-odm"
+              className="flex-shrink-0 px-5 py-2 bg-amber-500 text-white rounded-lg text-sm font-medium hover:bg-amber-600 transition-colors"
+            >
+              Custom Solutions
+            </Link>
           </div>
+
+          {/* 产品卡片（和标签对齐） */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {businessSolutions.map((solution) => (
-              <Link
-                key={solution.title}
-                href={solution.href}
-                className="group border border-[#e5e7eb] rounded-lg overflow-hidden bg-white hover:shadow-lg transition-all"
-              >
+            {categoryProducts.all.map((item) => (
+              <Link key={item.slug} href={`/${locale}/products/${item.slug}`} className="group rounded-lg overflow-hidden border hover:shadow-md">
                 <div className="aspect-[4/3] relative bg-[#f5f3ef]">
-                  <Image
-                    src={solution.image}
-                    alt={solution.alt}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-300"
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                  />
+                  <Image src={item.image} alt={item.alt} fill className="object-cover" />
                 </div>
-                <div className="p-5">
-                  <h3 className="text-base font-medium text-[#1a1a1a] group-hover:text-[#8b7355] transition-colors">
-                    {solution.title}
-                  </h3>
+                <div className="p-4">
+                  <h3 className="text-sm font-medium group-hover:text-[#8b7355]">{item.name}</h3>
                 </div>
               </Link>
             ))}
           </div>
         </div>
       </section>
+      {/* ====================================================================== */}
 
-      {/* One-Stop Ceramic Tableware Sourcing */}
-      <section className="py-16 bg-[#f5f3ef]">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="font-serif text-3xl md:text-4xl font-semibold text-[#1a1a1a] text-center mb-16">
-            One-Stop Ceramic Tableware Sourcing
-          </h2>
-
-          <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12 mb-16">
-            <div className="w-full md:w-1/2">
-              <div className="aspect-[4/3] relative bg-[#e5e1db] rounded-xl overflow-hidden">
-                <Image
-                  src="/wholesale-ceramics-supplier.webp"
-                  alt="China wholesale ceramic tableware supplier - complete product range including porcelain plates bowls mugs bakeware with professional 3D design prototyping and R&D services for B2B buyers"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
-              </div>
-            </div>
-            <div className="w-full md:w-1/2">
-              <p className="text-[#4b5563] leading-relaxed text-base">
-                We supply a full range of daily-use ceramic tableware, including plates, bowls, mugs and bakeware to fully cover your product sourcing needs. Equipped with an in-house R&D team, we provide professional 3D design and 3D printing services to turn your original ideas and concepts into accurate visual drafts and real samples.
-              </p>
-            </div>
+      {/* Solutions For Your Business */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <p className="text-[#8b7355] text-xs uppercase tracking-widest mb-2">BUSINESS SOLUTIONS</p>
+            <h2 className="font-serif text-3xl">Solutions For Your Business</h2>
           </div>
-
-          <div className="flex flex-col md:flex-row-reverse items-center gap-8 md:gap-12 mb-16">
-            <div className="w-full md:w-1/2">
-              <div className="aspect-[4/3] relative bg-[#e5e1db] rounded-xl overflow-hidden">
-                <Image
-                  src="/color-glaze.webp"
-                  alt="Ceramic decoration techniques from China manufacturer - underglaze color in-glaze overglaze decal transfer digital inkjet printing pad printing on porcelain stoneware tableware"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
-              </div>
-            </div>
-            <div className="w-full md:w-1/2">
-              <p className="text-[#4b5563] leading-relaxed text-base">
-                We master complete ceramic decoration technologies such as underglaze color, in-glaze color, overglaze decal, digital inkjet printing and pad printing.
-              </p>
-            </div>
-          </div>
-
-          <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
-            <div className="w-full md:w-1/2">
-              <div className="aspect-[4/3] relative bg-[#e5e1db] rounded-xl overflow-hidden">
-                <Image
-                  src="/factory-building.webp"
-                  alt="China ceramic tableware factory OEM ODM manufacturer - custom dinnerware production facility with quality control MOQ flexibility small trial orders bulk orders door-to-door shipping worldwide"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
-              </div>
-            </div>
-            <div className="w-full md:w-1/2">
-              <p className="text-[#4b5563] leading-relaxed text-base">
-                We support full customization of colors, patterns, logos, packaging and private labels. Every procedure from design development, sample making to mass production is strictly controlled in our own factory. We accept both small trial orders and large bulk orders, and provide reliable door-to-door delivery services to simplify your entire purchasing process.
-              </p>
-            </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {businessSolutions.map((item) => (
+              <Link key={item.title} href={item.href} className="group border rounded-lg overflow-hidden hover:shadow-md">
+                <div className="aspect-[4/3] relative bg-[#f5f3ef]">
+                  <Image src={item.image} alt={item.alt} fill className="object-cover" />
+                </div>
+                <div className="p-5">
+                  <h3 className="text-base font-medium group-hover:text-[#8b7355]">{item.title}</h3>
+                </div>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
@@ -331,28 +220,18 @@ export default async function ProductsPage({ params }: PageProps) {
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <p className="text-[#8b7355] text-xs font-medium mb-3 tracking-widest uppercase">
-              OUR ADVANTAGES
-            </p>
-            <h2 className="font-serif text-3xl md:text-4xl font-normal text-[#1a1a1a]">
-              Why Choose Us
-            </h2>
+            <p className="text-[#8b7355] text-xs uppercase tracking-widest mb-2">OUR ADVANTAGES</p>
+            <h2 className="font-serif text-3xl">Why Choose Us</h2>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {whyChooseUs.map((item) => {
-              const IconComponent = item.icon
+              const Icon = item.icon
               return (
-                <Link
-                  key={item.title}
-                  href={item.href}
-                  className="group flex flex-col items-center text-center p-6 border border-[#e5e7eb] rounded-lg bg-white hover:shadow-md hover:border-[#8b7355]/30 transition-all"
-                >
-                  <div className="w-14 h-14 bg-[#f5f3ef] rounded-full flex items-center justify-center mb-4 group-hover:bg-[#8b7355]/10 transition-colors">
-                    <IconComponent className="w-7 h-7 text-[#8b7355]" />
+                <Link key={item.title} href={item.href} className="group flex flex-col items-center text-center p-6 border rounded-lg hover:border-[#8b7355]/30">
+                  <div className="w-14 h-14 bg-[#f5f3ef] rounded-full flex items-center justify-center mb-4">
+                    <Icon className="w-7 h-7 text-[#8b7355]" />
                   </div>
-                  <h3 className="text-base font-medium text-[#1a1a1a] group-hover:text-[#8b7355] transition-colors">
-                    {item.title}
-                  </h3>
+                  <h3 className="text-base font-medium group-hover:text-[#8b7355]">{item.title}</h3>
                 </Link>
               )
             })}
@@ -360,35 +239,25 @@ export default async function ProductsPage({ params }: PageProps) {
         </div>
       </section>
 
-      {/* FAQ Section */}
+      {/* FAQ */}
       <section className="py-16 bg-[#f9fafb]">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-3xl mx-auto px-4">
           <div className="text-center mb-12">
-            <p className="text-[#8b7355] text-xs font-medium mb-3 tracking-widest uppercase">
-              FAQ
-            </p>
-            <h2 className="font-serif text-3xl md:text-4xl font-normal text-[#1a1a1a]">
-              Frequently Asked Questions
-            </h2>
+            <p className="text-[#8b7355] text-xs uppercase tracking-widest mb-2">FAQ</p>
+            <h2 className="font-serif text-3xl">Frequently Asked Questions</h2>
           </div>
-          <Accordion type="single" collapsible className="w-full">
-            {faqItems.map((item, index) => (
-              <AccordionItem key={index} value={`item-${index}`} className="border-b border-[#e5e7eb]">
-                <AccordionTrigger className="text-left text-[#1a1a1a] font-medium py-5 hover:no-underline">
-                  {item.question}
-                </AccordionTrigger>
-                <AccordionContent className="text-[#6b7280] pb-5">
-                  {item.answer}
-                </AccordionContent>
+          <Accordion type="single" collapsible>
+            {faqItems.map((item, i) => (
+              <AccordionItem key={i} value={`item-${i}`}>
+                <AccordionTrigger className="text-left font-medium">{item.question}</AccordionTrigger>
+                <AccordionContent>{item.answer}</AccordionContent>
               </AccordionItem>
             ))}
           </Accordion>
         </div>
       </section>
 
-      {/* Quote Form */}
       <QuoteForm />
-
       <Footer />
     </div>
   )
