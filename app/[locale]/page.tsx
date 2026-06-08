@@ -10,11 +10,11 @@ export const metadata: Metadata = {
 
 const fixedCategories = [
   {
-    name: "Wholesale Ceramic Tableware",
-    description: "Explore durable bulk ceramic tableware for hotels, restaurants and retail brands.",
+    name: "Custom OEM/ODM Solutions",
+    description: "From concept to finished goods, we create fully custom ceramic tableware for brands, restaurants, and retailers worldwide.",
     image: "/wholesale-ceramics-supplier.webp",
-    alt: "bulk ceramic tableware for hotels restaurants and retail",
-    slug: "all",
+    alt: "Custom OEM ODM ceramic tableware manufacturing for brands, restaurants, and retailers",
+    slug: "custom-oem-odm",
   },
   {
     name: "Wholesale Plates",
