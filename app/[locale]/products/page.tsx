@@ -46,6 +46,7 @@ const categoryTabs = [
 ]
 
 // 静态分类产品（作为后备数据，当Supabase无数据时使用）
+// SEO优化：alt文本包含长尾关键词、品牌词（China factory/supplier）、产品特性和使用场景
 const fallbackCategoryProducts: Record<string, { name: string; slug: string; image: string; alt: string }[]> = {
   all: [
     { name: "Dinner Plates", slug: "dinner-plates", image: "/images/categories/dinner-plates.webp", alt: "Wholesale ceramic dinner plates from China factory - bulk porcelain main course plates 10 inch for hotels restaurants and catering services" },
@@ -93,7 +94,7 @@ const fallbackCategoryProducts: Record<string, { name: string; slug: string; ima
   ],
 }
 
-// Business solutions
+// Business solutions - SEO优化：alt文本包含业务场景、目标客户和产品特性
 const businessSolutions = [
   { 
     title: "Hotel & Restaurant Bulk Supplies", 
@@ -215,13 +216,16 @@ export default async function ProductsPage({ params }: PageProps) {
         </div>
       </section>
 
-      {/* 只保留一行标签，按钮已内置在组件中 */}
+      {/* Category Tabs and Product Cards - 客户端交互组件 */}
       <ProductCategoryTabs
         locale={locale}
         categoryTabs={categoryTabs}
         categoryProducts={categoryProducts}
       />
 
+      <Link href="/oem-odm" className="flex-shrink-0 ml-auto px-5 py-2 bg-amber-500 text-white rounded-lg text-sm font-medium hover:bg-amber-600 transition-colors">
+  Custom Solutions
+</Link>
       {/* Solutions For Your Business */}
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
