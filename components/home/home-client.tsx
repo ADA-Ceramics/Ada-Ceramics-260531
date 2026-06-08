@@ -403,7 +403,7 @@ Details: ${formData.details}`;
             </p>
           </div>
           
-          {/* 修改后的卡片布局：一行4列，删掉了两个地区卡片 */}
+          {/* 修改后的卡片：图片在上，标题和文字在下，白底卡片样式 */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
             {[
               { title: "Logo & Brand Customization", subtitle: "Custom logo printing, laser engraving, and hand-painted branding to match your brand identity.", image: "/alice.webp" },
@@ -413,19 +413,20 @@ Details: ${formData.details}`;
             ].map((item, index) => (
               <div 
                 key={index}
-                className="group relative aspect-[4/3] rounded-xl overflow-hidden"
+                className="bg-white rounded-xl overflow-hidden border border-gray-100"
               >
-                <Image
-                  src={item.image}
-                  alt={`Ceramic tableware export to ${item.title}`}
-                  fill
-                  className="object-cover transition-transform duration-300 group-hover:scale-105"
-                  sizes="(max-width: 640px) 50vw, 25vw"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
-                <div className="absolute bottom-0 left-0 right-0 p-5">
-                  <h3 className="text-white font-semibold text-xl mb-1">{item.title}</h3>
-                  <p className="text-white/70 text-sm">{item.subtitle}</p>
+                <div className="relative aspect-[4/3]">
+                  <Image
+                    src={item.image}
+                    alt={`Ceramic tableware export to ${item.title}`}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 640px) 50vw, 25vw"
+                  />
+                </div>
+                <div className="p-4">
+                  <h3 className="text-lg font-semibold text-[#1a1a1a] mb-2">{item.title}</h3>
+                  <p className="text-gray-600 text-sm leading-relaxed">{item.subtitle}</p>
                 </div>
               </div>
             ))}
