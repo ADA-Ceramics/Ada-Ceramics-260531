@@ -3,9 +3,9 @@ import { Metadata } from "next";
 
 // 👇 这就是你要的新 SEO 标题 + 描述
 export const metadata: Metadata = {
-  title: "ADA Ceramics | Wholesale Ceramic Tableware & Mugs",
+  title: "ADA Ceramics | Custom Ceramic Tableware Manufacturing | OEM/ODM Factory Direct",
   description:
-    "Professional ceramic manufacturer & supplier. Wholesale high-quality ceramic mugs, dinnerware, teapots. Custom OEM/ODM available. Contact us!",
+    "From concept to finished goods, we create custom ceramic tableware for brands, restaurants, and retailers worldwide!",
 };
 
 const fixedCategories = [
