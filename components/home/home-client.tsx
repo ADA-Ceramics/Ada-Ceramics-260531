@@ -403,7 +403,7 @@ Details: ${formData.details}`;
             </p>
           </div>
           
-          {/* 修改后的卡片：图片在上，标题和文字在下，白底卡片样式 */}
+          {/* 修改点：卡片边框改为 border-gray-200 */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
             {[
               { title: "Logo & Brand Customization", subtitle: "Custom logo printing, laser engraving, and hand-painted branding to match your brand identity.", image: "/alice.webp" },
@@ -413,7 +413,7 @@ Details: ${formData.details}`;
             ].map((item, index) => (
               <div 
                 key={index}
-                className="bg-white rounded-xl overflow-hidden border border-gray-100"
+                className="bg-white rounded-xl overflow-hidden border border-gray-200"
               >
                 <div className="relative aspect-[4/3]">
                   <Image
