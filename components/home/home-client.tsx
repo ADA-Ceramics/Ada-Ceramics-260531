@@ -403,7 +403,6 @@ Details: ${formData.details}`;
             </p>
           </div>
           
-          {/* 修改点：卡片边框改为 border-gray-200 */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
             {[
               { title: "Logo & Brand Customization", 
@@ -421,7 +420,7 @@ Details: ${formData.details}`;
               alt: "Custom ceramic tableware shape and size development, including mold making, 3D sampling, and unique design."},
               { title: "Packaging & Labeling", 
                subtitle: "Custom boxes, gift sets, hang tags, and retail-ready packaging solutions.", 
-               image: "/alice.webp"，
+               image: "/alice.webp",
               alt: "Custom ceramic tableware packaging and labeling services, including gift boxes, hang tags, and retail-ready solutions."},
             ].map((item, index) => (
               <div 
@@ -431,7 +430,7 @@ Details: ${formData.details}`;
                 <div className="relative aspect-[4/3]">
                   <Image
                     src={item.image}
-                    alt={`Ceramic tableware export to ${item.title}`}
+                    alt={item.alt}
                     fill
                     className="object-cover"
                     sizes="(max-width: 640px) 50vw, 25vw"
