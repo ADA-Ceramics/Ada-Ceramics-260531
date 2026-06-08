@@ -393,11 +393,12 @@ Details: ${formData.details}`;
           <div className="text-center mb-12">
             <p className="text-[#8b7355] text-xs font-medium uppercase tracking-widest mb-4">OUR CAPABILITIES</p>
             <h2 className="font-serif text-4xl md:text-[56px] text-[#1a1a1a] mb-5 leading-tight">
-              Customization Capabilities for Your Ceramic Projects
+              Customization Capabilities<br />
+   for Your Ceramic Projects
             </h2>
             <p className="text-gray-400 text-base max-w-[720px] mx-auto leading-relaxed">
               From custom design and prototyping to mass production and packaging, we provide one-stop OEM/ODM ceramic manufacturing services. 
-              We specialize in custom ceramic tableware, including logo-printed, custom-glaze, and shape development, with FDA/LFGB certification,
+              We specialize in custom ceramic tableware, including logo-printed, custom-color,shape development and custom packaging, with FDA/LFGB certification,
               flexible MOQ, and global shipping for small to large orders.
             </p>
           </div>
