@@ -390,14 +390,12 @@ Details: ${formData.details}`;
       <section className="py-20 bg-white">
         <div className="max-w-[1280px] mx-auto px-6">
           <div className="text-center mb-12">
-            <p className="text-[#8b7355] text-xs font-medium uppercase tracking-widest mb-4">Global Reach</p>
+            <p className="text-[#8b7355] text-xs font-medium uppercase tracking-widest mb-4">CUSTOM SOLUTIONS</p>
             <h2 className="font-serif text-4xl md:text-[56px] text-[#1a1a1a] mb-5 leading-tight">
-              Trusted By International Partners
+              Custom Ceramic Tableware Solutions for Every Industry
             </h2>
             <p className="text-gray-400 text-base max-w-[720px] mx-auto leading-relaxed">
-              We proudly serve wholesalers, retailers and hospitality businesses across 50+ countries. 
-              Our ceramic tableware has earned the trust of international partners through consistent quality, 
-              reliable delivery and exceptional customer service.
+              We specialize in custom OEM/ODM ceramic tableware solutions, including hotel dinnerware, retail-branded merchandise, and corporate gifts. Our FDA/LFGB-certified factory offers flexible MOQs and global shipping for bulk wholesale orders, adapting to your brand and market needs.
             </p>
           </div>
           
