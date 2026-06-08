@@ -117,10 +117,10 @@ Details: ${formData.details}`;
 
           <h1 className="mb-6">
             <span className="block font-serif text-[56px] text-[#1a1a1a] leading-tight tracking-tight">
-              Premium Ceramic Tableware
+              Premium Custom & Wholesale Ceramic Tableware
             </span>
             <span className="block font-serif text-[56px] text-[#8b7355] leading-tight tracking-tight mt-2">
-              for Global Horeca & Retail
+              for Global Brands & Horeca
             </span>
           </h1>
 
