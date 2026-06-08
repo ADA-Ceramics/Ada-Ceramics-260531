@@ -165,9 +165,9 @@ Details: ${formData.details}`;
         <div className="max-w-[1280px] mx-auto px-6">
           <div className="text-center mb-16">
             <p className="text-[#8b7355] text-sm font-semibold uppercase tracking-wider mb-3">Our Collections</p>
-            <h2 className="font-serif text-[56px] text-[#1a1a1a] mb-4">Product Categories</h2>
+            <h2 className="font-serif text-[56px] text-[#1a1a1a] mb-4">Standard Collections & Custom Solutions</h2>
             <p className="text-gray-600 text-base max-w-[600px] mx-auto leading-relaxed">
-              Explore our wide range of high-quality ceramic products, designed for both everyday use and special occasions.
+              Explore our standard ceramic tableware collections — all fully customizable with custom logos, glazes, and packaging for your brand, restaurant, or retail business.
             </p>
           </div>
 
