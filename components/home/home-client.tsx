@@ -285,11 +285,11 @@ Details: ${formData.details}`;
           <div className="text-center mb-12">
             <p className="text-[#8b7355] text-xs font-medium uppercase tracking-widest mb-4">Who We Serve</p>
             <h2 className="font-serif text-4xl md:text-[56px] text-[#1a1a1a] mb-5 leading-tight">
-              Ceramic Solutions for Every Industry
+              Custom Ceramic Solutions for Every Industry
             </h2>
             <p className="text-gray-400 text-base max-w-[680px] mx-auto leading-relaxed">
-              From luxury hotels to cozy cafes, our ceramic tableware serves diverse industries worldwide. 
-              Quality products tailored to meet your unique business needs.
+              From luxury hotels to cozy cafes, we deliver custom branded & wholesale ceramic tableware tailored to your brand’s unique needs,
+serves diverse industries worldwide. 
             </p>
           </div>
           
