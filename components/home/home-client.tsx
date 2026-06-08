@@ -405,10 +405,10 @@ Details: ${formData.details}`;
           
           <div className="grid grid-cols-2 md:grid-cols-3 gap-5">
             {[
-              { title: "Europe", subtitle: "UK, Germany, France & more", image: "/alice.webp" },
-              { title: "North America", subtitle: "USA, Canada & Mexico", image: "/color-glaze.webp" },
-              { title: "Middle East", subtitle: "UAE, Saudi Arabia & Qatar", image: "/kiln-transformation.webp" },
-              { title: "Asia Pacific", subtitle: "Australia, Japan & Korea", image: "/alice.webp" },
+              { title: "Logo & Brand Customization", subtitle: "Custom logo printing, laser engraving, and hand-painted branding to match your brand identity.", image: "/alice.webp" },
+              { title: "Color & Glaze Customization", subtitle: "Matte, glossy, reactive, and custom glaze finishes, including FDA/LFGB-safe color options.", image: "/color-glaze.webp" },
+              { title: "Shape & Size Development", subtitle: "Custom mold making, 3D sampling, and unique shape design for plates, bowls, mugs, and more.", image: "/kiln-transformation.webp" },
+              { title: "Packaging & Labeling", subtitle: "Custom boxes, gift sets, hang tags, and retail-ready packaging solutions.", image: "/alice.webp" },
               { title: "South America", subtitle: "Brazil, Chile & Argentina", image: "/color-glaze.webp" },
               { title: "Africa", subtitle: "South Africa, Nigeria & Egypt", image: "/kiln-transformation.webp" },
             ].map((item, index) => (
