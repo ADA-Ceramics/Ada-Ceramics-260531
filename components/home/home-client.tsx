@@ -288,8 +288,7 @@ Details: ${formData.details}`;
               Custom Ceramic Solutions for Every Industry
             </h2>
             <p className="text-gray-400 text-base max-w-[680px] mx-auto leading-relaxed">
-              From luxury hotels to cozy cafes, we deliver custom branded & wholesale ceramic tableware tailored to your brand’s unique needs,
-serves diverse industries worldwide. 
+              From luxury hotels to cozy cafes, we deliver custom branded & wholesale ceramic tableware tailored to your brand’s unique needs, serving diverse industries worldwide. 
             </p>
           </div>
           
@@ -306,7 +305,7 @@ serves diverse industries worldwide.
             ].map((item, index) => (
               <Link 
                 key={index}
-                href="/en/products"
+                href={item.title === "Retail Stores" || item.title === "Corporate Gifts" ? "/en/oem-odm" : "/en/products"}
                 className="group relative aspect-square rounded-xl overflow-hidden cursor-pointer"
               >
                 <Image
