@@ -341,7 +341,7 @@ Details: ${formData.details}`;
               <div className="w-12 h-12 bg-gray-800 rounded-lg flex items-center justify-center mb-6">
                 <Award size={24} className="text-white" />
               </div>
-              <h3 className="text-lg font-semibold text-[#1a1a1a] mb-3 leading-snug">20+ Years Experience</h3>
+              <h3 className="text-lg font-semibold text-[#1a1a1a] mb-3 leading-snug">30+ Years Experience</h3>
               <p className="text-gray-400 text-sm leading-relaxed">Decades of expertise in ceramic production and quality control.</p>
             </div>
             <div className="bg-white rounded-xl p-7 border border-gray-200">
