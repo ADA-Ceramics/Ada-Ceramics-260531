@@ -223,6 +223,9 @@ export default async function ProductsPage({ params }: PageProps) {
         categoryProducts={categoryProducts}
       />
 
+      <Link href="/oem-odm" className="flex-shrink-0 ml-auto px-5 py-2 bg-amber-500 text-white rounded-lg text-sm font-medium hover:bg-amber-600 transition-colors">
+  Custom Solutions
+</Link>
       {/* Solutions For Your Business */}
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
