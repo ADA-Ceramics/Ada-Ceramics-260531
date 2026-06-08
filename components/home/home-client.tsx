@@ -175,7 +175,7 @@ Details: ${formData.details}`;
             {categories.map((category) => (
               <Link 
                 key={category.slug} 
-                href={category.slug === "all" ? "/en/products" : `/en/products/${category.slug}`} 
+                href={category.slug === "oem-odm" ? "/en/oem-odm" : category.slug === "all" ? "/en/products" : `/en/products/${category.slug}`} 
                 className="no-underline block"
               >
                 <div className="bg-white rounded-2xl overflow-hidden border border-gray-100 transition-all">
