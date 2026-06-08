@@ -296,7 +296,7 @@ Details: ${formData.details}`;
           <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
             {[
               { title: "Hotels & Resorts", desc: "Bulk order friendly + durable designs for high-volume commercial use", image: "/porcelain-tableware-for-hotel-restore.webp", alt: "Ceramic tableware for hotels and resorts" },
-              { title: "Restaurants", desc: "Chip-resistant dinnerware", image: "/porcelain-tableware-for-restaurants.webp", alt: "Ceramic plates and bowls for restaurants" },
+              { title: "Restaurants", desc: "Chip-resistant dinnerware + stackable designs for busy commercial kitchens", image: "/porcelain-tableware-for-restaurants.webp", alt: "Ceramic plates and bowls for restaurants" },
               { title: "Cafes & Bistros", desc: "Custom branding options + stackable for space-saving storage", image: "/coffee-cup-cafe.webp", alt: "Ceramic mugs and cups for cafes" },
               { title: "Catering Services", desc: "Bulk serving dishes + easy-to-clean durable ware for high-volume events", image: "/ceramic-plates-for-catering-service.webp", alt: "Bulk ceramic tableware for catering" },
               { title: "Retail Stores", desc: "Shelf-ready displays + custom retail packaging solutions", image: "/ceramic-retail.webp", alt: "Wholesale ceramics for retail" },
