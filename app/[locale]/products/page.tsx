@@ -217,15 +217,25 @@ export default async function ProductsPage({ params }: PageProps) {
       </section>
 
       {/* Category Tabs and Product Cards - 客户端交互组件 */}
-      <ProductCategoryTabs
-        locale={locale}
-        categoryTabs={categoryTabs}
-        categoryProducts={categoryProducts}
-      />
+      <section className="py-8 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between mb-8">
+            <ProductCategoryTabs
+              locale={locale}
+              categoryTabs={categoryTabs}
+              categoryProducts={categoryProducts}
+            />
+            {/* Custom Solutions 按钮 - 放在标签栏右侧同行 */}
+            <Link 
+              href="/oem-odm" 
+              className="ml-4 px-5 py-2 bg-amber-500 text-white rounded-lg text-sm font-medium hover:bg-amber-600 transition-colors whitespace-nowrap"
+            >
+              Custom Solutions
+            </Link>
+          </div>
+        </div>
+      </section>
 
-      <Link href="/oem-odm" className="flex-shrink-0 ml-auto px-5 py-2 bg-amber-500 text-white rounded-lg text-sm font-medium hover:bg-amber-600 transition-colors">
-  Custom Solutions
-</Link>
       {/* Solutions For Your Business */}
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -317,7 +327,6 @@ export default async function ProductsPage({ params }: PageProps) {
                   alt="China ceramic tableware factory OEM ODM manufacturer - custom dinnerware production facility with quality control MOQ flexibility small trial orders bulk orders door-to-door shipping worldwide"
                   fill
                   className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 50vw"
                 />
               </div>
             </div>
