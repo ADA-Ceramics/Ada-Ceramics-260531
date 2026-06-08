@@ -125,7 +125,7 @@ Details: ${formData.details}`;
           </h1>
 
           <p className="text-[17px] text-gray-600 leading-relaxed max-w-[640px] mx-auto mb-10">
-            Professional ceramic manufacturer offering FDA/LFGB certified dinnerware, custom OEM/ODM solutions, and worldwide shipping.
+            Professional ceramic manufacturer offering custom OEM/ODM solutions, FDA/LFGB certified dinnerware, and worldwide shipping.
           </p>
 
           <div className="flex items-center justify-center flex-wrap gap-4 mb-12">
