@@ -391,12 +391,14 @@ Details: ${formData.details}`;
       <section className="py-20 bg-white">
         <div className="max-w-[1280px] mx-auto px-6">
           <div className="text-center mb-12">
-            <p className="text-[#8b7355] text-xs font-medium uppercase tracking-widest mb-4">CUSTOM SOLUTIONS</p>
+            <p className="text-[#8b7355] text-xs font-medium uppercase tracking-widest mb-4">OUR CAPABILITIES</p>
             <h2 className="font-serif text-4xl md:text-[56px] text-[#1a1a1a] mb-5 leading-tight">
-              Custom Ceramic Tableware Solutions for Every Industry
+              Customization Capabilities for Your Ceramic Projects
             </h2>
             <p className="text-gray-400 text-base max-w-[720px] mx-auto leading-relaxed">
-              We specialize in custom OEM/ODM ceramic tableware solutions, including hotel dinnerware, retail-branded merchandise, and corporate gifts. Our FDA/LFGB-certified factory offers flexible MOQs and global shipping for bulk wholesale orders, adapting to your brand and market needs.
+              From custom design and prototyping to mass production and packaging, we provide one-stop OEM/ODM ceramic manufacturing services. 
+              We specialize in custom ceramic tableware, including logo-printed, custom-glaze, and shape development, with FDA/LFGB certification,
+              flexible MOQ, and global shipping for small to large orders.
             </p>
           </div>
           
