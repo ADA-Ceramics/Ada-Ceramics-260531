@@ -406,7 +406,7 @@ Details: ${formData.details}`;
           <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
             {[
               { title: "Logo & Brand Customization", 
-               subtitle: "Custom logo printing, laser engraving, and hand-painted branding to match your brand identity.", 
+               subtitle: "Custom logo screen printing,embossing,debossing, laser engraving,eletroplating and hand-painted branding to match your brand identity.", 
                image: "/custom-ceramic-tableware-logo-branding-services.webp",
               alt: "Custom ceramic tableware logo and branding services, including printing, laser engraving, and hand-painted design."},
               { title: "Color & Glaze Customization", 
