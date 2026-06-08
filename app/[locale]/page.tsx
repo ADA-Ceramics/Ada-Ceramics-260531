@@ -14,7 +14,7 @@ const fixedCategories = [
     description: "From concept to finished goods, we create fully custom ceramic tableware for brands, restaurants, and retailers worldwide.",
     image: "/wholesale-ceramics-supplier.webp",
     alt: "Custom OEM ODM ceramic tableware manufacturing for brands, restaurants, and retailers",
-    slug: "custom-oem-odm",
+    slug: "oem-odm", // 
   },
   {
     name: "Wholesale Plates",
