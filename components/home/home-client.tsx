@@ -420,8 +420,8 @@ Details: ${formData.details}`;
               alt: "Custom ceramic tableware shape and size development, including mold making, 3D sampling, and unique design."},
               { title: "Packaging & Labeling", 
                subtitle: "Custom boxes, gift sets, hang tags, and retail-ready packaging solutions.", 
-               image: "/alice.webp",
-              alt: "Custom ceramic tableware packaging and labeling services, including gift boxes, hang tags, and retail-ready solutions."},
+               image: "/custom-ceramic-tableware-packaging-labeling-services.webp",
+              alt: "OEM/ODM ceramic dinnerware custom packaging solutions, including gift sets, hang tags, and retail-ready boxes for wholesale orders."},
             ].map((item, index) => (
               <div 
                 key={index}
