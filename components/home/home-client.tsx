@@ -295,14 +295,14 @@ Details: ${formData.details}`;
           
           <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
             {[
-              { title: "Hotels & Resorts", desc: "Coordinated tableware collections",image: "/porcelain-tableware-for-hotel-restore.webp", alt: "Ceramic tableware for hotels and resorts" },
+              { title: "Hotels & Resorts", desc: "Bulk order friendly + durable designs for high-volume commercial use", image: "/porcelain-tableware-for-hotel-restore.webp", alt: "Ceramic tableware for hotels and resorts" },
               { title: "Restaurants", desc: "Chip-resistant dinnerware", image: "/porcelain-tableware-for-restaurants.webp", alt: "Ceramic plates and bowls for restaurants" },
-              { title: "Cafes & Bistros", desc: "Custom branded mugs", image: "/coffee-cup-cafe.webp", alt: "Ceramic mugs and cups for cafes" },
-              { title: "Catering Services", desc: "Bulk serving dishes", image: "/ceramic-plates-for-catering-service.webp", alt: "Bulk ceramic tableware for catering" },
-              { title: "Retail Stores", desc：“Custom retail packaging & displays”，image: "/ceramic-retail.webp", alt: "Wholesale ceramics for retail" },
-              { title: "Online Sellers", desc: "Retail-ready packaging", image: "/amazon-hotsell-ceramic.webp", alt: "Ceramic products for e-commerce" },
-              { title: "Corporate Gifts",  desc: "Logo-printed ceramic gifts", image: "/ceramic-gift-mug.webp", alt: "Custom ceramic gifts mugs for corporate" },
-              { title: "Home & Living", desc: "Everyday tableware sets"image: "/ceramic-snack-plate-for-home.webp", alt: "Ceramic homeware for daily use" },
+              { title: "Cafes & Bistros", desc: "Custom branding options + stackable for space-saving storage", image: "/coffee-cup-cafe.webp", alt: "Ceramic mugs and cups for cafes" },
+              { title: "Catering Services", desc: "Bulk serving dishes + easy-to-clean durable ware for high-volume events", image: "/ceramic-plates-for-catering-service.webp", alt: "Bulk ceramic tableware for catering" },
+              { title: "Retail Stores", desc: "Shelf-ready displays + custom retail packaging solutions", image: "/ceramic-retail.webp", alt: "Wholesale ceramics for retail" },
+              { title: "Online Sellers", desc: "Retail-ready packaging + fast shipping for online order fulfillment", image: "/amazon-hotsell-ceramic.webp", alt: "Ceramic products for e-commerce" },
+              { title: "Corporate Gifts", desc: "Logo-printed ceramic gifts + customizable bulk gifting solutions", image: "/ceramic-gift-mug.webp", alt: "Custom ceramic gifts mugs for corporate" },
+              { title: "Home & Living", desc: "Everyday ceramic tableware sets + durable for family & casual use", image: "/ceramic-snack-plate-for-home.webp", alt: "Ceramic homeware for daily use" },
             ].map((item, index) => (
               <Link 
                 key={index}
@@ -319,7 +319,7 @@ Details: ${formData.details}`;
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-4">
                   <h3 className="text-white font-medium text-lg">{item.title}</h3>
-                  <p className="text-sm text-gray-200 mt-2">{item.desc}</p >
+                  <p className="text-sm text-gray-200 mt-2">{item.desc}</p>
                 </div>
               </Link>
             ))}
