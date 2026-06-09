@@ -212,7 +212,7 @@ Details: ${formData.details}`;
               <p className="text-[#8b7355] text-sm font-semibold uppercase tracking-wider mb-3">Our Facility</p>
               <h2 className="font-serif text-4xl text-[#1a1a1a] mb-6">State-of-the-Art Manufacturing</h2>
               <p className="text-gray-600 text-base mb-8 leading-relaxed">
-                Our 46,000 sqm facility combines traditional craftsmanship with modern technology, featuring 8+ production lines and a dedicated team of 340+ skilled workers.
+                Our 46,000 sqm facility combines traditional craftsmanship with modern technology, featuring 13+ production lines and a dedicated team of 340+ skilled workers.
               </p>
               
               <div className="grid grid-cols-2 gap-5">
