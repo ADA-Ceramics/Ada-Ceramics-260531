@@ -411,7 +411,7 @@ Details: ${formData.details}`;
               alt: "Custom ceramic tableware logo and branding services, including printing, laser engraving, and hand-painted design."},
               { title: "Color & Glaze Customization", 
                subtitle: "Matte, glossy, reactive, and custom glaze finishes, including FDA/LFGB-safe color options.", 
-               image: "/color-glaze.webp",
+               image: "/custom-color-glaze-ceramic.webp",
                alt: "Ceramic tableware color and glaze customization, including matte, glossy, and FDA/LFGB-safe finishes."
             },
               { title: "Shape & Size Development", 
