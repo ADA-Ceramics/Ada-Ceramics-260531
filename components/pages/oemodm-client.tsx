@@ -59,7 +59,7 @@ export function OemOdmClient() {
     {
       step: 1,
       title: "Browse & Select",
-      description: "Browse our catalog and select your preferred ceramic tableware shapes and styles.",
+      description: "Browse our catalog and select preferred ceramic dinnerware shapes and styles.",
       image: "/image/oem-odm/oem-odm-custom-logo-catalog_.webp",
       imageAlt: "Browse ADA Ceramics catalog to select ceramic tableware shapes and styles"
     },
@@ -80,7 +80,7 @@ export function OemOdmClient() {
     {
       step: 4,
       title: "Create Samples",
-      description: "We create custom samples based on your basic customization artwork.",
+      description: "We create custom samples based on your confirmed artwork.",
       image: "/image/oem-odm/creat-sample.webp",
       imageAlt: "ADA Ceramics creating custom ceramic tableware samples"
     },
