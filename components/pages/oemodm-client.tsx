@@ -44,30 +44,30 @@ export function OemOdmClient() {
     {
       step: 3,
       title: "Mold Design",
-      description: "Custom molds are created to produce your exclusive ceramic shapes.",
+      description: "Custom precision ceramic molds are engineered to translate your bespoke ceramic tableware designs into production-ready shapes.",
       image: "/image/oem-odm/3d-modeling-bespoke-ceramic-tableware.webp",
-      imageAlt: "Custom mold design for unique ceramic tableware shapes"
+      imageAlt: "Custom mold design for bespoke ceramic tableware, translating 3D designs into production-ready ceramic shapes"
     },
     {
       step: 4,
       title: "Sample Prototyping",
       description: "First article samples are produced for your review and approval.",
-      image: "/color-glaze.webp",
-      imageAlt: "Sample prototyping for custom ceramic tableware"
+      image: "/image/oem-odm/ceramic-swirling-bowl-raw-sample-prototyping.webp",
+      imageAlt: "Sample prototyping of custom ceramic swirling bowl for bespoke tableware"
     },
     {
       step: 5,
       title: "Logo & Decoration",
-      description: "Custom logo printing, patterns, and glazes are applied to your specifications.",
-      image: "/image/oem-odm/oem-odm-custom-logo-catalog_.webp",
-      imageAlt: "Logo printing and decoration for custom ceramic dinnerware"
+      description: "Custom logo printing, decorative patterns, and food-safe glazes are applied to your custom ceramic tableware specifications.",
+      image: "/image/oem-odm/finished-blue-swirling-bowl-custom-tableware.webp",
+      imageAlt: "Finished glossy blue swirling bowl, custom ceramic tableware after logo decoration, glazing and quality grading for food service"
     },
     {
       step: 6,
       title: "Mass Production",
-      description: "Full production begins with strict quality control to bring your design to market.",
+      description: "Full mass production begins with strict quality control to bring your custom ceramic tableware designs to market efficiently.",
       image: "/alice.webp",
-      imageAlt: "Mass production of custom ceramic tableware"
+      imageAlt: "High-volume mass production of custom ceramic tableware with strict quality control for bulk food service orders"
     }
   ]
 
