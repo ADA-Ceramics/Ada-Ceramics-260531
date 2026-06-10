@@ -31,7 +31,7 @@ export function OemOdmClient() {
       step: 1,
       title: "Concept & Sketch",
       description: "We translate your ideas into detailed design sketches, ready for development.",
-      image: "/image/oem-odm/ceramic-custom-shape-design.webp",
+      image: "/image/oem-odm/ceramic-tableware-concept-sketch.webp",
       imageAlt: "Concept and sketch phase for custom ceramic dinnerware"
     },
     {
