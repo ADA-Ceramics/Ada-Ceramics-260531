@@ -121,12 +121,13 @@ export function OemOdmClient() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* 标题和描述 */}
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-normal text-[#1a1a2e] mb-6 leading-tight">
-            Custom Ceramic Tableware | OEM & ODM Manufacturing
+            OEM & ODM Custom Solution | Reliable One-Stop Custom Ceramic Tableware Manufacturer
           </h1>
           <p className="text-lg text-muted-foreground mb-10 max-w-4xl leading-relaxed">
-            We are a professional ceramic factory specializing in OEM and ODM manufacturing for ceramic tableware. 
-            From custom mugs and plates to complete dinnerware sets, we offer private label solutions with custom designs, 
-            logo printing, and packaging. Low MOQ from 500pcs, FDA certified, and fast delivery for global wholesalers.
+            ADA Ceramics are a professional ceramic factory specializing in OEM and ODM manufacturing for ceramic tableware. 
+            As a reliable daily ceramic tableware supplier with 30+ years production experience, we provide full custom services
+            including shape design, pattern printing, Pantone glaze matching and custom export packaging.
+            All custom dinnerware passes FDA, LFGB and CA65 certification, with flexible MOQ starting from 500pcs and on-time worldwide shipment.
           </p>
           
           {/* 按钮组 */}
