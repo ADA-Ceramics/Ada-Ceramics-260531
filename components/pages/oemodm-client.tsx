@@ -121,7 +121,8 @@ export function OemOdmClient() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* 标题和描述 */}
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-normal text-[#1a1a2e] mb-6 leading-tight">
-            OEM & ODM Custom Solution | Reliable One-Stop Custom Ceramic Tableware Manufacturer
+            OEM & ODM Custom Solution/>
+            | Reliable One-Stop Custom Ceramic Tableware Manufacturer
           </h1>
           <p className="text-lg text-muted-foreground mb-10 max-w-4xl leading-relaxed">
             ADA Ceramics are a professional ceramic factory specializing in OEM and ODM manufacturing for ceramic tableware. 
