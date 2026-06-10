@@ -205,7 +205,7 @@ export function OemOdmClient() {
         </div>
       </section>
 
-      {/* 3. 轻定制流程板块 - 已改为横向带图片的6步流程 */}
+      {/* 3. 轻定制流程板块 - 已改为横向带图片的6步流程（已删除连接线） */}
       <section className="py-20 lg:py-28 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* 板块标题与介绍 */}
@@ -221,12 +221,9 @@ export function OemOdmClient() {
             </p>
           </div>
 
-          {/* 横向流程展示 - 桌面端 */}
+          {/* 横向流程展示 - 桌面端（已删除连接线） */}
           <div className="hidden lg:block">
             <div className="relative">
-              {/* 连接线 */}
-              <div className="absolute top-1/3 left-[8%] right-[8%] h-0.5 bg-[#8b7355]/20" />
-              
               <div className="grid grid-cols-6 gap-4">
                 {lightCustomSteps.map((step) => (
                   <div key={step.step} className="relative text-center">
