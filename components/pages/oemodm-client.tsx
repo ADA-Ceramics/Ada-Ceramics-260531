@@ -54,6 +54,46 @@ export function OemOdmClient() {
     }
   ]
 
+  // 轻定制流程数据（新增）
+  const lightCustomSteps = [
+    {
+      step: 1,
+      title: "Browse & Select",
+      description: "Browse our catalog and select your preferred ceramic tableware shapes and styles.",
+      image: "/color-glaze.webp" // 占位图，后期可替换
+    },
+    {
+      step: 2,
+      title: "Share Requirements",
+      description: "Share product model numbers, custom logo files, packaging needs or modification ideas with our sales team.",
+      image: "/alice.webp"
+    },
+    {
+      step: 3,
+      title: "Confirm Plan",
+      description: "We review your request and finalize the customization plan with you.",
+      image: "/kiln-transformation.webp"
+    },
+    {
+      step: 4,
+      title: "Create Samples",
+      description: "We create custom samples based on your light customization plan.",
+      image: "/image/oem-odm/ceramic-custom-shape-design.webp"
+    },
+    {
+      step: 5,
+      title: "Approve Samples",
+      description: "You review and approve the samples to confirm all details.",
+      image: "/color-glaze.webp"
+    },
+    {
+      step: 6,
+      title: "Mass Production",
+      description: "After sample approval, we proceed with mass production for your custom order.",
+      image: "/alice.webp"
+    }
+  ]
+
   // 定制流程数据
   const processSteps = [
     { step: 1, icon: ClipboardCheck, title: "Inquiry", description: "Share your requirements" },
@@ -165,52 +205,90 @@ export function OemOdmClient() {
         </div>
       </section>
 
-      {/* 3. 服务简介区 - 电脑端左右分栏（已替换为轻定制介绍） */}
+      {/* 3. 轻定制流程板块 - 已改为横向带图片的6步流程 */}
       <section className="py-20 lg:py-28 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            {/* 左侧文字（已替换为轻定制内容） */}
-            <div>
-              <h2 className="text-3xl sm:text-4xl font-serif font-normal text-[#1a1a2e] mb-6">
-                Light Customization · Simple Personalized Ceramic Tableware Services
-              </h2>
-              <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-                We offer flexible light customization services for ceramic tableware with no mold fees, lower MOQs, and faster lead times. These solutions are ideal for personalized upgrades based on our existing mature shapes, including custom logo printing, branded packaging, and minor appearance modifications.
-              </p>
-              <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-                The light customization process is simple and straightforward:
-              </p>
-              <ol className="text-lg text-muted-foreground mb-8 leading-relaxed pl-6 space-y-3 list-decimal">
-                <li>Browse our catalog and select your preferred ceramic tableware shapes and styles.</li>
-                <li>Share product model numbers, custom logo files, packaging requirements, or modification ideas with our sales team.</li>
-                <li>We create custom samples based on your light customization plan.</li>
-                <li>After sample approval, we proceed with mass production for your custom order.</li>
-              </ol>
-              <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-                For inquiries about our light customization services for ceramic tableware, contact our professional sales team for one-on-one support with your project.
-              </p>
+          {/* 板块标题与介绍 */}
+          <div className="text-center mb-16">
+            <h2 className="text-3xl sm:text-4xl font-serif font-normal text-[#1a1a2e] mb-4">
+              Light Customization · Simple Personalized Ceramic Tableware Services
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto mb-6">
+              We offer flexible light customization services with no mold fees, lower MOQs, and faster lead times. These solutions are ideal for personalized upgrades based on our existing mature shapes, including custom logo printing, branded packaging, and minor appearance modifications.
+            </p>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              The light customization process is simple and straightforward:
+            </p>
+          </div>
+
+          {/* 横向流程展示 - 桌面端 */}
+          <div className="hidden lg:block">
+            <div className="relative">
+              {/* 连接线 */}
+              <div className="absolute top-1/3 left-[8%] right-[8%] h-0.5 bg-[#8b7355]/20" />
               
-              {/* 保留原按钮Tell Us Your Needs及交互逻辑 */}
-              <div className="mt-8">
-                <Link
-                  href="/contact?type=inquiry"
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-[#8b7355] text-white font-medium rounded-lg hover:bg-[#6d5a43] transition-colors"
-                >
-                  Tell Us Your Needs
-                  <ArrowRight className="w-5 h-5" />
-                </Link>
+              <div className="grid grid-cols-6 gap-4">
+                {lightCustomSteps.map((step) => (
+                  <div key={step.step} className="relative text-center">
+                    {/* 图片区域 */}
+                    <div className="relative z-10 aspect-square mb-4 rounded-xl overflow-hidden shadow-md mx-auto w-full max-w-40">
+                      <Image
+                        src={step.image}
+                        alt={`Step ${step.step}: ${step.title}`}
+                        fill
+                        className="object-cover"
+                      />
+                      {/* 步骤号 */}
+                      <div className="absolute -top-2 -left-2 w-10 h-10 rounded-full bg-[#8b7355] text-white text-lg font-bold flex items-center justify-center shadow-lg">
+                        {step.step}
+                      </div>
+                    </div>
+                    <h3 className="text-lg font-semibold text-[#1a1a2e] mb-2">
+                      {step.title}
+                    </h3>
+                    <p className="text-sm text-muted-foreground">
+                      {step.description}
+                    </p>
+                  </div>
+                ))}
               </div>
             </div>
-            
-            {/* 右侧图片 */}
-            <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
-              <Image
-                src="/color-glaze.webp"
-                alt="ADA Ceramics OEM ODM service - custom ceramic tableware production"
-                fill
-                className="object-cover"
-              />
-            </div>
+          </div>
+
+          {/* 垂直列表 - 移动端 */}
+          <div className="lg:hidden space-y-8">
+            {lightCustomSteps.map((step) => (
+              <div key={step.step} className="flex flex-col items-center text-center">
+                <div className="relative aspect-square w-full max-w-64 mb-4 rounded-xl overflow-hidden shadow-md">
+                  <Image
+                    src={step.image}
+                    alt={`Step ${step.step}: ${step.title}`}
+                    fill
+                    className="object-cover"
+                  />
+                  <div className="absolute -top-2 -left-2 w-10 h-10 rounded-full bg-[#8b7355] text-white text-lg font-bold flex items-center justify-center shadow-lg">
+                    {step.step}
+                  </div>
+                </div>
+                <h3 className="text-lg font-semibold text-[#1a1a2e] mb-2">
+                  {step.title}
+                </h3>
+                <p className="text-muted-foreground">
+                  {step.description}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          {/* 按钮 - 保留原按钮Tell Us Your Needs及交互逻辑 */}
+          <div className="mt-16 text-center">
+            <Link
+              href="/contact?type=inquiry"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-[#8b7355] text-white font-medium rounded-lg hover:bg-[#6d5a43] transition-colors shadow-lg"
+            >
+              Tell Us Your Needs
+              <ArrowRight className="w-5 h-5" />
+            </Link>
           </div>
         </div>
       </section>
