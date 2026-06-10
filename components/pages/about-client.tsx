@@ -59,7 +59,7 @@ export function AboutClient() {
               </span>
             </h1>
             <p className="text-lg md:text-xl leading-relaxed" style={{ color: '#6b7280' }}>
-              With over 20 years of experience, we are a professional ceramic tableware manufacturer providing high-quality products for global clients.
+              With over 30 years of experience, we are a professional ceramic tableware manufacturer providing high-quality products for global clients.
             </p>
           </div>
         </div>
