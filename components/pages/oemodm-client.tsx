@@ -45,7 +45,7 @@ export function OemOdmClient() {
       step: 3,
       title: "Mold Design",
       description: "Custom precision ceramic molds are engineered to translate your bespoke ceramic tableware designs into production-ready shapes.",
-      image: "/image/oem-odm/3d-modeling-bespoke-ceramic-tableware.webp",
+      image: "/image/oem-odm/custom-precision-ceramic-molds-for-bespoke-tableware-china-manufacturer.webp",
       imageAlt: "Custom mold design for bespoke ceramic tableware, translating 3D designs into production-ready ceramic shapes"
     },
     {
