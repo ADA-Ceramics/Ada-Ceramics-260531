@@ -74,7 +74,7 @@ export function OemOdmClient() {
       step: 3,
       title: "Confirm Plan",
       description: "We review your request and finalize the customization plan with you.",
-      image: "/kiln-transformation.webp",
+      image: "/image/oem-odm/oem-odm-custom-ceramic-coffee-cup-with-logo-design.webp",
       imageAlt: "Confirm custom ceramic tableware plan with ADA Ceramics"
     },
     {
