@@ -165,28 +165,32 @@ export function OemOdmClient() {
         </div>
       </section>
 
-      {/* 3. 服务简介区 - 电脑端左右分栏 */}
+      {/* 3. 服务简介区 - 电脑端左右分栏（已替换为轻定制介绍） */}
       <section className="py-20 lg:py-28 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            {/* 左侧文字 */}
+            {/* 左侧文字（已替换为轻定制内容） */}
             <div>
               <h2 className="text-3xl sm:text-4xl font-serif font-normal text-[#1a1a2e] mb-6">
-                Your Trusted Partner for Custom Ceramic Solutions
+                Light Customization · Simple Personalized Ceramic Tableware Services
               </h2>
               <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-                ADA Ceramics specializes in OEM and ODM manufacturing for ceramic tableware. 
-                Whether you need custom mugs for your coffee shop chain, branded dinnerware 
-                for your hotel group, or private-label products for retail — we have the 
-                expertise and capacity to deliver.
+                We offer flexible light customization services for ceramic tableware with no mold fees, lower MOQs, and faster lead times. These solutions are ideal for personalized upgrades based on our existing mature shapes, including custom logo printing, branded packaging, and minor appearance modifications.
               </p>
+              <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
+                The light customization process is simple and straightforward:
+              </p>
+              <ol className="text-lg text-muted-foreground mb-8 leading-relaxed pl-6 space-y-3 list-decimal">
+                <li>Browse our catalog and select your preferred ceramic tableware shapes and styles.</li>
+                <li>Share product model numbers, custom logo files, packaging requirements, or modification ideas with our sales team.</li>
+                <li>We create custom samples based on your light customization plan.</li>
+                <li>After sample approval, we proceed with mass production for your custom order.</li>
+              </ol>
               <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-                Our state-of-the-art facility in Chaozhou, China&apos;s ceramic capital, 
-                combines traditional craftsmanship with modern production technology. 
-                Every piece undergoes rigorous quality control to meet international standards.
+                For inquiries about our light customization services for ceramic tableware, contact our professional sales team for one-on-one support with your project.
               </p>
               
-              {/* Tell Us Your Needs 按钮 */}
+              {/* 保留原按钮Tell Us Your Needs及交互逻辑 */}
               <div className="mt-8">
                 <Link
                   href="/contact?type=inquiry"
