@@ -30,8 +30,8 @@ export function OemOdmClient() {
     {
       title: "Custom Shape & Design",
       description: "Unique shapes, sizes and styles tailored to your brand",
-       image: "/image/oem-odm/ceramic-custom-shape-design.webp",
-  imageAlt: "Custom ceramic shape and design, 3D modeling, prototype development", // 加逗号
+      image: "/image/oem-odm/ceramic-custom-shape-design.webp",
+      imageAlt: "Custom ceramic shape and design, 3D modeling, prototype development",
       features: ["3D modeling", "Prototype development", "Exclusive molds"]
     },
     {
@@ -121,7 +121,7 @@ export function OemOdmClient() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* 标题和描述 */}
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-normal text-[#1a1a2e] mb-6 leading-tight">
-            OEM & ODM Custom Solution/>
+            OEM & ODM Custom Solution<br />
             | Reliable One-Stop Custom Ceramic Tableware Manufacturer
           </h1>
           <p className="text-lg text-muted-foreground mb-10 max-w-4xl leading-relaxed">
@@ -236,7 +236,7 @@ export function OemOdmClient() {
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
                   />
-                  {/* ���号标签 */}
+                  {/* 序号标签 */}
                   <div className="absolute top-4 left-4 w-10 h-10 rounded-full bg-[#8b7355] flex items-center justify-center text-white font-semibold text-lg">
                     {index + 1}
                   </div>
