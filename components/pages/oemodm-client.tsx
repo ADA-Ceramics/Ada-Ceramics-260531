@@ -217,7 +217,8 @@ export function OemOdmClient() {
           {/* 板块标题与介绍 */}
           <div className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl font-serif font-normal text-[#1a1a2e] mb-4">
-              Logo Customization | Simple Personalized Ceramic Tableware Services
+              Light Customization<br />
+              | Simple Personalized & Logo Custom Ceramic Tableware Services
             </h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto mb-6">
               We offer flexible light customization services with no mold fees, lower MOQ, and faster lead times. 
