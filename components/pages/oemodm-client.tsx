@@ -67,7 +67,7 @@ export function OemOdmClient() {
       step: 2,
       title: "Share Requirements",
       description: "Share product model numbers, custom logo files, packaging needs or modification ideas with our sales team.",
-      image: "/custom-ceramic-plate-size.webp",
+      image: "/image/oem-odm/custom-ceramic-plate-size.webp",
       imageAlt: "Share custom ceramic tableware requirements with ADA Ceramics sales team"
     },
     {
