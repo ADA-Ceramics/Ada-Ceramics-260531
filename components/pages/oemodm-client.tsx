@@ -25,32 +25,49 @@ import { useState } from "react"
 export function OemOdmClient() {
   const [openFaq, setOpenFaq] = useState<number | null>(null)
 
-  // 定制服务数据 - 2x2图片卡片网格
-  const customServices = [
+  // 1. 全定制流程数据（6步，对应纵向时间轴）
+  const fullCustomSteps = [
     {
-      title: "Custom Shape & Design",
-      description: "Unique shapes, sizes and styles tailored to your brand",
+      step: 1,
+      title: "Concept & Sketch",
+      description: "We translate your ideas into detailed design sketches, ready for development.",
       image: "/image/oem-odm/ceramic-custom-shape-design.webp",
-      imageAlt: "Custom ceramic shape and design, 3D modeling, prototype development",
-      features: ["3D modeling", "Prototype development", "Exclusive molds"]
+      imageAlt: "Concept and sketch phase for custom ceramic dinnerware"
     },
     {
-      title: "Logo & Pattern Printing",
-      description: "High-quality decal, screen printing and embossing",
-      image: "/color-glaze.webp",
-      features: ["Full-color printing", "Gold/silver accents", "Under-glaze safe"]
+      step: 2,
+      title: "Mold Design",
+      description: "Custom molds are created to produce your exclusive ceramic shapes.",
+      image: "/image/oem-odm/custom-ceramic-plate-size.webp",
+      imageAlt: "Custom mold design for unique ceramic tableware shapes"
     },
     {
-      title: "Custom Colors & Glazes",
-      description: "Exclusive colors, textures and reactive glazes",
+      step: 3,
+      title: "3D Modeling",
+      description: "Digital 3D models are developed to visualize and refine your design.",
       image: "/kiln-transformation.webp",
-      features: ["Pantone matching", "Matte/glossy finish", "Reactive glazes"]
+      imageAlt: "3D modeling for custom ceramic dinnerware"
     },
     {
-      title: "Private Label Packaging",
-      description: "Complete branding with custom packaging solutions",
+      step: 4,
+      title: "Sample Prototyping",
+      description: "First article samples are produced for your review and approval.",
+      image: "/color-glaze.webp",
+      imageAlt: "Sample prototyping for custom ceramic tableware"
+    },
+    {
+      step: 5,
+      title: "Logo & Decoration",
+      description: "Custom logo printing, patterns, and glazes are applied to your specifications.",
+      image: "/image/oem-odm/oem-odm-custom-logo-catalog_.webp",
+      imageAlt: "Logo printing and decoration for custom ceramic dinnerware"
+    },
+    {
+      step: 6,
+      title: "Mass Production",
+      description: "Full production begins with strict quality control to bring your design to market.",
       image: "/alice.webp",
-      features: ["Gift boxes", "Retail packaging", "Bulk cartons"]
+      imageAlt: "Mass production of custom ceramic tableware"
     }
   ]
 
@@ -299,7 +316,7 @@ export function OemOdmClient() {
         </div>
       </section>
 
-      {/* 4. 定制服务板块 - 2x2图片卡片网格 */}
+      {/* 4. 全定制板块 - 改为纵向时间轴布局 */}
       <section className="py-20 lg:py-28 bg-[#f8f7f4]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
@@ -310,56 +327,69 @@ export function OemOdmClient() {
               From concept sketches and mold making to full production, we bring your exclusive ceramic dinnerware design to market.
             </p>
           </div>
-          
-          {/* 2x2 图片网格布局 */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-            {customServices.map((service, index) => (
+
+          {/* 纵向时间轴 - 桌面端 */}
+          <div className="hidden lg:block space-y-12">
+            {fullCustomSteps.map((step, index) => (
               <div 
-                key={service.title}
-                className="group relative bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300"
+                key={step.step}
+                className={`flex items-center gap-12 ${index % 2 === 1 ? 'flex-row-reverse' : ''}`}
               >
-                {/* 图片区域 */}
-                <div className="relative aspect-[16/10] overflow-hidden">
-                  <Image
-                    src={service.image}
-                    alt={service.imageAlt}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  {/* 序号标签 */}
-                  <div className="absolute top-4 left-4 w-10 h-10 rounded-full bg-[#8b7355] flex items-center justify-center text-white font-semibold text-lg">
-                    {index + 1}
+                {/* 左侧步骤信息 */}
+                <div className="flex-1">
+                  <div className="flex items-start gap-4">
+                    {/* 圆形序号 */}
+                    <div className="flex-shrink-0 w-12 h-12 rounded-full bg-[#8b7355] text-white text-xl font-bold flex items-center justify-center shadow-lg">
+                      {step.step}
+                    </div>
+                    <div>
+                      <h3 className="text-2xl font-bold text-[#1a1a2e] mb-2">{step.title}</h3>
+                      <p className="text-muted-foreground">{step.description}</p>
+                    </div>
                   </div>
                 </div>
-                
-                {/* 内容区域 */}
-                <div className="p-6 lg:p-8">
-                  <h3 className="text-xl lg:text-2xl font-semibold text-[#1a1a2e] mb-3">
-                    {service.title}
-                  </h3>
-                  <p className="text-muted-foreground mb-5 leading-relaxed">
-                    {service.description}
-                  </p>
-                  
-                  {/* 特点标签 */}
-                  <div className="flex flex-wrap gap-2">
-                    {service.features.map((feature) => (
-                      <span 
-                        key={feature}
-                        className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#8b7355]/10 text-[#8b7355] text-sm rounded-full"
-                      >
-                        <Check className="w-3.5 h-3.5" />
-                        {feature}
-                      </span>
-                    ))}
+                {/* 右侧图片 */}
+                <div className="flex-1">
+                  <div className="relative aspect-video rounded-2xl overflow-hidden shadow-lg">
+                    <Image
+                      src={step.image}
+                      alt={step.imageAlt}
+                      fill
+                      className="object-cover"
+                    />
                   </div>
                 </div>
               </div>
             ))}
           </div>
+
+          {/* 垂直列表 - 移动端 */}
+          <div className="lg:hidden space-y-12">
+            {fullCustomSteps.map((step) => (
+              <div key={step.step} className="space-y-4">
+                <div className="flex items-start gap-4">
+                  <div className="flex-shrink-0 w-10 h-10 rounded-full bg-[#8b7355] text-white text-lg font-bold flex items-center justify-center shadow-lg">
+                    {step.step}
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-[#1a1a2e] mb-2">{step.title}</h3>
+                    <p className="text-muted-foreground">{step.description}</p>
+                  </div>
+                </div>
+                <div className="relative aspect-video rounded-xl overflow-hidden shadow-md">
+                  <Image
+                    src={step.image}
+                    alt={step.imageAlt}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
           
-          {/* 底部按钮组 */}
-          <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4">
+          {/* 底部按钮组 - 完全保留原按钮文案、样式和交互 */}
+          <div className="mt-16 flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
               href="/en/products"
               className="inline-flex items-center gap-2 px-8 py-4 bg-white text-[#8b7355] text-lg font-medium rounded-lg border-2 border-[#8b7355] hover:bg-[#8b7355] hover:text-white transition-colors"
