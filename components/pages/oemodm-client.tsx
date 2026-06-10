@@ -55,7 +55,7 @@ export function OemOdmClient() {
   ]
 
   // 轻定制流程数据（已补充imageAlt）
-  const lightCustomSteps = [
+  const basicCustomSteps = [
     {
       step: 1,
       title: "Browse & Select",
@@ -80,7 +80,7 @@ export function OemOdmClient() {
     {
       step: 4,
       title: "Create Samples",
-      description: "We create custom samples based on your light customization artwork.",
+      description: "We create custom samples based on your basic customization artwork.",
       image: "/image/oem-odm/creat-sample.webp",
       imageAlt: "ADA Ceramics creating custom ceramic tableware samples"
     },
@@ -217,16 +217,16 @@ export function OemOdmClient() {
           {/* 板块标题与介绍 */}
           <div className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl font-serif font-normal text-[#1a1a2e] mb-4">
-              Light Customization<br />
-              | Simple Personalized & Logo Custom Ceramic Tableware Services
+              Basic Customization<br />
+              | Custom Logo, Color & Packaging for Ceramic Tableware
             </h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto mb-6">
-              We offer flexible light customization services with no mold fees, lower MOQ, and faster lead times. 
+              We offer flexible basic customization services with no mold fees, lower MOQ, and faster lead times.
               These solutions are ideal for personalized upgrades based on our existing mature shapes, 
-              including custom logo printing,different color customization, and branded packaging.
+              including custom logo printing, different color customization, and branded packaging.
             </p>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              The light customization process is simple and straightforward:
+              The basic customization process is simple and straightforward:
             </p>
           </div>
 
@@ -234,7 +234,7 @@ export function OemOdmClient() {
           <div className="hidden lg:block">
             <div className="relative">
               <div className="grid grid-cols-6 gap-4">
-                {lightCustomSteps.map((step) => (
+                {basicCustomSteps.map((step) => (
                   <div key={step.step} className="relative text-center">
                     {/* 图片区域 */}
                     <div className="relative z-10 aspect-square mb-4 rounded-xl overflow-hidden shadow-md mx-auto w-full max-w-40">
@@ -263,7 +263,7 @@ export function OemOdmClient() {
 
           {/* 垂直列表 - 移动端 */}
           <div className="lg:hidden space-y-8">
-            {lightCustomSteps.map((step) => (
+            {basicCustomSteps.map((step) => (
               <div key={step.step} className="flex flex-col items-center text-center">
                 <div className="relative aspect-square w-full max-w-64 mb-4 rounded-xl overflow-hidden shadow-md">
                   <Image
@@ -292,7 +292,7 @@ export function OemOdmClient() {
               href="/contact?type=inquiry"
               className="inline-flex items-center gap-2 px-8 py-4 bg-[#8b7355] text-white font-medium rounded-lg hover:bg-[#6d5a43] transition-colors shadow-lg"
             >
-              Tell Us Your Needs
+              Request Stock Catalog
               <ArrowRight className="w-5 h-5" />
             </Link>
           </div>
@@ -304,10 +304,10 @@ export function OemOdmClient() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl font-serif font-normal text-[#1a1a2e] mb-4">
-              Our Customization Services
+              Full Customization
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              From simple logo printing to complete product development — see what we can create for your brand.
+              From concept sketches and mold making to full production, we bring your exclusive ceramic dinnerware design to market.
             </p>
           </div>
           
