@@ -72,15 +72,15 @@ export function OemOdmClient() {
     },
     {
       step: 3,
-      title: "Confirm Plan",
-      description: "We review your request and finalize the customization plan with you.",
+      title: "Confirm artwork",
+      description: "We review your request and finalize the customization artwork with you.",
       image: "/image/oem-odm/oem-odm-custom-ceramic-coffee-cup-with-logo-design.webp",
-      imageAlt: "Confirm custom ceramic tableware plan with ADA Ceramics"
+      imageAlt: "Confirm custom ceramic tableware artwork with ADA Ceramics"
     },
     {
       step: 4,
       title: "Create Samples",
-      description: "We create custom samples based on your light customization plan.",
+      description: "We create custom samples based on your light customization artwork.",
       image: "/image/oem-odm/creat-sample.webp",
       imageAlt: "ADA Ceramics creating custom ceramic tableware samples"
     },
@@ -217,10 +217,12 @@ export function OemOdmClient() {
           {/* 板块标题与介绍 */}
           <div className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl font-serif font-normal text-[#1a1a2e] mb-4">
-              Light Customization · Simple Personalized Ceramic Tableware Services
+              Logo Customization | Simple Personalized Ceramic Tableware Services
             </h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto mb-6">
-              We offer flexible light customization services with no mold fees, lower MOQs, and faster lead times. These solutions are ideal for personalized upgrades based on our existing mature shapes, including custom logo printing, branded packaging, and minor appearance modifications.
+              We offer flexible light customization services with no mold fees, lower MOQ, and faster lead times. 
+              These solutions are ideal for personalized upgrades based on our existing mature shapes, 
+              including custom logo printing,different color customization, and branded packaging.
             </p>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
               The light customization process is simple and straightforward:
