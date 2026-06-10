@@ -124,12 +124,28 @@ export function OemOdmClient() {
             OEM & ODM Custom Solution<br />
             | Reliable One-Stop Custom Ceramic Tableware Manufacturer
           </h1>
-          <p className="text-lg text-muted-foreground mb-10 max-w-4xl leading-relaxed">
+          <p className="text-lg text-muted-foreground mb-6 max-w-4xl leading-relaxed">
             ADA Ceramics are a professional ceramic factory specializing in OEM and ODM manufacturing for ceramic tableware. 
             As a reliable daily ceramic tableware supplier with 30+ years production experience, we provide full custom services
             including shape design, pattern printing, Pantone glaze matching and custom export packaging.
             All custom dinnerware passes FDA, LFGB and CA65 certification, with flexible MOQ starting from 500pcs and on-time worldwide shipment.
           </p>
+          
+          {/* 新增：三个标签（移到这里） */}
+          <div className="flex flex-wrap gap-4 mb-8">
+            <div className="flex items-center gap-2 text-[#8b7355]">
+              <ShieldCheck className="w-5 h-5" />
+              <span className="font-medium">FDA Certified</span>
+            </div>
+            <div className="flex items-center gap-2 text-[#8b7355]">
+              <Factory className="w-5 h-5" />
+              <span className="font-medium">Own Factory</span>
+            </div>
+            <div className="flex items-center gap-2 text-[#8b7355]">
+              <Truck className="w-5 h-5" />
+              <span className="font-medium">Global Shipping</span>
+            </div>
+          </div>
           
           {/* 按钮组 */}
           <div className="flex flex-col sm:flex-row gap-4">
@@ -169,20 +185,6 @@ export function OemOdmClient() {
                 combines traditional craftsmanship with modern production technology. 
                 Every piece undergoes rigorous quality control to meet international standards.
               </p>
-              <div className="flex flex-wrap gap-4">
-                <div className="flex items-center gap-2 text-[#8b7355]">
-                  <ShieldCheck className="w-5 h-5" />
-                  <span className="font-medium">FDA Certified</span>
-                </div>
-                <div className="flex items-center gap-2 text-[#8b7355]">
-                  <Factory className="w-5 h-5" />
-                  <span className="font-medium">Own Factory</span>
-                </div>
-                <div className="flex items-center gap-2 text-[#8b7355]">
-                  <Truck className="w-5 h-5" />
-                  <span className="font-medium">Global Shipping</span>
-                </div>
-              </div>
               
               {/* Tell Us Your Needs 按钮 */}
               <div className="mt-8">
