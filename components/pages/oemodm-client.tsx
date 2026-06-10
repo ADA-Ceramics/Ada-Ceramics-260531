@@ -36,17 +36,17 @@ export function OemOdmClient() {
     },
     {
       step: 2,
-      title: "Mold Design",
-      description: "Custom molds are created to produce your exclusive ceramic shapes.",
-      image: "/image/oem-odm/custom-ceramic-plate-size.webp",
-      imageAlt: "Custom mold design for unique ceramic tableware shapes"
+      title: "3D Modeling & Visualization",
+      description: "Digital 3D models are developed to visualize and refine your bespoke ceramic tableware designs.",
+      image: "/image/oem-odm/3d-modeling-bespoke-ceramic-tableware.webp",
+      imageAlt: "Digital 3D modeling for bespoke ceramic tableware design visualization"
     },
     {
       step: 3,
-      title: "3D Modeling",
-      description: "Digital 3D models are developed to visualize and refine your design.",
-      image: "/kiln-transformation.webp",
-      imageAlt: "3D modeling for custom ceramic dinnerware"
+      title: "Mold Design",
+      description: "Custom molds are created to produce your exclusive ceramic shapes.",
+      image: "/image/oem-odm/3d-modeling-bespoke-ceramic-tableware.webp",
+      imageAlt: "Custom mold design for unique ceramic tableware shapes"
     },
     {
       step: 4,
