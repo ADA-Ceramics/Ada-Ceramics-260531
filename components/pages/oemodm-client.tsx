@@ -81,21 +81,21 @@ export function OemOdmClient() {
       step: 4,
       title: "Create Samples",
       description: "We create custom samples based on your light customization plan.",
-      image: "/image/oem-odm/ceramic-custom-shape-design.webp",
+      image: "/image/oem-odm/creat-sample.webp",
       imageAlt: "ADA Ceramics creating custom ceramic tableware samples"
     },
     {
       step: 5,
       title: "Approve Samples",
       description: "You review and approve the samples to confirm all details.",
-      image: "/color-glaze.webp",
+      image: "/image/oem-odm/approve-samples.webp",
       imageAlt: "Review and approve custom ceramic tableware samples"
     },
     {
       step: 6,
       title: "Mass Production",
       description: "After sample approval, we proceed with mass production for your custom order.",
-      image: "/alice.webp",
+      image: "/image/oem-odm/alice.webp",
       imageAlt: "ADA Ceramics mass production of custom ceramic tableware"
     }
   ]
