@@ -95,7 +95,7 @@ export function OemOdmClient() {
       step: 6,
       title: "Mass Production",
       description: "After sample approval, we proceed with mass production for your custom order.",
-      image: "/image/oem-odm/alice.webp",
+      image: "/image/oem-odm/mass-production.webp",
       imageAlt: "ADA Ceramics mass production of custom ceramic tableware"
     }
   ]
