@@ -54,43 +54,49 @@ export function OemOdmClient() {
     }
   ]
 
-  // 轻定制流程数据（新增）
+  // 轻定制流程数据（已补充imageAlt）
   const lightCustomSteps = [
     {
       step: 1,
       title: "Browse & Select",
       description: "Browse our catalog and select your preferred ceramic tableware shapes and styles.",
-      image: "/color-glaze.webp" // 占位图，后期可替换
+      image: "/color-glaze.webp",
+      imageAlt: "Browse ADA Ceramics catalog to select ceramic tableware shapes and styles"
     },
     {
       step: 2,
       title: "Share Requirements",
       description: "Share product model numbers, custom logo files, packaging needs or modification ideas with our sales team.",
-      image: "/alice.webp"
+      image: "/custom-ceramic-plate-size.webp",
+      imageAlt: "Share custom ceramic tableware requirements with ADA Ceramics sales team"
     },
     {
       step: 3,
       title: "Confirm Plan",
       description: "We review your request and finalize the customization plan with you.",
-      image: "/kiln-transformation.webp"
+      image: "/kiln-transformation.webp",
+      imageAlt: "Confirm custom ceramic tableware plan with ADA Ceramics"
     },
     {
       step: 4,
       title: "Create Samples",
       description: "We create custom samples based on your light customization plan.",
-      image: "/image/oem-odm/ceramic-custom-shape-design.webp"
+      image: "/image/oem-odm/ceramic-custom-shape-design.webp",
+      imageAlt: "ADA Ceramics creating custom ceramic tableware samples"
     },
     {
       step: 5,
       title: "Approve Samples",
       description: "You review and approve the samples to confirm all details.",
-      image: "/color-glaze.webp"
+      image: "/color-glaze.webp",
+      imageAlt: "Review and approve custom ceramic tableware samples"
     },
     {
       step: 6,
       title: "Mass Production",
       description: "After sample approval, we proceed with mass production for your custom order.",
-      image: "/alice.webp"
+      image: "/alice.webp",
+      imageAlt: "ADA Ceramics mass production of custom ceramic tableware"
     }
   ]
 
@@ -231,7 +237,7 @@ export function OemOdmClient() {
                     <div className="relative z-10 aspect-square mb-4 rounded-xl overflow-hidden shadow-md mx-auto w-full max-w-40">
                       <Image
                         src={step.image}
-                        alt={`Step ${step.step}: ${step.title}`}
+                        alt={step.imageAlt}
                         fill
                         className="object-cover"
                       />
@@ -259,7 +265,7 @@ export function OemOdmClient() {
                 <div className="relative aspect-square w-full max-w-64 mb-4 rounded-xl overflow-hidden shadow-md">
                   <Image
                     src={step.image}
-                    alt={`Step ${step.step}: ${step.title}`}
+                    alt={step.imageAlt}
                     fill
                     className="object-cover"
                   />
@@ -313,7 +319,7 @@ export function OemOdmClient() {
                 <div className="relative aspect-[16/10] overflow-hidden">
                   <Image
                     src={service.image}
-                    alt={`${service.title} - ceramic customization example`}
+                    alt={service.imageAlt}
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
                   />
