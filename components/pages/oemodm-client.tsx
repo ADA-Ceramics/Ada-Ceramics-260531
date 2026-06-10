@@ -32,7 +32,7 @@ export function OemOdmClient() {
       title: "Concept & Sketch",
       description: "We translate your ideas into detailed design sketches, ready for development.",
       image: "/image/oem-odm/ceramic-tableware-concept-sketch.webp",
-      imageAlt: "Concept and sketch phase for custom ceramic dinnerware"
+      imageAlt: "Concept and sketch phase for custom ceramic tableware"
     },
     {
       step: 2,
@@ -65,8 +65,8 @@ export function OemOdmClient() {
     {
       step: 6,
       title: "Mass Production",
-      description: "Full mass production begins with strict quality control to bring your custom ceramic tableware designs to market efficiently.",
-      image: "/alice.webp",
+      description: "Full mass production with strict quality control to bring your custom ceramic tableware designs to market efficiently.",
+      image: "/image/oem-odm/bulk-custom-ceramic-tableware-china-manufacturer.webp",
       imageAlt: "High-volume mass production of custom ceramic tableware with strict quality control for bulk food service orders"
     }
   ]
