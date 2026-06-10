@@ -60,7 +60,7 @@ export function OemOdmClient() {
       step: 1,
       title: "Browse & Select",
       description: "Browse our catalog and select your preferred ceramic tableware shapes and styles.",
-      image: "/color-glaze.webp",
+      image: "/image/oem-odm/oem-odm-custom-logo-catalog_.webp",
       imageAlt: "Browse ADA Ceramics catalog to select ceramic tableware shapes and styles"
     },
     {
