@@ -8,15 +8,11 @@ import {
   ArrowRight,
   Shield,
   Award,
-  Truck,
   Package,
   Mail,
   Phone,
   MapPin,
   Globe,
-  Pen,
-  Palette,
-  Box,
   Check,
   Send,
 } from "lucide-react"
@@ -85,7 +81,17 @@ Details: ${formData.details}`;
   return (
     <div className="min-h-screen bg-white">
       {showSuccessModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
+       <div 
+  className="fixed inset-0 z-50 flex items-center justify-center bg-black/50"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="success-modal-title"
+>
+  <div className="bg-white rounded-xl p-8 max-w-md mx-4 text-center shadow-2xl">
+    <h3 id="success-modal-title" className="text-xl font-semibold text-gray-900 mb-2">Message Sent Successfully!</h3>
+    {/* 内部内容完全不变 */}
+  </div>
+</div>
           <div className="bg-white rounded-xl p-8 max-w-md mx-4 text-center shadow-2xl">
             <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
               <Check className="w-8 h-8 text-green-600" />
@@ -101,7 +107,7 @@ Details: ${formData.details}`;
         <div className="absolute inset-0 bg-[#f5f3ef]">
           <Image
             src="/premium_beige_ceramic_plate_.webp"
-            alt="Wholesale ceramic tableware & porcelain dinnerware bulk export supplier"
+            alt="Beige ceramic plate tableware for OEM ODM custom restaurant and hotel use"
             fill
             priority
             className="object-cover object-top opacity-60"
@@ -117,7 +123,7 @@ Details: ${formData.details}`;
 
           <h1 className="mb-6">
             <span className="block font-serif text-[56px] text-[#1a1a1a] leading-tight tracking-tight">
-              Premium Custom & Wholesale Ceramic Tableware
+              Premium Custom & Wholesale Tableware
             </span>
             <span className="block font-serif text-[56px] text-[#8b7355] leading-tight tracking-tight mt-2">
               for Global Brands & Horeca
@@ -125,7 +131,7 @@ Details: ${formData.details}`;
           </h1>
 
           <p className="text-[17px] text-gray-600 leading-relaxed max-w-[640px] mx-auto mb-10">
-            Professional ceramic manufacturer offering custom OEM/ODM solutions, FDA/LFGB certified dinnerware, and worldwide shipping.
+              Professional tableware manufacturer providing OEM/ODM services, FDA and LFGB certified products with global delivery.
           </p>
 
           <div className="flex items-center justify-center flex-wrap gap-4 mb-12">
@@ -167,7 +173,7 @@ Details: ${formData.details}`;
             <p className="text-[#8b7355] text-sm font-semibold uppercase tracking-wider mb-3">Our Collections</p>
             <h2 className="font-serif text-[56px] text-[#1a1a1a] mb-4">Standard Collections & Custom Solutions</h2>
             <p className="text-gray-600 text-base max-w-[600px] mx-auto leading-relaxed">
-              Explore our standard ceramic tableware collections — all fully customizable with custom logos, glazes, and packaging for your brand, restaurant, or retail business.
+              Browse our standard tableware collections, fully customizable with logos, glazes and packaging for brands, restaurants and retail stores.
             </p>
           </div>
 
@@ -245,11 +251,11 @@ Details: ${formData.details}`;
               </div>
             </div>
             
-            <div className="flex rounded-2xl overflow-hidden" style={{ aspectRatio: '3/2' }}>
+       <div className="flex rounded-2xl overflow-hidden aspect-[3/2]">
               <div className="relative w-[60%] h-full">
                 <Image 
                   src="/chinese-ceraimc-manufacturer.webp" 
-                  alt="White ceramic dinnerware plates and bowls wholesale" 
+                  alt="Ceramic factory building exterior for OEM ODM tableware production" 
                   fill
                   className="object-cover"
                   sizes="(max-width: 1024px) 60vw, 30vw"
@@ -259,7 +265,7 @@ Details: ${formData.details}`;
                 <div className="relative h-1/2">
                   <Image 
                     src="/ceramic-manufacturer.webp" 
-                    alt="ADA Ceramics factory building exterior" 
+                    alt="Modern ceramic tableware production line for OEM ODM orders" 
                     fill
                     className="object-cover"
                     sizes="(max-width: 1024px) 40vw, 20vw"
@@ -268,7 +274,7 @@ Details: ${formData.details}`;
                 <div className="relative h-1/2">
                   <Image 
                     src="/high-quality-ceramic-manufacturer.webp" 
-                    alt="Colorful ceramic coffee cups and saucers" 
+                    alt="Skilled worker inspecting custom ceramic tableware quality" 
                     fill
                     className="object-cover"
                     sizes="(max-width: 1024px) 40vw, 20vw"
@@ -295,7 +301,7 @@ Details: ${formData.details}`;
           
           <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
             {[
-              { title: "Hotels & Resorts", desc: "Bulk order friendly, durable designs, and custom branded options for high-volume commercial use", image: "/porcelain-tableware-for-hotel-restore.webp", alt: "Ceramic tableware for hotels and resorts" },
+              { title: "Hotels & Resorts", desc: "Bulk order friendly, durable designs, and custom branded options for high-volume commercial use", image: "/porcelain-tableware-for-hotel-restore.webp", alt: "Tableware for hotel and resort use" },
               { title: "Restaurants", desc: "Chip-resistant dinnerware + stackable designs for busy kitchens, available with custom logos and colors", image: "/porcelain-tableware-for-restaurants.webp", alt: "Ceramic plates and bowls for restaurants" },
               { title: "Cafes & Bistros", desc: "Custom branding options + stackable for space-saving storage, perfect for your cafe’s unique identity", image: "/coffee-cup-cafe.webp", alt: "Ceramic mugs and cups for cafes" },
               { title: "Catering Services", desc: "Bulk serving dishes + easy-to-clean ware for events, with custom sizes and designs available", image: "/ceramic-plates-for-catering-service.webp", alt: "Bulk ceramic tableware for catering" },
@@ -350,7 +356,7 @@ Details: ${formData.details}`;
                 <Shield size={24} className="text-white" />
               </div>
               <h3 className="text-lg font-semibold text-[#1a1a1a] mb-3 leading-snug">Certified Products</h3>
-              <p className="text-gray-400 text-sm leading-relaxed">All products meet FDA, LFGB and international food safety standards，even for fully custom designs.</p>
+              <p className="text-gray-400 text-sm leading-relaxed">All products meet FDA, LFGB and international food safety standards, even for fully custom designs.</p>
             </div>
             <div className="bg-white rounded-xl p-7 border border-gray-200">
               <div className="w-12 h-12 bg-gray-800 rounded-lg flex items-center justify-center mb-6">
@@ -449,7 +455,7 @@ Details: ${formData.details}`;
         href="/en/oem-odm"
         className="inline-flex items-center gap-2 px-6 py-3 bg-[#8b7355] text-white font-medium rounded-lg hover:bg-[#6d5a43] transition-colors"
       >
-        Get Custom Services
+        Get Custom Tableware Solutions
         <ArrowRight className="w-5 h-5" />
       </Link>
          </div>
