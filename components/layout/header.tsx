@@ -9,11 +9,11 @@ import Image from "next/image"
 
 // 产品分类数据 - 链接到二级分类页
 const PRODUCT_CATEGORIES = [
-  { id: "plates", name: "Wholesale Plates", description: "Dinner, dessert, soup & serving plates", slug: "plates" },
-  { id: "bowls", name: "Wholesale Bowls", description: "Soup, salad, ramen & snack bowls", slug: "bowls" },
-  { id: "sets", name: "Wholesale Dinnerware Sets", description: "Daily & restaurant tableware sets", slug: "dinnerware-sets" },
-  { id: "cups", name: "Wholesale Cups & Mugs", description: "Ceramic mugs, coffee cups & water cups", slug: "cups-mugs" },
-  { id: "bakeware", name: "Wholesale Bakeware", description: "Baking dishes, ramekins & pie plates", slug: "bakeware" },
+  { id: "plates", name: "Wholesale Plates", description: "Dinner, dessert, soup & serving plates", slug: "wholesale-plates" },
+  { id: "bowls", name: "Wholesale Bowls", description: "Soup, salad, ramen & snack bowls", slug: "wholesale-bowls" },
+  { id: "sets", name: "Wholesale Dinnerware Sets", description: "Daily & restaurant tableware sets", slug: "wholesale-dinnerware-sets" },
+  { id: "cups", name: "Wholesale Cups & Mugs", description: "Ceramic mugs, coffee cups & water cups", slug: "wholesale-cups-mugs" },
+  { id: "bakeware", name: "Wholesale Bakeware", description: "Baking dishes, ramekins & pie plates", slug: "wholesale-bakeware" },
 ]
 
 // 严格对应你本地实际文件名
