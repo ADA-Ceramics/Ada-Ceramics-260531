@@ -23,7 +23,7 @@ export default function CategorySection({ categories }: CategorySectionProps) {
           {categories.map((category) => {
             const linkHref = category.slug === "oem-odm"
               ? "/en/oem-odm"
-              : category.slug === "all"
+              : category.slug === "all": category.slug === "plates" ? "/en/products/plates"
                 ? "/en/products"
                 : `/en/products/${category.slug}`
 
