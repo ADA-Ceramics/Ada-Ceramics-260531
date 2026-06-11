@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: "ADA Ceramics | OEM & ODM Ceramic Tableware Wholesale Factory",
   description:
     "Professional OEM/ODM ceramic tableware manufacturer. Wholesale plates, bowls, mugs and dinnerware sets for restaurants, hotels and global retailers.",
+  keywords: "custom ceramic tableware, OEM/ODM dinnerware, wholesale plates, mugs, bakeware",
 };
 
 const fixedCategories = [
