@@ -21,8 +21,9 @@ export default function CategorySection({ categories }: CategorySectionProps) {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {categories.map((category) => {
-           const linkHref = category.slug === "oem-odm" ? "/en/oem-odm" : category.slug === "all" ? "/en/products" : category.slug === "plates" ? "/en/products/plates" : /en/products/${category.slug};`
-            return (
+           const linkHref = category.slug === "oem-odm" ? "/en/oem-odm" : category.slug === "all" 
+  ? "/en/products" 
+  : `/en/products/${category.slug}`
               <Link
                 key={category.slug}
                 href={linkHref}
