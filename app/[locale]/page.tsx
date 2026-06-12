@@ -1,7 +1,9 @@
-import { HomeClient } from "@/components/home/home-client";
 import { Metadata } from "next";
+import dynamic from "next/dynamic";
+// 仅首屏核心组件直接导入
+import HeroSection from "@/components/home/HeroSection";
 
-// New SEO title and description
+// SEO 元数据（保留原有内容）
 export const metadata: Metadata = {
   title: "ADA Ceramics | OEM & ODM Ceramic Tableware Wholesale Factory",
   description:
@@ -60,6 +62,29 @@ const fixedCategories = [
   },
 ];
 
+// 非首屏组件统一懒加载
+const LazyCategorySection = dynamic(() => import("@/components/home/CategorySection"));
+const LazyFactorySection = dynamic(() => import("@/components/home/FactorySection"));
+const LazyIndustrySection = dynamic(() => import("@/components/home/IndustrySection"));
+const LazyWhyUsSection = dynamic(() => import("@/components/home/WhyUsSection"));
+const LazyCustomSection = dynamic(() => import("@/components/home/CustomSection"));
+const LazyBlogSection = dynamic(() => import("@/components/home/BlogSection"));
+// 表单+弹窗 懒加载（核心优化项）
+const LazyContactClient = dynamic(() => import("@/components/home/ContactClient"));
+const LazyFooter = dynamic(() => import("@/components/layout/footer"));
+
 export default function HomePage() {
-  return <HomeClient categories={fixedCategories} />;
+  return (
+    <>
+      <HeroSection />
+      <LazyCategorySection categories={fixedCategories} />
+      <LazyFactorySection />
+      <LazyIndustrySection />
+      <LazyWhyUsSection />
+      <LazyCustomSection />
+      <LazyBlogSection />
+      <LazyContactClient />
+      <LazyFooter />
+    </>
+  );
 }
