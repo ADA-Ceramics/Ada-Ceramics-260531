@@ -141,3 +141,27 @@
 header {
   z-index: 9999 !important;
 }
+@media (max-width: 1023px) {
+  header nav.hidden.lg\:flex,
+  header div.hidden.lg\:flex.gap-4 {
+    display: none !important;
+  }
+
+  header button.lg\:hidden {
+    display: block !important;
+  }
+  header div.lg\:hidden {
+    display: block !important;
+  }
+}
+
+header {
+  z-index: 9999 !important;
+}
+
+/* 新增：弹窗滚动锁定 */
+html.modal-open {
+  overflow: hidden;
+  position: fixed;
+  inset: 0;
+}
