@@ -89,23 +89,6 @@ export default function ContactClient() {
       setIsSubmitting(false)
       setShowSuccessModal(true)
     }
-
-    setTimeout(() => {
-      const whatsappMessage = `Hi, I'm ${formData.fullName} from ${formData.company}.
-Email: ${formData.email}
-Phone: ${formData.phone}
-Product Category: ${formData.category}
-Quantity: ${formData.quantity}
-Details: ${formData.details}`
-
-      const encodedMsg = encodeURIComponent(whatsappMessage)
-      window.open(
-        `https://wa.me/${WHATSAPP_PHONE}?text=${encodedMsg}`,
-        "_blank",
-        "noopener,noreferrer"
-      )
-      closeModal()
-    }, 2000)
   }
 
   const handleInputChange = (
