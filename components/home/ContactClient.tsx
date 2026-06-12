@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect, useCallback } from "react"
+import type { KeyboardEvent } from "react"
 import ContactSection from "./ContactSection"
 import SuccessModal from "./SuccessModal"
 import { WHATSAPP_PHONE, CONTACT_API } from "./types"
