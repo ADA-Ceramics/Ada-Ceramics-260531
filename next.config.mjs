@@ -19,7 +19,7 @@ const nextConfig = {
     return [
       {
         source: '/en/ab',
-        destination: '/en/about',
+        destination: 'en/about',
         permanent: true,
       },
       {
