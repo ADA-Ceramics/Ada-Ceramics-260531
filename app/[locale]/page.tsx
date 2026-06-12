@@ -63,15 +63,17 @@ const fixedCategories = [
 ];
 
 // 非首屏组件统一懒加载
-const LazyCategorySection = dynamic(() => import("@/components/home/CategorySection"));
-const LazyFactorySection = dynamic(() => import("@/components/home/FactorySection"));
-const LazyIndustrySection = dynamic(() => import("@/components/home/IndustrySection"));
-const LazyWhyUsSection = dynamic(() => import("@/components/home/WhyUsSection"));
-const LazyCustomSection = dynamic(() => import("@/components/home/CustomSection"));
-const LazyBlogSection = dynamic(() => import("@/components/home/BlogSection"));
-// 表单+弹窗 懒加载（核心优化项）
-const LazyContactClient = dynamic(() => import("@/components/home/ContactClient"));
-const LazyFooter = dynamic(() => import("@/components/layout/footer"));
+const LazyCategorySection = dynamic(() => import("@/components/home/CategorySection"), { ssr: true });
+const LazyFactorySection = dynamic(() => import("@/components/home/FactorySection"), { ssr: true });
+const LazyIndustrySection = dynamic(() => import("@/components/home/IndustrySection"), { ssr: true });
+const LazyWhyUsSection = dynamic(() => import("@/components/home/WhyUsSection"), { ssr: true });
+const LazyCustomSection = dynamic(() => import("@/components/home/CustomSection"), { ssr: true });
+const LazyBlogSection = dynamic(() => import("@/components/home/BlogSection"), { ssr: true });
+
+// 表单+弹窗 懒加载：关闭SSR，纯客户端渲染，解决#130报错
+const LazyContactClient = dynamic(() => import("@/components/home/ContactClient"), { ssr: false });
+
+const LazyFooter = dynamic(() => import("@/components/layout/footer"), { ssr: true });
 
 export default function HomePage() {
   return (
