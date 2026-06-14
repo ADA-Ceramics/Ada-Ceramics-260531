@@ -160,7 +160,7 @@ export default async function RootLayout({
         </Script>
         <Header />
         {children}
-        {process.env.NODE_ENV === 'production' && <Analytics />}
+        {process.env.NODE_ENV === 'production' && !window.location.hostname.includes('vercel.app') && <Analytics />}
       </body>
     </html>
   )
