@@ -3,17 +3,126 @@
 import Image from "next/image"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { Calendar, User, Tag, ArrowLeft, Share2 } from "lucide-react"
+import { Calendar, User, Tag, ArrowLeft, Share2, List } from "lucide-react"
 import type { BlogPostDetail, NotionBlock } from "@/lib/notion"
 import { QuoteForm } from "@/components/shared/quote-form"
+import { useState } from "react"
 
 interface BlogDetailProps {
   post: BlogPostDetail
 }
 
+/**
+ * 生成SEO友好锚ID
+ * 去除HTML标签、特殊符号，空格转横杠
+ */
+function createAnchorId(rawHtml: string): string {
+  const plainText = rawHtml.replace(/<.*?>/g, "")
+  return plainText
+    .toLowerCase()
+    .replace(/[^\w\s]/gi, "")
+    .trim()
+    .replace(/\s+/g, "-")
+    .replace(/-+/g, "-")
+    .replace(/^-|-$/g, "")
+}
+
+type TocItem = {
+  id: string
+  text: string
+  level: 2 | 3
+}
+
+/**
+ * 递归提取 H2 / H3 标题
+ */
+function collectHeadings(blocks: NotionBlock[]): TocItem[] {
+  const items: TocItem[] = []
+
+  for (const block of blocks) {
+    if (block.type === "heading_2" || block.type === "heading_3") {
+      const anchorId = createAnchorId(block.content)
+      const text = block.content.replace(/<.*?>/g, "")
+      items.push({
+        id: anchorId,
+        text,
+        level: block.type === "heading_2" ? 2 : 3,
+      })
+    }
+
+    // 递归解析 toggle 内部块
+    if (block.type === "toggle" && Array.isArray(block.children)) {
+      items.push(...collectHeadings(block.children))
+    }
+  }
+
+  return items
+}
+
+/**
+ * 目录组件
+ */
+function TableOfContents({ items, path }: { items: TocItem[]; path: string }) {
+  const [mobileOpen, setMobileOpen] = useState(false)
+  if (items.length === 0) return null
+
+  return (
+    <>
+      {/* 移动端：折叠目录 */}
+      <div className="lg:hidden mb-8 p-4 border border-border rounded-lg bg-muted/30">
+        <button
+          onClick={() => setMobileOpen(!mobileOpen)}
+          className="flex items-center gap-2 w-full text-left font-medium"
+        >
+          <List className="w-4 h-4" />
+          Table of Contents
+        </button>
+        {mobileOpen && (
+          <nav className="mt-4 space-y-2 text-sm">
+            {items.map((item) => (
+              <Link
+                key={item.id}
+                href={`${path}#${item.id}`}
+                className={`block hover:text-primary transition-colors ${
+                  item.level === 3 ? "pl-4 text-muted-foreground" : ""
+                }`}
+                onClick={() => setMobileOpen(false)}
+              >
+                {item.text}
+              </Link>
+            ))}
+          </nav>
+        )}
+      </div>
+
+      {/* 桌面端：右侧悬浮固定目录 */}
+      <aside className="hidden lg:block sticky top-32 float-right ml-8 mb-6 w-60 h-fit p-5 border border-border rounded-lg bg-muted/30">
+        <h3 className="font-medium mb-4 flex items-center gap-2">
+          <List className="w-4 h-4" />
+          Table of Contents
+        </h3>
+        <nav className="space-y-2 text-sm max-h-[60vh] overflow-y-auto pr-2">
+          {items.map((item) => (
+            <Link
+              key={item.id}
+              href={`${path}#${item.id}`}
+              className={`block hover:text-primary transition-colors ${
+                item.level === 3 ? "pl-3 text-muted-foreground" : ""
+              }`}
+            >
+              {item.text}
+            </Link>
+          ))}
+        </nav>
+      </aside>
+    </>
+  )
+}
+
 export function BlogDetail({ post }: BlogDetailProps) {
   const pathname = usePathname()
-  const locale = pathname.split('/')[1] || 'en'
+  const locale = pathname.split("/")[1] || "en"
+  const tocItems = collectHeadings(post.content)
 
   const formattedDate = new Date(post.publishedAt).toLocaleDateString("en-US", {
     year: "numeric",
@@ -30,20 +139,18 @@ export function BlogDetail({ post }: BlogDetailProps) {
           url: window.location.href,
         })
       } catch {
-        // User cancelled or error
+        // ignore cancel
       }
     } else {
-      // Fallback: copy to clipboard
       navigator.clipboard.writeText(window.location.href)
     }
   }
 
   return (
     <main className="min-h-screen bg-background">
-      {/* Hero Section */}
+      {/* 头部信息区 */}
       <section className="relative pt-32 pb-12">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Back Link */}
           <Link
             href={`/${locale}/blog`}
             className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground mb-8 transition-colors"
@@ -52,7 +159,6 @@ export function BlogDetail({ post }: BlogDetailProps) {
             Back to Blog
           </Link>
 
-          {/* Tags */}
           {post.tags.length > 0 && (
             <div className="flex flex-wrap gap-2 mb-4">
               {post.tags.map((tag) => (
@@ -67,19 +173,14 @@ export function BlogDetail({ post }: BlogDetailProps) {
             </div>
           )}
 
-          {/* Title */}
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6 text-balance">
             {post.title}
           </h1>
 
-          {/* Excerpt */}
           {post.excerpt && (
-            <p className="text-lg text-muted-foreground mb-8">
-              {post.excerpt}
-            </p>
+            <p className="text-lg text-muted-foreground mb-8">{post.excerpt}</p>
           )}
 
-          {/* Meta */}
           <div className="flex items-center justify-between flex-wrap gap-4 pb-8 border-b border-border">
             <div className="flex items-center gap-6 text-sm text-muted-foreground">
               <span className="flex items-center gap-2">
@@ -102,7 +203,7 @@ export function BlogDetail({ post }: BlogDetailProps) {
         </div>
       </section>
 
-      {/* Cover Image */}
+      {/* 封面图 */}
       {post.coverImage && (
         <section className="pb-12">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -119,10 +220,12 @@ export function BlogDetail({ post }: BlogDetailProps) {
         </section>
       )}
 
-      {/* Content */}
+      {/* 文章内容 + 目录 */}
       <section className="pb-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <article className="prose prose-lg prose-slate max-w-none">
+          <TableOfContents items={tocItems} path={pathname} />
+
+          <article className="prose prose-lg prose-slate max-w-none clear-both">
             {post.content.map((block) => (
               <NotionBlockRenderer key={block.id} block={block} />
             ))}
@@ -130,7 +233,7 @@ export function BlogDetail({ post }: BlogDetailProps) {
         </div>
       </section>
 
-      {/* Quote Form Section */}
+      {/* 询价表单 */}
       <section className="py-12">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <QuoteForm variant="compact" />
@@ -140,8 +243,10 @@ export function BlogDetail({ post }: BlogDetailProps) {
   )
 }
 
-// Notion块渲染器
+// Notion 块渲染器
 function NotionBlockRenderer({ block }: { block: NotionBlock }) {
+  const anchorId = createAnchorId(block.content ?? "")
+
   switch (block.type) {
     case "paragraph":
       if (!block.content) return <div className="h-4" />
@@ -163,7 +268,8 @@ function NotionBlockRenderer({ block }: { block: NotionBlock }) {
     case "heading_2":
       return (
         <h3
-          className="text-2xl font-semibold text-foreground mt-10 mb-4"
+          id={anchorId}
+          className="text-2xl font-semibold text-foreground mt-10 mb-4 scroll-mt-36"
           dangerouslySetInnerHTML={{ __html: block.content }}
         />
       )
@@ -171,7 +277,8 @@ function NotionBlockRenderer({ block }: { block: NotionBlock }) {
     case "heading_3":
       return (
         <h4
-          className="text-xl font-semibold text-foreground mt-8 mb-3"
+          id={anchorId}
+          className="text-xl font-semibold text-foreground mt-8 mb-3 scroll-mt-36"
           dangerouslySetInnerHTML={{ __html: block.content }}
         />
       )
@@ -229,9 +336,7 @@ function NotionBlockRenderer({ block }: { block: NotionBlock }) {
     case "code":
       return (
         <pre className="bg-[#1a1a2e] text-white rounded-lg p-4 my-6 overflow-x-auto">
-          <code className={`language-${block.language || "text"}`}>
-            {block.content}
-          </code>
+          <code className={`language-${block.language || "text"}`}>{block.content}</code>
         </pre>
       )
 
@@ -258,11 +363,7 @@ function NotionBlockRenderer({ block }: { block: NotionBlock }) {
       return (
         <figure className="my-8">
           <div className="relative w-full aspect-video rounded-lg overflow-hidden">
-            <video
-              src={block.url}
-              controls
-              className="w-full h-full"
-            />
+            <video src={block.url} controls className="w-full h-full" />
           </div>
           {block.caption && (
             <figcaption className="text-center text-sm text-muted-foreground mt-3">
