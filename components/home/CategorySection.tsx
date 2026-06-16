@@ -106,27 +106,63 @@ export default function CategorySection({ categories }: CategorySectionProps) {
             </div>
           )}
 
-          {/* 右侧：纯 CSS 自动轮播容器（overflow:hidden + 子项 float:left + @keyframes 每5秒左移一个模块，无限循环），禁用鼠标/触摸交互 */}
-          <div
-            className="lg:w-3/5 min-w-0 overflow-hidden"
-            style={{ pointerEvents: "none", touchAction: "none", userSelect: "none" }}
-          >
+          {/* 右侧：移动端单列垂直滚动（原生触屏滑动）；lg+ 切换为纯 CSS 自动横向轮播（每5秒左移一个模块，无限循环，hover 暂停） */}
+          <div className="lg:w-3/5 min-w-0 ada-carousel-viewport">
             <style>{`
+              /* 移动端默认：单列垂直滚动，支持触屏滑动 */
+              .ada-carousel-viewport {
+                overflow-y: auto;
+                overflow-x: hidden;
+                max-height: 560px;
+                -webkit-overflow-scrolling: touch;
+                touch-action: pan-y;
+              }
+              .ada-carousel-track {
+                display: flex;
+                flex-direction: column;
+                gap: 24px;
+              }
+              .ada-carousel-card {
+                width: 100%;
+                height: 380px;
+              }
+              /* 移动端隐藏用于横向无缝循环的复制卡片 */
+              .ada-carousel-dup {
+                display: none;
+              }
+
               @keyframes adaCategoryCarousel {
                 0%, 26.66%   { transform: translateX(0%); }
                 33.33%, 59.99% { transform: translateX(-16.6667%); }
                 66.66%, 93.33% { transform: translateX(-33.3333%); }
                 100%         { transform: translateX(-50%); }
               }
-              .ada-carousel-track {
-                width: calc((280px + 32px) * 6);
-                animation: adaCategoryCarousel 20s ease-in-out infinite;
-              }
-              .ada-carousel-card {
-                float: left;
-                width: 280px;
-                height: 380px;
-                margin-right: 32px;
+
+              /* lg+：横向自动轮播 */
+              @media (min-width: 1024px) {
+                .ada-carousel-viewport {
+                  overflow: hidden;
+                  max-height: none;
+                  touch-action: auto;
+                }
+                .ada-carousel-track {
+                  display: block;
+                  width: calc((280px + 32px) * 6);
+                  animation: adaCategoryCarousel 20s ease-in-out infinite;
+                }
+                /* hover 暂停 */
+                .ada-carousel-track:hover {
+                  animation-play-state: paused;
+                }
+                .ada-carousel-card {
+                  float: left;
+                  width: 280px;
+                  height: 380px;
+                  margin-right: 32px;
+                }
+                .ada-carousel-dup {
+                  display: block;
+                }
               }
             `}</style>
             <div className="ada-carousel-track pb-4">
@@ -137,7 +173,7 @@ export default function CategorySection({ categories }: CategorySectionProps) {
                 return (
                   <div
                     key={`${group.title}-${i}`}
-                    className="ada-carousel-card bg-white rounded-2xl border border-gray-100 overflow-hidden flex flex-col"
+                    className={`ada-carousel-card${i >= groups.length ? " ada-carousel-dup" : ""} bg-white rounded-2xl border border-gray-100 overflow-hidden flex flex-col`}
                   >
                     <div className="px-6 pt-6 pb-4 border-b border-gray-100">
                       <h3 className="text-base font-bold text-[#1a1a1a] truncate">{group.title}</h3>
