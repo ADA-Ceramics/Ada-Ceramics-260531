@@ -1,6 +1,3 @@
-"use client"
-
-import { useEffect, useRef } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { Package } from "lucide-react"
@@ -54,32 +51,8 @@ export default function CategorySection({ categories }: CategorySectionProps) {
       .filter((c): c is CategoryData => Boolean(c)),
   })).filter((group) => group.items.length > 0)
 
-  // 纯自动滚动：每 5 秒平滑切换到下一个模块，滚动到最后一个后循环回第一个（无手动滑动）
-  const scrollRef = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    const container = scrollRef.current
-    if (!container) return
-
-    const interval = setInterval(() => {
-      const cards = Array.from(container.children) as HTMLElement[]
-      if (cards.length === 0) return
-
-      const current = container.scrollLeft
-      // 找到下一张尚未完全滚动到的卡片
-      const next = cards.find((card) => card.offsetLeft > current + 1)
-      const maxScroll = container.scrollWidth - container.clientWidth
-
-      if (next && next.offsetLeft <= maxScroll) {
-        container.scrollTo({ left: next.offsetLeft, behavior: "smooth" })
-      } else {
-        // 已到末尾则循环回到第一个
-        container.scrollTo({ left: 0, behavior: "smooth" })
-      }
-    }, 5000)
-
-    return () => clearInterval(interval)
-  }, [])
+  // 复制一份分组用于无缝循环（纯 CSS 轮播：滚动到末尾后无缝回到第一个）
+  const loopGroups = [...groups, ...groups]
 
   return (
     <section className="py-24 bg-white">
@@ -127,20 +100,38 @@ export default function CategorySection({ categories }: CategorySectionProps) {
             </div>
           )}
 
-          {/* 右侧：3 个按品类合并的模块，横向滚动 */}
-          <div className="lg:w-3/5 min-w-0">
-            <div
-              ref={scrollRef}
-              className="flex gap-6 md:gap-8 overflow-hidden pb-4 items-start"
-            >
-              {groups.map((group) => {
+          {/* 右侧：纯 CSS 自动轮播容器（overflow:hidden + 子项 float:left + @keyframes 每5秒左移一个模块，无限循环），禁用鼠标/触摸交互 */}
+          <div
+            className="lg:w-3/5 min-w-0 overflow-hidden"
+            style={{ pointerEvents: "none", touchAction: "none", userSelect: "none" }}
+          >
+            <style>{`
+              @keyframes adaCategoryCarousel {
+                0%, 26.66%   { transform: translateX(0%); }
+                33.33%, 59.99% { transform: translateX(-16.6667%); }
+                66.66%, 93.33% { transform: translateX(-33.3333%); }
+                100%         { transform: translateX(-50%); }
+              }
+              .ada-carousel-track {
+                width: calc((280px + 32px) * 6);
+                animation: adaCategoryCarousel 20s ease-in-out infinite;
+              }
+              .ada-carousel-card {
+                float: left;
+                width: 280px;
+                height: 380px;
+                margin-right: 32px;
+              }
+            `}</style>
+            <div className="ada-carousel-track pb-4">
+              {loopGroups.map((group, i) => {
                 // 该品类的核心合集图：沿用本品类第一张原卡片的 image/alt（不改动任何已对接内容）
                 const hero = group.items[0]
                 const tagline = GROUP_TAGLINES[group.title] ?? ""
                 return (
                   <div
-                    key={group.title}
-                    className="snap-start shrink-0 w-[280px] h-[380px] bg-white rounded-2xl border border-gray-100 overflow-hidden flex flex-col"
+                    key={`${group.title}-${i}`}
+                    className="ada-carousel-card bg-white rounded-2xl border border-gray-100 overflow-hidden flex flex-col"
                   >
                     <div className="px-6 pt-6 pb-4 border-b border-gray-100">
                       <h3 className="text-base font-bold text-[#1a1a1a] truncate">{group.title}</h3>
@@ -167,6 +158,8 @@ export default function CategorySection({ categories }: CategorySectionProps) {
                       </div>
                       <Link
                         href={getLinkHref(hero.slug)}
+                        // 链接保持可点击（仅禁用容器的手动滚动/滑动交互，不改动原有链接逻辑）
+                        style={{ pointerEvents: "auto" }}
                         className="no-underline inline-flex items-center justify-center w-full px-5 py-3 rounded-full bg-[#8b7355] text-white text-sm font-semibold transition-colors hover:bg-[#735f45] focus:outline-none focus:ring-2 focus:ring-[#8b7355] focus:ring-offset-2"
                       >
                         View All
