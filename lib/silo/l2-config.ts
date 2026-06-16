@@ -231,6 +231,254 @@ const piePizzaPans: L2Config = {
 }
 
 // ----------------------------------------------------------------------------
+// Dinnerware（正餐餐具）Silo —— 复用同一通用 L2 模板
+// ----------------------------------------------------------------------------
+
+const dinnerwarePlates: L2Config = {
+  parentSlug: "dinnerware",
+  parentLabel: "Dinnerware",
+  slug: "plates",
+  label: "Plates",
+  productCategorySlugs: ["wholesale-plates", "plates"],
+  keyword: "dinner plates",
+  h1: "Wholesale Ceramic Plates for Restaurants, Hotels & Catering",
+  metaTitle: "Wholesale Ceramic Plates | Bulk Dinner, Dessert & Side Plates",
+  metaDescription:
+    "Chip-resistant ceramic plates in bulk direct from a Chaozhou factory. Dinner, dessert, side and charger plates for restaurants, hotels and caterers. Low MOQ, FDA/LFGB certified, full OEM/ODM customization.",
+  metaKeywords:
+    "wholesale plates, ceramic dinner plates bulk, restaurant plates supplier, dessert plates factory, charger plates OEM",
+  bannerImage: "/wholesale-plates.webp",
+  intro:
+    "ADA Ceramics supplies chip-resistant ceramic plates in commercial-ready sizes for dinner, dessert, side and charger service. Each plate is high-temperature fired for a dense, impact-resistant body and a smooth, stain-resistant glaze built for constant stacking, washing and plating in restaurants, hotels and catering, with low MOQs and full OEM/ODM branding.",
+  seo: {
+    h2: "Chip-Resistant Wholesale Plates Built for High-Volume Service",
+    procurementScenario:
+      "Restaurants, hotels, canteens and caterers need plates that survive constant stacking, washing and plating without chipping or losing their finish. Our ceramic plates are fired at high temperature for dense, impact-resistant bodies and a smooth non-porous glaze that resists staining and scratching. A coordinated range of dinner, dessert, side and charger sizes lets buyers standardize one durable plating program across every outlet, lowering breakage costs and keeping table presentation consistent at scale.",
+    customService:
+      "As a full OEM/ODM manufacturer we customize plate diameter, rim profile, coupe or rimmed shape, glaze colour, embossed or printed logos and retail-ready packaging. Send artwork for branded plates, match a signature glaze, or commission new mold development for an exclusive shape. Low minimum order quantities let importers and private-label brands trial new ranges, and our sampling team delivers approved pre-production samples quickly to protect launch timelines.",
+    qualityLogistics:
+      "Every plate order is produced under strict QC with FDA and LFGB food-contact certification, edge-impact testing and reinforced export packaging engineered for long-haul ocean freight. Our logistics team consolidates mixed dinnerware loads, manages documentation and ships worldwide from Chaozhou, China on flexible FOB and CIF terms.",
+    siloGuide:
+      "Need matching bowls or full table programs? Browse our Bowls, Dinnerware Sets and Serve Dishes sub-categories within the Dinnerware Silo, or explore the Bakeware and Table Decor & Drinkware Silos for oven dishes and drinkware.",
+  },
+  procurement: {
+    heading: "Shop Plates by Procurement Need",
+    tags: [
+      { label: "Dinner Plates", href: "/dinnerware/plates" },
+      { label: "Dessert & Side Plates", href: "/dinnerware/plates" },
+      { label: "Charger Plates", href: "/dinnerware/plates" },
+      { label: "Coupe Plates", href: "/dinnerware/plates" },
+      { label: "Custom Branded Plates", href: "/contact" },
+    ],
+  },
+  faqs: [
+    {
+      q: "Are your ceramic plates chip-resistant?",
+      a: "Yes. Our plates are high-temperature fired for a dense, impact-resistant body with reinforced edges, tested to withstand constant stacking, washing and plating in professional kitchens.",
+    },
+    {
+      q: "What plate sizes do you offer?",
+      a: "Standard ranges cover dinner plates (about 10–12in), dessert and side plates (about 6–8in) and charger plates, with custom diameters and rim profiles available via new mold development.",
+    },
+    {
+      q: "What is the MOQ for wholesale plates?",
+      a: "Standard MOQ starts at 500 pieces per design for stock plates. Custom OEM/ODM plates generally start from 1,000–3,000 pieces depending on glaze and mold requirements.",
+    },
+    {
+      q: "Can plates be customized with our logo or glaze colour?",
+      a: "Yes. We offer custom glaze colour matching, embossed or printed logos, rim and shape changes, and new mold development, plus retail-ready branded packaging for private-label lines.",
+    },
+    {
+      q: "Are your plates dishwasher and microwave safe?",
+      a: "Our ceramic plates are dishwasher and microwave safe under normal use, and FDA/LFGB certified as food-contact safe for global markets.",
+    },
+  ],
+}
+
+const dinnerwareBowls: L2Config = {
+  parentSlug: "dinnerware",
+  parentLabel: "Dinnerware",
+  slug: "bowls",
+  label: "Bowls",
+  productCategorySlugs: ["wholesale-bowls", "bowls"],
+  keyword: "soup and salad bowls",
+  h1: "Wholesale Ceramic Bowls for Restaurants, Hotels & Catering",
+  metaTitle: "Wholesale Ceramic Bowls | Bulk Soup, Salad & Ramen Bowls",
+  metaDescription:
+    "Chip-resistant ceramic bowls in bulk direct from a Chaozhou factory. Soup, salad, ramen and snack bowls for restaurants, hotels and caterers. Low MOQ, FDA/LFGB certified, full OEM/ODM customization.",
+  metaKeywords:
+    "wholesale bowls, ceramic soup bowls bulk, salad bowls supplier, ramen bowls factory, snack bowls OEM",
+  bannerImage: "/wholesale-bowls.webp",
+  intro:
+    "ADA Ceramics supplies chip-resistant ceramic bowls in commercial-ready sizes for soup, salad, ramen, rice and snack service. Each bowl is high-temperature fired for a dense, durable body and a smooth, stain-resistant glaze built for daily restaurant, hotel and catering use, with low MOQs and full OEM/ODM branding.",
+  seo: {
+    h2: "Versatile Wholesale Bowls Built for Daily Service",
+    procurementScenario:
+      "Restaurants, hotels, canteens and caterers rely on bowls that handle constant stacking, washing and plating across soup, salad, ramen, rice and snack programs. Our ceramic bowls are fired at high temperature for dense, impact-resistant bodies and a smooth non-porous glaze that resists staining and odour. A coordinated range of capacities lets buyers standardize one durable bowl program across every outlet, lowering replacement costs while keeping presentation consistent at scale.",
+    customService:
+      "As a full OEM/ODM manufacturer we customize bowl capacity, depth, rim profile, glaze colour, embossed or printed logos and retail-ready packaging. Send artwork for branded bowls, match a signature glaze, or commission new mold development for an exclusive shape. Low minimum order quantities let importers and private-label brands trial new ranges, and our sampling team delivers approved pre-production samples quickly.",
+    qualityLogistics:
+      "Every bowl order is produced under strict QC with FDA and LFGB food-contact certification, impact testing and reinforced export packaging engineered for ocean freight. Our logistics team consolidates mixed dinnerware loads, manages documentation and ships worldwide from Chaozhou, China on flexible FOB and CIF terms.",
+    siloGuide:
+      "Need matching plates or full table programs? Browse our Plates, Dinnerware Sets and Serve Dishes sub-categories within the Dinnerware Silo, or explore the Bakeware and Table Decor & Drinkware Silos for oven dishes and drinkware.",
+  },
+  procurement: {
+    heading: "Shop Bowls by Procurement Need",
+    tags: [
+      { label: "Soup & Cereal Bowls", href: "/dinnerware/bowls" },
+      { label: "Salad & Pasta Bowls", href: "/dinnerware/bowls" },
+      { label: "Ramen & Noodle Bowls", href: "/dinnerware/bowls" },
+      { label: "Rice & Snack Bowls", href: "/dinnerware/bowls" },
+      { label: "Custom Branded Bowls", href: "/contact" },
+    ],
+  },
+  faqs: [
+    {
+      q: "Are your ceramic bowls chip-resistant?",
+      a: "Yes. Our bowls are high-temperature fired for a dense, impact-resistant body, tested to withstand constant stacking, washing and plating in professional kitchens.",
+    },
+    {
+      q: "What bowl sizes and capacities do you offer?",
+      a: "Standard ranges cover snack and rice bowls, soup and cereal bowls, salad and pasta bowls and large ramen bowls, with custom capacities available via new mold development.",
+    },
+    {
+      q: "What is the MOQ for wholesale bowls?",
+      a: "Standard MOQ starts at 500 pieces per design for stock bowls. Custom OEM/ODM bowls generally start from 1,000–3,000 pieces depending on glaze and mold requirements.",
+    },
+    {
+      q: "Can bowls be customized with our logo or glaze colour?",
+      a: "Yes. We offer custom glaze colour matching, embossed or printed logos, shape and capacity changes, and new mold development, plus retail-ready branded packaging.",
+    },
+    {
+      q: "Are your bowls dishwasher and microwave safe?",
+      a: "Our ceramic bowls are dishwasher and microwave safe under normal use, and FDA/LFGB certified as food-contact safe for global markets.",
+    },
+  ],
+}
+
+const dinnerwareSets: L2Config = {
+  parentSlug: "dinnerware",
+  parentLabel: "Dinnerware",
+  slug: "dinnerware-sets",
+  label: "Dinnerware Sets",
+  productCategorySlugs: ["wholesale-dinnerware-sets", "dinnerware-sets"],
+  keyword: "dinnerware sets",
+  h1: "Wholesale Ceramic Dinnerware Sets for Hotels, Retail & Private Label",
+  metaTitle: "Wholesale Ceramic Dinnerware Sets | Bulk Matched Tableware",
+  metaDescription:
+    "Fully matched ceramic dinnerware sets direct from a Chaozhou factory. Coordinated plates, bowls and mugs for hotels, retail and private-label brands. Low MOQ, FDA/LFGB certified, full OEM/ODM customization.",
+  metaKeywords:
+    "wholesale dinnerware sets, ceramic tableware sets bulk, hotel dinnerware supplier, private label dinner set, matched tableware factory",
+  bannerImage: "/wholesale-dinnerware-sets.webp",
+  intro:
+    "ADA Ceramics manufactures fully coordinated ceramic dinnerware sets pairing plates, bowls and mugs in a single durable glaze program. High-temperature fired for strength and a consistent finish, our sets suit hotel table standards, retail gift ranges and private-label collections, with low MOQs and complete OEM/ODM customization.",
+  seo: {
+    h2: "Coordinated Wholesale Dinnerware Sets for Consistent Tables",
+    procurementScenario:
+      "Hotels, retailers and homeware brands need dinnerware sets that match perfectly across plates, bowls and mugs and stay consistent reorder after reorder. Our ceramic sets are fired at high temperature for dense, durable bodies and a uniform glaze finish, so every place setting looks coordinated and survives daily washing and stacking. Buyers can standardize one matched program across rooms, outlets or retail SKUs, simplifying replenishment while protecting brand presentation.",
+    customService:
+      "As a full OEM/ODM manufacturer we configure set composition (piece count, shapes, capacities), glaze colour, decal or embossed branding and retail gift packaging. Build an exclusive collection from new molds, match a signature colourway, or adapt an existing range for your market. Low minimum order quantities let private-label brands trial fresh set concepts, with fast approved pre-production samples.",
+    qualityLogistics:
+      "Every dinnerware set is produced under strict QC with FDA and LFGB food-contact certification, impact testing and reinforced retail-ready export packaging engineered for ocean freight. Our logistics team consolidates mixed loads, manages documentation and ships worldwide from Chaozhou, China on flexible FOB and CIF terms.",
+    siloGuide:
+      "Want to build sets from individual pieces? Browse our Plates, Bowls and Serve Dishes sub-categories within the Dinnerware Silo, or explore the Bakeware and Table Decor & Drinkware Silos for oven dishes and drinkware.",
+  },
+  procurement: {
+    heading: "Shop Dinnerware Sets by Procurement Need",
+    tags: [
+      { label: "Hotel Table Sets", href: "/dinnerware/dinnerware-sets" },
+      { label: "Retail Gift Sets", href: "/dinnerware/dinnerware-sets" },
+      { label: "Coupe Dinner Sets", href: "/dinnerware/dinnerware-sets" },
+      { label: "Stackable Sets", href: "/dinnerware/dinnerware-sets" },
+      { label: "Private-Label Sets", href: "/contact" },
+    ],
+  },
+  faqs: [
+    {
+      q: "How many pieces are in your dinnerware sets?",
+      a: "We configure set composition to your spec — common formats include 12-, 16-, 18- and 30-piece sets pairing plates, bowls and mugs, with custom counts available for private-label ranges.",
+    },
+    {
+      q: "Are the sets fully colour and glaze matched?",
+      a: "Yes. All pieces in a set are produced from the same glaze batch program for a consistent colour and finish across plates, bowls and mugs, and stay consistent on reorder.",
+    },
+    {
+      q: "What is the MOQ for wholesale dinnerware sets?",
+      a: "Standard MOQ starts at 500 sets per design for stock ranges. Custom OEM/ODM sets generally start from 1,000–3,000 sets depending on composition, glaze and mold requirements.",
+    },
+    {
+      q: "Can sets be customized and gift-packaged for retail?",
+      a: "Yes. We offer custom glaze colours, decals or embossed logos, new mold development and retail-ready gift packaging designed for shelf and e-commerce presentation.",
+    },
+    {
+      q: "Are your dinnerware sets dishwasher and microwave safe?",
+      a: "Our ceramic dinnerware sets are dishwasher and microwave safe under normal use, and FDA/LFGB certified as food-contact safe for global markets.",
+    },
+  ],
+}
+
+const dinnerwareServeDishes: L2Config = {
+  parentSlug: "dinnerware",
+  parentLabel: "Dinnerware",
+  slug: "serve-dishes",
+  label: "Serve Dishes",
+  productCategorySlugs: ["oval-serving-plates", "serve-dishes", "serving-dishes"],
+  keyword: "serve dishes",
+  h1: "Wholesale Ceramic Serve Dishes & Platters for Buffet & Banquet Service",
+  metaTitle: "Wholesale Ceramic Serve Dishes | Bulk Platters & Serving Bowls",
+  metaDescription:
+    "Oven-to-table ceramic serve dishes and platters direct from a Chaozhou factory. Oval platters, serving bowls and buffet dishes for restaurants, hotels and caterers. Low MOQ, FDA/LFGB certified, full OEM/ODM customization.",
+  metaKeywords:
+    "wholesale serve dishes, ceramic platters bulk, serving bowls supplier, buffet dishes factory, oval serving plates OEM",
+  bannerImage: "/ceramic-plates-for-catering-service.webp",
+  intro:
+    "ADA Ceramics supplies oven-to-table ceramic serve dishes, oval platters and serving bowls for buffet, banquet and family-style service. High-temperature fired for thermal-shock resistance and a refined glaze finish, our serving pieces move cleanly from kitchen to table and present beautifully, with low MOQs and full OEM/ODM branding.",
+  seo: {
+    h2: "Oven-to-Table Wholesale Serve Dishes for Volume Presentation",
+    procurementScenario:
+      "Restaurants, hotels and caterers need serving pieces that present large-format dishes attractively and survive constant buffet and banquet service. Our ceramic serve dishes, platters and serving bowls are high-temperature fired for thermal-shock resistance and a smooth, stain-resistant glaze, moving from oven or fridge to table without crazing. A coordinated range of oval, round and rectangular formats lets buyers build a consistent serving program for buffets, family-style menus and banquet plating.",
+    customService:
+      "As a full OEM/ODM manufacturer we customize platter dimensions and depth, rim profile, glaze colour, embossed or printed logos and packaging. Send artwork for branded serveware, match a signature glaze, or commission new mold development for exclusive presentation pieces. Low minimum order quantities let buyers trial new ranges, with fast approved pre-production samples.",
+    qualityLogistics:
+      "Every serve dish order is produced under strict QC with FDA and LFGB food-contact certification, thermal testing and reinforced export packaging engineered for long-haul ocean freight. Our logistics team consolidates mixed dinnerware loads, manages documentation and ships worldwide from Chaozhou, China on flexible FOB and CIF terms.",
+    siloGuide:
+      "Need everyday plates and bowls too? Browse our Plates, Bowls and Dinnerware Sets sub-categories within the Dinnerware Silo, or explore the Bakeware and Table Decor & Drinkware Silos for oven dishes and drinkware.",
+  },
+  procurement: {
+    heading: "Shop Serve Dishes by Procurement Need",
+    tags: [
+      { label: "Oval Platters", href: "/dinnerware/serve-dishes" },
+      { label: "Buffet Serving Bowls", href: "/dinnerware/serve-dishes" },
+      { label: "Banquet Platters", href: "/dinnerware/serve-dishes" },
+      { label: "Family-Style Dishes", href: "/dinnerware/serve-dishes" },
+      { label: "Custom Branded Serveware", href: "/contact" },
+    ],
+  },
+  faqs: [
+    {
+      q: "Are your serve dishes oven and thermal-shock safe?",
+      a: "Yes. Our serve dishes and platters are high-temperature fired and thermal-tested, moving from oven or fridge to table without crazing under normal professional use.",
+    },
+    {
+      q: "What shapes and sizes of serve dishes do you offer?",
+      a: "We supply oval, round and rectangular platters and serving bowls across buffet and banquet sizes, with custom dimensions available via new mold development.",
+    },
+    {
+      q: "What is the MOQ for wholesale serve dishes?",
+      a: "Standard MOQ starts at 500 pieces per design for stock items. Custom OEM/ODM serveware generally starts from 1,000–3,000 pieces depending on glaze and mold requirements.",
+    },
+    {
+      q: "Can serveware be customized with our brand or colours?",
+      a: "Yes. We offer custom glaze colour matching, embossed or printed logos, dimension changes and new mold development, plus retail-ready branded packaging.",
+    },
+    {
+      q: "Are your serve dishes dishwasher safe?",
+      a: "Our ceramic serve dishes are dishwasher safe under normal use, and FDA/LFGB certified as food-contact safe for international markets.",
+    },
+  ],
+}
+
+// ----------------------------------------------------------------------------
 // 汇总 + 查询辅助（键名固定为 `${parentSlug}/${slug}`，便于路由按 silo+l2 取配置）
 // ----------------------------------------------------------------------------
 
@@ -238,6 +486,10 @@ export const L2_CONFIGS: Record<string, L2Config> = {
   "bakeware/ramekin-bowls": ramekinBowls,
   "bakeware/baking-dishes": bakingDishes,
   "bakeware/pie-pizza-pans": piePizzaPans,
+  "dinnerware/plates": dinnerwarePlates,
+  "dinnerware/bowls": dinnerwareBowls,
+  "dinnerware/dinnerware-sets": dinnerwareSets,
+  "dinnerware/serve-dishes": dinnerwareServeDishes,
 }
 
 /** 取某个 L2 配置 */
