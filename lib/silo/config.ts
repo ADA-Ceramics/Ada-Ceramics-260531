@@ -186,21 +186,21 @@ const bakeware: SiloConfig = {
     {
       name: "Ramekin Bowls",
       blurb: "Individual oven-safe ramekins for soufflés, crème brûlée and sides.",
-      href: "/products/ramekins",
+      href: "/bakeware/ramekin-bowls",
       image: "/ceramic-snack-plate-for-home.webp",
       altKeyword: "ramekin bowls",
     },
     {
       name: "Baking Dishes & Casseroles",
       blurb: "Family-size baking dishes and lidded casseroles for oven-to-table service.",
-      href: "/products/baking-dishes",
+      href: "/bakeware/baking-dishes-casseroles",
       image: "/wholesale-bakeware.webp",
       altKeyword: "baking dishes and casseroles",
     },
     {
       name: "Loaf, Pie & Pizza Pans",
       blurb: "Loaf, pie and pizza bakeware for bakeries and restaurant kitchens.",
-      href: "/products/pie-pizza-plates",
+      href: "/bakeware/loaf-pie-pizza-pans",
       image: "/amazon-hotsell-ceramic.webp",
       altKeyword: "loaf pie and pizza pans",
     },
@@ -219,11 +219,11 @@ const bakeware: SiloConfig = {
   procurement: {
     heading: "Shop Bakeware by Procurement Need",
     tags: [
-      { label: "Bakery Supply", href: "/products/pie-pizza-plates" },
-      { label: "Restaurant Casseroles", href: "/products/baking-dishes" },
-      { label: "Individual Ramekins", href: "/products/ramekins" },
-      { label: "Retail Homeware", href: "/products/bakeware" },
-      { label: "Custom Bakeware", href: "/oem-odm" },
+      { label: "Bakery Supply", href: "/bakeware/loaf-pie-pizza-pans" },
+      { label: "Restaurant Casseroles", href: "/bakeware/baking-dishes-casseroles" },
+      { label: "Individual Ramekins", href: "/bakeware/ramekin-bowls" },
+      { label: "Retail Homeware", href: "/bakeware" },
+      { label: "Custom Bakeware", href: "/oem-custom-ceramics" },
     ],
   },
   faqs: [
