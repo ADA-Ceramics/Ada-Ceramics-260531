@@ -55,17 +55,17 @@ export default function CategorySection({ categories }: CategorySectionProps) {
           </p>
         </div>
 
-        {/* 左 40% 固定通高 OEM 模块 + 右 60% 横向滚动合并模块 */}
-        <div className="flex flex-col lg:flex-row gap-6 md:gap-8">
+        {/* 左 40% OEM 模块（与右侧单卡同高，顶部对齐） + 右 60% 横向滚动合并模块 */}
+        <div className="flex flex-col lg:flex-row lg:items-start gap-6 md:gap-8">
           {/* 左侧：Custom OEM/ODM Solutions，占 40% 宽度并通高横跨 */}
           {oemCard && (
             <div className="lg:w-2/5 lg:shrink-0">
               <Link
                 href={getLinkHref(oemCard.slug)}
-                className="no-underline block h-full focus:outline-none focus:ring-2 focus:ring-[#8b7355] rounded-2xl"
+                className="no-underline block focus:outline-none focus:ring-2 focus:ring-[#8b7355] rounded-2xl"
               >
-                <div className="bg-white rounded-2xl overflow-hidden border border-gray-100 transition-all h-full flex flex-col">
-                  <div className="relative flex-1 min-h-[280px] bg-gray-100">
+                <div className="bg-white rounded-2xl overflow-hidden border border-gray-100 transition-all flex flex-col">
+                  <div className="relative aspect-[4/3] bg-gray-100">
                     {oemCard.image ? (
                       <Image
                         src={oemCard.image}
@@ -92,7 +92,7 @@ export default function CategorySection({ categories }: CategorySectionProps) {
 
           {/* 右侧：3 个按品类合并的模块，横向滚动 */}
           <div className="lg:w-3/5 min-w-0">
-            <div className="flex gap-6 md:gap-8 overflow-x-auto pb-4 snap-x snap-mandatory h-full">
+            <div className="flex gap-6 md:gap-8 overflow-x-auto pb-4 snap-x snap-mandatory items-start">
               {groups.map((group) => (
                 <div
                   key={group.title}
