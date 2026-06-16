@@ -262,25 +262,10 @@ export function Header() {
     ],
   }
 
-  // 页面滚动效果：纯 CSS 负责固定与过渡，这里仅用 rAF 节流的轻量 JS 切换状态类
+  // 页面滚动效果
   useEffect(() => {
-    let ticking = false
-    const update = () => {
-      ticking = false
-      // 仅在布尔值真正翻转时才 setState，避免每次滚动重复渲染
-      setIsScrolled((prev) => {
-        const next = window.scrollY > 0
-        return prev === next ? prev : next
-      })
-    }
-    const handleScroll = () => {
-      if (!ticking) {
-        ticking = true
-        window.requestAnimationFrame(update)
-      }
-    }
-    update()
-    window.addEventListener("scroll", handleScroll, { passive: true })
+    const handleScroll = () => setIsScrolled(window.scrollY > 10)
+    window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
@@ -322,9 +307,20 @@ export function Header() {
 
       <header
         className={cn(
-          "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
+          "fixed top-0 left-0 right-0 z-50",
           isScrolled ? "bg-[#f5efe6] shadow" : "bg-transparent"
         )}
+        style={
+          isScrolled
+            ? {
+                position: "fixed",
+                zIndex: 9999,
+                backgroundColor: "#f5efe6",
+                transition: "none",
+                animation: "none",
+              }
+            : { transition: "none", animation: "none" }
+        }
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
