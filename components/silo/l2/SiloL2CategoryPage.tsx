@@ -49,8 +49,10 @@ export async function SiloL2CategoryPage({
     })),
   }
 
+  // translate="no" 防止浏览器自动翻译（Google Translate）改写文本节点，
+  // 导致 React 卸载子树时 removeChild 找不到原节点而崩溃；站点已有自有 i18n。
   return (
-    <div className="min-h-screen bg-background">
+    <div translate="no" className="notranslate min-h-screen bg-background">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}

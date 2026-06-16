@@ -230,7 +230,7 @@ export function SiloL2ProductBrowser({
   )
 
   return (
-    <section className="py-16 lg:py-20 bg-[#f5f3ef]">
+    <section translate="no" className="notranslate py-16 lg:py-20 bg-[#f5f3ef]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-8">
           <h2 className="font-serif text-2xl sm:text-3xl text-[#1a1a2e] mb-2 text-balance">
