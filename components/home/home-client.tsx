@@ -106,7 +106,7 @@ Details: ${formData.details}`
   }
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white flex flex-col gap-6">
       <SuccessModal show={showSuccessModal} onClose={closeModal} />
 
       <HeroSection />

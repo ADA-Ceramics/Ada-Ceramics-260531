@@ -14,7 +14,7 @@ export default function IndustrySection() {
   ]
 
   return (
-    <section className="py-20 bg-white">
+    <section className="py-20 bg-[#f5f3ef]">
       <div className="max-w-[1280px] mx-auto px-6">
         <div className="text-center mb-12">
           <p className="text-[#8b7355] text-xs font-medium uppercase tracking-widest mb-4">Who We Serve</p>
