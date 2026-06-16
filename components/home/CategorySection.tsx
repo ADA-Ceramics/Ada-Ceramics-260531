@@ -70,33 +70,39 @@ export default function CategorySection({ categories }: CategorySectionProps) {
           {/* 左侧：Custom OEM/ODM Solutions，占 40% 宽度并通高横跨 */}
           {oemCard && (
             <div className="lg:w-2/5 lg:shrink-0">
-              <Link
-                href={getLinkHref(oemCard.slug)}
-                className="no-underline block focus:outline-none focus:ring-2 focus:ring-[#8b7355] rounded-2xl"
-              >
-                <div className="bg-white rounded-2xl overflow-hidden border border-gray-100 transition-all flex flex-col">
-                  <div className="relative aspect-[4/3] bg-gray-100">
-                    {oemCard.image ? (
-                      <Image
-                        src={oemCard.image}
-                        alt={oemCard.alt}
-                        fill
-                        loading="lazy"
-                        className="object-cover"
-                        sizes="(max-width: 1024px) 100vw, 40vw"
-                      />
-                    ) : (
-                      <div className="w-full h-full flex items-center justify-center text-gray-400">
-                        <Package size={48} />
-                      </div>
-                    )}
-                  </div>
-                  <div className="p-6">
-                    <h3 className="text-2xl font-semibold text-[#1a1a1a] mb-2">{oemCard.name}</h3>
-                    <p className="text-gray-600 text-sm leading-relaxed">{oemCard.description}</p>
-                  </div>
+              {/* 与右侧卡片格式一致：顶部标题 → 中间图片 → 底部按钮；暖米色背景 + 1px 浅棕边框 */}
+              <div className="h-[380px] rounded-2xl overflow-hidden border border-[#d8c4a8] bg-[#f8f2e9] flex flex-col">
+                <div className="px-6 pt-6 pb-4 border-b border-[#e6d8c2]">
+                  <h3 className="text-base font-bold text-[#1a1a1a] truncate">{oemCard.name}</h3>
+                  <p className="text-xs text-gray-500 truncate mt-1">{oemCard.description}</p>
                 </div>
-              </Link>
+                <div className="flex flex-col gap-4 p-6 flex-1 min-h-0">
+                  <div className="overflow-hidden rounded-xl flex-1 min-h-0">
+                    <div className="relative w-full h-full bg-gray-100">
+                      {oemCard.image ? (
+                        <Image
+                          src={oemCard.image}
+                          alt={oemCard.alt}
+                          fill
+                          loading="lazy"
+                          className="object-cover"
+                          sizes="(max-width: 1024px) 100vw, 40vw"
+                        />
+                      ) : (
+                        <div className="w-full h-full flex items-center justify-center text-gray-400">
+                          <Package size={48} />
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                  <Link
+                    href={getLinkHref(oemCard.slug)}
+                    className="no-underline inline-flex items-center justify-center w-full px-5 py-3 rounded-full bg-[#8b7355] text-white text-sm font-semibold transition-colors hover:bg-[#735f45] focus:outline-none focus:ring-2 focus:ring-[#8b7355] focus:ring-offset-2"
+                  >
+                    Explore Custom Solutions
+                  </Link>
+                </div>
+              </div>
             </div>
           )}
 
