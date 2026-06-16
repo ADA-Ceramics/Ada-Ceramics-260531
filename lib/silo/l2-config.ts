@@ -479,6 +479,564 @@ const dinnerwareServeDishes: L2Config = {
 }
 
 // ----------------------------------------------------------------------------
+// Table Decor & Drinkware（桌面装饰 + 饮具）Silo —— 复用同一通用 L2 模板
+// ----------------------------------------------------------------------------
+
+const tableCupsMugs: L2Config = {
+  parentSlug: "table-decor-drinkware",
+  parentLabel: "Table Decor & Drinkware",
+  slug: "cups-mugs",
+  label: "Cups & Mugs",
+  productCategorySlugs: ["wholesale-cups-mugs", "cups-mugs"],
+  keyword: "cups and mugs",
+  h1: "Wholesale Ceramic Cups & Mugs for Cafés, Hotels & Branded Gifting",
+  metaTitle: "Wholesale Ceramic Cups & Mugs | Bulk Coffee Mugs & Cups",
+  metaDescription:
+    "Durable ceramic cups and mugs in bulk direct from a Chaozhou factory. Coffee mugs, cappuccino cups and saucers for cafés, hotels and branded gifting. Low MOQ, FDA/LFGB certified, full OEM/ODM custom logo printing.",
+  metaKeywords:
+    "wholesale mugs, ceramic coffee mugs bulk, cappuccino cups supplier, branded mugs factory, custom logo mugs OEM",
+  bannerImage: "/coffee-cup-cafe.webp",
+  intro:
+    "ADA Ceramics supplies durable ceramic cups and mugs in café-ready shapes for coffee, cappuccino, tea and branded gifting. Each piece is high-temperature fired for a dense, chip-resistant body and a smooth, stain-resistant glaze built for constant café service, dishwashing and retail handling, with low MOQs and full OEM/ODM logo printing.",
+  seo: {
+    h2: "Café-Grade Wholesale Cups & Mugs Built for Daily Service",
+    procurementScenario:
+      "Cafés, hotels, offices and gift brands need drinkware that survives constant brewing, washing and stacking while carrying their identity. Our ceramic cups and mugs are fired at high temperature for dense, chip-resistant bodies and a smooth non-porous glaze that resists staining and odour. A coordinated range of espresso, cappuccino, coffee and latte sizes lets buyers standardize one durable drinkware program across every outlet, lowering breakage costs and keeping branded presentation consistent at scale.",
+    customService:
+      "As a full OEM/ODM manufacturer we customize mug shape, handle style, capacity, glaze colour, decal or pad-printed logos and retail-ready packaging. Send artwork for branded coffee programs, match a seasonal palette, or commission new mold development for an exclusive mug. Low minimum order quantities let cafés and private-label brands trial fresh ranges, with fast approved pre-production samples.",
+    qualityLogistics:
+      "Every cup and mug order is produced under strict QC with FDA and LFGB food-contact certification, edge-impact testing and reinforced fragile-rated export packaging engineered for ocean freight. Our logistics team consolidates mixed decor loads, manages documentation and ships worldwide from Chaozhou, China on flexible FOB and CIF terms.",
+    siloGuide:
+      "Building a full table program? Browse our Vases, Storage & Condiment Jars, Serving Trays and Candle Holders sub-categories within the Table Decor & Drinkware Silo, or explore the Dinnerware and Bakeware Silos for plates and oven dishes.",
+  },
+  procurement: {
+    heading: "Shop Cups & Mugs by Procurement Need",
+    tags: [
+      { label: "Coffee Mugs", href: "/table-decor-drinkware/cups-mugs" },
+      { label: "Cappuccino Cups & Saucers", href: "/table-decor-drinkware/cups-mugs" },
+      { label: "Espresso Cups", href: "/table-decor-drinkware/cups-mugs" },
+      { label: "Branded Gift Mugs", href: "/table-decor-drinkware/cups-mugs" },
+      { label: "Custom Logo Mugs", href: "/contact" },
+    ],
+  },
+  faqs: [
+    {
+      q: "Can you produce custom branded mugs with our logo?",
+      a: "Yes. We offer decal, pad and stamp logo printing, custom glaze colours, handle and shape changes, and new mold development, plus retail-ready branded packaging for café and gifting programs.",
+    },
+    {
+      q: "What cup and mug sizes do you offer?",
+      a: "Standard ranges cover espresso (about 2–3oz), cappuccino (about 5–6oz), coffee and latte mugs (about 8–16oz), with custom capacities and shapes available via new mold development.",
+    },
+    {
+      q: "What is the MOQ for wholesale cups and mugs?",
+      a: "Standard MOQ starts at 500 pieces per design for stock mugs. Custom OEM/ODM drinkware generally starts from 1,000–3,000 pieces depending on glaze, printing and mold requirements.",
+    },
+    {
+      q: "Are your mugs food-safe and dishwasher safe?",
+      a: "Yes. Our cups and mugs are FDA and LFGB certified, lead and cadmium safe, and dishwasher and microwave safe under normal use.",
+    },
+    {
+      q: "How are mugs packed for export?",
+      a: "Each piece uses reinforced, fragile-rated export packaging engineered for long-haul ocean freight, with mixed-load consolidation and full documentation shipped from Chaozhou, China.",
+    },
+  ],
+}
+
+const tableVases: L2Config = {
+  parentSlug: "table-decor-drinkware",
+  parentLabel: "Table Decor & Drinkware",
+  slug: "vases",
+  label: "Vases",
+  productCategorySlugs: ["vases"],
+  keyword: "decorative vases",
+  h1: "Wholesale Ceramic Vases for Hospitality Styling & Retail Home Decor",
+  metaTitle: "Wholesale Ceramic Vases | Bulk Decorative & Bud Vases",
+  metaDescription:
+    "Decorative ceramic vases in bulk direct from a Chaozhou factory. Bud, table and floor vases for hospitality styling, gifting and retail home decor. Low MOQ, full OEM/ODM glaze and shape customization.",
+  metaKeywords:
+    "wholesale vases, ceramic decorative vases bulk, bud vases supplier, home decor vases factory, custom vase OEM",
+  bannerImage: "/color-glaze.webp",
+  intro:
+    "ADA Ceramics supplies decorative ceramic vases for hotels, restaurants, gift brands and lifestyle retailers. From slim bud vases to statement table pieces, each vase pairs on-trend silhouettes with a refined, durable glaze finish suited to hospitality styling and retail display, with low MOQs and full OEM/ODM customization of shape, colour and branding.",
+  seo: {
+    h2: "On-Trend Wholesale Vases for Styling & Retail Display",
+    procurementScenario:
+      "Hotels, restaurants, florists, gift companies and home-decor retailers source vases that set a mood and survive constant handling and display. Our ceramic vases are produced with a dense body and a smooth, refined glaze that resists chipping and water staining, holding their finish through repeated styling rotations. A coordinated range of bud, table and floor silhouettes lets buyers build cohesive decor collections for room accents, table centerpieces and retail shelves.",
+    customService:
+      "As a full OEM/ODM manufacturer we customize vase silhouette, height, opening, glaze colour, surface texture, embossed branding and retail packaging. Match a seasonal palette, develop an exclusive shape from new molds, or adapt an existing range for your market. Low minimum order quantities let decor brands trial fresh ranges, with fast approved pre-production samples.",
+    qualityLogistics:
+      "Every vase order ships with careful QC, glaze and water-tightness checks and reinforced fragile-rated export packaging engineered for ocean freight. Our logistics team consolidates mixed decor loads, manages documentation and ships worldwide from Chaozhou, China on flexible FOB and CIF terms.",
+    siloGuide:
+      "Completing a decor range? Browse our Cups & Mugs, Storage & Condiment Jars, Serving Trays and Candle Holders sub-categories within the Table Decor & Drinkware Silo, or explore the Dinnerware and Bakeware Silos for tableware.",
+  },
+  procurement: {
+    heading: "Shop Vases by Procurement Need",
+    tags: [
+      { label: "Bud Vases", href: "/table-decor-drinkware/vases" },
+      { label: "Table Centerpiece Vases", href: "/table-decor-drinkware/vases" },
+      { label: "Floor & Statement Vases", href: "/table-decor-drinkware/vases" },
+      { label: "Hospitality Decor Vases", href: "/table-decor-drinkware/vases" },
+      { label: "Custom Branded Vases", href: "/contact" },
+    ],
+  },
+  faqs: [
+    {
+      q: "Are your ceramic vases watertight?",
+      a: "Yes. Our vases are high-temperature fired with a sealed glaze and tested for water-tightness, suitable for fresh-flower display in hospitality and retail settings.",
+    },
+    {
+      q: "What vase sizes and styles do you offer?",
+      a: "We supply slim bud vases, table centerpiece vases and larger floor and statement vases across a range of silhouettes, with custom shapes available via new mold development.",
+    },
+    {
+      q: "What is the MOQ for wholesale vases?",
+      a: "Standard MOQ starts at 500 pieces per design for stock vases. Custom OEM/ODM vases generally start from 1,000–3,000 pieces depending on glaze and mold requirements.",
+    },
+    {
+      q: "Can vases be customized with our colours or branding?",
+      a: "Yes. We offer custom glaze colour matching, surface textures, embossed logos, shape changes and new mold development, plus retail-ready branded packaging.",
+    },
+    {
+      q: "How are vases packed for export?",
+      a: "Vases use reinforced, fragile-rated export packaging engineered for long-haul ocean freight, with mixed-load consolidation and full documentation shipped from Chaozhou, China.",
+    },
+  ],
+}
+
+const tableStorageJars: L2Config = {
+  parentSlug: "table-decor-drinkware",
+  parentLabel: "Table Decor & Drinkware",
+  slug: "storage-condiment-jars",
+  label: "Storage & Condiment Jars",
+  productCategorySlugs: ["storage-condiment-jars"],
+  keyword: "storage and condiment jars",
+  h1: "Wholesale Ceramic Storage & Condiment Jars for Kitchens, Delis & Retail",
+  metaTitle: "Wholesale Ceramic Storage & Condiment Jars | Bulk Sealed Jars",
+  metaDescription:
+    "Sealed ceramic storage and condiment jars in bulk direct from a Chaozhou factory. Canisters, spice and sauce jars for kitchens, delis and retail. Low MOQ, FDA/LFGB certified, full OEM/ODM customization.",
+  metaKeywords:
+    "wholesale storage jars, ceramic canisters bulk, condiment jars supplier, spice jars factory, sealed jar OEM",
+  bannerImage: "/custom-color-glaze-ceramic.webp",
+  intro:
+    "ADA Ceramics supplies sealed ceramic storage and condiment jars for commercial kitchens, delis, cafés and retail pantry ranges. From airtight canisters to small sauce and spice jars, each piece pairs a durable, food-safe glaze with secure lids for everyday storage and attractive display, with low MOQs and full OEM/ODM customization of size, colour and branding.",
+  seo: {
+    h2: "Sealed Wholesale Storage & Condiment Jars for Daily Use",
+    procurementScenario:
+      "Kitchens, delis, cafés and retail homeware brands need storage jars that keep contents fresh, look tidy on display and survive constant opening and washing. Our ceramic storage and condiment jars are high-temperature fired for a dense, non-porous body and finished with secure lids and food-safe glaze that resists staining and odour. A coordinated range of canister, spice and sauce sizes lets buyers standardize one durable storage program across kitchens and retail shelves.",
+    customService:
+      "As a full OEM/ODM manufacturer we customize jar capacity, lid type and seal, glaze colour, embossed or printed branding and retail-ready packaging. Match a kitchen range, develop an exclusive canister shape from new molds, or adapt an existing line for your market. Low minimum order quantities let buyers trial fresh ranges, with fast approved pre-production samples.",
+    qualityLogistics:
+      "Every jar order is produced under strict QC with FDA and LFGB food-contact certification, seal testing and reinforced fragile-rated export packaging engineered for ocean freight. Our logistics team consolidates mixed decor loads, manages documentation and ships worldwide from Chaozhou, China on flexible FOB and CIF terms.",
+    siloGuide:
+      "Building a kitchen and table range? Browse our Cups & Mugs, Vases, Serving Trays and Candle Holders sub-categories within the Table Decor & Drinkware Silo, or explore the Dinnerware and Bakeware Silos for tableware.",
+  },
+  procurement: {
+    heading: "Shop Storage & Condiment Jars by Procurement Need",
+    tags: [
+      { label: "Airtight Canisters", href: "/table-decor-drinkware/storage-condiment-jars" },
+      { label: "Spice Jars", href: "/table-decor-drinkware/storage-condiment-jars" },
+      { label: "Sauce & Condiment Pots", href: "/table-decor-drinkware/storage-condiment-jars" },
+      { label: "Deli & Pantry Storage", href: "/table-decor-drinkware/storage-condiment-jars" },
+      { label: "Custom Branded Jars", href: "/contact" },
+    ],
+  },
+  faqs: [
+    {
+      q: "Are your storage jars airtight?",
+      a: "Yes. Our canisters are supplied with sealing lids (silicone or cork options) and tested for a secure seal to keep dry goods and condiments fresh in kitchens and retail use.",
+    },
+    {
+      q: "What jar sizes do you offer?",
+      a: "We supply small spice and sauce jars through to large pantry canisters across a coordinated range, with custom capacities and lid styles available via new mold development.",
+    },
+    {
+      q: "What is the MOQ for wholesale storage and condiment jars?",
+      a: "Standard MOQ starts at 500 pieces per design for stock jars. Custom OEM/ODM jars generally start from 1,000–3,000 pieces depending on glaze, lid and mold requirements.",
+    },
+    {
+      q: "Can jars be customized with our branding?",
+      a: "Yes. We offer custom glaze colours, embossed or printed logos, lid and capacity changes and new mold development, plus retail-ready branded packaging.",
+    },
+    {
+      q: "Are your jars food-safe and dishwasher safe?",
+      a: "Our ceramic jars are FDA and LFGB certified, lead and cadmium safe, and dishwasher safe under normal use; lids should be washed per their material guidance.",
+    },
+  ],
+}
+
+const tableServingTrays: L2Config = {
+  parentSlug: "table-decor-drinkware",
+  parentLabel: "Table Decor & Drinkware",
+  slug: "serving-trays",
+  label: "Serving Trays",
+  productCategorySlugs: ["serving-trays"],
+  keyword: "serving trays",
+  h1: "Wholesale Ceramic Serving Trays for Table Presentation & Display",
+  metaTitle: "Wholesale Ceramic Serving Trays | Bulk Platters & Display Trays",
+  metaDescription:
+    "Ceramic serving trays in bulk direct from a Chaozhou factory. Rectangular, round and tasting trays for cafés, hotels, gifting and retail display. Low MOQ, FDA/LFGB certified, full OEM/ODM customization.",
+  metaKeywords:
+    "wholesale serving trays, ceramic display trays bulk, tasting trays supplier, platter trays factory, custom tray OEM",
+  bannerImage: "/ceramic-snack-plate-for-home.webp",
+  intro:
+    "ADA Ceramics supplies ceramic serving trays for cafés, hotels, gift brands and lifestyle retailers. From tasting and snack trays to larger rectangular presentation trays, each piece pairs a refined glaze finish with a durable, food-safe body built for table service and retail display, with low MOQs and full OEM/ODM customization of size, colour and branding.",
+  seo: {
+    h2: "Refined Wholesale Serving Trays for Presentation & Display",
+    procurementScenario:
+      "Cafés, hotels, caterers and home-decor retailers need serving trays that present food and accents attractively and survive constant handling. Our ceramic serving trays are high-temperature fired for a dense body and a smooth, stain-resistant glaze, transitioning cleanly from kitchen to table and holding their finish through repeated service. A coordinated range of round, rectangular and tasting formats lets buyers build a consistent presentation and display program across outlets and retail shelves.",
+    customService:
+      "As a full OEM/ODM manufacturer we customize tray dimensions, rim profile, glaze colour, surface texture, embossed branding and retail packaging. Match a signature range, develop an exclusive tray shape from new molds, or adapt an existing line. Low minimum order quantities let buyers trial fresh ranges, with fast approved pre-production samples.",
+    qualityLogistics:
+      "Every serving tray order ships under strict QC with FDA and LFGB food-contact certification, edge testing and reinforced fragile-rated export packaging engineered for ocean freight. Our logistics team consolidates mixed decor loads, manages documentation and ships worldwide from Chaozhou, China on flexible FOB and CIF terms.",
+    siloGuide:
+      "Completing a table range? Browse our Cups & Mugs, Vases, Storage & Condiment Jars and Candle Holders sub-categories within the Table Decor & Drinkware Silo, or explore the Dinnerware and Bakeware Silos for tableware.",
+  },
+  procurement: {
+    heading: "Shop Serving Trays by Procurement Need",
+    tags: [
+      { label: "Tasting & Snack Trays", href: "/table-decor-drinkware/serving-trays" },
+      { label: "Rectangular Presentation Trays", href: "/table-decor-drinkware/serving-trays" },
+      { label: "Round Display Trays", href: "/table-decor-drinkware/serving-trays" },
+      { label: "Café & Hotel Service Trays", href: "/table-decor-drinkware/serving-trays" },
+      { label: "Custom Branded Trays", href: "/contact" },
+    ],
+  },
+  faqs: [
+    {
+      q: "Are your serving trays food-safe?",
+      a: "Yes. Our serving trays are FDA and LFGB certified, lead and cadmium safe, with a smooth non-porous glaze suitable for direct food contact and table service.",
+    },
+    {
+      q: "What tray shapes and sizes do you offer?",
+      a: "We supply round, rectangular and tasting trays across snack, presentation and display sizes, with custom dimensions and rim profiles available via new mold development.",
+    },
+    {
+      q: "What is the MOQ for wholesale serving trays?",
+      a: "Standard MOQ starts at 500 pieces per design for stock trays. Custom OEM/ODM trays generally start from 1,000–3,000 pieces depending on glaze and mold requirements.",
+    },
+    {
+      q: "Can trays be customized with our branding?",
+      a: "Yes. We offer custom glaze colours, surface textures, embossed or printed logos, shape changes and new mold development, plus retail-ready branded packaging.",
+    },
+    {
+      q: "Are your serving trays dishwasher safe?",
+      a: "Our ceramic serving trays are dishwasher safe under normal use, and FDA/LFGB certified as food-contact safe for international markets.",
+    },
+  ],
+}
+
+const tableCandleHolders: L2Config = {
+  parentSlug: "table-decor-drinkware",
+  parentLabel: "Table Decor & Drinkware",
+  slug: "candle-holders",
+  label: "Candle Holders",
+  productCategorySlugs: ["candle-holders"],
+  keyword: "candle holders",
+  h1: "Wholesale Ceramic Candle Holders for Ambiance, Gifting & Home Accents",
+  metaTitle: "Wholesale Ceramic Candle Holders | Bulk Tealight & Pillar Holders",
+  metaDescription:
+    "Decorative ceramic candle holders in bulk direct from a Chaozhou factory. Tealight, pillar and taper holders for hospitality ambiance, gifting and retail home accents. Low MOQ, full OEM/ODM customization.",
+  metaKeywords:
+    "wholesale candle holders, ceramic tealight holders bulk, pillar candle holders supplier, home accent decor factory, custom candle holder OEM",
+  bannerImage: "/kiln-transformation.webp",
+  intro:
+    "ADA Ceramics supplies decorative ceramic candle holders for hotels, restaurants, gift brands and lifestyle retailers. From tealight and votive holders to pillar and taper designs, each piece pairs an on-trend silhouette with a heat-stable, durable glaze finish suited to hospitality ambiance and retail display, with low MOQs and full OEM/ODM customization of shape, colour and branding.",
+  seo: {
+    h2: "Atmospheric Wholesale Candle Holders for Decor & Gifting",
+    procurementScenario:
+      "Hotels, restaurants, spas, gift companies and home-decor retailers source candle holders that set an atmosphere and withstand repeated use and display. Our ceramic candle holders are high-temperature fired for a dense, heat-stable body and a refined glaze that holds its finish through styling rotations. A coordinated range of tealight, votive, pillar and taper formats lets buyers build cohesive ambiance collections for table settings, room accents and retail gift ranges.",
+    customService:
+      "As a full OEM/ODM manufacturer we customize holder silhouette, size, glaze colour, surface texture, embossed branding and retail gift packaging. Match a seasonal palette, develop an exclusive shape from new molds, or adapt an existing range. Low minimum order quantities let decor and gift brands trial fresh ranges, with fast approved pre-production samples.",
+    qualityLogistics:
+      "Every candle holder order ships with careful QC, heat-stability checks and reinforced fragile-rated export packaging engineered for ocean freight. Our logistics team consolidates mixed decor loads, manages documentation and ships worldwide from Chaozhou, China on flexible FOB and CIF terms.",
+    siloGuide:
+      "Completing a decor range? Browse our Cups & Mugs, Vases, Storage & Condiment Jars and Serving Trays sub-categories within the Table Decor & Drinkware Silo, or explore the Dinnerware and Bakeware Silos for tableware.",
+  },
+  procurement: {
+    heading: "Shop Candle Holders by Procurement Need",
+    tags: [
+      { label: "Tealight & Votive Holders", href: "/table-decor-drinkware/candle-holders" },
+      { label: "Pillar Candle Holders", href: "/table-decor-drinkware/candle-holders" },
+      { label: "Taper Candle Holders", href: "/table-decor-drinkware/candle-holders" },
+      { label: "Hospitality Ambiance Decor", href: "/table-decor-drinkware/candle-holders" },
+      { label: "Custom Branded Holders", href: "/contact" },
+    ],
+  },
+  faqs: [
+    {
+      q: "Are your ceramic candle holders heat-stable?",
+      a: "Yes. Our candle holders are high-temperature fired for a dense, heat-stable body suitable for tealight, votive, pillar and taper candles under normal use.",
+    },
+    {
+      q: "What candle holder styles do you offer?",
+      a: "We supply tealight and votive holders, pillar holders and taper holders across a coordinated range of silhouettes, with custom shapes available via new mold development.",
+    },
+    {
+      q: "What is the MOQ for wholesale candle holders?",
+      a: "Standard MOQ starts at 500 pieces per design for stock holders. Custom OEM/ODM holders generally start from 1,000–3,000 pieces depending on glaze and mold requirements.",
+    },
+    {
+      q: "Can candle holders be customized with our branding?",
+      a: "Yes. We offer custom glaze colours, surface textures, embossed logos, shape changes and new mold development, plus retail-ready gift packaging.",
+    },
+    {
+      q: "How are candle holders packed for export?",
+      a: "Candle holders use reinforced, fragile-rated export packaging engineered for long-haul ocean freight, with mixed-load consolidation and full documentation shipped from Chaozhou, China.",
+    },
+  ],
+}
+
+// ----------------------------------------------------------------------------
+// OEM Custom Ceramics（OEM 定制代工服务）Silo —— 复用同一通用 L2 模板
+// （服务型细分：无对应库存品类时，产品网格优雅降级为空占位）
+// ----------------------------------------------------------------------------
+
+const oemLogoPrinting: L2Config = {
+  parentSlug: "oem-custom-ceramics",
+  parentLabel: "OEM Custom Ceramics",
+  slug: "custom-logo-printing",
+  label: "Custom Logo Printing",
+  productCategorySlugs: ["custom-logo-printing"],
+  keyword: "custom logo printing on ceramics",
+  h1: "Custom Logo Printing on Ceramics | Branded Tableware Decoration",
+  metaTitle: "Custom Logo Printing on Ceramics | Decal & Pad Print Branding",
+  metaDescription:
+    "Custom logo printing on ceramic tableware from a Chaozhou OEM factory. Decal, pad and stamp branding for mugs, plates and drinkware. Low MOQ, FDA/LFGB certified, fast sampling for global brands.",
+  metaKeywords:
+    "custom logo printing ceramics, decal branding tableware, pad print mugs, branded ceramics OEM, private label logo printing",
+  bannerImage: "/custom-ceramic-tableware-logo-branding-services.webp",
+  intro:
+    "ADA Ceramics applies durable custom logo printing to ceramic tableware and drinkware for brands, cafés, hotels and promotional buyers. Using decal, pad and stamp techniques with fired-on, dishwasher-durable results, we turn stock or bespoke ceramics into fully branded product, with low MOQs, fast sampling and FDA/LFGB certified production.",
+  seo: {
+    h2: "Durable Custom Logo Printing for Branded Ceramics",
+    procurementScenario:
+      "Brands, cafés, hotels and promotional agencies need logo decoration that survives commercial dishwashing and daily use without fading. Our fired-on decal, pad and stamp printing bonds the design into a protective glaze layer for long-lasting, food-safe branding across mugs, plates, bowls and drinkware. Buyers can brand a proven stock shape or a bespoke product from a single accountable factory, keeping logo colour and placement consistent across every reorder.",
+    customService:
+      "We handle artwork setup, colour matching to brand standards, full-wrap and multi-position printing, and gold/metallic decals where required. Dedicated project managers guide proof approval, sampling and pre-production sign-off, while low minimum order quantities let emerging brands launch branded ranges without overcommitting. Combine logo printing with custom glaze, shape or packaging for a complete private-label program.",
+    qualityLogistics:
+      "All branded production runs under strict QC with FDA and LFGB certification, dishwasher-durability testing and reinforced export packaging. Our team manages documentation, compliance and worldwide shipping from Chaozhou, China on flexible FOB and CIF terms, keeping branded launches on schedule.",
+    siloGuide:
+      "Building a complete custom program? Explore our Custom Glaze & Color, New Mold Development and OEM & ODM Project Case Studies sub-categories within the OEM Custom Ceramics Silo, or browse the Dinnerware, Bakeware and Table Decor & Drinkware Silos for stock ranges to brand.",
+  },
+  procurement: {
+    heading: "Start Your Custom Logo Printing Project",
+    tags: [
+      { label: "Decal Logo Printing", href: "/oem-custom-ceramics/custom-logo-printing" },
+      { label: "Pad & Stamp Printing", href: "/oem-custom-ceramics/custom-logo-printing" },
+      { label: "Full-Wrap Branding", href: "/oem-custom-ceramics/custom-logo-printing" },
+      { label: "Gold & Metallic Decals", href: "/oem-custom-ceramics/custom-logo-printing" },
+      { label: "Request a Quote", href: "/contact" },
+    ],
+  },
+  faqs: [
+    {
+      q: "What logo printing techniques do you offer for ceramics?",
+      a: "We offer fired-on decal, pad and stamp printing, including full-wrap, multi-position and gold/metallic decals, all bonded into a protective glaze layer for durability.",
+    },
+    {
+      q: "Is the printed logo dishwasher durable?",
+      a: "Yes. Our fired-on printing bonds the design into the glaze, producing dishwasher-durable, food-safe branding that resists fading under normal commercial use.",
+    },
+    {
+      q: "What is the MOQ for custom logo printing?",
+      a: "Logo printing on stock shapes typically starts from 500–1,000 pieces per design, with fully custom branded programs generally from 1,000–3,000 pieces depending on requirements.",
+    },
+    {
+      q: "Can you match our exact brand colours?",
+      a: "Yes. We colour-match decals and prints to your brand standards (Pantone references welcome) and provide pre-production proofs and samples for approval before bulk.",
+    },
+    {
+      q: "Can logo printing be combined with custom glazes or shapes?",
+      a: "Absolutely. Logo printing can be combined with custom glaze and colour, new mold development and bespoke packaging for a complete private-label program.",
+    },
+  ],
+}
+
+const oemGlazeColor: L2Config = {
+  parentSlug: "oem-custom-ceramics",
+  parentLabel: "OEM Custom Ceramics",
+  slug: "custom-glaze-color",
+  label: "Custom Glaze & Color",
+  productCategorySlugs: ["custom-glaze-color"],
+  keyword: "custom glaze and color development",
+  h1: "Custom Glaze & Color Development for Private-Label Ceramics",
+  metaTitle: "Custom Glaze & Color Development | Bespoke Ceramic Finishes",
+  metaDescription:
+    "Bespoke glaze and colour development from a Chaozhou OEM ceramic factory. Signature colour matching, reactive and matte glazes for private-label tableware. Low MOQ, FDA/LFGB certified, fast sampling.",
+  metaKeywords:
+    "custom glaze development, ceramic colour matching, reactive glaze OEM, matte glaze tableware, bespoke glaze factory",
+  bannerImage: "/custom-color-glaze-ceramic.webp",
+  intro:
+    "ADA Ceramics develops bespoke glazes and signature colours for private-label ceramic ranges. From brand-matched solid colours to reactive, matte, speckled and gradient effects, our in-house glaze lab formulates food-safe finishes engineered for consistency across production, with low MOQs, fast sampling and FDA/LFGB certified results.",
+  seo: {
+    h2: "Bespoke Glaze & Color Development Engineered for Consistency",
+    procurementScenario:
+      "Brands and importers choose custom glaze development when a signature finish defines their range. Our glaze lab formulates brand-matched solid colours and on-trend reactive, matte, speckled and gradient effects, then engineers them for repeatable, food-safe results across large production runs. Buyers gain an exclusive look that differentiates retail shelves and hospitality programs while staying consistent reorder after reorder.",
+    customService:
+      "We match colours to brand standards, develop new glaze effects from references or samples, and balance aesthetics with manufacturability and compliance before tooling. Dedicated project managers guide glaze trials, sampling and pre-production sign-off, while low minimum order quantities let emerging brands launch a signature finish. Combine custom glaze with logo printing, new molds and packaging for a complete private-label program.",
+    qualityLogistics:
+      "All custom-glaze production runs under strict QC with FDA and LFGB certification, lead and cadmium safety testing, batch colour control and reinforced export packaging. We manage documentation, compliance and worldwide shipping from Chaozhou, China on flexible FOB and CIF terms.",
+    siloGuide:
+      "Building a complete custom program? Explore our Custom Logo Printing, New Mold Development and OEM & ODM Project Case Studies sub-categories within the OEM Custom Ceramics Silo, or browse the Dinnerware, Bakeware and Table Decor & Drinkware Silos for stock ranges to customize.",
+  },
+  procurement: {
+    heading: "Start Your Custom Glaze & Color Project",
+    tags: [
+      { label: "Brand Colour Matching", href: "/oem-custom-ceramics/custom-glaze-color" },
+      { label: "Reactive & Gradient Glazes", href: "/oem-custom-ceramics/custom-glaze-color" },
+      { label: "Matte & Satin Finishes", href: "/oem-custom-ceramics/custom-glaze-color" },
+      { label: "Speckled & Textured Glazes", href: "/oem-custom-ceramics/custom-glaze-color" },
+      { label: "Request a Quote", href: "/contact" },
+    ],
+  },
+  faqs: [
+    {
+      q: "Can you match a specific brand colour?",
+      a: "Yes. Our glaze lab matches solid colours to your brand standards (Pantone references welcome) and provides glaze trial samples for approval before bulk production.",
+    },
+    {
+      q: "What glaze effects can you develop?",
+      a: "We develop solid colours plus reactive, gradient, matte, satin, speckled and textured effects, all engineered to be food-safe and repeatable across production.",
+    },
+    {
+      q: "Are custom glazes food-safe and certified?",
+      a: "Yes. All custom glazes are FDA and LFGB certified, lead and cadmium safe, and batch-tested for colour consistency and compliance.",
+    },
+    {
+      q: "What is the MOQ for custom glaze development?",
+      a: "Custom glaze ranges generally start from 1,000–3,000 pieces per design depending on the finish and shape, with flexible MOQs to help new brands launch.",
+    },
+    {
+      q: "How long does glaze development take?",
+      a: "Glaze trials and sampling usually take about 10–20 days, with bulk production 30–45 days after sample approval, depending on complexity and volume.",
+    },
+  ],
+}
+
+const oemMoldDevelopment: L2Config = {
+  parentSlug: "oem-custom-ceramics",
+  parentLabel: "OEM Custom Ceramics",
+  slug: "new-mold-development",
+  label: "New Mold Development",
+  productCategorySlugs: ["new-mold-development"],
+  keyword: "new mold development for ceramics",
+  h1: "New Mold Development for Exclusive Ceramic Shapes & Tooling",
+  metaTitle: "New Mold Development | Custom Ceramic Tooling & Shapes",
+  metaDescription:
+    "Custom ceramic mold and tooling development from a Chaozhou OEM factory. Exclusive shapes engineered from your drawings or samples for proprietary private-label designs. Low MOQ, FDA/LFGB certified.",
+  metaKeywords:
+    "new mold development, custom ceramic tooling, bespoke ceramic shapes, proprietary design OEM, ceramic mold factory",
+  bannerImage: "/ceramic-manufacturer.webp",
+  intro:
+    "ADA Ceramics develops new molds and tooling to bring exclusive ceramic shapes to life. From your drawings, CAD or physical samples, our in-house tooling team engineers proprietary designs for manufacturability, producing approved pre-production samples before bulk, with low MOQs and FDA/LFGB certified production.",
+  seo: {
+    h2: "Exclusive New Mold & Tooling Development from Concept to Production",
+    procurementScenario:
+      "Brands and designers commission new mold development when an existing shape cannot carry their concept. Our tooling team turns drawings, CAD files or reference samples into production-ready ceramic molds, engineering wall thickness, draft and shrinkage for consistent, manufacturable results. Buyers gain a proprietary product they fully own, differentiating retail ranges and hospitality programs from off-the-shelf tableware.",
+    customService:
+      "We provide design-for-manufacture review, 3D prototyping, master mold and production tooling creation, and approved pre-production sampling. Dedicated project managers guide each milestone from concept to sign-off, while low minimum order quantities make bespoke development viable for emerging brands. Combine new molds with custom glaze, logo printing and packaging for a complete private-label program.",
+    qualityLogistics:
+      "All tooling and production runs under strict QC with FDA and LFGB certification, dimensional inspection and reinforced export packaging. With in-house tooling and 30+ years of experience, we manage documentation, compliance and worldwide shipping from Chaozhou, China on flexible FOB and CIF terms.",
+    siloGuide:
+      "Building a complete custom program? Explore our Custom Logo Printing, Custom Glaze & Color and OEM & ODM Project Case Studies sub-categories within the OEM Custom Ceramics Silo, or browse the Dinnerware, Bakeware and Table Decor & Drinkware Silos for stock ranges.",
+  },
+  procurement: {
+    heading: "Start Your New Mold Development Project",
+    tags: [
+      { label: "Design-for-Manufacture Review", href: "/oem-custom-ceramics/new-mold-development" },
+      { label: "3D Prototyping", href: "/oem-custom-ceramics/new-mold-development" },
+      { label: "Master & Production Tooling", href: "/oem-custom-ceramics/new-mold-development" },
+      { label: "Pre-Production Sampling", href: "/oem-custom-ceramics/new-mold-development" },
+      { label: "Request a Quote", href: "/contact" },
+    ],
+  },
+  faqs: [
+    {
+      q: "Can you develop a brand-new ceramic product from our design?",
+      a: "Yes. Our in-house tooling team develops new molds from your drawings, CAD files or physical samples, engineering the design for manufacturability before producing approved samples.",
+    },
+    {
+      q: "Do you provide prototyping before tooling?",
+      a: "We offer 3D prototyping and design-for-manufacture review to validate form, fit and manufacturability before committing to master and production tooling.",
+    },
+    {
+      q: "What is the MOQ for products from new molds?",
+      a: "Custom-mold products generally start from 1,000–3,000 pieces per design depending on complexity, with flexible MOQs to support new brand launches.",
+    },
+    {
+      q: "How long does new mold development take?",
+      a: "Tooling and sampling typically take about 15–30 days depending on complexity, with bulk production 30–45 days after sample approval.",
+    },
+    {
+      q: "Do we own the molds we commission?",
+      a: "Custom tooling developed for your proprietary design is dedicated to your production; ownership and exclusivity terms are confirmed in your project agreement.",
+    },
+  ],
+}
+
+const oemCaseStudies: L2Config = {
+  parentSlug: "oem-custom-ceramics",
+  parentLabel: "OEM Custom Ceramics",
+  slug: "oem-odm-case-studies",
+  label: "OEM & ODM Project Case Studies",
+  productCategorySlugs: ["oem-odm-case-studies"],
+  keyword: "OEM ODM ceramic project case studies",
+  h1: "OEM & ODM Project Case Studies | Proven Private-Label Ceramics",
+  metaTitle: "OEM & ODM Ceramic Case Studies | Private-Label Projects",
+  metaDescription:
+    "Explore OEM/ODM ceramic project case studies from a Chaozhou factory. Proven private-label tableware, drinkware and decor programs delivered for global brands and Horeca buyers. Low MOQ, FDA/LFGB certified.",
+  metaKeywords:
+    "OEM ceramic case studies, ODM project examples, private label tableware projects, custom ceramics portfolio, ceramic manufacturer China",
+  bannerImage: "/custom-ceramic-tableware-packaging-labeling-services.webp",
+  intro:
+    "ADA Ceramics has delivered private-label ceramic programs for global retail brands, café and hotel groups and gift companies. These OEM/ODM case studies showcase how we take projects from concept through tooling, custom glaze, logo printing and packaging to shelf-ready production, with low MOQs and FDA/LFGB certified manufacturing.",
+  seo: {
+    h2: "Proven OEM & ODM Ceramic Programs Delivered Worldwide",
+    procurementScenario:
+      "Buyers evaluating a manufacturing partner want proof of delivery on real private-label programs. Our case studies span retail homeware ranges, branded café and hotel drinkware, promotional gifting and exclusive designer collections, demonstrating our ability to scale from pilot runs to full container production. Each project shows coordinated design, tooling, glaze, branding and packaging managed by a single accountable factory.",
+    customService:
+      "Every program is supported by in-house design, tooling and a dedicated project manager guiding artwork, sampling and pre-production sign-off. Low minimum order quantities let emerging brands launch, while our experience de-risks complex multi-component collections. Use these examples as a starting point, then tailor a program with custom logo printing, glaze, new molds and packaging.",
+    qualityLogistics:
+      "All featured programs were produced under strict QC with FDA and LFGB certification, batch inspection and reinforced export packaging. With 30+ years of experience, we manage documentation, compliance and worldwide shipping from Chaozhou, China on flexible FOB and CIF terms.",
+    siloGuide:
+      "Ready to start your own program? Explore our Custom Logo Printing, Custom Glaze & Color and New Mold Development sub-categories within the OEM Custom Ceramics Silo, or browse the Dinnerware, Bakeware and Table Decor & Drinkware Silos for stock ranges to customize.",
+  },
+  procurement: {
+    heading: "Explore Our OEM & ODM Project Work",
+    tags: [
+      { label: "Retail Private-Label Ranges", href: "/oem-custom-ceramics/oem-odm-case-studies" },
+      { label: "Branded Café & Hotel Programs", href: "/oem-custom-ceramics/oem-odm-case-studies" },
+      { label: "Promotional Gifting", href: "/oem-custom-ceramics/oem-odm-case-studies" },
+      { label: "Designer Collections", href: "/oem-custom-ceramics/oem-odm-case-studies" },
+      { label: "Start Your Project", href: "/contact" },
+    ],
+  },
+  faqs: [
+    {
+      q: "What kinds of OEM/ODM projects have you delivered?",
+      a: "We have delivered retail private-label ranges, branded café and hotel drinkware, promotional gifting and exclusive designer collections across tableware, drinkware and decor.",
+    },
+    {
+      q: "Can you scale from a pilot run to full production?",
+      a: "Yes. Our factory scales from low-MOQ pilot runs to full container production, with consistent quality and branding maintained across reorders.",
+    },
+    {
+      q: "How do you manage complex multi-component collections?",
+      a: "A dedicated project manager coordinates design, tooling, glaze, logo printing, packaging and QC, giving you a single accountable partner from concept to delivery.",
+    },
+    {
+      q: "What is the MOQ to start a private-label project?",
+      a: "Custom programs generally start from 1,000–3,000 pieces per design, with flexible MOQs to help new and growing brands launch.",
+    },
+    {
+      q: "How do I start a project like these?",
+      a: "Send your concept, specs and artwork via our contact page for a tailored quote; our team will guide tooling, sampling and production planning.",
+    },
+  ],
+}
+
+// ----------------------------------------------------------------------------
 // 汇总 + 查询辅助（键名固定为 `${parentSlug}/${slug}`，便于路由按 silo+l2 取配置）
 // ----------------------------------------------------------------------------
 
@@ -490,6 +1048,15 @@ export const L2_CONFIGS: Record<string, L2Config> = {
   "dinnerware/bowls": dinnerwareBowls,
   "dinnerware/dinnerware-sets": dinnerwareSets,
   "dinnerware/serve-dishes": dinnerwareServeDishes,
+  "table-decor-drinkware/cups-mugs": tableCupsMugs,
+  "table-decor-drinkware/vases": tableVases,
+  "table-decor-drinkware/storage-condiment-jars": tableStorageJars,
+  "table-decor-drinkware/serving-trays": tableServingTrays,
+  "table-decor-drinkware/candle-holders": tableCandleHolders,
+  "oem-custom-ceramics/custom-logo-printing": oemLogoPrinting,
+  "oem-custom-ceramics/custom-glaze-color": oemGlazeColor,
+  "oem-custom-ceramics/new-mold-development": oemMoldDevelopment,
+  "oem-custom-ceramics/oem-odm-case-studies": oemCaseStudies,
 }
 
 /** 取某个 L2 配置 */

@@ -223,8 +223,8 @@ export function Header() {
       href: `/${currentLangCode}/bakeware`,
       dropdown: [
         { name: "Ramekin Bowls", href: `/${currentLangCode}/bakeware/ramekin-bowls` },
-        { name: "Baking Dishes & Casseroles", href: `/${currentLangCode}/bakeware/baking-dishes-casseroles` },
-        { name: "Loaf & Pie & Pizza Pans", href: `/${currentLangCode}/bakeware/loaf-pie-pizza-pans` },
+        { name: "Baking Dishes & Casseroles", href: `/${currentLangCode}/bakeware/baking-dishes` },
+        { name: "Loaf & Pie & Pizza Pans", href: `/${currentLangCode}/bakeware/pie-pizza-pans` },
       ],
     },
     {
@@ -242,10 +242,10 @@ export function Header() {
       name: "OEM Custom Ceramics",
       href: `/${currentLangCode}/oem-custom-ceramics`,
       dropdown: [
-        { name: "Custom Logo Printing", href: `/${currentLangCode}/oem-custom-ceramics` },
-        { name: "Custom Glaze & Color", href: `/${currentLangCode}/oem-custom-ceramics` },
-        { name: "New Mold Development", href: `/${currentLangCode}/oem-custom-ceramics` },
-        { name: "OEM & ODM Project Case Studies", href: `/${currentLangCode}/oem-custom-ceramics` },
+        { name: "Custom Logo Printing", href: `/${currentLangCode}/oem-custom-ceramics/custom-logo-printing` },
+        { name: "Custom Glaze & Color", href: `/${currentLangCode}/oem-custom-ceramics/custom-glaze-color` },
+        { name: "New Mold Development", href: `/${currentLangCode}/oem-custom-ceramics/new-mold-development` },
+        { name: "OEM & ODM Project Case Studies", href: `/${currentLangCode}/oem-custom-ceramics/oem-odm-case-studies` },
         { name: "Request Custom Quote", href: `/${currentLangCode}/contact` },
       ],
     },

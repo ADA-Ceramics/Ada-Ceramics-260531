@@ -85,7 +85,7 @@ export function Footer() {
               </li>
               <li>
                 <Link 
-                  href="/en/products/cups-mugs"
+                  href="/en/table-decor-drinkware/cups-mugs"
                   className="text-white/70 hover:text-white text-sm transition-colors"
                 >
                   Wholesale Cups & Mugs
@@ -93,7 +93,7 @@ export function Footer() {
               </li>
               <li>
                 <Link 
-                  href="/en/products/bakeware"
+                  href="/en/bakeware"
                   className="text-white/70 hover:text-white text-sm transition-colors"
                 >
                   Wholesale Bakeware
