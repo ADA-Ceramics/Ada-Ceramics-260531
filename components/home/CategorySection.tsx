@@ -93,48 +93,46 @@ export default function CategorySection({ categories }: CategorySectionProps) {
           {/* 右侧：3 个按品类合并的模块，横向滚动 */}
           <div className="lg:w-3/5 min-w-0">
             <div className="flex gap-6 md:gap-8 overflow-x-auto pb-4 snap-x snap-mandatory items-start">
-              {groups.map((group) => (
-                <div
-                  key={group.title}
-                  className="snap-start shrink-0 w-[280px] sm:w-[320px] bg-white rounded-2xl border border-gray-100 overflow-hidden flex flex-col"
-                >
-                  <div className="px-6 pt-6 pb-4 border-b border-gray-100">
-                    <h3 className="text-xl font-semibold text-[#1a1a1a]">{group.title}</h3>
-                  </div>
-                  <div className="flex flex-col gap-5 p-6">
-                    {group.items.map((item) => (
-                      <Link
-                        key={item.slug}
-                        href={getLinkHref(item.slug)}
-                        className="no-underline block focus:outline-none focus:ring-2 focus:ring-[#8b7355] rounded-xl"
-                      >
-                        <div className="overflow-hidden rounded-xl">
-                          <div className="relative aspect-[4/3] bg-gray-100">
-                            {item.image ? (
-                              <Image
-                                src={item.image}
-                                alt={item.alt}
-                                fill
-                                loading="lazy"
-                                className="object-cover"
-                                sizes="(max-width: 640px) 80vw, 320px"
-                              />
-                            ) : (
-                              <div className="w-full h-full flex items-center justify-center text-gray-400">
-                                <Package size={40} />
-                              </div>
-                            )}
-                          </div>
-                          <div className="pt-3">
-                            <h4 className="text-base font-semibold text-[#1a1a1a] mb-1">{item.name}</h4>
-                            <p className="text-gray-600 text-sm leading-relaxed">{item.description}</p>
-                          </div>
+              {groups.map((group) => {
+                // 该品类的核心合集图：沿用本品类第一张原卡片的 image/alt（不改动任何已对接内容）
+                const hero = group.items[0]
+                return (
+                  <div
+                    key={group.title}
+                    className="snap-start shrink-0 w-[280px] sm:w-[320px] bg-white rounded-2xl border border-gray-100 overflow-hidden flex flex-col"
+                  >
+                    <div className="px-6 pt-6 pb-4 border-b border-gray-100">
+                      <h3 className="text-xl font-semibold text-[#1a1a1a]">{group.title}</h3>
+                    </div>
+                    <div className="flex flex-col gap-5 p-6">
+                      <div className="overflow-hidden rounded-xl">
+                        <div className="relative aspect-[4/3] bg-gray-100">
+                          {hero.image ? (
+                            <Image
+                              src={hero.image}
+                              alt={hero.alt}
+                              fill
+                              loading="lazy"
+                              className="object-cover"
+                              sizes="(max-width: 640px) 80vw, 320px"
+                            />
+                          ) : (
+                            <div className="w-full h-full flex items-center justify-center text-gray-400">
+                              <Package size={40} />
+                            </div>
+                          )}
                         </div>
+                      </div>
+                      <Link
+                        href={getLinkHref(hero.slug)}
+                        className="no-underline inline-flex items-center justify-center w-full px-5 py-3 rounded-full bg-[#8b7355] text-white text-sm font-semibold transition-colors hover:bg-[#735f45] focus:outline-none focus:ring-2 focus:ring-[#8b7355] focus:ring-offset-2"
+                      >
+                        View All
                       </Link>
-                    ))}
+                    </div>
                   </div>
-                </div>
-              ))}
+                )
+              })}
             </div>
           </div>
         </div>
