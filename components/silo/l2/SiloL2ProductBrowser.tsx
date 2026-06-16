@@ -253,7 +253,7 @@ export function SiloL2ProductBrowser({
             ) : (
               <SlidersHorizontal className="w-4 h-4" aria-hidden="true" />
             )}
-            {mobileFiltersOpen ? "Hide Filters" : "Show Filters"}
+            <span>{mobileFiltersOpen ? "Hide Filters" : "Show Filters"}</span>
             {activeFilterCount > 0 && (
               <span className="ml-1 inline-flex items-center justify-center w-5 h-5 rounded-full bg-[#8b7355] text-white text-[10px]">
                 {activeFilterCount}
@@ -276,7 +276,7 @@ export function SiloL2ProductBrowser({
           <div className="flex-1 min-w-0">
             <div className="flex items-center justify-between mb-5">
               <p className="text-sm text-muted-foreground">
-                {filtered.length} {filtered.length === 1 ? "product" : "products"}
+                <span>{`${filtered.length} ${filtered.length === 1 ? "product" : "products"}`}</span>
               </p>
             </div>
 

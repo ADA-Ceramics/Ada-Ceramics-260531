@@ -67,14 +67,14 @@ export function SiloL2Banner({
               className="inline-flex items-center gap-2 px-6 py-3 rounded-md bg-[#8b7355] text-white text-sm font-medium hover:bg-[#75603f] transition-colors"
             >
               <MessageCircle className="w-4 h-4" aria-hidden="true" />
-              Request Custom Quote
+              <span>Request Custom Quote</span>
             </Link>
             <Link
               href={`/${locale}/${parentSlug}`}
               className="inline-flex items-center gap-2 px-6 py-3 rounded-md border border-[#8b7355] text-[#8b7355] text-sm font-medium hover:bg-[#8b7355] hover:text-white transition-colors"
             >
               <ArrowLeft className="w-4 h-4" aria-hidden="true" />
-              Back to {parentLabel}
+              <span>Back to {parentLabel}</span>
             </Link>
           </div>
         </div>
