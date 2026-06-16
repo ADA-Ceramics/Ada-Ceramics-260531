@@ -54,16 +54,14 @@ export default function CategorySection({ categories }: CategorySectionProps) {
       .filter((c): c is CategoryData => Boolean(c)),
   })).filter((group) => group.items.length > 0)
 
-  // 横向滚动容器自动播放：每 5 秒平滑切换一个模块，循环；hover 暂停、离开恢复
+  // 纯自动滚动：每 5 秒平滑切换到下一个模块，滚动到最后一个后循环回第一个（无手动滑动）
   const scrollRef = useRef<HTMLDivElement>(null)
-  const pausedRef = useRef(false)
 
   useEffect(() => {
     const container = scrollRef.current
     if (!container) return
 
     const interval = setInterval(() => {
-      if (pausedRef.current) return
       const cards = Array.from(container.children) as HTMLElement[]
       if (cards.length === 0) return
 
@@ -75,7 +73,7 @@ export default function CategorySection({ categories }: CategorySectionProps) {
       if (next && next.offsetLeft <= maxScroll) {
         container.scrollTo({ left: next.offsetLeft, behavior: "smooth" })
       } else {
-        // 已到末尾则循环回到起点
+        // 已到末尾则循环回到第一个
         container.scrollTo({ left: 0, behavior: "smooth" })
       }
     }, 5000)
@@ -133,9 +131,7 @@ export default function CategorySection({ categories }: CategorySectionProps) {
           <div className="lg:w-3/5 min-w-0">
             <div
               ref={scrollRef}
-              onMouseEnter={() => (pausedRef.current = true)}
-              onMouseLeave={() => (pausedRef.current = false)}
-              className="flex gap-6 md:gap-8 overflow-x-auto pb-4 snap-x snap-mandatory items-start"
+              className="flex gap-6 md:gap-8 overflow-hidden pb-4 items-start"
             >
               {groups.map((group) => {
                 // 该品类的核心合集图：沿用本品类第一张原卡片的 image/alt（不改动任何已对接内容）
