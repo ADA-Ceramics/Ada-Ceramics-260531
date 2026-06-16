@@ -36,7 +36,6 @@ export async function SiloL2CategoryPage({
 
   // 严格仅拉取当前 L2 对应品类产品（跨品类隔离）
   const products = await getL2Products(config.productCategorySlugs)
-  console.log("[v0] L2 fetch", parentSlug, l2Slug, config.productCategorySlugs, "=>", products.length)
   // 同 Silo 其他 L2（横向内链）
   const siblings = getL2ConfigsByParent(parentSlug).filter((c) => c.slug !== config.slug)
 
