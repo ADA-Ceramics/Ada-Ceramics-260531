@@ -23,10 +23,10 @@ export default function HeroSection() {
         </div>
 
         <h1 className="mb-6">
-          <span className="block font-serif text-[56px] text-[#1a1a1a] leading-tight tracking-tight">
+          <span className="block font-serif text-4xl md:text-[56px] text-[#1a1a1a] leading-tight tracking-tight">
             Premium Custom & Wholesale Tableware
           </span>
-          <span className="block font-serif text-[56px] text-[#8b7355] leading-tight tracking-tight mt-2">
+          <span className="block font-serif text-4xl md:text-[56px] text-[#8b7355] leading-tight tracking-tight mt-2">
             for Global Brands & Horeca
           </span>
         </h1>

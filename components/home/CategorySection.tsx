@@ -59,7 +59,7 @@ export default function CategorySection({ categories }: CategorySectionProps) {
       <div className="max-w-[1280px] mx-auto px-6">
         <div className="text-center mb-16">
           <p className="text-[#8b7355] text-sm font-semibold uppercase tracking-wider mb-3">Our Collections</p>
-          <h2 className="font-serif text-[56px] text-[#1a1a1a] mb-4">Standard Collections & Custom Solutions</h2>
+          <h2 className="font-serif text-4xl md:text-[56px] text-[#1a1a1a] mb-4">Standard Collections & Custom Solutions</h2>
           <p className="text-gray-600 text-base max-w-[600px] mx-auto leading-relaxed">
             Browse our standard tableware collections, fully customizable with logos, glazes and packaging for brands, restaurants and retail stores.
           </p>

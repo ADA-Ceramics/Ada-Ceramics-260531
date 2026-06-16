@@ -7,7 +7,7 @@ export default function WhyUsSection() {
       <div className="max-w-[1280px] mx-auto px-6">
         <div className="text-center mb-12">
           <p className="text-[#8b7355] text-xs font-medium uppercase tracking-widest mb-4">Why Choose Us</p>
-          <h2 className="font-serif text-[56px] text-[#1a1a1a] mb-5 leading-tight">Trusted Custom & Wholesale Ceramic Manufacturer</h2>
+          <h2 className="font-serif text-4xl md:text-[56px] text-[#1a1a1a] mb-5 leading-tight">Trusted Custom & Wholesale Ceramic Manufacturer</h2>
           <p className="text-gray-400 text-base max-w-[680px] mx-auto leading-relaxed">
             We combine decades of wholesale expertise with custom OEM/ODM solutions, delivering certified ceramic tableware for brands and hospitality worldwide.
           </p>
