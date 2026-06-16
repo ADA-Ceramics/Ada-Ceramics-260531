@@ -112,9 +112,9 @@ Details: ${formData.details}`
       <HeroSection />
       <CategorySection categories={categories} />
       <FactorySection />
+      <CustomSection />
       <IndustrySection />
       <WhyUsSection />
-      <CustomSection />
       <BlogSection />
 
       <ContactSection
