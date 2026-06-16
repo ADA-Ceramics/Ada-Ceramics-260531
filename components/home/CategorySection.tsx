@@ -84,7 +84,9 @@ export default function CategorySection({ categories }: CategorySectionProps) {
                           src={oemCard.image}
                           alt={oemCard.alt}
                           fill
-                          loading="lazy"
+                          loading="eager"
+                          priority
+                          fetchPriority="high"
                           className="object-cover"
                           sizes="(max-width: 1024px) 100vw, 40vw"
                         />
@@ -170,6 +172,8 @@ export default function CategorySection({ categories }: CategorySectionProps) {
                 // 该品类的核心合集图：沿用本品类第一张原卡片的 image/alt（不改动任何已对接内容）
                 const hero = group.items[0]
                 const tagline = GROUP_TAGLINES[group.title] ?? ""
+                // 首屏可视区的前 3 张原始卡片优先加载；复制卡片（用于无缝循环）保留懒加载
+                const isAboveFold = i < groups.length
                 return (
                   <div
                     key={`${group.title}-${i}`}
@@ -187,7 +191,9 @@ export default function CategorySection({ categories }: CategorySectionProps) {
                               src={hero.image}
                               alt={hero.alt}
                               fill
-                              loading="lazy"
+                              loading={isAboveFold ? "eager" : "lazy"}
+                              priority={isAboveFold}
+                              fetchPriority={isAboveFold ? "high" : "auto"}
                               className="object-cover"
                               sizes="280px"
                             />
