@@ -61,7 +61,7 @@ export function Footer() {
             <ul className="space-y-3">
               <li>
                 <Link 
-                  href="/en/products/plates"
+                  href="/en/dinnerware/plates"
                   className="text-white/70 hover:text-white text-sm transition-colors"
                 >
                   Wholesale Plates
@@ -69,7 +69,7 @@ export function Footer() {
               </li>
               <li>
                 <Link 
-                  href="/en/products/bowls"
+                  href="/en/dinnerware/bowls"
                   className="text-white/70 hover:text-white text-sm transition-colors"
                 >
                   Wholesale Bowls
@@ -77,7 +77,7 @@ export function Footer() {
               </li>
               <li>
                 <Link 
-                  href="/en/products/dinnerware-sets"
+                  href="/en/dinnerware/dinnerware-sets"
                   className="text-white/70 hover:text-white text-sm transition-colors"
                 >
                   Wholesale Dinnerware Sets
