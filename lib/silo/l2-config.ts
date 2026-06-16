@@ -111,7 +111,7 @@ const ramekinBowls: L2Config = {
 const bakingDishes: L2Config = {
   parentSlug: "bakeware",
   parentLabel: "Bakeware",
-  slug: "baking-dishes",
+  slug: "baking-dishes-casseroles",
   label: "Baking Dishes & Casseroles",
   productCategorySlugs: ["baking-dishes"],
   keyword: "baking dishes and casseroles",
@@ -138,10 +138,10 @@ const bakingDishes: L2Config = {
   procurement: {
     heading: "Shop Baking Dishes & Casseroles by Procurement Need",
     tags: [
-      { label: "Lasagne & Gratin Dishes", href: "/bakeware/baking-dishes" },
-      { label: "Lidded Casseroles", href: "/bakeware/baking-dishes" },
-      { label: "Oval Roasting Bakers", href: "/bakeware/baking-dishes" },
-      { label: "Oven-to-Table Sets", href: "/bakeware/baking-dishes" },
+      { label: "Lasagne & Gratin Dishes", href: "/bakeware/baking-dishes-casseroles" },
+      { label: "Lidded Casseroles", href: "/bakeware/baking-dishes-casseroles" },
+      { label: "Oval Roasting Bakers", href: "/bakeware/baking-dishes-casseroles" },
+      { label: "Oven-to-Table Sets", href: "/bakeware/baking-dishes-casseroles" },
       { label: "Custom Branded Bakers", href: "/contact" },
     ],
   },
@@ -172,7 +172,7 @@ const bakingDishes: L2Config = {
 const piePizzaPans: L2Config = {
   parentSlug: "bakeware",
   parentLabel: "Bakeware",
-  slug: "pie-pizza-pans",
+  slug: "loaf-pie-pizza-pans",
   label: "Loaf, Pie & Pizza Pans",
   productCategorySlugs: ["pie-pizza-plates"],
   keyword: "loaf pie and pizza pans",
@@ -199,10 +199,10 @@ const piePizzaPans: L2Config = {
   procurement: {
     heading: "Shop Loaf, Pie & Pizza Pans by Procurement Need",
     tags: [
-      { label: "Pizza Baking Pans", href: "/bakeware/pie-pizza-pans" },
-      { label: "Pie & Quiche Dishes", href: "/bakeware/pie-pizza-pans" },
-      { label: "Loaf & Bread Pans", href: "/bakeware/pie-pizza-pans" },
-      { label: "Bakery Supply", href: "/bakeware/pie-pizza-pans" },
+      { label: "Pizza Baking Pans", href: "/bakeware/loaf-pie-pizza-pans" },
+      { label: "Pie & Quiche Dishes", href: "/bakeware/loaf-pie-pizza-pans" },
+      { label: "Loaf & Bread Pans", href: "/bakeware/loaf-pie-pizza-pans" },
+      { label: "Bakery Supply", href: "/bakeware/loaf-pie-pizza-pans" },
       { label: "Custom Branded Pans", href: "/contact" },
     ],
   },
@@ -1042,8 +1042,8 @@ const oemCaseStudies: L2Config = {
 
 export const L2_CONFIGS: Record<string, L2Config> = {
   "bakeware/ramekin-bowls": ramekinBowls,
-  "bakeware/baking-dishes": bakingDishes,
-  "bakeware/pie-pizza-pans": piePizzaPans,
+  "bakeware/baking-dishes-casseroles": bakingDishes,
+  "bakeware/loaf-pie-pizza-pans": piePizzaPans,
   "dinnerware/plates": dinnerwarePlates,
   "dinnerware/bowls": dinnerwareBowls,
   "dinnerware/dinnerware-sets": dinnerwareSets,

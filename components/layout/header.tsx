@@ -223,8 +223,8 @@ export function Header() {
       href: `/${currentLangCode}/bakeware`,
       dropdown: [
         { name: "Ramekin Bowls", href: `/${currentLangCode}/bakeware/ramekin-bowls` },
-        { name: "Baking Dishes & Casseroles", href: `/${currentLangCode}/bakeware/baking-dishes` },
-        { name: "Loaf & Pie & Pizza Pans", href: `/${currentLangCode}/bakeware/pie-pizza-pans` },
+        { name: "Baking Dishes & Casseroles", href: `/${currentLangCode}/bakeware/baking-dishes-casseroles` },
+        { name: "Loaf & Pie & Pizza Pans", href: `/${currentLangCode}/bakeware/loaf-pie-pizza-pans` },
       ],
     },
     {
