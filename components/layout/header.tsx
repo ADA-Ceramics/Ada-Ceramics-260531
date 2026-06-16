@@ -264,7 +264,7 @@ export function Header() {
 
   // 页面滚动效果
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 10)
+    const handleScroll = () => setIsScrolled(window.scrollY > 0)
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
@@ -308,7 +308,7 @@ export function Header() {
       <header
         className={cn(
           "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-          isScrolled ? "bg-white/95 backdrop-blur shadow" : "bg-transparent"
+          isScrolled ? "bg-[#f5efe6] shadow" : "bg-transparent"
         )}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
