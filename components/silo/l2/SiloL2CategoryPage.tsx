@@ -76,6 +76,8 @@ export async function SiloL2CategoryPage({
         locale={locale}
         label={config.label}
         products={products}
+        parentSlug={config.parentSlug}
+        l2Slug={config.slug}
         fallbackHref="/contact"
       />
 

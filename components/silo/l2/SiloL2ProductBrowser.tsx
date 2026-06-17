@@ -18,6 +18,10 @@ interface SiloL2ProductBrowserProps {
   locale: string
   label: string
   products: L2Product[]
+  /** L3 单品路由：父级 Silo slug */
+  parentSlug: string
+  /** L3 单品路由：当前 L2 slug */
+  l2Slug: string
   /** 无产品时引导链接（不含 locale 前缀） */
   fallbackHref: string
 }
@@ -48,6 +52,8 @@ export function SiloL2ProductBrowser({
   locale,
   label,
   products,
+  parentSlug,
+  l2Slug,
   fallbackHref,
 }: SiloL2ProductBrowserProps) {
   // ---- 从真实产品数据派生筛选项（联动 Supabase 内容）----
@@ -285,7 +291,7 @@ export function SiloL2ProductBrowser({
                 {filtered.map((product) => (
                   <Link
                     key={product.id}
-                    href={`/${locale}/products/${product.categorySlug}/${product.slug}`}
+                    href={`/${locale}/${parentSlug}/${l2Slug}/${product.slug}`}
                     className="group flex flex-col rounded-xl border border-border bg-white overflow-hidden transition-all hover:shadow-lg"
                   >
                     <div className="aspect-square bg-[#f9fafb] overflow-hidden relative">
