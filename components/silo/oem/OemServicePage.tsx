@@ -1,4 +1,5 @@
 import Link from "next/link"
+import Image from "next/image"
 import { ArrowRight, MessageCircle, CheckCircle2 } from "lucide-react"
 import { SiloL2Banner } from "@/components/silo/l2/SiloL2Banner"
 import { SiloFaq } from "@/components/silo/SiloFaq"
@@ -15,6 +16,52 @@ import {
   type OemServicePageData,
 } from "@/lib/silo/oem-service-config"
 import { notFound } from "next/navigation"
+
+/** 工厂全流程照片步骤（沿用旧 /oemodm 页设计与素材） */
+const OEM_PROCESS_STEPS = [
+  {
+    step: 1,
+    title: "Browse & Select",
+    description: "Browse our catalog and select preferred ceramic dinnerware shapes and styles.",
+    image: "/image/oem-odm/oem-odm-custom-logo-catalog_.webp",
+    imageAlt: "Browse ADA Ceramics catalog to select ceramic tableware shapes and styles",
+  },
+  {
+    step: 2,
+    title: "Share Requirements",
+    description: "Share product model numbers, custom logo files, packaging needs or modification ideas with our sales team.",
+    image: "/image/oem-odm/custom-ceramic-cup-saucer.webp",
+    imageAlt: "Share custom ceramic tableware requirements with ADA Ceramics sales team",
+  },
+  {
+    step: 3,
+    title: "Confirm artwork",
+    description: "We review your request and finalize the customization artwork with you.",
+    image: "/image/oem-odm/oem-odm-custom-ceramic-coffee-cup-with-logo-design.webp",
+    imageAlt: "Confirm custom ceramic tableware artwork with ADA Ceramics",
+  },
+  {
+    step: 4,
+    title: "Create Samples",
+    description: "We create custom samples based on your confirmed artwork.",
+    image: "/image/oem-odm/creat-sample.webp",
+    imageAlt: "ADA Ceramics creating custom ceramic tableware samples",
+  },
+  {
+    step: 5,
+    title: "Approve Samples",
+    description: "You review and approve the samples to confirm all details.",
+    image: "/image/oem-odm/approve-samples.webp",
+    imageAlt: "Review and approve custom ceramic tableware samples",
+  },
+  {
+    step: 6,
+    title: "Mass Production",
+    description: "After sample approval, we proceed with mass production for your custom order.",
+    image: "/image/oem-odm/mass-production.webp",
+    imageAlt: "ADA Ceramics mass production of custom ceramic tableware",
+  },
+]
 
 /**
  * OEM L3 服务页统一 10 模块 SEO 骨架（仅 OEM Silo 使用，不影响产品网格 L2 模板）。
@@ -150,36 +197,46 @@ export function OemServicePage({ slug, locale }: { slug: string; locale: string 
         </div>
       </section>
 
-      {/* 模块5：一站式 OEM 工厂全流程（节点锚文本内链开模/打样服务页） */}
+      {/* 模块5：一站式 OEM 工厂全流程（旧版照片流程布局） */}
       <section className="py-16 lg:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="font-serif text-2xl sm:text-3xl text-[#1a1a2e] mb-10 text-balance">
             Our Full Custom Production Workflow
           </h2>
-          <ol className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
-            {data.workflow.map((step, i) => (
-              <li key={i} className="relative flex flex-col rounded-xl border border-black/10 p-5">
-                <span className="flex items-center justify-center w-9 h-9 rounded-full bg-[#1a1a2e] text-white text-sm font-medium">
-                  {i + 1}
-                </span>
-                <h3 className="mt-4 font-serif text-lg text-[#1a1a2e]">
-                  {step.linkSlug && step.linkSlug !== slug ? (
-                    <Link
-                      href={`/${locale}/${OEM_PARENT_SLUG}/${step.linkSlug}`}
-                      className="text-[#8b7355] hover:text-[#75603f] underline underline-offset-2"
-                    >
-                      {step.title}
-                    </Link>
-                  ) : (
-                    step.title
-                  )}
-                </h3>
-                <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
-                  {step.description}
-                </p>
-              </li>
+
+          {/* 横向流程展示 - 桌面端 */}
+          <div className="hidden lg:block">
+            <div className="grid grid-cols-6 gap-4">
+              {OEM_PROCESS_STEPS.map((step) => (
+                <div key={step.step} className="relative text-center">
+                  <div className="relative z-10 aspect-square mb-4 rounded-xl overflow-hidden shadow-md mx-auto w-full max-w-40">
+                    <Image src={step.image} alt={step.imageAlt} fill className="object-cover" sizes="160px" />
+                    <div className="absolute -top-2 -left-2 w-10 h-10 rounded-full bg-[#8b7355] text-white text-lg font-bold flex items-center justify-center shadow-lg">
+                      {step.step}
+                    </div>
+                  </div>
+                  <h3 className="text-lg font-semibold text-[#1a1a2e] mb-2">{step.title}</h3>
+                  <p className="text-sm text-muted-foreground">{step.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* 垂直列表 - 移动端 */}
+          <div className="lg:hidden space-y-8">
+            {OEM_PROCESS_STEPS.map((step) => (
+              <div key={step.step} className="flex flex-col items-center text-center">
+                <div className="relative aspect-square w-full max-w-64 mb-4 rounded-xl overflow-hidden shadow-md">
+                  <Image src={step.image} alt={step.imageAlt} fill className="object-cover" sizes="256px" />
+                  <div className="absolute -top-2 -left-2 w-10 h-10 rounded-full bg-[#8b7355] text-white text-lg font-bold flex items-center justify-center shadow-lg">
+                    {step.step}
+                  </div>
+                </div>
+                <h3 className="text-lg font-semibold text-[#1a1a2e] mb-2">{step.title}</h3>
+                <p className="text-muted-foreground">{step.description}</p>
+              </div>
             ))}
-          </ol>
+          </div>
         </div>
       </section>
 
@@ -295,7 +352,7 @@ export function OemServicePage({ slug, locale }: { slug: string; locale: string 
             })}
           </div>
 
-          {/* 末尾标准 Silo 隔离引导句 */}
+          {/* 末尾标��� Silo 隔离引导句 */}
           <p className="mt-10 text-sm text-muted-foreground leading-relaxed max-w-3xl">
             {data.seo.siloGuide}
           </p>
