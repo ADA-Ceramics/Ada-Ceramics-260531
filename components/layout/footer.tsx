@@ -3,15 +3,14 @@
 import Link from "next/link"
 import { Mail, Phone, MapPin } from "lucide-react"
 import { companyInfo } from "@/lib/data"
-import { CATEGORY_INFO } from "@/lib/supabase/types"
 
 export function Footer() {
   return (
     <footer className="bg-[#1a1a2e] text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
-          {/* Company Info */}
-          <div className="space-y-6">
+          {/* Company Info（占据更宽空间以平衡布局） */}
+          <div className="space-y-6 lg:col-span-2">
             <div className="flex items-center gap-2">
               <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center">
                 <span className="text-[#1a1a2e] font-bold text-xl">C</span>
@@ -53,53 +52,6 @@ export function Footer() {
                 </svg>
               </a>
             </div>
-          </div>
-
-          {/* Products */}
-          <div>
-            <h3 className="font-semibold text-lg mb-6">Products</h3>
-            <ul className="space-y-3">
-              <li>
-                <Link 
-                  href="/en/dinnerware/plates"
-                  className="text-white/70 hover:text-white text-sm transition-colors"
-                >
-                  Wholesale Plates
-                </Link>
-              </li>
-              <li>
-                <Link 
-                  href="/en/dinnerware/bowls"
-                  className="text-white/70 hover:text-white text-sm transition-colors"
-                >
-                  Wholesale Bowls
-                </Link>
-              </li>
-              <li>
-                <Link 
-                  href="/en/dinnerware/dinnerware-sets"
-                  className="text-white/70 hover:text-white text-sm transition-colors"
-                >
-                  Wholesale Dinnerware Sets
-                </Link>
-              </li>
-              <li>
-                <Link 
-                  href="/en/table-decor-drinkware/cups-mugs"
-                  className="text-white/70 hover:text-white text-sm transition-colors"
-                >
-                  Wholesale Cups & Mugs
-                </Link>
-              </li>
-              <li>
-                <Link 
-                  href="/en/bakeware"
-                  className="text-white/70 hover:text-white text-sm transition-colors"
-                >
-                  Wholesale Bakeware
-                </Link>
-              </li>
-            </ul>
           </div>
 
           {/* Quick Links */}
