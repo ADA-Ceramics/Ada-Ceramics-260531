@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import { SiloL2CategoryPage } from "@/components/silo/l2/SiloL2CategoryPage"
+import { OemServicePage } from "@/components/silo/oem/OemServicePage"
 import { getL2Config, getL2ConfigsByParent } from "@/lib/silo/l2-config"
 
 const PARENT_SLUG = "oem-custom-ceramics"
@@ -40,5 +40,5 @@ export default async function OemCustomCeramicsL2Page({
   params: Promise<{ locale: string; l2: string }>
 }) {
   const { locale, l2 } = await params
-  return <SiloL2CategoryPage parentSlug={PARENT_SLUG} l2Slug={l2} locale={locale} />
+  return <OemServicePage slug={l2} locale={locale} />
 }
