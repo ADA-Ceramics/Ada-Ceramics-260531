@@ -1,6 +1,8 @@
 import type { Metadata } from "next"
 import { OemServicePage } from "@/components/silo/oem/OemServicePage"
+import { OemCaseStudiesPage } from "@/components/silo/oem/OemCaseStudiesPage"
 import { getL2Config, getL2ConfigsByParent } from "@/lib/silo/l2-config"
+import { OEM_CASE_STUDIES_SLUG } from "@/lib/silo/oem-service-config"
 
 const PARENT_SLUG = "oem-custom-ceramics"
 
@@ -40,5 +42,8 @@ export default async function OemCustomCeramicsL2Page({
   params: Promise<{ locale: string; l2: string }>
 }) {
   const { locale, l2 } = await params
+  if (l2 === OEM_CASE_STUDIES_SLUG) {
+    return <OemCaseStudiesPage locale={locale} />
+  }
   return <OemServicePage slug={l2} locale={locale} />
 }
