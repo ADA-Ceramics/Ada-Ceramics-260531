@@ -12,6 +12,7 @@ import OemQuickEntry from "@/components/home/OemQuickEntry"
 import BrandCases from "@/components/home/BrandCases"
 import HomeBlog from "@/components/home/HomeBlog"
 import HomeFaq from "@/components/home/HomeFaq"
+import HomeJsonLd from "@/components/home/HomeJsonLd"
 
 // 首页 Meta：均衡覆盖 dinnerware / bakeware / table decor drinkware / OEM custom ceramics 四大核心词根
 export const metadata: Metadata = {
@@ -60,6 +61,9 @@ export default async function HomePage({
 
   return (
     <div className="min-h-screen bg-white">
+      {/* 首页结构化数据：Organization + WebSite（SearchAction） */}
+      <HomeJsonLd locale={locale} />
+
       {/* 区块 1：全局固定 Header 由 layout 提供 */}
 
       {/* 区块 2：全屏 Hero 双栏 Banner（唯一 H1 + 双 CTA） */}
