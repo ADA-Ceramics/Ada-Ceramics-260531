@@ -63,6 +63,52 @@ const OEM_PROCESS_STEPS = [
   },
 ]
 
+/** new-mold-development 专用：全定制纵向时间轴 6 步（沿用旧 /oemodm 页设计与素材） */
+const FULL_CUSTOM_STEPS = [
+  {
+    step: 1,
+    title: "Concept & Sketch",
+    description: "We translate your ideas into detailed design sketches, ready for development.",
+    image: "/image/oem-odm/ceramic-tableware-concept-sketch.webp",
+    imageAlt: "Concept and sketch phase for custom ceramic tableware",
+  },
+  {
+    step: 2,
+    title: "3D Modeling & Visualization",
+    description: "Digital 3D models are developed to visualize and refine your bespoke ceramic tableware designs.",
+    image: "/image/oem-odm/3d-modeling-bespoke-ceramic-tableware.webp",
+    imageAlt: "Digital 3D modeling for bespoke ceramic tableware design visualization",
+  },
+  {
+    step: 3,
+    title: "Mold Design",
+    description: "Custom precision ceramic molds are engineered to translate your bespoke ceramic tableware designs into production-ready shapes.",
+    image: "/image/oem-odm/custom-precision-ceramic-molds-for-bespoke-tableware-china-manufacturer.webp",
+    imageAlt: "Custom mold design for bespoke ceramic tableware, translating 3D designs into production-ready ceramic shapes",
+  },
+  {
+    step: 4,
+    title: "Sample Prototyping",
+    description: "First article samples are produced for your review and approval.",
+    image: "/image/oem-odm/ceramic-swirling-bowl-raw-sample-prototyping.webp",
+    imageAlt: "Sample prototyping of custom ceramic swirling bowl for bespoke tableware",
+  },
+  {
+    step: 5,
+    title: "Logo & Decoration",
+    description: "Custom logo printing, decorative patterns, and food-safe glazes are applied to your custom ceramic tableware specifications.",
+    image: "/image/oem-odm/finished-blue-swirling-bowl-custom-tableware.webp",
+    imageAlt: "Finished glossy blue swirling bowl, custom ceramic tableware after logo decoration, glazing and quality grading for food service",
+  },
+  {
+    step: 6,
+    title: "Mass Production",
+    description: "Full mass production with strict quality control to bring your custom ceramic tableware designs to market efficiently.",
+    image: "/image/oem-odm/bulk-custom-ceramic-tableware-china-manufacturer.webp",
+    imageAlt: "High-volume mass production of custom ceramic tableware with strict quality control for bulk food service orders",
+  },
+]
+
 /**
  * OEM L3 服务页统一 10 模块 SEO 骨架（仅 OEM Silo 使用，不影响产品网格 L2 模板）。
  * 数据驱动：通过 lib/silo/oem-service-config.ts 一键切换文案/图片/关键词复用全部 OEM 服务页。
@@ -197,48 +243,130 @@ export function OemServicePage({ slug, locale }: { slug: string; locale: string 
         </div>
       </section>
 
-      {/* 模块5：一站式 OEM 工厂全流程（旧版照片流程布局） */}
-      <section className="py-16 lg:py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="font-serif text-2xl sm:text-3xl text-[#1a1a2e] mb-10 text-balance">
-            Our Full Custom Production Workflow
-          </h2>
+      {/* 模块5：一站式 OEM 工厂全流程 */}
+      {slug === "new-mold-development" ? (
+        /* new-mold-development 专用：全定制纵向时间轴布局 */
+        <section className="py-16 lg:py-20 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <h2 className="font-serif text-2xl sm:text-3xl text-[#1a1a2e] mb-4 text-balance">
+                Full Customization
+              </h2>
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                From concept sketches and mold making to full production, we bring your exclusive ceramic dinnerware design to market.
+              </p>
+            </div>
 
-          {/* 横向流程展示 - 桌面端 */}
-          <div className="hidden lg:block">
-            <div className="grid grid-cols-6 gap-4">
+            {/* 纵向时间轴 - 桌面端 */}
+            <div className="hidden lg:block space-y-12">
+              {FULL_CUSTOM_STEPS.map((step, index) => (
+                <div
+                  key={step.step}
+                  className={`flex items-center gap-12 ${index % 2 === 1 ? "flex-row-reverse" : ""}`}
+                >
+                  <div className="flex-1">
+                    <div className="flex items-start gap-4">
+                      <div className="flex-shrink-0 w-12 h-12 rounded-full bg-[#8b7355] text-white text-xl font-bold flex items-center justify-center shadow-lg">
+                        {step.step}
+                      </div>
+                      <div>
+                        <h3 className="text-2xl font-bold text-[#1a1a2e] mb-2">{step.title}</h3>
+                        <p className="text-muted-foreground">{step.description}</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="flex-1">
+                    <div className="relative aspect-video rounded-2xl overflow-hidden shadow-lg">
+                      <Image src={step.image} alt={step.imageAlt} fill className="object-cover" sizes="(max-width: 1024px) 100vw, 50vw" />
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* 垂直列表 - 移动端 */}
+            <div className="lg:hidden space-y-12">
+              {FULL_CUSTOM_STEPS.map((step) => (
+                <div key={step.step} className="space-y-4">
+                  <div className="flex items-start gap-4">
+                    <div className="flex-shrink-0 w-10 h-10 rounded-full bg-[#8b7355] text-white text-lg font-bold flex items-center justify-center shadow-lg">
+                      {step.step}
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold text-[#1a1a2e] mb-2">{step.title}</h3>
+                      <p className="text-muted-foreground">{step.description}</p>
+                    </div>
+                  </div>
+                  <div className="relative aspect-video rounded-xl overflow-hidden shadow-md">
+                    <Image src={step.image} alt={step.imageAlt} fill className="object-cover" sizes="100vw" />
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* 底部按钮组 */}
+            <div className="mt-16 flex flex-col sm:flex-row items-center justify-center gap-4">
+              <Link
+                href={`/${locale}/products`}
+                className="inline-flex items-center gap-2 px-8 py-4 bg-white text-[#8b7355] text-lg font-medium rounded-lg border-2 border-[#8b7355] hover:bg-[#8b7355] hover:text-white transition-colors"
+              >
+                View Our Products
+                <ArrowRight className="w-5 h-5" />
+              </Link>
+              <Link
+                href={`/${locale}/contact?type=custom`}
+                className="inline-flex items-center gap-2 px-8 py-4 bg-[#8b7355] text-white text-lg font-medium rounded-lg hover:bg-[#6d5a43] transition-colors shadow-lg"
+              >
+                Start Your Custom Project
+                <ArrowRight className="w-5 h-5" />
+              </Link>
+            </div>
+          </div>
+        </section>
+      ) : (
+        /* 其他 OEM 服务页：照片流程布局 */
+        <section className="py-16 lg:py-20 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="font-serif text-2xl sm:text-3xl text-[#1a1a2e] mb-10 text-balance">
+              Our Full Custom Production Workflow
+            </h2>
+
+            {/* 横向流程展示 - 桌面端 */}
+            <div className="hidden lg:block">
+              <div className="grid grid-cols-6 gap-4">
+                {OEM_PROCESS_STEPS.map((step) => (
+                  <div key={step.step} className="relative text-center">
+                    <div className="relative z-10 aspect-square mb-4 rounded-xl overflow-hidden shadow-md mx-auto w-full max-w-40">
+                      <Image src={step.image} alt={step.imageAlt} fill className="object-cover" sizes="160px" />
+                      <div className="absolute -top-2 -left-2 w-10 h-10 rounded-full bg-[#8b7355] text-white text-lg font-bold flex items-center justify-center shadow-lg">
+                        {step.step}
+                      </div>
+                    </div>
+                    <h3 className="text-lg font-semibold text-[#1a1a2e] mb-2">{step.title}</h3>
+                    <p className="text-sm text-muted-foreground">{step.description}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* 垂直列表 - 移动端 */}
+            <div className="lg:hidden space-y-8">
               {OEM_PROCESS_STEPS.map((step) => (
-                <div key={step.step} className="relative text-center">
-                  <div className="relative z-10 aspect-square mb-4 rounded-xl overflow-hidden shadow-md mx-auto w-full max-w-40">
-                    <Image src={step.image} alt={step.imageAlt} fill className="object-cover" sizes="160px" />
+                <div key={step.step} className="flex flex-col items-center text-center">
+                  <div className="relative aspect-square w-full max-w-64 mb-4 rounded-xl overflow-hidden shadow-md">
+                    <Image src={step.image} alt={step.imageAlt} fill className="object-cover" sizes="256px" />
                     <div className="absolute -top-2 -left-2 w-10 h-10 rounded-full bg-[#8b7355] text-white text-lg font-bold flex items-center justify-center shadow-lg">
                       {step.step}
                     </div>
                   </div>
                   <h3 className="text-lg font-semibold text-[#1a1a2e] mb-2">{step.title}</h3>
-                  <p className="text-sm text-muted-foreground">{step.description}</p>
+                  <p className="text-muted-foreground">{step.description}</p>
                 </div>
               ))}
             </div>
           </div>
-
-          {/* 垂直列表 - 移动端 */}
-          <div className="lg:hidden space-y-8">
-            {OEM_PROCESS_STEPS.map((step) => (
-              <div key={step.step} className="flex flex-col items-center text-center">
-                <div className="relative aspect-square w-full max-w-64 mb-4 rounded-xl overflow-hidden shadow-md">
-                  <Image src={step.image} alt={step.imageAlt} fill className="object-cover" sizes="256px" />
-                  <div className="absolute -top-2 -left-2 w-10 h-10 rounded-full bg-[#8b7355] text-white text-lg font-bold flex items-center justify-center shadow-lg">
-                    {step.step}
-                  </div>
-                </div>
-                <h3 className="text-lg font-semibold text-[#1a1a2e] mb-2">{step.title}</h3>
-                <p className="text-muted-foreground">{step.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* 模块6：客户项目案例内链区（全部内链案例页） */}
       <section className="py-16 lg:py-20 bg-[#f5f3ef]">
