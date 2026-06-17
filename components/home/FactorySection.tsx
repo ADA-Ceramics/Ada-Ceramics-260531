@@ -4,7 +4,7 @@ import { ArrowRight } from "lucide-react"
 
 export default function FactorySection() {
   return (
-    <section className="py-24 bg-white">
+    <section className="py-24 bg-[#f5f3ef]">
       <div className="max-w-[1280px] mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
           <div>

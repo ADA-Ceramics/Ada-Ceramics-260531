@@ -7,15 +7,6 @@ import { Menu, X, ChevronDown } from "lucide-react"
 import { cn } from "@/lib/utils"
 import Image from "next/image"
 
-// 产品分类数据 - 链接到二级分类页
-const PRODUCT_CATEGORIES = [
-  { id: "plates", name: "Wholesale Plates", description: "Dinner, dessert, soup & serving plates", slug: "wholesale-plates" },
-  { id: "bowls", name: "Wholesale Bowls", description: "Soup, salad, ramen & snack bowls", slug: "wholesale-bowls" },
-  { id: "sets", name: "Wholesale Dinnerware Sets", description: "Daily & restaurant tableware sets", slug: "wholesale-dinnerware-sets" },
-  { id: "cups", name: "Wholesale Cups & Mugs", description: "Ceramic mugs, coffee cups & water cups", slug: "wholesale-cups-mugs" },
-  { id: "bakeware", name: "Wholesale Bakeware", description: "Baking dishes, ramekins & pie plates", slug: "wholesale-bakeware" },
-]
-
 // 严格对应你本地实际文件名
 const LANGUAGES = [
   { code: "en", name: "EN", flag: "/flags/en.webp", googleLang: "en" },
@@ -52,7 +43,9 @@ declare global {
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const [isProductsOpen, setIsProductsOpen] = useState(false)
+  // 当前展开的下拉菜单（桌面 hover / 移动端 accordion）
+  const [openMenu, setOpenMenu] = useState<string | null>(null)
+  const [mobileOpenMenu, setMobileOpenMenu] = useState<string | null>(null)
   const [isLangMenuOpen, setIsLangMenuOpen] = useState(false)
   const [isGoogleTranslateReady, setIsGoogleTranslateReady] = useState(false)
   
@@ -207,19 +200,71 @@ export function Header() {
 
   const currentLang = LANGUAGES.find(item => item.code === currentLangCode) || LANGUAGES[0]
 
-  const navItems = [
+  // ✅ 顶部一级可见导航：Home | Dinnerware | Bakeware | Table Decor & Drinkware | OEM Custom Ceramics | Contact
+  // 下拉子项严格按照需求清单文案，链接复用现有 /products/[subcategory] 与 /oem-odm 路由，不改动任何路由逻辑
+  const navItems: {
+    name: string
+    href: string
+    dropdown?: { name: string; href: string }[]
+  }[] = [
     { name: "Home", href: `/${currentLangCode}` },
-    { name: "Products", href: `/${currentLangCode}/products`, hasDropdown: true },
-    { name: "Custom Solutions", href: "/oem-odm" },
-    { name: "About Us", href: `/${currentLangCode}/about` },
-    { name: "Factory", href: "/factory" },
-    { name: "Blog", href: "/blog" },
-    { name: "Contact", href: "/contact" },
+    {
+      name: "Dinnerware",
+      href: `/${currentLangCode}/dinnerware`,
+      dropdown: [
+        { name: "Dinnerware Sets", href: `/${currentLangCode}/dinnerware/dinnerware-sets` },
+        { name: "Plates", href: `/${currentLangCode}/dinnerware/plates` },
+        { name: "Bowls", href: `/${currentLangCode}/dinnerware/bowls` },
+        { name: "Serve Dishes", href: `/${currentLangCode}/dinnerware/serve-dishes` },
+      ],
+    },
+    {
+      name: "Bakeware",
+      href: `/${currentLangCode}/bakeware`,
+      dropdown: [
+        { name: "Ramekin Bowls", href: `/${currentLangCode}/bakeware/ramekin-bowls` },
+        { name: "Baking Dishes & Casseroles", href: `/${currentLangCode}/bakeware/baking-dishes-casseroles` },
+        { name: "Loaf & Pie & Pizza Pans", href: `/${currentLangCode}/bakeware/loaf-pie-pizza-pans` },
+      ],
+    },
+    {
+      name: "Table Decor & Drinkware",
+      href: `/${currentLangCode}/table-decor-drinkware`,
+      dropdown: [
+        { name: "Cups & Mugs", href: `/${currentLangCode}/table-decor-drinkware/cups-mugs` },
+        { name: "Vases", href: `/${currentLangCode}/table-decor-drinkware/vases` },
+        { name: "Storage & Condiment Jars", href: `/${currentLangCode}/table-decor-drinkware/storage-condiment-jars` },
+        { name: "Serving Trays", href: `/${currentLangCode}/table-decor-drinkware/serving-trays` },
+        { name: "Candle Holders", href: `/${currentLangCode}/table-decor-drinkware/candle-holders` },
+      ],
+    },
+    {
+      name: "OEM Custom Ceramics",
+      href: `/${currentLangCode}/oem-custom-ceramics`,
+      dropdown: [
+        { name: "Custom Logo Printing", href: `/${currentLangCode}/oem-custom-ceramics/custom-logo-printing` },
+        { name: "Custom Glaze & Color", href: `/${currentLangCode}/oem-custom-ceramics/custom-glaze-color` },
+        { name: "New Mold Development", href: `/${currentLangCode}/oem-custom-ceramics/new-mold-development` },
+        { name: "OEM & ODM Project Case Studies", href: `/${currentLangCode}/oem-custom-ceramics/oem-odm-case-studies` },
+        { name: "Request Custom Quote", href: `/${currentLangCode}/contact` },
+      ],
+    },
+    { name: "Contact", href: `/${currentLangCode}/contact` },
   ]
+
+  // ✅ 右上角折叠收纳菜单：Company（收起低频资讯）
+  const companyMenu = {
+    name: "Company",
+    dropdown: [
+      { name: "About Us", href: `/${currentLangCode}/about` },
+      { name: "Factory", href: `/${currentLangCode}/factory` },
+      { name: "Blog", href: `/${currentLangCode}/blog` },
+    ],
+  }
 
   // 页面滚动效果
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 10)
+    const handleScroll = () => setIsScrolled(window.scrollY > 0)
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
@@ -263,13 +308,13 @@ export function Header() {
       <header
         className={cn(
           "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-          isScrolled ? "bg-white/95 backdrop-blur shadow" : "bg-transparent"
+          isScrolled ? "bg-[#f5efe6] shadow" : "bg-transparent"
         )}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
             {/* 网站Logo */}
-            <Link href="/" className="flex items-center gap-2">
+            <Link href={`/${currentLangCode}`} className="flex items-center gap-2">
               <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
                 <span className="text-primary-foreground font-bold text-xl">C</span>
               </div>
@@ -277,54 +322,40 @@ export function Header() {
             </Link>
 
             {/* 桌面导航栏 */}
-            <nav className="hidden lg:flex items-center gap-8">
+            <nav className="hidden lg:flex items-center gap-7">
               {navItems.map(item => (
-                <div key={item.name} className="relative group">
-                  {item.hasDropdown ? (
+                <div key={item.name} className="relative">
+                  {item.dropdown ? (
                     <div
                       className="relative"
-                      onMouseEnter={() => setIsProductsOpen(true)}
-                      onMouseLeave={() => setIsProductsOpen(false)}
+                      onMouseEnter={() => setOpenMenu(item.name)}
+                      onMouseLeave={() => setOpenMenu(null)}
                     >
                       <Link
                         href={item.href}
                         className={cn(
-                          "flex items-center gap-1 text-sm font-medium py-2",
-                          pathname.startsWith("/products") ? "text-primary" : "hover:text-primary"
+                          "flex items-center gap-1 text-sm font-medium py-2 whitespace-nowrap",
+                          pathname.startsWith(item.href) ? "text-primary" : "hover:text-primary"
                         )}
                       >
                         {item.name}
-                        <ChevronDown className={cn("w-4 h-4 transition-transform", isProductsOpen && "rotate-180")} />
+                        <ChevronDown className={cn("w-4 h-4 transition-transform", openMenu === item.name && "rotate-180")} />
                       </Link>
                       <div className={cn(
                         "absolute left-0 top-full pt-2 transition-all duration-200",
-                        isProductsOpen ? "opacity-100 visible" : "opacity-0 invisible"
+                        openMenu === item.name ? "opacity-100 visible" : "opacity-0 invisible"
                       )}>
-                        <div className="bg-white shadow-lg rounded-xl border py-2 min-w-[280px]">
-                          <div className="px-4 py-2 border-b">
-                            <p className="text-xs text-gray-500 uppercase">Product Categories</p>
-                          </div>
-                          {PRODUCT_CATEGORIES.map((category) => (
+                        <div className="bg-white shadow-lg rounded-xl border py-2 min-w-[240px]">
+                          {item.dropdown.map(sub => (
                             <Link
-                              key={category.id}
-                              href={`/${currentLangCode}/products/${category.slug}`}
-                              className="flex items-center gap-3 px-4 py-3 hover:bg-gray-50"
-                              onClick={() => setIsProductsOpen(false)}
+                              key={sub.name}
+                              href={sub.href}
+                              className="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary"
+                              onClick={() => setOpenMenu(null)}
                             >
-                              <div className="w-10 h-10 rounded-lg bg-gray-100 flex items-center justify-center">
-                                <div className="w-6 h-6 rounded bg-primary/20"></div>
-                              </div>
-                              <div>
-                                <p className="text-sm">{category.name}</p>
-                                <p className="text-xs text-gray-400 line-clamp-1">{category.description}</p>
-                              </div>
+                              {sub.name}
                             </Link>
                           ))}
-                          <div className="border-t mt-2 pt-2 px-4">
-                            <Link href={`/${currentLangCode}/products`} className="text-sm text-primary hover:underline">
-                              View All Products →
-                            </Link>
-                          </div>
                         </div>
                       </div>
                     </div>
@@ -332,7 +363,7 @@ export function Header() {
                     <Link
                       href={item.href}
                       className={cn(
-                        "text-sm font-medium py-2 hover:text-primary",
+                        "text-sm font-medium py-2 hover:text-primary whitespace-nowrap",
                         pathname === item.href && "text-primary"
                       )}
                     >
@@ -341,6 +372,37 @@ export function Header() {
                   )}
                 </div>
               ))}
+
+              {/* 右上角折叠收纳按钮：Company */}
+              <div
+                className="relative"
+                onMouseEnter={() => setOpenMenu(companyMenu.name)}
+                onMouseLeave={() => setOpenMenu(null)}
+              >
+                <button
+                  className="flex items-center gap-1 text-sm font-medium py-2 whitespace-nowrap hover:text-primary"
+                >
+                  {companyMenu.name}
+                  <ChevronDown className={cn("w-4 h-4 transition-transform", openMenu === companyMenu.name && "rotate-180")} />
+                </button>
+                <div className={cn(
+                  "absolute right-0 top-full pt-2 transition-all duration-200",
+                  openMenu === companyMenu.name ? "opacity-100 visible" : "opacity-0 invisible"
+                )}>
+                  <div className="bg-white shadow-lg rounded-xl border py-2 min-w-[180px]">
+                    {companyMenu.dropdown.map(sub => (
+                      <Link
+                        key={sub.name}
+                        href={sub.href}
+                        className="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary"
+                        onClick={() => setOpenMenu(null)}
+                      >
+                        {sub.name}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              </div>
 
               {/* 桌面端国旗语种选择器，显示国旗+语言代码 */}
               <div className="relative" data-lang-menu>
@@ -454,40 +516,33 @@ export function Header() {
 
       {/* 移动端下拉菜单 */}
       <div className={cn(
-        "lg:hidden bg-white border-t overflow-hidden transition-all duration-300 fixed top-20 left-0 right-0 z-40",
-        isMobileMenuOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0"
+        "lg:hidden bg-white border-t overflow-y-auto transition-all duration-300 fixed top-20 left-0 right-0 z-40",
+        isMobileMenuOpen ? "max-h-[calc(100vh-5rem)] opacity-100" : "max-h-0 opacity-0"
       )}>
         <nav className="px-4 py-3 space-y-1">
           {navItems.map(item => (
             <div key={item.name}>
-              {item.hasDropdown ? (
+              {item.dropdown ? (
                 <div>
                   <button
-                    onClick={() => setIsProductsOpen(!isProductsOpen)}
+                    onClick={() => setMobileOpenMenu(mobileOpenMenu === item.name ? null : item.name)}
                     className="w-full flex justify-between items-center px-3 py-3 font-medium"
                   >
                     {item.name}
-                    <ChevronDown className={cn("w-4 h-4 transition-transform", isProductsOpen && "rotate-180")} />
+                    <ChevronDown className={cn("w-4 h-4 transition-transform", mobileOpenMenu === item.name && "rotate-180")} />
                   </button>
-                  <div className={cn("overflow-hidden", isProductsOpen ? "max-h-96" : "max-h-0")}>
+                  <div className={cn("overflow-hidden transition-all", mobileOpenMenu === item.name ? "max-h-96" : "max-h-0")}>
                     <div className="pl-4 pb-2 space-y-1">
-                      {PRODUCT_CATEGORIES.map((category) => (
+                      {item.dropdown.map(sub => (
                         <Link
-                          key={category.id}
-                          href={`/${currentLangCode}/products/${category.slug}`}
+                          key={sub.name}
+                          href={sub.href}
                           onClick={() => setIsMobileMenuOpen(false)}
-                          className="block px-3 py-2 text-sm text-gray-600"
+                          className="block px-3 py-2 text-sm text-gray-600 hover:text-primary"
                         >
-                          {category.name}
+                          {sub.name}
                         </Link>
                       ))}
-                      <Link
-                        href={`/${currentLangCode}/products`}
-                        onClick={() => setIsMobileMenuOpen(false)}
-                        className="block px-3 py-2 text-sm text-primary"
-                      >
-                        View All Products
-                      </Link>
                     </div>
                   </div>
                 </div>
@@ -505,6 +560,31 @@ export function Header() {
               )}
             </div>
           ))}
+
+          {/* 移动端 Company 折叠收纳菜单 */}
+          <div>
+            <button
+              onClick={() => setMobileOpenMenu(mobileOpenMenu === companyMenu.name ? null : companyMenu.name)}
+              className="w-full flex justify-between items-center px-3 py-3 font-medium"
+            >
+              {companyMenu.name}
+              <ChevronDown className={cn("w-4 h-4 transition-transform", mobileOpenMenu === companyMenu.name && "rotate-180")} />
+            </button>
+            <div className={cn("overflow-hidden transition-all", mobileOpenMenu === companyMenu.name ? "max-h-96" : "max-h-0")}>
+              <div className="pl-4 pb-2 space-y-1">
+                {companyMenu.dropdown.map(sub => (
+                  <Link
+                    key={sub.name}
+                    href={sub.href}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="block px-3 py-2 text-sm text-gray-600 hover:text-primary"
+                  >
+                    {sub.name}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </div>
         </nav>
       </div>
     </>

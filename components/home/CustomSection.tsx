@@ -46,7 +46,7 @@ export default function CustomSection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-5">
           {customList.map((item, index) => (
             <div
               key={index}

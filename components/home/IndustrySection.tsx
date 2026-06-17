@@ -14,7 +14,7 @@ export default function IndustrySection() {
   ]
 
   return (
-    <section className="py-20 bg-white">
+    <section className="py-20 bg-[#f5f3ef]">
       <div className="max-w-[1280px] mx-auto px-6">
         <div className="text-center mb-12">
           <p className="text-[#8b7355] text-xs font-medium uppercase tracking-widest mb-4">Who We Serve</p>
@@ -27,7 +27,7 @@ export default function IndustrySection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-5">
           {industryList.map((item, index) => (
             <Link
               key={index}
