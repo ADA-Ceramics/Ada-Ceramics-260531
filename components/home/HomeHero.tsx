@@ -1,4 +1,5 @@
 import Link from "next/link"
+import Image from "next/image"
 import { ArrowRight, ShieldCheck, Globe } from "lucide-react"
 
 interface HomeHeroProps {
@@ -9,11 +10,16 @@ interface HomeHeroProps {
 export default function HomeHero({ locale }: HomeHeroProps) {
   return (
     <section className="relative min-h-[88vh] flex items-center justify-center overflow-hidden">
-      {/* 背景实景大图 */}
-      <div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: "url('/hero-ceramic-bowls-flatlay.png')" }}
-        aria-hidden="true"
+      {/* 背景实景大图 —— next/image 优化 LCP：自动 preload + fetchPriority=high + AVIF/WebP 降级，priority 禁用懒加载 */}
+      <Image
+        src="/hero-ceramic-bowls-flatlay.png"
+        alt="Assorted cream and white wholesale ceramic bowls and plates flat lay on a warm beige table"
+        fill
+        priority
+        fetchPriority="high"
+        sizes="100vw"
+        quality={70}
+        className="object-cover"
       />
       {/* 提升文字可读性的暖色遮罩 */}
       <div
