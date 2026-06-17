@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import Script from 'next/script'
 import { Header } from '@/components/layout/header'
+import { GlobalWhatsAppFloat } from '@/components/layout/GlobalWhatsAppFloat'
 import '../globals.css'
 
 const inter = Inter({
@@ -160,6 +161,7 @@ export default async function RootLayout({
         </Script>
         <Header />
         {children}
+        <GlobalWhatsAppFloat />
        {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>
