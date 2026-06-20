@@ -328,7 +328,7 @@ export function OemServicePage({ slug, locale }: { slug: string; locale: string 
         <section className="py-16 lg:py-20 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="font-serif text-2xl sm:text-3xl text-[#1a1a2e] mb-10 text-balance">
-              Our Full Custom Production Workflow
+              Our Basic Custom Production Workflow
             </h2>
 
             {/* 横向流程展示 - 桌面端 */}
