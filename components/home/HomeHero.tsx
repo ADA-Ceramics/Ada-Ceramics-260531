@@ -12,21 +12,16 @@ export default function HomeHero({ locale }: HomeHeroProps) {
     <section className="relative min-h-[88vh] flex items-center justify-center overflow-hidden">
       {/* 背景实景大图 —— next/image 优化 LCP：自动 preload + fetchPriority=high + AVIF/WebP 降级，priority 禁用懒加载 */}
       <Image
-        src="/hero-ceramic-bowls-flatlay.png"
-        alt="Assorted cream and white wholesale ceramic bowls and plates flat lay on a warm beige table"
+        src="/premium-beige-ceramic-plates-manufacturer.webp"
+        alt="Premium Beige Ceramic Dinnerware wholesale Plates & Bowls Manufacturer"
         fill
         priority
         fetchPriority="high"
         sizes="100vw"
         quality={70}
-        className="object-cover"
+      className="object-cover" style={{opacity:0.7}}
       />
-      {/* 提升文字可读性的暖色遮罩 */}
-      <div
-        className="absolute inset-0 bg-gradient-to-b from-[#f5f3ef]/85 via-[#f5f3ef]/70 to-[#f5f3ef]/85"
-        aria-hidden="true"
-      />
-
+     
       {/* 居中内容 */}
       <div className="relative z-10 w-full max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-28 lg:py-32 text-center">
         <div className="inline-flex items-center gap-2 bg-white/90 backdrop-blur-sm border border-[#e3dccf] rounded-full px-4 py-1.5 mb-7">
@@ -49,10 +44,8 @@ export default function HomeHero({ locale }: HomeHeroProps) {
         </p>
 
         <p className="text-sm sm:text-base text-[#6b6862] leading-relaxed mb-9 max-w-2xl mx-auto">
-          ADA Ceramics supplies bulk wholesale ceramic dinnerware, oven-safe bakeware and table decor
-          drinkware to restaurants, hotels, importers and retail brands worldwide — a full OEM custom
-          ceramics factory in Chaozhou delivering low-MOQ private-label production across all four product
-          lines.
+         ADA Ceramics is a Chaozhou Trading-Manufacturing Factory, your trusted source for wholesale ceramic tableware – offering dinnerware, 
+          bakeware, table decor drinkware and full OEM custom ceramic solutions
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center mb-10">
