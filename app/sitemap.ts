@@ -77,3 +77,5 @@ export function generateLocaleSitemap(locale: string = "en") {
 
 // 导出全部英文站点完整路径（sitemap.xml生成入口）
 export const enSiteUrls = generateLocaleSitemap("en")
+// 原有所有代码不动，直接加下面这行
+export default enSiteUrls;
