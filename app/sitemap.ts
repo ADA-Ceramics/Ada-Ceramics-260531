@@ -30,6 +30,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages: MetadataRoute.Sitemap = [
     { url: localizedUrl(), lastModified: now, changeFrequency: 'weekly', priority: 1 }, // Home
     { url: localizedUrl('/products'), lastModified: now, changeFrequency: 'weekly', priority: 0.7 }, // 四大 Silo 聚合入口
+    { url: localizedUrl('/products/all'), lastModified: now, changeFrequency: 'weekly', priority: 0.7 }, // All Products 聚合页（导流四大 Silo）
     { url: localizedUrl('/about'), lastModified: now, changeFrequency: 'monthly', priority: 0.6 },
     { url: localizedUrl('/factory'), lastModified: now, changeFrequency: 'monthly', priority: 0.6 },
     { url: localizedUrl('/blog'), lastModified: now, changeFrequency: 'weekly', priority: 0.7 },
