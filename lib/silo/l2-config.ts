@@ -184,7 +184,7 @@ const piePizzaPans: L2Config = {
     "wholesale loaf pans, bulk pizza pans, ceramic bakeware supplier, custom baking pans",
   bannerImage: "/amazon-hotsell-ceramic.webp",
   intro:
-    "ADA Ceramics produces oven-safe ceramic loaf, pie and pizza pans for bakeries, restaurant kitchens and homeware retailers. Fired for even browning and thermal-shock resistance, our pans deliver consistent crusts and bakes batch after batch, with low MOQs and full OEM/ODM customization of size, colour and branding.",
+    "ADA Ceramics manufactures oven-safe ceramic loaf, pie & pizza pans for bakeries, commercial kitchens and homeware retailers. High-fired for uniform browning and thermal-shock resistance, these bakeware pans deliver steady baking results for bulk batches. We offer low MOQ wholesale supply plus full OEM/ODM custom sizing, glaze color and logo branding.",
   seo: {
     h2: "Wholesale Loaf, Pie & Pizza Pans Engineered for Even Baking",
     procurementScenario:
@@ -242,16 +242,16 @@ const dinnerwarePlates: L2Config = {
   productCategorySlugs: ["wholesale-plates", "plates"],
   keyword: "dinner plates",
   h1: "Wholesale Ceramic Plates for Restaurants, Hotels & Catering",
-  metaTitle: "Wholesale Ceramic Plates | Bulk Dinner, Dessert & Side Plates",
+  metaTitle: "Wholesale Ceramic Dinner, Side & Dessert Plates | Bulk Dinnerware",
   metaDescription:
-    "Chip-resistant ceramic plates in bulk direct from a Chaozhou factory. Dinner, dessert, side and charger plates for restaurants, hotels and caterers. Low MOQ, FDA/LFGB certified, full OEM/ODM customization.",
+    "Chip-resistant bulk ceramic plates from Chaozhou factory. Multi-use dinner, dessert, side plates for hotels, restaurants. FDA/LFGB safe, low MOQ, full OEM/ODM.",
   metaKeywords:
-    "wholesale plates, ceramic dinner plates bulk, restaurant plates supplier, dessert plates factory, charger plates OEM",
+    "wholesale plates, ceramic dinner plates bulk, restaurant plates supplier, OEM plate supplier, charger plates OEM",
   bannerImage: "/wholesale-plates.webp",
   intro:
-    "ADA Ceramics supplies chip-resistant ceramic plates in commercial-ready sizes for dinner, dessert, side and charger service. Each plate is high-temperature fired for a dense, impact-resistant body and a smooth, stain-resistant glaze built for constant stacking, washing and plating in restaurants, hotels and catering, with low MOQs and full OEM/ODM branding.",
+    "ADA Ceramics offers chip-resistant ceramic plates in commercial sizes for dinner, dessert, side and charger plating. High-fired dense bodies with stain-proof smooth glaze withstand repeated stacking, dishwashing and daily use for hotels, restaurants and catering teams. We provide low MOQ bulk orders and complete OEM/ODM custom branding for global wholesale buyers.",
   seo: {
-    h2: "Chip-Resistant Wholesale Plates Built for High-Volume Service",
+    h2: "Chip-Resistant Wholesale Plates Built for High-Volume Commercial Use",
     procurementScenario:
       "Restaurants, hotels, canteens and caterers need plates that survive constant stacking, washing and plating without chipping or losing their finish. Our ceramic plates are fired at high temperature for dense, impact-resistant bodies and a smooth non-porous glaze that resists staining and scratching. A coordinated range of dinner, dessert, side and charger sizes lets buyers standardize one durable plating program across every outlet, lowering breakage costs and keeping table presentation consistent at scale.",
     customService:
@@ -301,18 +301,18 @@ const dinnerwareBowls: L2Config = {
   slug: "bowls",
   label: "Bowls",
   productCategorySlugs: ["wholesale-bowls", "bowls"],
-  keyword: "soup and salad bowls",
-  h1: "Wholesale Ceramic Bowls for Restaurants, Hotels & Catering",
-  metaTitle: "Wholesale Ceramic Bowls | Bulk Soup, Salad & Ramen Bowls",
+  keyword: "wholesale ceramic bowls",
+  h1: "Wholesale Ceramic Bowls for Restaurants, Hotels & Catering Businesses ",
+  metaTitle: "Wholesale Ceramic Bowls | FDA LFGB Bulk Soup & Ramen Bowls for Restaurants"",
   metaDescription:
-    "Chip-resistant ceramic bowls in bulk direct from a Chaozhou factory. Soup, salad, ramen and snack bowls for restaurants, hotels and caterers. Low MOQ, FDA/LFGB certified, full OEM/ODM customization.",
+    "Durable chip-resistant bulk ceramic bowls made in Chaozhou factory. Multi-purpose soup, salad, ramen and snack bowls ideal for hotels, restaurants and catering businesses. FDA & LFGB food safe, low MOQ bulk supply, with OEM/ODM support, glaze and sizing.",
   metaKeywords:
-    "wholesale bowls, ceramic soup bowls bulk, salad bowls supplier, ramen bowls factory, snack bowls OEM",
+    "wholesale ceramic bowls, bulk soup bowls, salad bowl supplier, ramen bowl manufacturer, snack bowls OEM ODM, commercial catering ceramic tableware, low moq ceramic bowls",
   bannerImage: "/wholesale-bowls.webp",
   intro:
-    "ADA Ceramics supplies chip-resistant ceramic bowls in commercial-ready sizes for soup, salad, ramen, rice and snack service. Each bowl is high-temperature fired for a dense, durable body and a smooth, stain-resistant glaze built for daily restaurant, hotel and catering use, with low MOQs and full OEM/ODM branding.",
+    "ADA Ceramics provides chip-resistant ceramic bowls in commercial sizes for soup, salad, ramen, rice and snack service. High-temperature fired dense bodies paired with stain-proof smooth glaze deliver long-lasting performance for daily hotel, restaurant and catering use. We offer low MOQ bulk orders and complete OEM/ODM custom branding for global wholesale buyers.",
   seo: {
-    h2: "Versatile Wholesale Bowls Built for Daily Service",
+    h2: "Versatile Wholesale Ceramic Bowls Built for Commercial Daily Catering Service",
     procurementScenario:
       "Restaurants, hotels, canteens and caterers rely on bowls that handle constant stacking, washing and plating across soup, salad, ramen, rice and snack programs. Our ceramic bowls are fired at high temperature for dense, impact-resistant bodies and a smooth non-porous glaze that resists staining and odour. A coordinated range of capacities lets buyers standardize one durable bowl program across every outlet, lowering replacement costs while keeping presentation consistent at scale.",
     customService:
@@ -363,17 +363,17 @@ const dinnerwareSets: L2Config = {
   label: "Dinnerware Sets",
   productCategorySlugs: ["wholesale-dinnerware-sets", "dinnerware-sets"],
   keyword: "dinnerware sets",
-  h1: "Wholesale Ceramic Dinnerware Sets for Hotels, Retail & Private Label",
-  metaTitle: "Wholesale Ceramic Dinnerware Sets | Bulk Matched Tableware",
+  h1: "Wholesale FDA LFGB Ceramic Dinnerware Sets for Hotels, Retail & Private Label OEM",
+  metaTitle: "Wholesale Ceramic Dinnerware Sets | FDA LFGB Bulk Matched Tableware for Hotels",
   metaDescription:
-    "Fully matched ceramic dinnerware sets direct from a Chaozhou factory. Coordinated plates, bowls and mugs for hotels, retail and private-label brands. Low MOQ, FDA/LFGB certified, full OEM/ODM customization.",
+    "Complete matched ceramic dinnerware sets supplied by Chaozhou factory. Coordinated plates, bowls and mugs suit hotel catering, retail shops and private-label brands. FDA & LFGB food safe, low MOQ bulk orders, with full OEM & ODM custom glaze, logo and sizing service.",
   metaKeywords:
-    "wholesale dinnerware sets, ceramic tableware sets bulk, hotel dinnerware supplier, private label dinner set, matched tableware factory",
+    "wholesale ceramic dinnerware sets, bulk matched tableware, hotel dinnerware supplier, private label OEM dinner sets, commercial catering ceramic tableware, low moq custom tableware factory",
   bannerImage: "/wholesale-dinnerware-sets.webp",
   intro:
-    "ADA Ceramics manufactures fully coordinated ceramic dinnerware sets pairing plates, bowls and mugs in a single durable glaze program. High-temperature fired for strength and a consistent finish, our sets suit hotel table standards, retail gift ranges and private-label collections, with low MOQs and complete OEM/ODM customization.",
+    "ADA Ceramics produces fully coordinated ceramic dinnerware sets with matching plates, bowls and mugs under unified durable glaze. High-fired for solid durability and even finish, these tableware sets meet hotel dining standards, retail gift lines and private-label collections. We offer low MOQ bulk orders and full OEM/ODM custom glaze, logo and sizing solutions.",
   seo: {
-    h2: "Coordinated Wholesale Dinnerware Sets for Consistent Tables",
+    h2: "Coordinated Wholesale Ceramic Dinnerware Sets for Commercial Hotel Table Settings",
     procurementScenario:
       "Hotels, retailers and homeware brands need dinnerware sets that match perfectly across plates, bowls and mugs and stay consistent reorder after reorder. Our ceramic sets are fired at high temperature for dense, durable bodies and a uniform glaze finish, so every place setting looks coordinated and survives daily washing and stacking. Buyers can standardize one matched program across rooms, outlets or retail SKUs, simplifying replenishment while protecting brand presentation.",
     customService:
@@ -424,17 +424,17 @@ const dinnerwareServeDishes: L2Config = {
   label: "Serve Dishes",
   productCategorySlugs: ["oval-serving-plates", "serve-dishes", "serving-dishes"],
   keyword: "serve dishes",
-  h1: "Wholesale Ceramic Serve Dishes & Platters for Buffet & Banquet Service",
-  metaTitle: "Wholesale Ceramic Serve Dishes | Bulk Platters & Serving Bowls",
+  h1: "Wholesale FDA LFGB Ceramic Serving Dishes & Platters for Buffet, Banquet & Catering",
+  metaTitle: "Wholesale Ceramic Serving Dishes | FDA LFGB Bulk Platters & Bowls for Buffets",
   metaDescription:
-    "Oven-to-table ceramic serve dishes and platters direct from a Chaozhou factory. Oval platters, serving bowls and buffet dishes for restaurants, hotels and caterers. Low MOQ, FDA/LFGB certified, full OEM/ODM customization.",
+    "Oven-safe ceramic serving dishes and platters supplied by Chaozhou factory. Oval platters, serving bowls and buffet trays fit hotel banquets, restaurant buffets and catering businesses. FDA & LFGB food safe, low MOQ bulk supply, supporting full OEM & ODM custom size, glaze and logo branding.",
   metaKeywords:
     "wholesale serve dishes, ceramic platters bulk, serving bowls supplier, buffet dishes factory, oval serving plates OEM",
   bannerImage: "/ceramic-plates-for-catering-service.webp",
   intro:
-    "ADA Ceramics supplies oven-to-table ceramic serve dishes, oval platters and serving bowls for buffet, banquet and family-style service. High-temperature fired for thermal-shock resistance and a refined glaze finish, our serving pieces move cleanly from kitchen to table and present beautifully, with low MOQs and full OEM/ODM branding.",
+    "ADA Ceramics provides oven-safe ceramic serving dishes, oval platters and serving bowls for buffets, banquets and family-style catering. High-fired for thermal shock resistance and elegant glaze finish, these serving ware seamlessly transfer from oven to table with premium display effect. We offer low MOQ bulk orders and complete OEM/ODM custom logo, glaze and sizing branding solutions.",
   seo: {
-    h2: "Oven-to-Table Wholesale Serve Dishes for Volume Presentation",
+    h2: "Oven-Safe Wholesale Ceramic Serving Dishes for Buffet & Banquet Presentation",
     procurementScenario:
       "Restaurants, hotels and caterers need serving pieces that present large-format dishes attractively and survive constant buffet and banquet service. Our ceramic serve dishes, platters and serving bowls are high-temperature fired for thermal-shock resistance and a smooth, stain-resistant glaze, moving from oven or fridge to table without crazing. A coordinated range of oval, round and rectangular formats lets buyers build a consistent serving program for buffets, family-style menus and banquet plating.",
     customService:
