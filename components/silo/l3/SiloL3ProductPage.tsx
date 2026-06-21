@@ -127,6 +127,7 @@ export async function SiloL3ProductPage({
             parentLabel={l2.parentLabel}
             l2Slug={l2.slug}
             l2Label={l2.label}
+            productSlug={productSlug}
             productName={detail.name || l2.label}
           />
         </div>

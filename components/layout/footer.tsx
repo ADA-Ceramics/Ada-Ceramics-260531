@@ -69,7 +69,7 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/oem-odm" className="text-white/70 hover:text-white text-sm transition-colors">
+                <Link href="/oem-custom-ceramics" className="text-white/70 hover:text-white text-sm transition-colors">
                   OEM/ODM
                 </Link>
               </li>

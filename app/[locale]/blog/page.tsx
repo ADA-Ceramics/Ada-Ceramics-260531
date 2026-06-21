@@ -2,6 +2,7 @@ import { Metadata } from "next"
 import { getAllPosts } from "@/lib/notion"
 import { BlogList, type LatestProduct } from "@/components/blog/blog-list"
 import { getAllProducts, getCategoryTree } from "@/lib/supabase/products"
+import { buildSiloProductPath } from "@/lib/silo/l2-config"
 
 export const metadata: Metadata = {
   title: "Ceramic Tableware Wholesale Guides & Industry News | ADA Ceramics Blog",
@@ -44,7 +45,7 @@ export default async function BlogPage({
           name: String(p.name),
           image: (p.main_image as string | null) || "/wholesale-ceramics-supplier.webp",
           href: subSlug
-            ? `/${locale}/products/${subSlug}/${String(p.slug)}`
+            ? `/${locale}${buildSiloProductPath(subSlug, String(p.slug))}`
             : `/${locale}/products`,
         }
       })

@@ -53,7 +53,7 @@ const ramekinBowls: L2Config = {
   slug: "ramekin-bowls",
   label: "Wholesale Ramekin Bowls",
   productCategorySlugs: ["ramekins"],
- keywords: "wholesale ramekins, ceramic ramekin bowls bulk, commercial baking ramekins, oven safe ramekins for catering, small ceramic bakeware suppliers",
+  keyword: "wholesale ramekins, ceramic ramekin bowls bulk, commercial baking ramekins, oven safe ramekins for catering, small ceramic bakeware suppliers",
   h1: "Wholesale Ceramic Ramekin Bowls for Soufflé, Crème Brûlée & Commercial Catering",
   metaTitle: "Wholesale Ceramic Ramekin Bowls | Bulk Oven-Safe Bakeware Supplier",
   metaDescription:
@@ -1067,4 +1067,23 @@ export function getL2Config(parentSlug: string, slug: string): L2Config | undefi
 /** 取某个 L1 Silo 下全部 L2 配置（用于横向兄弟跳转 + 静态参数生成） */
 export function getL2ConfigsByParent(parentSlug: string): L2Config[] {
   return Object.values(L2_CONFIGS).filter((c) => c.parentSlug === parentSlug)
+}
+
+/**
+ * 反查：由 Supabase 产品分类 slug 反推其所属的 L2 配置（含所属 Silo）。
+ * 用于把历史扁平产品链接（/products/[categorySlug]/[productSlug]）
+ * 收敛到唯一的 Silo 层级路径 /[silo]/[l2]/[productSlug]，杜绝重复/冲突 URL。
+ */
+export function getL2ConfigByProductCategorySlug(categorySlug: string): L2Config | undefined {
+  return Object.values(L2_CONFIGS).find((c) => c.productCategorySlugs.includes(categorySlug))
+}
+
+/**
+ * 由产品分类 slug + 产品 slug 直接构造规范的 Silo 层级详情页路径（不含 locale 前缀）。
+ * 命中映射返回 `/{silo}/{l2}/{productSlug}`；未命中回退到对应 Silo 首页或站点首页，避免死链。
+ */
+export function buildSiloProductPath(categorySlug: string, productSlug: string): string {
+  const l2 = getL2ConfigByProductCategorySlug(categorySlug)
+  if (!l2) return "/products"
+  return `/${l2.parentSlug}/${l2.slug}/${productSlug}`
 }

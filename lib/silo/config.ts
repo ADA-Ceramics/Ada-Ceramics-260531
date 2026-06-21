@@ -415,10 +415,10 @@ const oemCustomCeramics: SiloConfig = {
   procurement: {
     heading: "Start Your Custom Ceramic Project",
     tags: [
-      { label: "Custom Logo Printing", href: "/oem-odm" },
-      { label: "Bespoke Glaze & Color", href: "/oem-odm" },
-      { label: "New Mold Development", href: "/oem-odm" },
-      { label: "Private-Label Packaging", href: "/oem-odm" },
+      { label: "Custom Logo Printing", href: "/oem-custom-ceramics/custom-logo-printing" },
+      { label: "Bespoke Glaze & Color", href: "/oem-custom-ceramics/custom-glaze-color" },
+      { label: "New Mold Development", href: "/oem-custom-ceramics/new-mold-development" },
+      { label: "Private-Label Packaging", href: "/oem-custom-ceramics/oem-odm-case-studies" },
       { label: "Request a Quote", href: "/contact" },
     ],
   },

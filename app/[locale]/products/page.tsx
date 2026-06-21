@@ -2,7 +2,6 @@ import { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
 import { ChevronRight, Package, Layers, Gift, Settings, Zap, Clock, Award, Truck } from "lucide-react"
-import { getAllProducts } from "@/lib/supabase/products"
 import { Header } from "@/components/layout/header"
 import { Footer } from "@/components/layout/footer"
 import { QuoteForm } from "@/components/shared/quote-form"
@@ -108,9 +107,6 @@ interface PageProps {
 
 export default async function ProductsPage({ params }: PageProps) {
   const { locale } = await params
-
-  // 仅保留产品总数统计，删除旧分类卡片数据请求
-  const products = await getAllProducts()
 
   return (
     <div className="min-h-screen bg-background">

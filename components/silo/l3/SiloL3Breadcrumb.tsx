@@ -9,6 +9,8 @@ interface SiloL3BreadcrumbProps {
   parentLabel: string
   l2Slug: string
   l2Label: string
+  /** 当前单品 slug（用于 BreadcrumbList Schema 末级的规范 URL，避免缺失产品段造成链接不完整） */
+  productSlug: string
   productName: string
 }
 
@@ -22,6 +24,7 @@ export function SiloL3Breadcrumb({
   parentLabel,
   l2Slug,
   l2Label,
+  productSlug,
   productName,
 }: SiloL3BreadcrumbProps) {
   const breadcrumbSchema = {
@@ -45,7 +48,7 @@ export function SiloL3Breadcrumb({
         "@type": "ListItem",
         position: 4,
         name: productName,
-        item: `${SITE_URL}/${locale}/${parentSlug}/${l2Slug}/`,
+        item: `${SITE_URL}/${locale}/${parentSlug}/${l2Slug}/${productSlug}`,
       },
     ],
   }

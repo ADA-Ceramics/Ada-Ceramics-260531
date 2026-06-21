@@ -29,8 +29,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // 1) 站点核心静态页（按导航顺序；路径对齐真实路由，杜绝 about-us / custom-solutions 等跳转源）
   const staticPages: MetadataRoute.Sitemap = [
     { url: localizedUrl(), lastModified: now, changeFrequency: 'weekly', priority: 1 }, // Home
-    { url: localizedUrl('/products'), lastModified: now, changeFrequency: 'weekly', priority: 0.7 },
-    { url: localizedUrl('/oem-odm'), lastModified: now, changeFrequency: 'monthly', priority: 0.8 }, // 供应商/OEM 落地（B 端核心）
+    { url: localizedUrl('/products'), lastModified: now, changeFrequency: 'weekly', priority: 0.7 }, // 四大 Silo 聚合入口
     { url: localizedUrl('/about'), lastModified: now, changeFrequency: 'monthly', priority: 0.6 },
     { url: localizedUrl('/factory'), lastModified: now, changeFrequency: 'monthly', priority: 0.6 },
     { url: localizedUrl('/blog'), lastModified: now, changeFrequency: 'weekly', priority: 0.7 },

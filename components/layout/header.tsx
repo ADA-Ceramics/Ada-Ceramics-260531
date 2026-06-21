@@ -201,7 +201,7 @@ export function Header() {
   const currentLang = LANGUAGES.find(item => item.code === currentLangCode) || LANGUAGES[0]
 
   // ✅ 顶部一级可见导航：Home | Dinnerware | Bakeware | Table Decor & Drinkware | OEM Custom Ceramics | Contact
-  // 下拉子项严格按照需求清单文案，链接复用现有 /products/[subcategory] 与 /oem-odm 路由，不改动任何路由逻辑
+  // 下拉子项严格对齐四大 Silo 的 L2 层级路由 /[silo]/[l2]，与 l2-config.ts、面包屑、sitemap 形成闭环
   const navItems: {
     name: string
     href: string

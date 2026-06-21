@@ -1,6 +1,7 @@
 import Link from "next/link"
 import { Package } from "lucide-react"
 import type { SiloProduct } from "@/lib/silo/products"
+import { buildSiloProductPath } from "@/lib/silo/l2-config"
 
 interface SiloProductGridProps {
   locale: string
@@ -45,7 +46,7 @@ export function SiloProductGrid({
             {products.map((product) => (
               <Link
                 key={product.id}
-                href={`/${locale}/products/${product.categorySlug}/${product.slug}`}
+                href={`/${locale}${buildSiloProductPath(product.categorySlug, product.slug)}`}
                 className="group flex flex-col rounded-xl border border-border bg-white overflow-hidden transition-all hover:shadow-lg"
               >
                 <div className="aspect-square bg-[#f9fafb] overflow-hidden relative">
