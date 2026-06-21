@@ -318,7 +318,10 @@ export function Header() {
               <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
                 <span className="text-primary-foreground font-bold text-xl">C</span>
               </div>
-              <span className="text-xl font-bold">ADA CERAMICS</span>
+              <span className="flex flex-col text-xl font-bold leading-tight whitespace-nowrap">
+                <span>ADA</span>
+                <span>CERAMICS</span>
+              </span>
             </Link>
 
             {/* 桌面导航栏 */}
