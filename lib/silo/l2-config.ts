@@ -489,8 +489,8 @@ const tableCupsMugs: L2Config = {
   label: "Cups & Mugs",
   productCategorySlugs: ["wholesale-cups-mugs", "cups-mugs"],
   keyword: "cups and mugs",
-  h1: "Wholesale Ceramic Cups & Mugs for Cafés, Hotels & Branded Gifting",
-  metaTitle: "Wholesale Ceramic Cups & Mugs | Bulk Coffee Mugs & Cups",
+  h1: "Wholesale FDA LFGB Ceramic Cups & Mugs for Cafés, Hotels & Custom Branded Gifting",
+  metaTitle: "Wholesale Ceramic Cups & Mugs | FDA LFGB Bulk Coffee Mugs for Cafés & Hotels",
   metaDescription:
     "Durable ceramic cups and mugs in bulk direct from a Chaozhou factory. Coffee mugs, cappuccino cups and saucers for cafés, hotels and branded gifting. Low MOQ, FDA/LFGB certified, full OEM/ODM custom logo printing.",
   metaKeywords:
@@ -499,7 +499,7 @@ const tableCupsMugs: L2Config = {
   intro:
     "ADA Ceramics supplies durable ceramic cups and mugs in café-ready shapes for coffee, cappuccino, tea and branded gifting. Each piece is high-temperature fired for a dense, chip-resistant body and a smooth, stain-resistant glaze built for constant café service, dishwashing and retail handling, with low MOQs and full OEM/ODM logo printing.",
   seo: {
-    h2: "Café-Grade Wholesale Cups & Mugs Built for Daily Service",
+    h2: "Café-Grade Wholesale Ceramic Cups & Mugs for Hotel & Daily Catering Service",
     procurementScenario:
       "Cafés, hotels, offices and gift brands need drinkware that survives constant brewing, washing and stacking while carrying their identity. Our ceramic cups and mugs are fired at high temperature for dense, chip-resistant bodies and a smooth non-porous glaze that resists staining and odour. A coordinated range of espresso, cappuccino, coffee and latte sizes lets buyers standardize one durable drinkware program across every outlet, lowering breakage costs and keeping branded presentation consistent at scale.",
     customService:
