@@ -313,8 +313,12 @@ export function Header() {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
-            {/* 网站Logo */}
-            <Link href={`/${currentLangCode}`} className="flex items-center gap-2">
+            {/* 网站Logo：品牌名固定为两行 ADA / CERAMICS，并禁止 Google 翻译，避免被译成 "THERE IS" 等导致串变 */}
+            <Link
+              href={`/${currentLangCode}`}
+              className="notranslate flex items-center gap-2"
+              translate="no"
+            >
               <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
                 <span className="text-primary-foreground font-bold text-xl">C</span>
               </div>
