@@ -303,7 +303,7 @@ const dinnerwareBowls: L2Config = {
   productCategorySlugs: ["wholesale-bowls", "bowls"],
   keyword: "wholesale ceramic bowls",
   h1: "Wholesale Ceramic Bowls for Restaurants, Hotels & Catering Businesses ",
-  metaTitle: "Wholesale Ceramic Bowls | FDA LFGB Bulk Soup & Ramen Bowls for Restaurants"",
+  metaTitle: "Wholesale Ceramic Bowls | FDA LFGB Bulk Soup & Ramen Bowls for Restaurants",
   metaDescription:
     "Durable chip-resistant bulk ceramic bowls made in Chaozhou factory. Multi-purpose soup, salad, ramen and snack bowls ideal for hotels, restaurants and catering businesses. FDA & LFGB food safe, low MOQ bulk supply, with OEM/ODM support, glaze and sizing.",
   metaKeywords:
