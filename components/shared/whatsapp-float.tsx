@@ -58,13 +58,11 @@ export function WhatsAppFloat({
     const message = `我是${c}，邮箱${m}，想咨询${r}`
     const href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`
 
-    // 在用户点击的同步阶段先开好新标签页，避免邮件请求 await 后被浏览器弹窗拦截
-    const waWindow = window.open("", "_blank")
-
     setSubmitting(true)
     try {
-      // 先复用全站现有的邮件发送配置（/api/contact，Resend），把公司名/邮箱/采购需求发送到指定邮箱
-      await fetch("/api/contact", {
+      // 第一步（必等异步）：复用全站 contact 表单的邮件发送配置（/api/contact，Resend），
+      // 字段名与全站 contact 表单完全一致：company / email / details（fullName 为 API 必填项）。
+      const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -75,24 +73,26 @@ export function WhatsAppFloat({
           details: r,
         }),
       })
-    } catch (err) {
-      console.error("[v0] WhatsApp inquiry email failed:", err)
-      // 邮件发送失败不阻塞用户，仍继续跳转 WhatsApp
-    } finally {
-      // 邮件流程结束后再跳转到 WhatsApp 对话界面
-      if (waWindow) {
-        waWindow.opener = null
-        waWindow.location.href = href
-      } else {
-        // 同步开窗被拦截时的兜底
-        window.open(href, "_blank", "noopener,noreferrer")
-      }
+      const data = await res.json()
 
+      // 第二步：必须等邮件发送成功回调返回后，才执行 WhatsApp 跳转（严格串行，非并行）
+      if (res.ok && data?.success) {
+        window.open(href, "_blank", "noopener,noreferrer")
+        setOpen(false)
+        setCompany("")
+        setEmail("")
+        setRequirement("")
+      } else {
+        // 邮件发送失败：不跳转，提示用户重试
+        console.error("[v0] WhatsApp inquiry email failed:", data)
+        alert("Failed to send your inquiry. Please try again.")
+      }
+    } catch (err) {
+      // 网络异常：同样不跳转 WhatsApp
+      console.error("[v0] WhatsApp inquiry request error:", err)
+      alert("Network error, please try again later.")
+    } finally {
       setSubmitting(false)
-      setOpen(false)
-      setCompany("")
-      setEmail("")
-      setRequirement("")
     }
   }
 
