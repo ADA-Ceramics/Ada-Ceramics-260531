@@ -3,9 +3,14 @@
 import { useState } from "react"
 import { Mail, Phone, Send, Check } from "lucide-react"
 import { Footer } from "@/components/layout/footer"
+import { SiloBreadcrumb } from "@/components/silo/SiloBreadcrumb"
 import { companyInfo } from "@/lib/data"
 
-export function ContactClient() {
+interface ContactClientProps {
+  locale: string
+}
+
+export function ContactClient({ locale }: ContactClientProps) {
   const [formData, setFormData] = useState({
     fullName: "",
     company: "",
@@ -80,7 +85,11 @@ Details: ${formData.details}`
       )}
 
       <section className="pt-32 pb-16 bg-[#f5f3ef]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* 面包屑 Home > Contact（与 About/Factory 同款，含 BreadcrumbSchema） */}
+          <SiloBreadcrumb locale={locale} slug="contact" label="Contact" />
+        </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mt-8">
           <h1 className="text-4xl md:text-5xl font-bold mb-6" style={{ color: '#1a1a1a' }}>
             Contact Us Today
           </h1>

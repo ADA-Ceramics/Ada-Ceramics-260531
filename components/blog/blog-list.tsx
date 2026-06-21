@@ -183,8 +183,8 @@ export function BlogList({ posts, error, locale, latestProducts = [] }: BlogList
       )}
 
       <main className="min-h-screen bg-background">
-        {/* 区块 1：面包屑 Home > Blogs & News（含 BreadcrumbSchema） */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
+        {/* 区块 1��面包屑 Home > Blogs & News（含 BreadcrumbSchema） */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32">
           <SiloBreadcrumb locale={locale} slug="blog" label="Blogs & News" />
         </div>
 
