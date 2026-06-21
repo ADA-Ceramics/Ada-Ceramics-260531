@@ -75,8 +75,10 @@ export function generateLocaleSitemap(locale: string = "en") {
   return [...localizedStatic, ...localizedProducts]
 }
 
-// 导出全部英文站点完整路径（sitemap.xml生成入口）
-export const enSiteUrls = generateLocaleSitemap("en")
+// ===== Next.js App Router 官方标准Sitemap导出（彻底解决缺失default导出报错） =====
+export async function sitemap() {
+  return generateLocaleSitemap("en");
+}
 
-// 原有所有代码不动，直接加下面这行
-export default enSiteUrls;
+// 保留原有导出，方便其他文件导入使用
+export const enSiteUrls = generateLocaleSitemap("en")
