@@ -60,8 +60,8 @@ export function WhatsAppFloat({
 
     setSubmitting(true)
     try {
-      // 第一步（必等异步）：复用全站 contact 表单的邮件发送配置（/api/contact，Resend），
-      // 字段名与全站 contact 表单完全一致：company / email / details（fullName 为 API 必填项）。
+      // 第一步（必等异步）：复用全站 contact 表单已验证通过的邮件通道（/api/contact，Resend）。
+      // payload 字段结构与全站 contact 表单完全一致：fullName / company / email / phone / category / quantity / details。
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -69,28 +69,31 @@ export function WhatsAppFloat({
           fullName: c,
           company: c,
           email: m,
+          phone: "",
           category: "WhatsApp Inquiry",
+          quantity: "",
           details: r,
         }),
       })
+
       const data = await res.json()
 
       // 第二步：必须等邮件发送成功回调返回后，才执行 WhatsApp 跳转（严格串行，非并行）
-      if (res.ok && data?.success) {
+      if (res.ok && data.success) {
         window.open(href, "_blank", "noopener,noreferrer")
         setOpen(false)
         setCompany("")
         setEmail("")
         setRequirement("")
       } else {
-        // 邮件发送失败：不跳转，提示用户重试
-        console.error("[v0] WhatsApp inquiry email failed:", data)
-        alert("Failed to send your inquiry. Please try again.")
+        // 邮件发送失败：不跳转，透出服务端真实错误（与全站 contact 表单一致）
+        console.error("提交失败", data)
+        alert("Failed to send message: " + (data.error || "Please try again"))
       }
     } catch (err) {
       // 网络异常：同样不跳转 WhatsApp
-      console.error("[v0] WhatsApp inquiry request error:", err)
-      alert("Network error, please try again later.")
+      console.error("Error submitting form:", err)
+      alert("Network error, please try again later")
     } finally {
       setSubmitting(false)
     }
