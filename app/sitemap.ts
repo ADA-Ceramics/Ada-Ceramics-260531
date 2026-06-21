@@ -60,13 +60,11 @@ export const productPages = [
 export function generateLocaleSitemap(locale: string = "en") {
   const prefix = locale === "en" ? "" : `/${locale}`
 
-  // 拼接静态页面多语言路径
   const localizedStatic = staticPages.map((page) => ({
     ...page,
     path: `${prefix}${page.path}`,
   }))
 
-  // 拼接产品分类多语言路径
   const localizedProducts = productPages.map((page) => ({
     ...page,
     path: `${prefix}${page.path}`,
@@ -75,13 +73,10 @@ export function generateLocaleSitemap(locale: string = "en") {
   return [...localizedStatic, ...localizedProducts]
 }
 
-// 导出英文站点地址数组
-export const enSiteUrls = generateLocaleSitemap("en")
-
-// 1. 兼容 sitemap--route-entry.js 的默认导出（解决当前报错核心）
-export default enSiteUrls;
-
-// 2. Next App Router 原生标准导出（适配 /sitemap.xml 路由）
+// Next.js App Router 官方标准导出，专门用于 /sitemap.xml 路由（唯一必需导出）
 export async function sitemap() {
-  return enSiteUrls;
+  return generateLocaleSitemap("en");
 }
+
+// 仅给其他文件导入使用，Next sitemap 路由不会读取这个变量
+export const enSiteUrls = generateLocaleSitemap("en")
