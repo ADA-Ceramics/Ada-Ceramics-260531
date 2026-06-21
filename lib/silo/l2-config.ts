@@ -51,22 +51,22 @@ const ramekinBowls: L2Config = {
   parentSlug: "bakeware",
   parentLabel: "Bakeware",
   slug: "ramekin-bowls",
-  label: "Ramekin Bowls",
+  label: "Wholesale Ramekin Bowls",
   productCategorySlugs: ["ramekins"],
-  keyword: "ramekin bowls",
-  h1: "Wholesale Ceramic Ramekin Bowls for Soufflé, Crème Brûlée & Sides",
-  metaTitle: "Wholesale Ceramic Ramekin Bowls | Oven-Safe Bulk Ramekins",
+ keywords: "wholesale ramekins, ceramic ramekin bowls bulk, commercial baking ramekins, oven safe ramekins for catering, small ceramic bakeware suppliers",
+  h1: "Wholesale Ceramic Ramekin Bowls for Soufflé, Crème Brûlée & Commercial Catering",
+  metaTitle: "Wholesale Ceramic Ramekin Bowls | Bulk Oven-Safe Bakeware Supplier",
   metaDescription:
-    "Bulk oven-safe ceramic ramekin bowls direct from a Chaozhou factory. Soufflé, crème brûlée, dipping and side ramekins for restaurants, bakeries and retail. Low MOQ, thermal-shock resistant, full OEM/ODM customization.",
+    "Bulk oven-safe ceramic ramekins direct from Chaozhou factory. Ideal for soufflés, dipping sauces & restaurant catering. FDA-approved wholesale pricing.",
   metaKeywords:
-    "wholesale ramekins, ceramic ramekin bowls bulk, souffle dishes supplier, creme brulee ramekins, oven-safe ramekin factory",
+    "wholesale ramekins, bulk ceramic ramekins, commercial baking ramekins, commercial ramekins supplier",
   bannerImage: "/ceramic-snack-plate-for-home.webp",
   intro:
-    "ADA Ceramics supplies oven-safe ceramic ramekin bowls in commercial-ready sizes for soufflés, crème brûlée, dipping sauces, baked eggs and portioned sides. Each ramekin is high-temperature fired for thermal-shock resistance and a dense, easy-clean body built for daily restaurant, bakery and catering service, with low MOQs and full OEM/ODM branding.",
+    "ADA Ceramics offers oven-safe ceramic ramekin bowls in commercial sizes for soufflés, crème brûlée, dipping sauces and daily catering. High-fired for thermal shock resistance, easy to clean, with low MOQs, bulk order options and full OEM/ODM branding support for wholesale buyers.",
   seo: {
-    h2: "Oven-Safe Wholesale Ramekin Bowls Built for Daily Service",
+    h2: "Oven-Safe Wholesale Ramekin Bowls Built for Commercial Daily Service",
     procurementScenario:
-      "Restaurants, patisseries, hotels and caterers depend on ramekins that move straight from oven to table and back through the dishwasher without crazing or cracking. Our ceramic ramekin bowls are fired at high temperature for even heat retention and reliable thermal-shock resistance, so soufflés rise evenly, crème brûlée sets consistently and portioned sides plate beautifully. Standard 2oz to 8oz capacities let buyers cover dipping sauces, condiments, baked starters and dessert programs from a single durable range, lowering breakage costs across busy service.",
+      "Restaurants, patisseries, hotels and caterers depend on ramekins that move straight from oven to table and back through the dishwasher without crazing or cracking.  Our ceramic ramekin bowls are fired at high temperature for even heat retention and reliable thermal-shock resistance, so soufflés rise evenly, crème brûlée sets consistently and portioned sides plate beautifully. Standard 2oz to 8oz capacities let buyers cover dipping sauces, condiments, baked starters and dessert programs from a single durable range,lowering breakage costs across busy service.ideal for high-volume bulk order needs",
     customService:
       "As a full OEM/ODM manufacturer we customize ramekin capacity, rim profile, fluting, glaze colour, embossed logos and retail-ready packaging to your specification. Send artwork for branded ramekins, match a signature glaze, or commission new mold development for an exclusive shape. Low minimum order quantities let importers and private-label brands trial fresh ramekin ranges, and our in-house sampling team delivers approved pre-production samples quickly to protect your launch timeline.",
     qualityLogistics:
@@ -116,16 +116,16 @@ const bakingDishes: L2Config = {
   productCategorySlugs: ["baking-dishes"],
   keyword: "baking dishes and casseroles",
   h1: "Wholesale Ceramic Baking Dishes & Casseroles for Oven-to-Table Service",
-  metaTitle: "Wholesale Ceramic Baking Dishes & Casseroles | Oven-Safe Bulk",
+  metaTitle: "Wholesale Oven-Safe Bakeware | Ceramic Baking Dishes Bulk",
   metaDescription:
-    "Family-size ceramic baking dishes and lidded casseroles direct from a Chaozhou factory. Oven-to-table bakeware for restaurants, hotels and retail. Low MOQ, thermal-shock resistant, full OEM/ODM customization.",
+    "Bulk oven-to-table ceramic baking dishes direct from Chaozhou factory. Ideal for restaurants, caterers, FDA-approved.",
   metaKeywords:
-    "wholesale baking dishes, ceramic casserole bulk, lasagna dish supplier, oven-to-table bakeware, casserole factory",
+    "wholesale baking dishes, bulk ceramic casseroles, oven-to-table bakeware supplier, Chaozhou ceramic manufacturer",
   bannerImage: "/wholesale-bakeware.webp",
   intro:
-    "ADA Ceramics manufactures family-size ceramic baking dishes and lidded casseroles engineered for oven-to-table service. Fired for even heat distribution and thermal-shock resistance, our rectangular, oval and round bakers handle gratins, lasagne, roasts and casseroles in busy kitchens and look refined on the table, with low MOQs and full OEM/ODM customization.",
+    "ADA Ceramics is your Chaozhou-based OEM/ODM manufacturer for bulk ceramic baking dishes and casseroles. Our commercial-grade oven-to-table bakeware meets FDA/LFGB standards, with low MOQs and custom branding for wholesale buyers.",
   seo: {
-    h2: "Wholesale Baking Dishes & Casseroles for Professional Kitchens",
+    h2: "Wholesale Ceramic Baking Dishes & Casseroles for Professional Kitchens",
     procurementScenario:
       "Restaurants, hotels, caterers and retail homeware brands need baking dishes that cook evenly, retain heat at service and survive constant oven and dishwasher cycles. Our ceramic baking dishes and casseroles are high-temperature fired for thermal-shock resistance and uniform heat distribution, ideal for gratins, lasagne, roasts, bakes and slow-cooked casseroles. A coordinated range of rectangular, oval and round sizes lets buyers standardize one durable oven-to-table program across every outlet while keeping presentation consistent.",
     customService:
@@ -177,11 +177,11 @@ const piePizzaPans: L2Config = {
   productCategorySlugs: ["pie-pizza-plates"],
   keyword: "loaf pie and pizza pans",
   h1: "Wholesale Ceramic Loaf, Pie & Pizza Pans for Bakeries & Kitchens",
-  metaTitle: "Wholesale Ceramic Loaf, Pie & Pizza Pans | Oven-Safe Bulk",
+  metaTitle: "Wholesale Ceramic Loaf & Pizza Pans | Bulk Oven-Safe Bakeware",
   metaDescription:
-    "Oven-safe ceramic loaf, pie and pizza pans direct from a Chaozhou factory. Bulk baking pans for bakeries, restaurants and retail. Low MOQ, thermal-shock resistant, full OEM/ODM customization.",
+    "wholesale loaf pans, bulk pizza pans, ceramic bakeware supplier, Chaozhou baking pan manufacturer.",
   metaKeywords:
-    "wholesale pie pans, ceramic pizza stone bulk, loaf pan supplier, baking pans factory, oven-safe pie dish",
+    "wholesale loaf pans, bulk pizza pans, ceramic bakeware supplier, custom baking pans",
   bannerImage: "/amazon-hotsell-ceramic.webp",
   intro:
     "ADA Ceramics produces oven-safe ceramic loaf, pie and pizza pans for bakeries, restaurant kitchens and homeware retailers. Fired for even browning and thermal-shock resistance, our pans deliver consistent crusts and bakes batch after batch, with low MOQs and full OEM/ODM customization of size, colour and branding.",
