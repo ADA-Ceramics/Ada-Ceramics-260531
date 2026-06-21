@@ -82,12 +82,12 @@ const dinnerware: SiloConfig = {
     "dinnerware",
   ],
   keyword: "dinnerware",
-  h1: "Wholesale Ceramic Dinnerware for Restaurants, Hotels & Catering",
-  metaTitle: "Wholesale Ceramic Dinnerware | Bulk Plates, Bowls & Sets",
+  h1: "Wholesale Ceramic Dinnerware Manufacturer for Restaurants, Hotels & Catering",
+  metaTitle: "Wholesale Ceramic Dinnerware Supplier | Bulk Plates, Bowls & Sets | OEM",
   metaDescription:
-    "Bulk wholesale ceramic dinnerware direct from a Chaozhou factory. Chip-resistant plates, bowls, serve dishes and complete dinnerware sets for restaurants, hotels and caterers. Low MOQ, FDA/LFGB certified, full OEM/ODM service.",
+    "Factory-direct wholesale ceramic dinnerware supplier and OEM manufacturer. Chip-resistant bulk dinner plates, bowls, serve dishes and complete porcelain dinnerware sets for restaurants, hotels and caterers. Custom logo & private-label service, low MOQ, FDA/LFGB certified.",
   metaKeywords:
-    "wholesale dinnerware, ceramic plates bulk, restaurant bowls, dinnerware sets supplier, porcelain tableware factory",
+    "wholesale ceramic dinnerware, bulk dinner plates, ceramic dinnerware supplier, restaurant dinnerware wholesale, hotel tableware supplier, porcelain dinnerware manufacturer, custom porcelain dinnerware, OEM restaurant tableware, private label dinnerware sets, custom logo dinner plates, chip-resistant restaurant plates, commercial grade stoneware dinnerware, catering dinnerware bulk, FDA LFGB certified dinnerware",
   bannerImage: "/porcelain-tableware-for-restaurants.webp",
   intro:
     "ADA Ceramics manufactures commercial-grade ceramic dinnerware for global Horeca buyers, importers and retail brands. Our dinnerware Silo covers chip-resistant plates, versatile bowls, oven-to-table serve dishes and fully matched dinnerware sets fired in high-temperature kilns for superior strength and a clean glaze finish. Every piece is food-safe, dishwasher-durable and built for high-volume restaurant, hotel and catering service. With low MOQs, reliable lead times and complete OEM/ODM customization, we help wholesale partners stock dependable everyday tableware and launch private-label dinnerware collections that win repeat orders worldwide.",
@@ -173,12 +173,12 @@ const bakeware: SiloConfig = {
   slug: "bakeware",
   productCategorySlugs: ["wholesale-bakeware", "bakeware", "baking-dishes", "ramekins", "pie-pizza-plates"],
   keyword: "bakeware",
-  h1: "Wholesale Ceramic Bakeware & Oven-Safe Dishes for Bulk Buyers",
-  metaTitle: "Wholesale Ceramic Bakeware | Oven-Safe Baking Dishes & Ramekins",
+  h1: "Wholesale Ceramic Bakeware Manufacturer | Oven-Safe Baking Dishes for Bulk Buyers",
+  metaTitle: "Wholesale Ceramic Bakeware Manufacturer | Oven-Safe Baking Dishes & Ramekins",
   metaDescription:
-    "Oven-safe wholesale ceramic bakeware from a Chaozhou factory. Ramekins, baking dishes, casseroles, loaf, pie and pizza pans for restaurants, bakeries and retail. Low MOQ, thermal-shock resistant, full OEM/ODM customization.",
+    "Factory-direct wholesale ceramic bakeware manufacturer. Oven-safe, thermal-shock resistant ramekins, baking dishes, casseroles, loaf, pie and pizza pans for restaurants, bakeries and retail brands. OEM/ODM private-label service, low MOQ, FDA/LFGB & lead-free glaze.",
   metaKeywords:
-    "wholesale bakeware, ceramic baking dishes, ramekins bulk, casserole supplier, oven-safe ceramic factory",
+    "wholesale ceramic bakeware, ceramic bakeware manufacturer, bulk baking dish supplier, stoneware bakeware wholesale, OEM stoneware baking dish, custom private label bakeware, factory direct ceramic kitchenware, oven-safe ceramic baking dish bulk, thermal shock resistant bakeware, wholesale ramekins casseroles, lead-free glaze bakeware, FDA LFGB bakeware supplier",
   bannerImage: "/wholesale-bakeware.webp",
   intro:
     "ADA Ceramics produces durable, oven-safe ceramic bakeware for commercial kitchens, bakeries and homeware retailers around the world. Our bakeware Silo covers individual ramekins, family-size baking dishes and casseroles, plus loaf, pie and pizza pans engineered to withstand high oven temperatures and thermal shock. The dense ceramic body delivers even heat distribution for consistent baking results, while the easy-clean glaze handles daily professional use. With low MOQs and complete OEM/ODM customization of size, colour and branding, we help wholesale partners build reliable bakeware ranges that perform from oven to table.",
@@ -257,12 +257,12 @@ const tableDecorDrinkware: SiloConfig = {
   slug: "table-decor-drinkware",
   productCategorySlugs: ["wholesale-cups-mugs", "cups-mugs", "table-decor-drinkware"],
   keyword: "table decor and drinkware",
-  h1: "Wholesale Ceramic Table Decor & Drinkware for Cafés & Retail",
-  metaTitle: "Wholesale Ceramic Table Decor & Drinkware | Mugs, Vases & Jars",
+  h1: "Wholesale Ceramic Drinkware & Table Decor Manufacturer for Cafés & Retail",
+  metaTitle: "Wholesale Ceramic Drinkware & Table Decor | Custom Mugs, Vases & Jars",
   metaDescription:
-    "Wholesale ceramic drinkware and table decor from a Chaozhou factory. Cups, mugs, vases, storage jars, serving trays and candle holders for cafés, gifting and retail brands. Low MOQ, full OEM/ODM custom branding.",
+    "Factory-direct wholesale ceramic drinkware and table decor supplier. Custom coffee mugs, cups, vases, storage jars, serving trays and candle holders for cafés, gifting and retail brands. Custom logo printing, OEM/ODM branding, low MOQ, FDA/LFGB certified.",
   metaKeywords:
-    "wholesale mugs, ceramic vases bulk, storage jars supplier, serving trays, candle holders, drinkware factory",
+    "custom ceramic mugs wholesale, wholesale drinkware supplier, ceramic mug manufacturer, bulk coffee mugs, custom logo mugs bulk, OEM ceramic mugs, private label drinkware, custom printed mugs wholesale, sublimation mugs wholesale, ceramic vases bulk, café branded mugs, table decor supplier, ceramic storage jars wholesale, candle holders bulk",
   bannerImage: "/ceramic-gift-mug.webp",
   intro:
     "ADA Ceramics supplies stylish ceramic table decor and drinkware for cafés, hospitality groups, gift brands and lifestyle retailers worldwide. This Silo brings together cups and mugs, decorative vases, storage and condiment jars, serving trays and candle holders that elevate any table setting. Each piece blends on-trend design with food-safe, durable ceramic construction suited to daily commercial use and retail display. With low MOQs and complete OEM/ODM customization of shape, glaze colour, logo and packaging, we help partners launch cohesive drinkware and home-accent collections that stand out on shelves and in cafés.",
@@ -355,12 +355,12 @@ const oemCustomCeramics: SiloConfig = {
   slug: "oem-custom-ceramics",
   productCategorySlugs: ["oem-odm", "oem-custom-ceramics"],
   keyword: "custom OEM ceramics",
-  h1: "OEM Custom Ceramics Manufacturer | Private-Label Tableware Service",
-  metaTitle: "OEM Custom Ceramics | Private-Label Tableware Manufacturing",
+  h1: "OEM/ODM Custom Ceramics Manufacturer | Private-Label Tableware Service",
+  metaTitle: "OEM Custom Ceramics Manufacturer | Private-Label Tableware ODM Factory",
   metaDescription:
-    "Full-service OEM/ODM ceramic manufacturer in Chaozhou. Custom logo printing, bespoke glaze and colour, new mold development and private-label project management for global brands and Horeca buyers. Low MOQ, FDA/LFGB certified.",
+    "Full-service OEM/ODM custom ceramics manufacturer in Chaozhou, China. Custom logo printing, bespoke glaze & color development, new mold development and private-label project management for global brands and Horeca buyers. Low MOQ, fast sampling, FDA/LFGB certified.",
   metaKeywords:
-    "OEM ceramics, ODM tableware, custom logo printing, private label ceramics, new mold development, ceramic manufacturer China",
+    "ceramic OEM manufacturer, ODM ceramics factory, custom ceramic manufacturer China, private label ceramics, custom logo printing ceramics, custom glaze color development, new mold development ceramics, private label packaging ceramics, contract ceramic manufacturing, ceramic tableware OEM low MOQ, ceramic ODM lead time, FDA LFGB ceramic factory, branded tableware manufacturer",
   bannerImage: "/custom-ceramic-tableware-logo-branding-services.webp",
   intro:
     "ADA Ceramics is a full-service OEM and ODM ceramic manufacturer helping global brands, importers and Horeca buyers bring custom tableware to life. From custom logo printing and bespoke glaze and colour development to new mold creation and end-to-end private-label project management, our factory turns your concept into shelf-ready ceramics. With 30+ years of manufacturing experience, in-house design and tooling, low MOQs and FDA/LFGB certified production, we support everything from a single branded mug program to a complete private-label dinnerware collection — backed by dedicated project coordination and reliable worldwide shipping.",

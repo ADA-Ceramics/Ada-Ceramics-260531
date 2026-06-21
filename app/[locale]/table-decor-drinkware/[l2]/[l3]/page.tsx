@@ -21,12 +21,12 @@ export async function generateMetadata({
   const title = `${name} | Wholesale ${config.label} | ADA Ceramics`
   const description =
     detail.description?.trim() ||
-    `Wholesale ${name} direct from a Chaozhou ceramic factory. FDA & LFGB certified, oven safe, low MOQ and full OEM/ODM customization for restaurants, hotels and bakeries.`
+    `Wholesale ${name} direct from a Chaozhou ceramic factory. FDA & LFGB certified, food-safe, low MOQ and full OEM/ODM customization with custom logo printing for cafés, hospitality and retail brands.`
 
   return {
     title,
     description,
-    keywords: `wholesale ${name}, bulk ${config.keyword}, custom ${config.keyword}, OEM ceramic ${config.keyword}`,
+    keywords: `wholesale ${name}, bulk ${config.keyword}, ${config.keyword} supplier, custom ${config.keyword}, OEM ODM ${config.keyword}, private label ${config.keyword}, custom logo ${config.keyword}, wholesale drinkware manufacturer, FDA LFGB ${config.keyword}, low MOQ ${config.keyword}`,
     alternates: {
       canonical: `https://www.adaceramics.com/${locale}/${PARENT_SLUG}/${l2}/${l3}`,
     },

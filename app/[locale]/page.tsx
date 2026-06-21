@@ -15,18 +15,21 @@ import HomeFaq from "@/components/home/HomeFaq"
 import HomeJsonLd from "@/components/home/HomeJsonLd"
 
 // 首页 Meta：均衡覆盖 dinnerware / bakeware / table decor drinkware / OEM custom ceramics 四大核心词根
+// 关键词分层：大流量采购根词（wholesale/bulk/supplier/manufacturer/factory）+ 高转化定制词（OEM/ODM/custom logo/private label）
+// + 场景词（restaurant/hotel/café/Horeca）+ 信任词（FDA/LFGB/low MOQ）
 export const metadata: Metadata = {
-  title: "Wholesale Custom Ceramic Tableware Manufacturer | Dinnerware, Bakeware, Decor Drinkware & OEM | ADA Ceramics",
+  title:
+    "Wholesale Custom Ceramic Tableware Manufacturer | Dinnerware, Bakeware, Decor Drinkware & OEM/ODM | ADA Ceramics",
   description:
-    "ADA Ceramics is a wholesale custom ceramic tableware manufacturer for Horeca and global brands. Bulk ceramic dinnerware, oven-safe bakeware, table decor drinkware and full OEM custom ceramics. FDA & LFGB certified, low MOQ, worldwide shipping.",
+    "ADA Ceramics is a factory-direct wholesale custom ceramic tableware manufacturer and OEM/ODM supplier for restaurants, hotels, cafés and global brands. Bulk ceramic dinnerware, oven-safe bakeware, table decor drinkware and full private-label custom ceramics with custom logo printing, glaze & color matching and new mold development. FDA & LFGB certified, low MOQ, worldwide shipping from Chaozhou, China.",
   keywords:
-    "wholesale ceramic tableware, ceramic dinnerware, oven-safe bakeware, table decor drinkware, OEM custom ceramics, private label ceramics manufacturer",
+    "wholesale ceramic tableware manufacturer, custom ceramic tableware supplier, bulk ceramic dinnerware, ceramic dinnerware supplier, wholesale ceramic bakeware manufacturer, custom ceramic mugs wholesale, ceramic mug manufacturer, OEM ceramics manufacturer, ODM ceramics factory, private label ceramics, custom logo ceramics, FDA LFGB ceramic factory, restaurant hotel tableware supplier, Horeca ceramic tableware, ceramic tableware factory China",
   robots: "index, follow",
   alternates: { canonical: "https://www.adaceramics.com/en" },
   openGraph: {
-    title: "Wholesale Custom Ceramic Tableware Manufacturer For Horeca & Global Brands",
+    title: "Wholesale Custom Ceramic Tableware Manufacturer & OEM/ODM Supplier for Horeca & Global Brands",
     description:
-      "Bulk ceramic dinnerware, oven-safe bakeware, table decor drinkware and full OEM custom ceramics. FDA & LFGB certified, low MOQ, worldwide shipping.",
+      "Factory-direct bulk ceramic dinnerware, oven-safe bakeware, table decor drinkware and full OEM/ODM custom ceramics with custom logo printing and private-label service. FDA & LFGB certified, low MOQ, worldwide shipping.",
     type: "website",
   },
 }

@@ -26,7 +26,7 @@ export async function generateMetadata({
   return {
     title,
     description,
-    keywords: `wholesale ${name}, bulk ${config.keyword}, custom ${config.keyword}, OEM ceramic ${config.keyword}`,
+    keywords: `wholesale ${name}, bulk ${config.keyword}, ${config.keyword} supplier, custom ${config.keyword}, OEM ODM ${config.keyword}, private label ${config.keyword}, wholesale ${config.parentLabel} manufacturer, FDA LFGB ${config.keyword}, low MOQ ${config.keyword}`,
     alternates: {
       canonical: `https://www.adaceramics.com/${locale}/${PARENT_SLUG}/${l2}/${l3}`,
     },
