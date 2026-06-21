@@ -75,10 +75,13 @@ export function generateLocaleSitemap(locale: string = "en") {
   return [...localizedStatic, ...localizedProducts]
 }
 
-// ===== Next.js App Router 官方标准Sitemap导出（彻底解决缺失default导出报错） =====
-export async function sitemap() {
-  return generateLocaleSitemap("en");
-}
-
-// 保留原有导出，方便其他文件导入使用
+// 导出英文站点地址数组
 export const enSiteUrls = generateLocaleSitemap("en")
+
+// 1. 兼容 sitemap--route-entry.js 的默认导出（解决当前报错核心）
+export default enSiteUrls;
+
+// 2. Next App Router 原生标准导出（适配 /sitemap.xml 路由）
+export async function sitemap() {
+  return enSiteUrls;
+}
