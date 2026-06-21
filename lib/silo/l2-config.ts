@@ -60,7 +60,7 @@ const ramekinBowls: L2Config = {
     "Bulk oven-safe ceramic ramekins direct from Chaozhou factory. Ideal for soufflés, dipping sauces & restaurant catering. FDA-approved wholesale pricing.",
   metaKeywords:
     "wholesale ramekins, bulk ceramic ramekins, commercial baking ramekins, commercial ramekins supplier",
-  bannerImage: "/ceramic-snack-plate-for-home.webp",
+  bannerImage: "/white-ceramic-ramekins-bakeware-subcat-wholesale.webp",
   intro:
     "ADA Ceramics offers oven-safe ceramic ramekin bowls in commercial sizes for soufflés, crème brûlée, dipping sauces and daily catering. High-fired for thermal shock resistance, easy to clean, with low MOQs, bulk order options and full OEM/ODM branding support for wholesale buyers.",
   seo: {
