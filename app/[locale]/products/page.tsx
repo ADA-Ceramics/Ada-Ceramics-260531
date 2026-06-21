@@ -3,7 +3,6 @@ import Image from "next/image"
 import Link from "next/link"
 import { ChevronRight, Package, Layers, Gift, Settings, Zap, Clock, Award, Truck } from "lucide-react"
 import { getAllProducts } from "@/lib/supabase/products"
-import { getCategoryCardsGrouped } from "@/lib/supabase/category-cards"
 import { Header } from "@/components/layout/header"
 import { Footer } from "@/components/layout/footer"
 import { QuoteForm } from "@/components/shared/quote-form"
@@ -35,88 +34,29 @@ const sellingPoints = [
   { icon: Zap, title: "Fast Delivery" },
 ]
 
-// Category tabs 和产品数据
-const categoryTabs = [
-  { id: "all", name: "All Products" },
-  { id: "plates", name: "Wholesale Plates" },
-  { id: "bowls", name: "Wholesale Bowls" },
-  { id: "sets", name: "Wholesale Dinnerware Sets" },
-  { id: "cups", name: "Wholesale Cups & Mugs" },
-  { id: "bakeware", name: "Wholesale Bakeware" },
-]
-
-// 静态分类产品（作为后备数据，当Supabase无数据时使用）
-// SEO优化：alt文本包含长尾关键词、品牌词（China factory/supplier）、产品特性和使用场景
-const fallbackCategoryProducts: Record<string, { name: string; slug: string; image: string; alt: string }[]> = {
-  all: [
-    { name: "Dinner Plates", slug: "dinner-plates", image: "/images/categories/dinner-plates.webp", alt: "Wholesale ceramic dinner plates from China factory - bulk porcelain main course plates 10 inch for hotels restaurants and catering services" },
-    { name: "Dessert & Side Plates", slug: "dessert-side-plates", image: "/images/categories/side-plates.webp", alt: "Ceramic dessert plates wholesale supplier - 6 inch porcelain side plates for appetizers bread and desserts bulk order from China" },
-    { name: "Soup Plates", slug: "soup-plates", image: "/images/categories/soup-plates.webp", alt: "Deep rim ceramic soup plates wholesale - porcelain pasta bowls and soup dishes for restaurant foodservice from China manufacturer" },
-    { name: "Oval & Serving Plates", slug: "oval-serving-plates", image: "/images/categories/oval-plates.webp", alt: "Large oval ceramic serving platters wholesale - porcelain fish plates and buffet serving dishes from China B2B supplier" },
-    { name: "Soup Bowls", slug: "soup-bowls", image: "/images/categories/ceramic-soup-bowl.webp", alt: "Ceramic soup bowls wholesale from China - deep porcelain bowls for restaurants hotels and commercial foodservice bulk orders" },
-    { name: "Salad Bowls", slug: "salad-bowls", image: "/images/categories/ceramic-salad-bowl.webp", alt: "Large ceramic salad bowls wholesale supplier - porcelain mixing and serving bowls for commercial kitchen from China factory" },
-    { name: "Ramen Bowls", slug: "ramen-bowls", image: "/images/categories/ceramic-ramen-bowl.webp", alt: "Asian ceramic ramen bowls wholesale - large porcelain noodle bowls for Japanese restaurants and Asian cuisine from China" },
-    { name: "Snack Bowls", slug: "snack-bowls", image: "/images/categories/ceramic-snack-bowl.webp", alt: "Small ceramic snack bowls wholesale - porcelain dip bowls and appetizer dishes for restaurants from China manufacturer" },
-    { name: "Daily Tableware Sets", slug: "daily-tableware-sets", image: "/images/categories/ceramic-daily-tableware-set.webp", alt: "Complete ceramic dinnerware sets wholesale - 16 piece porcelain plate bowl set for hotels and households from China supplier" },
-    { name: "Restaurant & Catering Sets", slug: "restaurant-catering-sets", image: "/images/categories/ceramic-restaurant-catering-set.webp", alt: "Professional restaurant tableware sets wholesale - commercial grade porcelain dinnerware collection for catering from China factory" },
-    { name: "Ceramic Mugs", slug: "ceramic-mugs", image: "/images/categories/ceramic-mug.webp", alt: "Custom ceramic coffee mugs wholesale - OEM logo printed porcelain mugs for corporate gifts promotional items from China" },
-    { name: "Coffee Cups & Saucers", slug: "coffee-cups-saucers", image: "/images/categories/ceramic-coffee-cup-saucer.webp", alt: "Elegant ceramic coffee cups with saucers wholesale - espresso cappuccino cup sets for cafes hotels from China manufacturer" },
-    { name: "Water Cups", slug: "water-cups", image: "/images/categories/ceramic-water-cup.webp", alt: "Ceramic water cups wholesale supplier - stackable porcelain drinking cups for restaurants and hotels bulk order from China" },
-    { name: "Baking Dishes", slug: "baking-dishes", image: "/images/categories/ceramic-baking-dish.webp", alt: "Ceramic baking dishes wholesale - oven safe porcelain casserole dishes lasagna pans for commercial kitchens from China factory" },
-    { name: "Ramekins", slug: "ramekins", image: "/images/categories/ceramic-ramekin.webp", alt: "Small ceramic ramekins wholesale - porcelain souffle cups creme brulee dishes for restaurants bakeries from China supplier" },
-    { name: "Pie & Pizza Plates", slug: "pie-pizza-plates", image: "/images/categories/ceramic-pie-pizza-plate.webp", alt: "Ceramic pie and pizza plates wholesale - deep dish baking plates for pizzerias bakeries and restaurants from China manufacturer" },
-  ],
-  plates: [
-    { name: "Dinner Plates", slug: "dinner-plates", image: "/images/categories/dinner-plates.webp", alt: "Wholesale ceramic dinner plates from China factory - bulk porcelain main course plates 10 inch for hotels restaurants and catering services" },
-    { name: "Dessert & Side Plates", slug: "dessert-side-plates", image: "/images/categories/side-plates.webp", alt: "Ceramic dessert plates wholesale supplier - 6 inch porcelain side plates for appetizers bread and desserts bulk order from China" },
-    { name: "Soup Plates", slug: "soup-plates", image: "/images/categories/soup-plates.webp", alt: "Deep rim ceramic soup plates wholesale - porcelain pasta bowls and soup dishes for restaurant foodservice from China manufacturer" },
-    { name: "Oval & Serving Plates", slug: "oval-serving-plates", image: "/images/categories/oval-plates.webp", alt: "Large oval ceramic serving platters wholesale - porcelain fish plates and buffet serving dishes from China B2B supplier" },
-  ],
-  bowls: [
-    { name: "Soup Bowls", slug: "soup-bowls", image: "/images/categories/ceramic-soup-bowl.webp", alt: "Ceramic soup bowls wholesale from China - deep porcelain bowls for restaurants hotels and commercial foodservice bulk orders" },
-    { name: "Salad Bowls", slug: "salad-bowls", image: "/images/categories/ceramic-salad-bowl.webp", alt: "Large ceramic salad bowls wholesale supplier - porcelain mixing and serving bowls for commercial kitchen from China factory" },
-    { name: "Ramen Bowls", slug: "ramen-bowls", image: "/images/categories/ceramic-ramen-bowl.webp", alt: "Asian ceramic ramen bowls wholesale - large porcelain noodle bowls for Japanese restaurants and Asian cuisine from China" },
-    { name: "Snack Bowls", slug: "snack-bowls", image: "/images/categories/ceramic-snack-bowl.webp", alt: "Small ceramic snack bowls wholesale - porcelain dip bowls and appetizer dishes for restaurants from China manufacturer" },
-  ],
-  sets: [
-    { name: "Daily Tableware Sets", slug: "daily-tableware-sets", image: "/images/categories/ceramic-daily-tableware-set.webp", alt: "Complete ceramic dinnerware sets wholesale - 16 piece porcelain plate bowl set for hotels and households from China supplier" },
-    { name: "Restaurant & Catering Sets", slug: "restaurant-catering-sets", image: "/images/categories/ceramic-restaurant-catering-set.webp", alt: "Professional restaurant tableware sets wholesale - commercial grade porcelain dinnerware collection for catering from China factory" },
-  ],
-  cups: [
-    { name: "Ceramic Mugs", slug: "ceramic-mugs", image: "/images/categories/ceramic-mug.webp", alt: "Custom ceramic coffee mugs wholesale - OEM logo printed porcelain mugs for corporate gifts promotional items from China" },
-    { name: "Coffee Cups & Saucers", slug: "coffee-cups-saucers", image: "/images/categories/ceramic-coffee-cup-saucer.webp", alt: "Elegant ceramic coffee cups with saucers wholesale - espresso cappuccino cup sets for cafes hotels from China manufacturer" },
-    { name: "Water Cups", slug: "water-cups", image: "/images/categories/ceramic-water-cup.webp", alt: "Ceramic water cups wholesale supplier - stackable porcelain drinking cups for restaurants and hotels bulk order from China" },
-  ],
-  bakeware: [
-    { name: "Baking Dishes", slug: "baking-dishes", image: "/images/categories/ceramic-baking-dish.webp", alt: "Ceramic baking dishes wholesale - oven safe porcelain casserole dishes lasagna pans for commercial kitchens from China factory" },
-    { name: "Ramekins", slug: "ramekins", image: "/images/categories/ceramic-ramekin.webp", alt: "Small ceramic ramekins wholesale - porcelain souffle cups creme brulee dishes for restaurants bakeries from China supplier" },
-    { name: "Pie & Pizza Plates", slug: "pie-pizza-plates", image: "/images/categories/ceramic-pie-pizza-plate.webp", alt: "Ceramic pie and pizza plates wholesale - deep dish baking plates for pizzerias bakeries and restaurants from China manufacturer" },
-  ],
-}
-
 // Business solutions - SEO优化：alt文本包含业务场景、目标客户和产品特性
 const businessSolutions = [
-  { 
-    title: "Hotel & Restaurant Bulk Supplies", 
-    href: "/en/products", 
+  {
+    title: "Hotel & Restaurant Bulk Supplies",
+    href: "/en/dinnerware",
     image: "/porcelain-tableware-for-hotel-restore.webp",
     alt: "Wholesale porcelain tableware for hotels and restaurants from China - bulk white ceramic plates bowls dinnerware sets for commercial foodservice B2B supplier"
   },
-  { 
-    title: "Amazon & Retail Packaging", 
-    href: "/en/products", 
+  {
+    title: "Amazon & Retail Packaging",
+    href: "/en/dinnerware",
     image: "/amazon-hotsell-ceramic.webp",
     alt: "Best-selling ceramic tableware for Amazon FBA and retail stores - trending stoneware plates bowls with retail-ready gift box packaging from China factory"
   },
-  { 
-    title: "Wedding & Event Catering", 
-    href: "/en/products", 
+  {
+    title: "Wedding & Event Catering",
+    href: "/en/bakeware",
     image: "/ceramic-plates-for-catering-service.webp",
     alt: "Elegant ceramic plates for wedding catering and event services - bulk porcelain dinnerware rental sets for banquets parties from China wholesale supplier"
   },
-  { 
-    title: "Custom Corporate Gifting", 
-    href: "/en/custom-oem-odm", 
+  {
+    title: "Custom Corporate Gifting",
+    href: "/en/table-decor-drinkware",
     image: "/ceramic-gift-mug.webp",
     alt: "Custom printed ceramic gift mugs for corporate branding OEM ODM - personalized promotional drinkware with company logo from China manufacturer"
   },
@@ -125,9 +65,9 @@ const businessSolutions = [
 // Why choose us
 const whyChooseUs = [
   { icon: Clock, title: "30+ Years Export to EU/US", href: "/about-us" },
-  { icon: Award, title: "FDA/LFGB Certified", href: "/en/products" },
-  { icon: Package, title: "Flexible MOQ & Fast Samples", href: "/en/custom-oem-odm" },
-  { icon: Truck, title: "45-50Day On-Time Delivery", href: "/en/products" },
+  { icon: Award, title: "FDA/LFGB Certified", href: "/en/dinnerware" },
+  { icon: Package, title: "Flexible MOQ & Fast Samples", href: "/en/oem-custom-ceramics" },
+  { icon: Truck, title: "45-50Day On-Time Delivery", href: "/en/dinnerware" },
 ]
 
 // FAQ
@@ -155,7 +95,7 @@ const faqItems = [
 ]
 
 // ============================================================
-// 客户端交互组件（分类标签切换）
+// 客户端交互组件（四大主分类集合卡片）
 // ============================================================
 import { ProductCategoryTabs } from "./ProductCategoryTabs"
 
@@ -169,14 +109,8 @@ interface PageProps {
 export default async function ProductsPage({ params }: PageProps) {
   const { locale } = await params
 
-  // 获取所有产品（用于统计，未来可展示真实数据）
+  // 仅保留产品总数统计，删除旧分类卡片数据请求
   const products = await getAllProducts()
-  
-  // 从 Supabase 获取分类卡片数据，如果没有数据则使用后备静态数据
-  const supabaseCategoryCards = await getCategoryCardsGrouped()
-  const categoryProducts = supabaseCategoryCards.all.length > 0 
-    ? supabaseCategoryCards 
-    : fallbackCategoryProducts
 
   return (
     <div className="min-h-screen bg-background">
@@ -216,16 +150,19 @@ export default async function ProductsPage({ params }: PageProps) {
         </div>
       </section>
 
-      {/* Category Tabs and Product Cards - 客户端交互组件 */}
-      <ProductCategoryTabs
-        locale={locale}
-        categoryTabs={categoryTabs}
-        categoryProducts={categoryProducts}
-      />
+      {/* 四大主分类集合卡片组件，仅传locale */}
+      <ProductCategoryTabs locale={locale} />
 
-      <Link href="/oem-odm" className="flex-shrink-0 ml-auto px-5 py-2 bg-amber-500 text-white rounded-lg text-sm font-medium hover:bg-amber-600 transition-colors">
-  Custom Solutions
-</Link>
+      {/* OEM定制入口按钮 */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12 text-center">
+        <Link
+          href={`/${locale}/oem-custom-ceramics`}
+          className="inline-flex px-5 py-2 bg-amber-500 text-white rounded-lg text-sm font-medium hover:bg-amber-600 transition-colors"
+        >
+          Custom OEM & ODM Solutions
+        </Link>
+      </div>
+
       {/* Solutions For Your Business */}
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -241,8 +178,8 @@ export default async function ProductsPage({ params }: PageProps) {
             {businessSolutions.map((solution) => (
               <Link
                 key={solution.title}
-                href={solution.href}
-                className="group border border-[#e5e7eb] rounded-lg overflow-hidden bg-white hover:shadow-lg transition-all"
+                href={`/${locale}${solution.href}`}
+                className="group border border-[#e5e7eb] rounded-lg overflow-hidden bg-white hover:shadow-lg transition-all block"
               >
                 <div className="aspect-[4/3] relative bg-[#f5f3ef]">
                   <Image
@@ -285,7 +222,7 @@ export default async function ProductsPage({ params }: PageProps) {
             </div>
             <div className="w-full md:w-1/2">
               <p className="text-[#4b5563] leading-relaxed text-base">
-                We supply a full range of daily-use ceramic tableware, including plates, bowls, mugs and bakeware to fully cover your product sourcing needs. Equipped with an in-house R&D team, we provide professional 3D design and 3D printing services to turn your original ideas and concepts into accurate visual drafts and real samples.
+                We supply a full range of daily-use ceramic tableware, including plates, bowls, coffee cups & mugs and bakeware to fully cover your product sourcing needs. Equipped with an in-house R&D team, we provide professional 3D design and 3D printing services to turn your original ideas and concepts into accurate visual drafts and real samples.
               </p>
             </div>
           </div>
@@ -347,7 +284,7 @@ export default async function ProductsPage({ params }: PageProps) {
               return (
                 <Link
                   key={item.title}
-                  href={item.href}
+                  href={`/${locale}${item.href}`}
                   className="group flex flex-col items-center text-center p-6 border border-[#e5e7eb] rounded-lg bg-white hover:shadow-md hover:border-[#8b7355]/30 transition-all"
                 >
                   <div className="w-14 h-14 bg-[#f5f3ef] rounded-full flex items-center justify-center mb-4 group-hover:bg-[#8b7355]/10 transition-colors">
