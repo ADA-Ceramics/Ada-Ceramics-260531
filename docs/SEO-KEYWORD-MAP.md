@@ -2,7 +2,8 @@
 
 > B 端外贸陶瓷工厂 · 四大 Silo 结构 · 谷歌高转化采购搜索逻辑
 > 覆盖品类：Dinnerware（含 Serveware/Serve Dishes）、Bakeware、Table Decor & Drinkware（含 Drinkware）、OEM Custom Ceramics
-> 最后更新：本次全站关键词重写后生成
+> 品类映射：四大品类（Dinnerware / Serveware / Bakeware / Drinkware）已对齐到现有四大 Silo——Serveware 作为 serveware/serving platters 语义词并入 Dinnerware，Drinkware 归入 Table Decor & Drinkware；OEM/ODM 作为统一附加属性词（`OEM/ODM custom [品类]` + `custom logo private label [品类]`）成对埋入三个产品 Silo，OEM Custom Ceramics 本身即定制 Silo 故不叠加。
+> 最后更新：四大品类关键词对齐 + OEM/ODM 附加属性词布局后同步
 
 ---
 
@@ -55,7 +56,7 @@
 | --- | --- |
 | **H1** | Wholesale Ceramic Dinnerware Manufacturer for Restaurants, Hotels & Catering |
 | **metaTitle** | Wholesale Ceramic Dinnerware Supplier \| Bulk Plates, Bowls & Sets \| OEM |
-| **metaKeywords** | wholesale ceramic dinnerware / bulk dinner plates / ceramic dinnerware supplier / restaurant dinnerware wholesale / hotel tableware supplier / porcelain dinnerware manufacturer / custom porcelain dinnerware / OEM restaurant tableware / private label dinnerware sets / custom logo dinner plates / chip-resistant restaurant plates / commercial grade stoneware dinnerware / catering dinnerware bulk / FDA LFGB certified dinnerware |
+| **metaKeywords** | wholesale ceramic dinnerware / bulk dinner plates / ceramic dinnerware supplier / restaurant dinnerware wholesale / hotel tableware supplier / porcelain dinnerware manufacturer / **wholesale ceramic serveware** / **serving platters supplier** / custom porcelain dinnerware / **OEM/ODM custom dinnerware** / **custom logo private label dinnerware** / chip-resistant restaurant plates / commercial grade stoneware dinnerware / catering dinnerware bulk / FDA LFGB certified dinnerware |
 | **keyword（alt 词根）** | dinnerware |
 
 ### 3.2 Bakeware（`/[locale]/bakeware`）
@@ -64,7 +65,7 @@
 | --- | --- |
 | **H1** | Wholesale Ceramic Bakeware Manufacturer \| Oven-Safe Baking Dishes for Bulk Buyers |
 | **metaTitle** | Wholesale Ceramic Bakeware Manufacturer \| Oven-Safe Baking Dishes & Ramekins |
-| **metaKeywords** | wholesale ceramic bakeware / ceramic bakeware manufacturer / bulk baking dish supplier / stoneware bakeware wholesale / OEM stoneware baking dish / custom private label bakeware / factory direct ceramic kitchenware / oven-safe ceramic baking dish bulk / thermal shock resistant bakeware / wholesale ramekins casseroles / lead-free glaze bakeware / FDA LFGB bakeware supplier |
+| **metaKeywords** | wholesale ceramic bakeware / ceramic bakeware manufacturer / bulk baking dish supplier / stoneware bakeware wholesale / **OEM/ODM custom bakeware** / **custom logo private label bakeware** / factory direct ceramic kitchenware / oven-safe ceramic baking dish bulk / thermal shock resistant bakeware / wholesale ramekins casseroles / lead-free glaze bakeware / FDA LFGB bakeware supplier |
 | **keyword（alt 词根）** | bakeware |
 
 ### 3.3 Table Decor & Drinkware（`/[locale]/table-decor-drinkware`）
@@ -73,7 +74,7 @@
 | --- | --- |
 | **H1** | Wholesale Ceramic Drinkware & Table Decor Manufacturer for Cafés & Retail |
 | **metaTitle** | Wholesale Ceramic Drinkware & Table Decor \| Custom Mugs, Vases & Jars |
-| **metaKeywords** | custom ceramic mugs wholesale / wholesale drinkware supplier / ceramic mug manufacturer / bulk coffee mugs / custom logo mugs bulk / OEM ceramic mugs / private label drinkware / custom printed mugs wholesale / sublimation mugs wholesale / ceramic vases bulk / café branded mugs / table decor supplier / ceramic storage jars wholesale / candle holders bulk |
+| **metaKeywords** | custom ceramic mugs wholesale / wholesale drinkware supplier / ceramic mug manufacturer / bulk coffee mugs / custom logo mugs bulk / **OEM/ODM custom drinkware** / **custom logo private label drinkware** / custom printed mugs wholesale / sublimation mugs wholesale / ceramic vases bulk / café branded mugs / table decor supplier / ceramic storage jars wholesale / candle holders bulk |
 | **keyword（alt 词根）** | table decor and drinkware |
 
 ### 3.4 OEM Custom Ceramics（`/[locale]/oem-custom-ceramics`）
@@ -149,6 +150,8 @@
 
 - **层级闭环**：首页 → L1（4 大 Silo）→ L2（15 子分类）→ L3（产品）关键词逐级收窄，词根一脉相承（如 dinnerware → plates → 具体产品名）。
 - **slug 一致**：本次仅重写关键词承载字段，未改动任何 slug / 路由 / 面包屑，沿用既有四大 Silo 闭环，零死链风险。
+- **四品类对齐**：四大品类语义已映射进现有 Silo——Serveware（serveware / serving platters）补入 Dinnerware L1 的 metaKeywords，Drinkware 归 Table Decor & Drinkware；未新增或调整任何 Silo 架构。
+- **OEM/ODM 附加属性词**：三个产品 Silo 的 metaKeywords 统一成对埋入 `OEM/ODM custom [品类]` + `custom logo private label [品类]`（替换原先分散的单 `OEM ...` 写法），OEM Custom Ceramics Silo 因本身即定制 Silo 未叠加。
 - **alt 修复**：修正了 `ramekin-bowls` 的 `keyword` 字段（原误填长串逗号词导致图片 alt 关键词堆砌），改为干净短语 `ramekin bowls`。
 - **场景文案修复**：修正 Table Decor & Drinkware L3 描述回退文案（原错误沿用 "oven-safe... bakeries"，已改为 café/hospitality/retail + food-safe）。
 - **类型校验**：`tsc --noEmit` 通过（仅余 1 个与本次无关的既有 `tailwind.config.ts` darkMode 报错）。
