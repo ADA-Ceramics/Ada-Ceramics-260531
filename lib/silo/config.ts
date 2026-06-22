@@ -299,7 +299,7 @@ const tableDecorDrinkware: SiloConfig = {
       name: "Candle Holders",
       blurb: "Ceramic candle holders for ambiance, gifting and home accents.",
       href: "/table-decor-drinkware/candle-holders",
-      image: "/images/categories/wholesale-matte-ceramic-candle-jars-empty-candle-holders-for-gift-suppliers",
+      image: "/images/categories/wholesale-matte-ceramic-candle-jars-empty-candle-holders-for-gift-suppliers.webp",
       altKeyword: "candle holders",
     },
   ],
