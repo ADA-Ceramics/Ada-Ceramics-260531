@@ -201,7 +201,7 @@ const bakeware: SiloConfig = {
       name: "Loaf, Pie & Pizza Pans",
       blurb: "Loaf, pie and pizza bakeware for bakeries and restaurant kitchens.",
       href: "/bakeware/loaf-pie-pizza-pans",
-      image: "/amazon-hotsell-ceramic.webp",
+      image: "/images/categories/ceramic-loaf-pie-pizza-bakeware-collection-for-bakery-restaurant.webp",
       altKeyword: "loaf pie and pizza pans",
     },
   ],
