@@ -397,7 +397,7 @@ const oemCustomCeramics: SiloConfig = {
       name: "Request Custom Quote",
       blurb: "Send your specs and artwork for a fast, tailored production quote.",
       href: "/contact",
-      image: "/high-quality-ceramic-manufacturer.webp",
+      image: "/images/categories/b2b-ceramic-order-inquiry-form-request-tailored-production-custom-quote.webp",
       altKeyword: "custom ceramic quote",
     },
   ],
