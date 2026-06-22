@@ -187,7 +187,7 @@ const bakeware: SiloConfig = {
       name: "Ramekin Bowls",
       blurb: "Individual oven-safe ramekins for soufflés, crème brûlée and sides.",
       href: "/bakeware/ramekin-bowls",
-      image: "/ceramic-snack-plate-for-home.webp",
+      image: "/white-ceramic-ramekins-bakeware-subcat-wholesale.webp",
       altKeyword: "ramekin bowls",
     },
     {
