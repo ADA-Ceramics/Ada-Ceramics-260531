@@ -390,7 +390,7 @@ const oemCustomCeramics: SiloConfig = {
       name: "OEM & ODM Project Case Studies",
       blurb: "Proven private-label projects delivered for global ceramic brands.",
       href: "/oem-custom-ceramics/oem-odm-case-studies",
-      image: "/custom-ceramic-tableware-packaging-labeling-services.webp",
+      image: "/images/categories/wedding-event-catering.webp",
       altKeyword: "OEM ODM project case studies",
     },
     {
@@ -497,7 +497,7 @@ export const CROSS_SILO_CARDS: CrossSiloCard[] = [
     slug: "table-decor-drinkware",
     title: "Table Decor & Drinkware",
     blurb: "Mugs, vases, jars, trays & candle holders.",
-    image: "/ceramic-gift-mug.webp",
+    image: "/images/categories/wholesale-embossed-ceramic-teapot-cup-set-table-decor-drinkware-collection.webp",
     keyword: "table decor and drinkware",
   },
   {
