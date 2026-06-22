@@ -504,7 +504,7 @@ export const CROSS_SILO_CARDS: CrossSiloCard[] = [
     slug: "oem-custom-ceramics",
     title: "OEM Custom Ceramics",
     blurb: "Logo printing, custom glaze, molds & private label.",
-    image: "/custom-ceramic-tableware-logo-branding-services.webp",
+    image: "/ceramic-plates-for-catering-service.webp",
     keyword: "custom OEM ceramics",
   },
 ]
