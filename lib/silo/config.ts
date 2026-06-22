@@ -383,7 +383,7 @@ const oemCustomCeramics: SiloConfig = {
       name: "New Mold Development",
       blurb: "Exclusive shape and tooling development for proprietary designs.",
       href: "/oem-custom-ceramics/new-mold-development",
-      image: "/ceramic-manufacturer.webp",
+      image: "/images/categories/custom-size-ceramic-wares-3d-design-oem-odm-project-case-for-global-brands.webp",
       altKeyword: "new mold development",
     },
     {
