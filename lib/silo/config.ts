@@ -271,7 +271,7 @@ const tableDecorDrinkware: SiloConfig = {
       name: "Cups & Mugs",
       blurb: "Coffee mugs, cups and saucers for cafés, offices and branded gifting.",
       href: "/table-decor-drinkware/cups-mugs",
-      image: "/coffee-cup-cafe.webp",
+      image: "/images/categories/wholesale-ceramic-coffee-mug-and-saucer-commercial-cafe-supplies.webp",
       altKeyword: "cups and mugs",
     },
     {
