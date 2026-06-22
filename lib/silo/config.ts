@@ -285,7 +285,7 @@ const tableDecorDrinkware: SiloConfig = {
       name: "Storage & Condiment Jars",
       blurb: "Sealed storage and condiment jars for kitchens, delis and retail.",
       href: "/table-decor-drinkware/storage-condiment-jars",
-      image: "/custom-color-glaze-ceramic.webp",
+      image: "/images/categories/wholesale-gloss-ceramic-storage-jars-wood-lid-sealed-condiment-container-set.webp",
       altKeyword: "storage and condiment jars",
     },
     {
@@ -299,7 +299,7 @@ const tableDecorDrinkware: SiloConfig = {
       name: "Candle Holders",
       blurb: "Ceramic candle holders for ambiance, gifting and home accents.",
       href: "/table-decor-drinkware/candle-holders",
-      image: "/kiln-transformation.webp",
+      image: "/images/categories/wholesale-matte-ceramic-candle-jars-empty-candle-holders-for-gift-suppliers",
       altKeyword: "candle holders",
     },
   ],
