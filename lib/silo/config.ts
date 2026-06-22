@@ -278,7 +278,7 @@ const tableDecorDrinkware: SiloConfig = {
       name: "Vases",
       blurb: "Decorative ceramic vases for hospitality styling and retail home decor.",
       href: "/table-decor-drinkware/vases",
-      image: "/color-glaze.webp",
+      image: "/images/categories/wholesale-gradient-glaze-ceramic-vase-hotel-hospitality-home-decoration.webp",
       altKeyword: "decorative vases",
     },
     {
