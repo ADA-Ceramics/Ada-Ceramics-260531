@@ -117,7 +117,7 @@ const dinnerware: SiloConfig = {
       name: "Serve Dishes",
       blurb: "Oval platters and serving dishes for family-style and buffet dining.",
       href: "/dinnerware/serve-dishes",
-      image: "/ceramic-plates-for-catering-service.webp",
+      image: "/white-ceramic-oval-roasting-platter-turkey-serving-bakeware.webp",
       altKeyword: "serving dishes and platters",
     },
   ],
