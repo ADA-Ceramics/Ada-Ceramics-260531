@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   robots: "index, follow",
   alternates: { canonical: "https://www.adaceramics.com/en" },
   openGraph: {
-    title: "Wholesale Custom Ceramic Tableware Manufacturer & OEM/ODM Supplier for Horeca & Global Brands",
+    title: "Premium Ceramic Tableware for Global Horeca & Retail",
     description:
       "Factory-direct bulk ceramic dinnerware, oven-safe bakeware, table decor drinkware and full OEM/ODM custom ceramics with custom logo printing and private-label service. FDA & LFGB certified, low MOQ, worldwide shipping.",
     type: "website",
