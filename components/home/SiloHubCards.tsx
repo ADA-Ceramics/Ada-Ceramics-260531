@@ -24,8 +24,10 @@ export default function SiloHubCards({ locale }: SiloHubCardsProps) {
             Our Collections
           </p>
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-[44px] text-[#1a1a2e] text-balance">
-            Our 4 Main Ceramic Tableware Collections
+            Product Categories
           </h2>
+          < p className="text-sm text-gray-600 mt-2 mb-8">Explore our wide range of high-quality ceramic products 
+            designed for both everyday use and special occasions.
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
