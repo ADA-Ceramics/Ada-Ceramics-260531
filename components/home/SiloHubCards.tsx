@@ -18,13 +18,6 @@ type HubCard = {
 // 区块 3：6 大单品分类卡片枢纽区 —— 两行三列展示核心批发品类
 const HUB_CARDS: HubCard[] = [
   {
-    slug: "products/all",
-    title: "Wholesale Ceramics",
-    description: "Explore our complete collection of ceramic tableware for hotels, restaurants and retail.",
-    image: "/wholesale-ceramics-supplier.webp",
-    keyword: "ceramics",
-  },
-  {
     slug: "dinnerware/plates",
     title: "Wholesale Plates",
     description: "Durable dinner plates, soup plates and serving platters for commercial food service.",
@@ -46,6 +39,13 @@ const HUB_CARDS: HubCard[] = [
     keyword: "dinnerware sets",
   },
   {
+    slug: "bakeware",
+    title: "Wholesale Bakeware",
+    description: "Oven-safe baking dishes, ramekins and pie plates for commercial kitchens.",
+    image: "/wholesale-bakeware.webp",
+    keyword: "bakeware",
+  },
+  {
     slug: "table-decor-drinkware/cups-mugs",
     title: "Wholesale Cups & Mugs",
     description: "Premium ceramic mugs and coffee cups for cafes, offices and promotional use.",
@@ -53,11 +53,11 @@ const HUB_CARDS: HubCard[] = [
     keyword: "cups and mugs",
   },
   {
-    slug: "bakeware",
-    title: "Wholesale Bakeware",
-    description: "Oven-safe baking dishes, ramekins and pie plates for commercial kitchens.",
-    image: "/wholesale-bakeware.webp",
-    keyword: "bakeware",
+    slug: "products/all",
+    title: "Wholesale Ceramics",
+    description: "Explore our complete collection of ceramic tableware for hotels, restaurants and retail.",
+    image: "/wholesale-ceramics-supplier.webp",
+    keyword: "ceramics",
   },
 ]
 
