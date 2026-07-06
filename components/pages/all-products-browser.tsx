@@ -3,35 +3,27 @@
 import { useMemo, useState } from "react"
 import Link from "next/link"
 import { Package, SlidersHorizontal, X } from "lucide-react"
-import type { L2Product } from "@/lib/silo/l2-products"
 import {
   PRODUCT_CATEGORY_TREE,
   categoryMatches,
   findCategoryNode,
+  type MatchableProduct,
 } from "@/lib/silo/category-tree"
 import { ProductCategoryTree } from "@/components/silo/ProductCategoryTree"
 
-interface SiloL2ProductBrowserProps {
-  locale: string
-  label: string
-  products: L2Product[]
-  /** L3 单品路由：父级 Silo slug */
-  parentSlug: string
-  /** L3 单品路由：当前 L2 slug */
-  l2Slug: string
-  /** 无产品时引导链接（不含 locale 前缀） */
-  fallbackHref: string
+export type BrowserProduct = MatchableProduct & {
+  id: string
+  name: string
+  main_image: string | null
+  /** 卡片跳转地址（已含 locale 前缀） */
+  href: string
 }
 
-export function SiloL2ProductBrowser({
-  locale,
-  label,
-  products,
-  parentSlug,
-  l2Slug,
-  fallbackHref,
-}: SiloL2ProductBrowserProps) {
-  // 选中分类（纯前端过滤，无跳转）；null = 全部
+interface AllProductsBrowserProps {
+  products: BrowserProduct[]
+}
+
+export function AllProductsBrowser({ products }: AllProductsBrowserProps) {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null)
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false)
 
@@ -44,26 +36,15 @@ export function SiloL2ProductBrowser({
 
   const activeLabel = selectedCategory ? findCategoryNode(selectedCategory)?.label : null
 
-  const CategoryPanel = (
-    <ProductCategoryTree
-      tree={PRODUCT_CATEGORY_TREE}
-      selectedId={selectedCategory}
-      onSelect={(id) => {
-        setSelectedCategory(id)
-        setMobileFiltersOpen(false)
-      }}
-    />
-  )
-
   return (
-    <section translate="no" className="notranslate py-16 lg:py-20 bg-[#f5f3ef]">
+    <section translate="no" className="notranslate py-16 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-8">
-          <h2 className="font-serif text-2xl sm:text-3xl text-[#1a1a2e] mb-2 text-balance">
-            Browse {label}
+          <h2 className="font-serif text-2xl sm:text-3xl text-[#1a1a1a] mb-2 text-balance">
+            Browse by Product Category
           </h2>
           <p className="text-muted-foreground">
-            Select a product category on the left to filter our wholesale range.
+            Select a category on the left to instantly filter our full ceramic range.
           </p>
         </div>
 
@@ -89,12 +70,19 @@ export function SiloL2ProductBrowser({
         </div>
 
         <div className="flex flex-col lg:flex-row gap-8">
-          {/* 左侧分类树：移动端折叠，桌面常驻 */}
+          {/* 左侧分类树 */}
           <aside className="w-full lg:w-64 shrink-0">
             <div
               className={`${mobileFiltersOpen ? "block" : "hidden"} lg:block bg-white rounded-xl border border-border p-5 lg:sticky lg:top-28`}
             >
-              {CategoryPanel}
+              <ProductCategoryTree
+                tree={PRODUCT_CATEGORY_TREE}
+                selectedId={selectedCategory}
+                onSelect={(id) => {
+                  setSelectedCategory(id)
+                  setMobileFiltersOpen(false)
+                }}
+              />
             </div>
           </aside>
 
@@ -103,18 +91,18 @@ export function SiloL2ProductBrowser({
             <div className="flex items-center justify-between mb-5">
               <p className="text-sm text-muted-foreground">
                 {activeLabel && (
-                  <span className="text-[#1a1a2e] font-medium">{activeLabel}: </span>
+                  <span className="text-[#1a1a1a] font-medium">{activeLabel}: </span>
                 )}
                 <span>{`${filtered.length} ${filtered.length === 1 ? "product" : "products"}`}</span>
               </p>
             </div>
 
             {filtered.length > 0 ? (
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-5 sm:gap-6">
+              <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-5 sm:gap-6">
                 {filtered.map((product) => (
                   <Link
                     key={product.id}
-                    href={`/${locale}/${parentSlug}/${l2Slug}/${product.slug}`}
+                    href={product.href}
                     className="group flex flex-col rounded-xl border border-border bg-white overflow-hidden transition-all hover:shadow-lg"
                   >
                     <div className="aspect-square bg-[#f9fafb] overflow-hidden relative">
@@ -132,28 +120,22 @@ export function SiloL2ProductBrowser({
                       )}
                     </div>
                     <div className="flex flex-col flex-1 p-4 sm:p-5">
-                      <h3 className="text-sm sm:text-base font-medium text-[#1a1a2e] mb-3 leading-snug group-hover:text-[#8b7355] transition-colors line-clamp-2">
+                      <h3 className="text-sm sm:text-base font-medium text-[#1a1a1a] mb-3 leading-snug group-hover:text-[#8b7355] transition-colors line-clamp-2">
                         {product.name}
                       </h3>
                       <div className="mt-auto flex items-center justify-between">
-                        <span className="text-xs font-medium text-muted-foreground">
-                          MOQ: 500 pcs
-                        </span>
-                        <span className="text-xs font-semibold text-[#8b7355]">
-                          View Details
-                        </span>
+                        <span className="text-xs font-medium text-muted-foreground">MOQ: 500 pcs</span>
+                        <span className="text-xs font-semibold text-[#8b7355]">View Collection</span>
                       </div>
                     </div>
                   </Link>
                 ))}
               </div>
-            ) : products.length > 0 ? (
-              // 有产品但被筛选清空：引导放宽条件
+            ) : (
               <div className="rounded-xl border border-dashed border-[#8b7355]/40 bg-white p-10 text-center">
                 <Package className="w-12 h-12 mx-auto text-[#8b7355]/40 mb-4" aria-hidden="true" />
                 <p className="text-muted-foreground mb-6 max-w-md mx-auto">
-                  No products match this category. Select another category or view the full{" "}
-                  {label.toLowerCase()} range.
+                  No products match this category yet. Select another category to keep browsing.
                 </p>
                 <button
                   onClick={() => setSelectedCategory(null)}
@@ -161,21 +143,6 @@ export function SiloL2ProductBrowser({
                 >
                   View All
                 </button>
-              </div>
-            ) : (
-              // 无产品优雅降级
-              <div className="rounded-xl border border-dashed border-[#8b7355]/40 bg-white p-10 text-center">
-                <Package className="w-12 h-12 mx-auto text-[#8b7355]/40 mb-4" aria-hidden="true" />
-                <p className="text-muted-foreground mb-6 max-w-md mx-auto">
-                  Our full {label.toLowerCase()} catalog is available on request. Contact us
-                  for the latest product list, specifications and wholesale pricing.
-                </p>
-                <Link
-                  href={`/${locale}${fallbackHref}`}
-                  className="inline-flex items-center px-6 py-3 rounded-md bg-[#8b7355] text-white text-sm font-medium hover:bg-[#75603f] transition-colors"
-                >
-                  Request Catalog
-                </Link>
               </div>
             )}
           </div>

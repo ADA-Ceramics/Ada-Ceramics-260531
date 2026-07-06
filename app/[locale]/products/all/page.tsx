@@ -7,6 +7,7 @@ import { Footer } from "@/components/layout/footer"
 import { QuoteForm } from "@/components/shared/quote-form"
 import { SILO_ORDER, SILO_CONFIGS, CROSS_SILO_CARDS } from "@/lib/silo/config"
 import { getSiloProducts, type SiloProduct } from "@/lib/silo/products"
+import { AllProductsBrowser, type BrowserProduct } from "@/components/pages/all-products-browser"
 
 // 站点基础信息（与 sitemap.ts / layout.tsx 的 canonical 完全一致，避免 301）
 const SITE_URL = "https://www.adaceramics.com"
@@ -63,7 +64,7 @@ export default async function AllProductsPage({ params }: PageProps) {
     SILO_ORDER.map(async (slug) => {
       const config = SILO_CONFIGS[slug]!
       const card = CROSS_SILO_CARDS.find((c) => c.slug === slug)
-      const products = await getSiloProducts(config.productCategorySlugs, 8)
+      const products = await getSiloProducts(config.productCategorySlugs, 24)
       return {
         slug,
         title: card?.title ?? config.h1,
@@ -72,6 +73,17 @@ export default async function AllProductsPage({ params }: PageProps) {
         products,
       }
     }),
+  )
+
+  // 展平为单一产品列表，供「按分类过滤」区块使用（纯前端过滤，卡片链接到所属 Silo 页）
+  const allProducts: BrowserProduct[] = blocks.flatMap((block) =>
+    block.products.map((p) => ({
+      id: p.id,
+      name: p.name,
+      main_image: p.main_image,
+      categorySlug: p.categorySlug,
+      href: `/${locale}/${block.slug}`,
+    })),
   )
 
   return (
@@ -138,6 +150,9 @@ export default async function AllProductsPage({ params }: PageProps) {
         </div>
       </section>
 
+      {/* 按分类过滤区块 —— 纯前端「Product Categories」分类树，点击即过滤，无独立超链接 */}
+      <AllProductsBrowser products={allProducts} />
+
       {/* 按 Silo 分组的产品聚合 —— 所有产品卡片均链接到对应 silo 页面（根绝对路径） */}
       {blocks.map((block, index) => (
         <section
@@ -162,7 +177,7 @@ export default async function AllProductsPage({ params }: PageProps) {
 
             {block.products.length > 0 ? (
               <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 sm:gap-6">
-                {block.products.map((product) => (
+                {block.products.slice(0, 8).map((product) => (
                   // 产品链接直接指向所属 silo 页面（非单品页），根绝对路径，爬虫友好
                   <Link
                     key={product.id}
