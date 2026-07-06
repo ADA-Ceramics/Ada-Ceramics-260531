@@ -31,7 +31,7 @@ export default function HomeHero({ locale }: HomeHeroProps) {
           </span>
         </div>
 
-        <h1 className="font-serif text-3xl sm:text-5xl lg:text-[56px] leading-tight text-[#1a1a2e] text-balance mb-2">
+        <h1 className="font-serif text-3xl sm:text-5xl lg:text-[56px] leading-tight text-[#1a1a2e] ">
           Premium Ceramic Tableware
         </h1>
         <p className="font-serif text-2xl sm:text-4xl lg:text-[44px] leading-tight text-[#8b7355] text-balance mb-6">
