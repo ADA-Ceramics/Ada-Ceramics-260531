@@ -6,6 +6,7 @@ import { SiloCrossLinks } from "@/components/silo/SiloCrossLinks"
 
 import HomeHero from "@/components/home/HomeHero"
 import SiloHubCards from "@/components/home/SiloHubCards"
+import FactorySection from "@/components/home/FactorySection"
 import ProcurementBar from "@/components/home/ProcurementBar"
 import BestSellersGrid, { type BestSellerGroup } from "@/components/home/BestSellersGrid"
 import OemQuickEntry from "@/components/home/OemQuickEntry"
@@ -75,6 +76,9 @@ export default async function HomePage({
 
       {/* 区块 3：4 大 Silo 一级分类卡片枢纽区（首页权重均分给 4 个一级 Silo） */}
       <SiloHubCards locale={locale} />
+
+      {/* 区块 3.5：工厂实力展示模块（OUR FACILITY） */}
+      <FactorySection locale={locale} />
 
       {/* 区块 4：B 端采购核心优势标签栏 */}
       <ProcurementBar locale={locale} />
