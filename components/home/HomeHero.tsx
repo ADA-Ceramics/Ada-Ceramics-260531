@@ -51,14 +51,14 @@ export default function HomeHero({ locale }: HomeHeroProps) {
             href={`/${locale}/dinnerware`}
             className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-lg bg-[#1a1a2e] text-white text-sm font-semibold transition-colors hover:bg-[#2c2c4a] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#1a1a2e]"
           >
-            Browse Product Collections
+            View Products
             <ArrowRight className="w-4 h-4" aria-hidden="true" />
           </Link>
           <Link
             href={`/${locale}/contact`}
             className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-lg bg-white/90 backdrop-blur-sm border border-[#1a1a2e]/15 text-[#1a1a2e] text-sm font-semibold transition-colors hover:bg-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#8b7355]"
           >
-            Request Custom Quote
+            Request Quote
           </Link>
         </div>
 
