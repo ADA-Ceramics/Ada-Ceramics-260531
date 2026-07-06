@@ -60,17 +60,6 @@ export const PRODUCT_CATEGORY_TREE: CategoryNode[] = [
     ],
   },
   {
-    id: "cups-mugs",
-    label: "Wholesale Cups & Mugs",
-    matchSlugs: ["cups-mugs", "mugs", "cups"],
-    keywords: ["cup", "mug"],
-    children: [
-      { id: "ceramic-mugs", label: "Ceramic Mugs", matchSlugs: ["mugs", "ceramic-mugs"], keywords: ["mug"] },
-      { id: "coffee-cups-saucers", label: "Coffee Cups & Saucers", matchSlugs: ["coffee-cups", "cups-saucers"], keywords: ["coffee cup", "espresso", "saucer", "tea cup"] },
-      { id: "water-cups", label: "Water Cups", matchSlugs: ["water-cups"], keywords: ["water cup", "tumbler"] },
-    ],
-  },
-  {
     id: "bakeware",
     label: "Wholesale Bakeware",
     matchSlugs: ["bakeware", "baking-dishes", "ramekins"],
@@ -79,6 +68,17 @@ export const PRODUCT_CATEGORY_TREE: CategoryNode[] = [
       { id: "baking-dishes", label: "Baking Dishes", matchSlugs: ["baking-dishes"], keywords: ["baking dish", "casserole", "bakeware"] },
       { id: "ramekins", label: "Ramekins", matchSlugs: ["ramekins"], keywords: ["ramekin", "soufflé", "souffle", "crème brûlée", "creme brulee"] },
       { id: "pie-pizza-plates", label: "Pie & Pizza Plates", matchSlugs: ["pie-plates", "pizza-plates"], keywords: ["pie plate", "pizza plate", "pie dish"] },
+    ],
+  },
+  {
+    id: "cups-mugs",
+    label: "Wholesale Cups & Mugs",
+    matchSlugs: ["cups-mugs", "mugs", "cups"],
+    keywords: ["cup", "mug"],
+    children: [
+      { id: "ceramic-mugs", label: "Ceramic Mugs", matchSlugs: ["mugs", "ceramic-mugs"], keywords: ["mug"] },
+      { id: "coffee-cups-saucers", label: "Coffee Cups & Saucers", matchSlugs: ["coffee-cups", "cups-saucers"], keywords: ["coffee cup", "espresso", "saucer", "tea cup"] },
+      { id: "water-cups", label: "Water Cups", matchSlugs: ["water-cups"], keywords: ["water cup", "tumbler"] },
     ],
   },
 ]
