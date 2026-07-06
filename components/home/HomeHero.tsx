@@ -27,12 +27,12 @@ export default function HomeHero({ locale }: HomeHeroProps) {
         <div className="inline-flex items-center gap-2 bg-white/90 backdrop-blur-sm border border-[#e3dccf] rounded-full px-4 py-1.5 mb-7">
           <span className="w-1.5 h-1.5 rounded-full bg-[#8b7355]" aria-hidden="true" />
           <span className="text-xs font-medium tracking-wide text-[#8b7355] uppercase">
-            Wholesale &amp; Custom Ceramic Manufacturer
+            Wholesale &amp; Custom Ceramic
           </span>
         </div>
 
         <h1 className="font-serif text-3xl sm:text-5xl lg:text-[56px] leading-tight text-[#1a1a2e] text-balance mb-2">
-          Premium Ceramic Tableware Manufacturer
+          Premium Ceramic Tableware
         </h1>
         <p className="font-serif text-2xl sm:text-4xl lg:text-[44px] leading-tight text-[#8b7355] text-balance mb-6">
           For Global Horeca &amp; Retail
