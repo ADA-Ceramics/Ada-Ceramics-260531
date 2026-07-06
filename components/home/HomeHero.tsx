@@ -32,20 +32,18 @@ export default function HomeHero({ locale }: HomeHeroProps) {
         </div>
 
         <h1 className="font-serif text-3xl sm:text-5xl lg:text-[56px] leading-tight text-[#1a1a2e] text-balance mb-2">
-          Wholesale Custom Ceramic Tableware Manufacturer
+          Premium Ceramic Tableware Manufacturer
         </h1>
         <p className="font-serif text-2xl sm:text-4xl lg:text-[44px] leading-tight text-[#8b7355] text-balance mb-6">
-          For Horeca &amp; Global Brands
+          For Global Horeca &amp; Retail
         </p>
 
         <p className="text-base sm:text-lg text-[#5a5750] leading-relaxed mb-3 max-w-2xl mx-auto">
-          FDA &amp; LFGB Certified Dinnerware, Bakeware, Decor Drinkware &amp; Full OEM Ceramic
-          Customization.
+          Professional ceramic manufacturer offering FDA/LFGB certified dinnerware, custom OEM/ODM solutions, and worldwide shipping.
         </p>
 
         <p className="text-sm sm:text-base text-[#6b6862] leading-relaxed mb-9 max-w-2xl mx-auto">
-         ADA Ceramics is a Chaozhou Trading-Manufacturing Factory, your trusted source for wholesale ceramic tableware – offering dinnerware, 
-          bakeware, table decor drinkware and full OEM custom ceramic solutions
+         
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center mb-10">
