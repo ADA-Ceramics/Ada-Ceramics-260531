@@ -26,8 +26,9 @@ export default function SiloHubCards({ locale }: SiloHubCardsProps) {
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-[44px] text-[#1a1a2e] text-balance">
             Product Categories
           </h2>
-          < p className="text-sm text-gray-600 mt-2 mb-8">Explore our wide range of high-quality ceramic products 
-            designed for both everyday use and special occasions.
+         <p className="text-sm text-gray-600 mt-2 mb-8">
+  Explore our wide range of high-quality products designed for both everyday use and special occasions.
+</p> 
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
