@@ -1,19 +1,65 @@
 import Link from "next/link"
 import Image from "next/image"
 import { ArrowRight } from "lucide-react"
-import { CROSS_SILO_CARDS, buildAlt } from "@/lib/silo/config"
+import { buildAlt } from "@/lib/silo/config"
 
 interface SiloHubCardsProps {
   locale: string
 }
 
-// 区块 3：4 大 Silo 一级分类卡片枢纽区 —— 首页最高权重平分给 4 个平行一级 Silo
-const HUB_DESCRIPTIONS: Record<string, string> = {
-  dinnerware: "Wholesale ceramic plates, bowls & dinner sets for restaurant & hotel service.",
-  bakeware: "Oven-safe ramekins, casseroles & pizza baking dishes bulk supply.",
-  "table-decor-drinkware": "Custom mugs, table vases & decorative ceramic table accessories.",
-  "oem-custom-ceramics": "Custom logo, glaze color & new mold OEM/ODM manufacturing service.",
+type HubCard = {
+  slug: string
+  title: string
+  description: string
+  image: string
+  keyword: string
 }
+
+// 区块 3：6 大单品分类卡片枢纽区 —— 两行三列展示核心批发品类
+const HUB_CARDS: HubCard[] = [
+  {
+    slug: "products/all",
+    title: "Wholesale Ceramics",
+    description: "Explore our complete collection of ceramic tableware for hotels, restaurants and retail.",
+    image: "/wholesale-ceramics-supplier.webp",
+    keyword: "ceramics",
+  },
+  {
+    slug: "dinnerware/plates",
+    title: "Wholesale Plates",
+    description: "Durable dinner plates, soup plates and serving platters for commercial food service.",
+    image: "/wholesale-plates.webp",
+    keyword: "plates",
+  },
+  {
+    slug: "dinnerware/bowls",
+    title: "Wholesale Bowls",
+    description: "Versatile soup bowls, salad bowls and ramen bowls for professional kitchens.",
+    image: "/wholesale-bowls.webp",
+    keyword: "bowls",
+  },
+  {
+    slug: "dinnerware/dinnerware-sets",
+    title: "Wholesale Dinnerware Sets",
+    description: "Complete tableware sets for hotels, B&Bs and restaurant catering services.",
+    image: "/wholesale-dinnerware-sets.webp",
+    keyword: "dinnerware sets",
+  },
+  {
+    slug: "table-decor-drinkware/cups-mugs",
+    title: "Wholesale Cups & Mugs",
+    description: "Premium ceramic mugs and coffee cups for cafes, offices and promotional use.",
+    image: "/wholesale-cups-mugs.webp",
+    keyword: "cups and mugs",
+  },
+  {
+    slug: "bakeware",
+    title: "Wholesale Bakeware",
+    description: "Oven-safe baking dishes, ramekins and pie plates for commercial kitchens.",
+    image: "/wholesale-bakeware.webp",
+    keyword: "bakeware",
+  },
+]
 
 export default function SiloHubCards({ locale }: SiloHubCardsProps) {
   return (
@@ -31,8 +77,8 @@ export default function SiloHubCards({ locale }: SiloHubCardsProps) {
 </p> 
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {CROSS_SILO_CARDS.map((card) => (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {HUB_CARDS.map((card) => (
             <Link
               key={card.slug}
               href={`/${locale}/${card.slug}`}
@@ -50,7 +96,7 @@ export default function SiloHubCards({ locale }: SiloHubCardsProps) {
               <div className="flex flex-col flex-1 p-5">
                 <h3 className="font-serif text-xl text-[#1a1a2e] mb-2">{card.title}</h3>
                 <p className="text-sm text-[#6b6862] leading-relaxed flex-1">
-                  {HUB_DESCRIPTIONS[card.slug] ?? card.blurb}
+                  {card.description}
                 </p>
                 <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-[#8b7355]">
                   Explore Subcategories
