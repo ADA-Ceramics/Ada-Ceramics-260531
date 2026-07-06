@@ -12,6 +12,7 @@ import OemQuickEntry from "@/components/home/OemQuickEntry"
 import BrandCases from "@/components/home/BrandCases"
 import HomeBlog from "@/components/home/HomeBlog"
 import HomeFaq from "@/components/home/HomeFaq"
+import HomeQuoteForm from "@/components/home/HomeQuoteForm"
 import HomeJsonLd from "@/components/home/HomeJsonLd"
 
 // 首页 Meta：均衡覆盖 dinnerware / bakeware / table decor drinkware / OEM custom ceramics 四大核心词根
@@ -92,6 +93,9 @@ export default async function HomePage({
 
       {/* 区块 9：全站统一 FAQ 简版（FAQPage 结构化数据） */}
       <HomeFaq locale={locale} />
+
+      {/* 区块 9.5：首页询盘表单（复用 contact 发送逻辑 + 支持附件） */}
+      <HomeQuoteForm locale={locale} />
 
       {/* 区块 10：底部全站 Silo 互通导流区（复用 SiloCrossLinks，全站统一） */}
       <SiloCrossLinks locale={locale} currentSlug="" />

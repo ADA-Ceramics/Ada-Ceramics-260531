@@ -10,6 +10,7 @@ export async function POST(req: Request) {
       category,
       quantity,
       details,
+      attachments,
     } = await req.json();
 
     // 必传字段校验
@@ -23,6 +24,20 @@ export async function POST(req: Request) {
       console.error("❌ Resend API key missing");
       return NextResponse.json({ success: false, error: "API key missing" });
     }
+
+    // 处理附件：期望 attachments 为 [{ filename, content(base64) }]
+    const emailAttachments = Array.isArray(attachments)
+      ? attachments
+          .filter((a: unknown): a is { filename: string; content: string } =>
+            !!a && typeof (a as { filename?: unknown }).filename === "string" &&
+            typeof (a as { content?: unknown }).content === "string"
+          )
+          .map((a: { filename: string; content: string }) => ({
+            filename: a.filename,
+            // content 只保留 base64 部分（去掉可能存在的 data URL 前缀）
+            content: a.content.includes(",") ? a.content.split(",")[1] : a.content,
+          }))
+      : [];
 
     // 发送邮件
     const res = await fetch('https://api.resend.com/emails', {
@@ -48,6 +63,7 @@ export async function POST(req: Request) {
   <p><strong>Project Details:</strong><br>${details || 'N/A'}</p>
 </div>
         `,
+        ...(emailAttachments.length > 0 ? { attachments: emailAttachments } : {}),
       }),
     });
 
