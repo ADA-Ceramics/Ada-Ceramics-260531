@@ -85,12 +85,12 @@ const dinnerware: SiloConfig = {
   h1: "Wholesale Ceramic Dinnerware Manufacturer for Restaurants, Hotels & Catering",
   metaTitle: "Wholesale Ceramic Dinnerware Supplier | Bulk Plates, Bowls & Sets | OEM",
   metaDescription:
-    "Factory-direct wholesale ceramic dinnerware supplier and OEM manufacturer. Chip-resistant bulk dinner plates, bowls, serve dishes and complete porcelain dinnerware sets for restaurants, hotels and caterers. Custom logo & private-label service, low MOQ, FDA/LFGB certified.",
+    "Factory-direct wholesale ceramic dinnerware supplier and OEM manufacturer. Chip-resistant bulk dinner plates, bowls, serve dishes, storage & condiment jars and complete porcelain dinnerware sets for restaurants, hotels and caterers. Custom logo & private-label service, low MOQ, FDA/LFGB certified.",
   metaKeywords:
     "wholesale ceramic dinnerware, bulk dinner plates, ceramic dinnerware supplier, restaurant dinnerware wholesale, hotel tableware supplier, porcelain dinnerware manufacturer, wholesale ceramic serveware, serving platters supplier, custom porcelain dinnerware, OEM/ODM custom dinnerware, custom logo private label dinnerware, chip-resistant restaurant plates, commercial grade stoneware dinnerware, catering dinnerware bulk, FDA LFGB certified dinnerware",
   bannerImage: "/porcelain-tableware-for-restaurants.webp",
   intro:
-    "ADA Ceramics manufactures commercial-grade ceramic dinnerware for global Horeca buyers, importers and retail brands. Our dinnerware Silo covers chip-resistant plates, versatile bowls, oven-to-table serve dishes and fully matched dinnerware sets fired in high-temperature kilns for superior strength and a clean glaze finish. Every piece is food-safe, dishwasher-durable and built for high-volume restaurant, hotel and catering service. With low MOQs, reliable lead times and complete OEM/ODM customization, we help wholesale partners stock dependable everyday tableware and launch private-label dinnerware collections that win repeat orders worldwide.",
+    "ADA Ceramics manufactures commercial-grade ceramic dinnerware for global Horeca buyers, importers and retail brands. Our dinnerware Silo covers chip-resistant plates, versatile bowls, oven-to-table serve dishes, sealed storage & condiment jars and fully matched dinnerware sets fired in high-temperature kilns for superior strength and a clean glaze finish. Every piece is food-safe, dishwasher-durable and built for high-volume restaurant, hotel and catering service. With low MOQs, reliable lead times and complete OEM/ODM customization, we help wholesale partners stock dependable everyday tableware and launch private-label dinnerware collections that win repeat orders worldwide.",
   subcategories: [
     {
       name: "Dinnerware Sets",
@@ -120,6 +120,13 @@ const dinnerware: SiloConfig = {
       image: "/images/categories/white-ceramic-oval-roasting-platter-turkey-serving-bakeware.webp",
       altKeyword: "serving dishes and platters",
     },
+    {
+      name: "Storage & Condiment Jars",
+      blurb: "Sealed storage and condiment jars for kitchens, delis and retail.",
+      href: "/dinnerware/storage-condiment-jars",
+      image: "/images/categories/wholesale-gloss-ceramic-storage-jars-wood-lid-sealed-condiment-container-set.webp",
+      altKeyword: "storage and condiment jars",
+    },
   ],
   seo: {
     h2: "Wholesale Ceramic Dinnerware Built for Commercial Food Service",
@@ -139,6 +146,7 @@ const dinnerware: SiloConfig = {
       { label: "Hotel Tableware", href: "/dinnerware/dinnerware-sets" },
       { label: "Catering Bulk Bowls", href: "/dinnerware/bowls" },
       { label: "Buffet Serve Dishes", href: "/dinnerware/serve-dishes" },
+      { label: "Kitchen Storage Jars", href: "/dinnerware/storage-condiment-jars" },
       { label: "Private-Label Sets", href: "/oem-custom-ceramics" },
     ],
   },
@@ -260,12 +268,12 @@ const tableDecorDrinkware: SiloConfig = {
   h1: "Wholesale Ceramic Drinkware & Table Decor Manufacturer for Cafés & Retail",
   metaTitle: "Wholesale Ceramic Drinkware & Table Decor | Custom Mugs, Vases & Jars",
   metaDescription:
-    "Factory-direct wholesale ceramic drinkware and table decor supplier. Custom coffee mugs, cups, vases, storage jars, serving trays and candle holders for cafés, gifting and retail brands. Custom logo printing, OEM/ODM branding, low MOQ, FDA/LFGB certified.",
+    "Factory-direct wholesale ceramic drinkware and table decor supplier. Custom coffee mugs, cups, vases, serving trays and candle holders for cafés, gifting and retail brands. Custom logo printing, OEM/ODM branding, low MOQ, FDA/LFGB certified.",
   metaKeywords:
     "custom ceramic mugs wholesale, wholesale drinkware supplier, ceramic mug manufacturer, bulk coffee mugs, custom logo mugs bulk, OEM/ODM custom drinkware, custom logo private label drinkware, custom printed mugs wholesale, sublimation mugs wholesale, ceramic vases bulk, café branded mugs, table decor supplier, ceramic storage jars wholesale, candle holders bulk",
   bannerImage: "/ceramic-gift-mug.webp",
   intro:
-    "ADA Ceramics supplies stylish ceramic table decor and drinkware for cafés, hospitality groups, gift brands and lifestyle retailers worldwide. This Silo brings together cups and mugs, decorative vases, storage and condiment jars, serving trays and candle holders that elevate any table setting. Each piece blends on-trend design with food-safe, durable ceramic construction suited to daily commercial use and retail display. With low MOQs and complete OEM/ODM customization of shape, glaze colour, logo and packaging, we help partners launch cohesive drinkware and home-accent collections that stand out on shelves and in cafés.",
+    "ADA Ceramics supplies stylish ceramic table decor and drinkware for cafés, hospitality groups, gift brands and lifestyle retailers worldwide. This Silo brings together cups and mugs, decorative vases, serving trays and candle holders that elevate any table setting. Each piece blends on-trend design with food-safe, durable ceramic construction suited to daily commercial use and retail display. With low MOQs and complete OEM/ODM customization of shape, glaze colour, logo and packaging, we help partners launch cohesive drinkware and home-accent collections that stand out on shelves and in cafés.",
   subcategories: [
     {
       name: "Cups & Mugs",
@@ -280,13 +288,6 @@ const tableDecorDrinkware: SiloConfig = {
       href: "/table-decor-drinkware/vases",
       image: "/images/categories/wholesale-gradient-glaze-ceramic-vase-hotel-hospitality-home-decoration.webp",
       altKeyword: "decorative vases",
-    },
-    {
-      name: "Storage & Condiment Jars",
-      blurb: "Sealed storage and condiment jars for kitchens, delis and retail.",
-      href: "/table-decor-drinkware/storage-condiment-jars",
-      image: "/images/categories/wholesale-gloss-ceramic-storage-jars-wood-lid-sealed-condiment-container-set.webp",
-      altKeyword: "storage and condiment jars",
     },
     {
       name: "Serving Trays",
@@ -320,7 +321,7 @@ const tableDecorDrinkware: SiloConfig = {
       { label: "Café Drinkware", href: "/table-decor-drinkware/cups-mugs" },
       { label: "Branded Gift Mugs", href: "/oem-custom-ceramics" },
       { label: "Hospitality Decor Vases", href: "/table-decor-drinkware/vases" },
-      { label: "Kitchen Storage Jars", href: "/table-decor-drinkware/storage-condiment-jars" },
+      { label: "Presentation Serving Trays", href: "/table-decor-drinkware/serving-trays" },
       { label: "Retail Home Accents", href: "/table-decor-drinkware/candle-holders" },
     ],
   },

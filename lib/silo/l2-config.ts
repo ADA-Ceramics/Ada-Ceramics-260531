@@ -507,7 +507,7 @@ const tableCupsMugs: L2Config = {
     qualityLogistics:
       "Every cup and mug order is produced under strict QC with FDA and LFGB food-contact certification, edge-impact testing and reinforced fragile-rated export packaging engineered for ocean freight. Our logistics team consolidates mixed decor loads, manages documentation and ships worldwide from Chaozhou, China on flexible FOB and CIF terms.",
     siloGuide:
-      "Building a full table program? Browse our Vases, Storage & Condiment Jars, Serving Trays and Candle Holders sub-categories within the Table Decor & Drinkware Silo, or explore the Dinnerware and Bakeware Silos for plates and oven dishes.",
+      "Building a full table program? Browse our Vases, Serving Trays and Candle Holders sub-categories within the Table Decor & Drinkware Silo, or explore the Dinnerware Silo for plates, bowls and storage & condiment jars and the Bakeware Silo for oven dishes.",
   },
   procurement: {
     heading: "Shop Cups & Mugs by Procurement Need",
@@ -568,7 +568,7 @@ const tableVases: L2Config = {
     qualityLogistics:
       "Every vase order ships with careful QC, glaze and water-tightness checks and reinforced fragile-rated export packaging engineered for ocean freight. Our logistics team consolidates mixed decor loads, manages documentation and ships worldwide from Chaozhou, China on flexible FOB and CIF terms.",
     siloGuide:
-      "Completing a decor range? Browse our Cups & Mugs, Storage & Condiment Jars, Serving Trays and Candle Holders sub-categories within the Table Decor & Drinkware Silo, or explore the Dinnerware and Bakeware Silos for tableware.",
+      "Completing a decor range? Browse our Cups & Mugs, Serving Trays and Candle Holders sub-categories within the Table Decor & Drinkware Silo, or explore the Dinnerware Silo for plates, bowls and storage & condiment jars and the Bakeware Silo for tableware.",
   },
   procurement: {
     heading: "Shop Vases by Procurement Need",
@@ -604,10 +604,10 @@ const tableVases: L2Config = {
   ],
 }
 
-const tableStorageJars: L2Config = {
-  parentSlug: "table-decor-drinkware",
-  parentLabel: "Table Decor & Drinkware",
-  slug: "storage-condiment-jars",
+  const tableStorageJars: L2Config = {
+    parentSlug: "dinnerware",
+    parentLabel: "Dinnerware",
+    slug: "storage-condiment-jars",
   label: "Storage & Condiment Jars",
   productCategorySlugs: ["storage-condiment-jars"],
   keyword: "storage and condiment jars",
@@ -629,15 +629,15 @@ const tableStorageJars: L2Config = {
     qualityLogistics:
       "Every jar order is produced under strict QC with FDA and LFGB food-contact certification, seal testing and reinforced fragile-rated export packaging engineered for ocean freight. Our logistics team consolidates mixed decor loads, manages documentation and ships worldwide from Chaozhou, China on flexible FOB and CIF terms.",
     siloGuide:
-      "Building a kitchen and table range? Browse our Cups & Mugs, Vases, Serving Trays and Candle Holders sub-categories within the Table Decor & Drinkware Silo, or explore the Dinnerware and Bakeware Silos for tableware.",
+      "Building a kitchen and table range? Browse our Plates, Bowls, Dinnerware Sets and Serve Dishes sub-categories within the Dinnerware Silo, or explore the Bakeware and Table Decor & Drinkware Silos for oven dishes, mugs and decor.",
   },
   procurement: {
     heading: "Shop Storage & Condiment Jars by Procurement Need",
     tags: [
-      { label: "Airtight Canisters", href: "/table-decor-drinkware/storage-condiment-jars" },
-      { label: "Spice Jars", href: "/table-decor-drinkware/storage-condiment-jars" },
-      { label: "Sauce & Condiment Pots", href: "/table-decor-drinkware/storage-condiment-jars" },
-      { label: "Deli & Pantry Storage", href: "/table-decor-drinkware/storage-condiment-jars" },
+      { label: "Airtight Canisters", href: "/dinnerware/storage-condiment-jars" },
+      { label: "Spice Jars", href: "/dinnerware/storage-condiment-jars" },
+      { label: "Sauce & Condiment Pots", href: "/dinnerware/storage-condiment-jars" },
+      { label: "Deli & Pantry Storage", href: "/dinnerware/storage-condiment-jars" },
       { label: "Custom Branded Jars", href: "/contact" },
     ],
   },
@@ -690,7 +690,7 @@ const tableServingTrays: L2Config = {
     qualityLogistics:
       "Every serving tray order ships under strict QC with FDA and LFGB food-contact certification, edge testing and reinforced fragile-rated export packaging engineered for ocean freight. Our logistics team consolidates mixed decor loads, manages documentation and ships worldwide from Chaozhou, China on flexible FOB and CIF terms.",
     siloGuide:
-      "Completing a table range? Browse our Cups & Mugs, Vases, Storage & Condiment Jars and Candle Holders sub-categories within the Table Decor & Drinkware Silo, or explore the Dinnerware and Bakeware Silos for tableware.",
+      "Completing a table range? Browse our Cups & Mugs, Vases and Candle Holders sub-categories within the Table Decor & Drinkware Silo, or explore the Dinnerware Silo for plates, bowls and storage & condiment jars and the Bakeware Silo for tableware.",
   },
   procurement: {
     heading: "Shop Serving Trays by Procurement Need",
@@ -751,7 +751,7 @@ const tableCandleHolders: L2Config = {
     qualityLogistics:
       "Every candle holder order ships with careful QC, heat-stability checks and reinforced fragile-rated export packaging engineered for ocean freight. Our logistics team consolidates mixed decor loads, manages documentation and ships worldwide from Chaozhou, China on flexible FOB and CIF terms.",
     siloGuide:
-      "Completing a decor range? Browse our Cups & Mugs, Vases, Storage & Condiment Jars and Serving Trays sub-categories within the Table Decor & Drinkware Silo, or explore the Dinnerware and Bakeware Silos for tableware.",
+      "Completing a decor range? Browse our Cups & Mugs, Vases and Serving Trays sub-categories within the Table Decor & Drinkware Silo, or explore the Dinnerware Silo for plates, bowls and storage & condiment jars and the Bakeware Silo for tableware.",
   },
   procurement: {
     heading: "Shop Candle Holders by Procurement Need",
@@ -1048,9 +1048,9 @@ export const L2_CONFIGS: Record<string, L2Config> = {
   "dinnerware/bowls": dinnerwareBowls,
   "dinnerware/dinnerware-sets": dinnerwareSets,
   "dinnerware/serve-dishes": dinnerwareServeDishes,
+  "dinnerware/storage-condiment-jars": tableStorageJars,
   "table-decor-drinkware/cups-mugs": tableCupsMugs,
   "table-decor-drinkware/vases": tableVases,
-  "table-decor-drinkware/storage-condiment-jars": tableStorageJars,
   "table-decor-drinkware/serving-trays": tableServingTrays,
   "table-decor-drinkware/candle-holders": tableCandleHolders,
   "oem-custom-ceramics/custom-logo-printing": oemLogoPrinting,

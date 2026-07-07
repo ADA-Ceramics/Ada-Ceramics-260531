@@ -1,4 +1,5 @@
 /** @type {import('next').NextConfig} */
+// 分类迁移：Storage & Condiment Jars 归入 Dinnerware（含旧路径 301）
 
 // 旧扁平产品分类 slug → 新四大 Silo 层级路径（/[silo]/[l2]）的唯一映射。
 // 与 lib/silo/l2-config.ts 的 productCategorySlugs 完全对齐，
@@ -18,11 +19,11 @@ const LEGACY_CATEGORY_TO_SILO = {
   'oval-serving-plates': 'dinnerware/serve-dishes',
   'serve-dishes': 'dinnerware/serve-dishes',
   'serving-dishes': 'dinnerware/serve-dishes',
+  'storage-condiment-jars': 'dinnerware/storage-condiment-jars',
   // Table Decor & Drinkware
   'wholesale-cups-mugs': 'table-decor-drinkware/cups-mugs',
   'cups-mugs': 'table-decor-drinkware/cups-mugs',
   vases: 'table-decor-drinkware/vases',
-  'storage-condiment-jars': 'table-decor-drinkware/storage-condiment-jars',
   'serving-trays': 'table-decor-drinkware/serving-trays',
   'candle-holders': 'table-decor-drinkware/candle-holders',
   // OEM Custom Ceramics
@@ -85,6 +86,17 @@ const nextConfig = {
       {
         source: '/en/custom-solutions',
         destination: '/en/oem-custom-ceramics',
+        permanent: true,
+      },
+      // Storage & Condiment Jars 由 Table Decor & Drinkware 迁入 Dinnerware，旧 Silo 层级路径 301 收敛到新路径
+      {
+        source: '/en/table-decor-drinkware/storage-condiment-jars',
+        destination: '/en/dinnerware/storage-condiment-jars',
+        permanent: true,
+      },
+      {
+        source: '/en/table-decor-drinkware/storage-condiment-jars/:slug',
+        destination: '/en/dinnerware/storage-condiment-jars/:slug',
         permanent: true,
       },
       // 旧扁平产品浏览/详情路由 → 新 Silo 层级路径

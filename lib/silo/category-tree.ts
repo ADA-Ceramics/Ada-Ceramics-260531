@@ -60,6 +60,16 @@ export const PRODUCT_CATEGORY_TREE: CategoryNode[] = [
     ],
   },
   {
+    id: "storage-condiment-jars",
+    label: "Storage & Condiment Jars",
+    matchSlugs: ["storage-condiment-jars", "storage-jars", "condiment-jars", "jars"],
+    keywords: ["jar", "storage jar", "condiment", "canister"],
+    children: [
+      { id: "airtight-canisters", label: "Airtight Canisters", matchSlugs: ["canisters"], keywords: ["canister", "airtight", "pantry jar"] },
+      { id: "spice-sauce-jars", label: "Spice & Sauce Jars", matchSlugs: ["spice-jars", "sauce-jars"], keywords: ["spice jar", "sauce jar", "condiment pot"] },
+    ],
+  },
+  {
     id: "bakeware",
     label: "Wholesale Bakeware",
     matchSlugs: ["bakeware", "baking-dishes", "ramekins"],
@@ -87,7 +97,6 @@ export const PRODUCT_CATEGORY_TREE: CategoryNode[] = [
     keywords: ["decor", "vase", "jar", "tray", "candle"],
     children: [
       { id: "vase", label: "Vase", matchSlugs: ["vase", "vases"], keywords: ["vase", "flower vase"] },
-      { id: "storage-condiment-jars", label: "Storage & Condiment Jars", matchSlugs: ["storage-jars", "condiment-jars", "jars"], keywords: ["jar", "storage jar", "condiment", "canister"] },
       { id: "serving-trays", label: "Serving Trays", matchSlugs: ["serving-trays", "trays"], keywords: ["tray", "serving tray", "platter tray"] },
       { id: "candle-holders", label: "Candle Holders", matchSlugs: ["candle-holders"], keywords: ["candle", "candle holder", "tealight"] },
     ],

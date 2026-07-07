@@ -216,6 +216,7 @@ export function Header() {
         { name: "Plates", href: `/${currentLangCode}/dinnerware/plates` },
         { name: "Bowls", href: `/${currentLangCode}/dinnerware/bowls` },
         { name: "Serve Dishes", href: `/${currentLangCode}/dinnerware/serve-dishes` },
+        { name: "Storage & Condiment Jars", href: `/${currentLangCode}/dinnerware/storage-condiment-jars` },
       ],
     },
     {
@@ -233,7 +234,6 @@ export function Header() {
       dropdown: [
         { name: "Cups & Mugs", href: `/${currentLangCode}/table-decor-drinkware/cups-mugs` },
         { name: "Vases", href: `/${currentLangCode}/table-decor-drinkware/vases` },
-        { name: "Storage & Condiment Jars", href: `/${currentLangCode}/table-decor-drinkware/storage-condiment-jars` },
         { name: "Serving Trays", href: `/${currentLangCode}/table-decor-drinkware/serving-trays` },
         { name: "Candle Holders", href: `/${currentLangCode}/table-decor-drinkware/candle-holders` },
       ],
