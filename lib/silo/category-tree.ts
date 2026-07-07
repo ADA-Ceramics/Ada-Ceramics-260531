@@ -72,13 +72,24 @@ export const PRODUCT_CATEGORY_TREE: CategoryNode[] = [
   },
   {
     id: "cups-mugs",
-    label: "Wholesale Cups & Mugs",
-    matchSlugs: ["cups-mugs", "mugs", "cups"],
-    keywords: ["cup", "mug"],
+    label: "Wholesale Drinkware",
+    matchSlugs: ["cups-mugs", "mugs", "cups", "drinkware"],
+    keywords: ["cup", "mug", "drinkware"],
     children: [
       { id: "ceramic-mugs", label: "Ceramic Mugs", matchSlugs: ["mugs", "ceramic-mugs"], keywords: ["mug"] },
       { id: "coffee-cups-saucers", label: "Coffee Cups & Saucers", matchSlugs: ["coffee-cups", "cups-saucers"], keywords: ["coffee cup", "espresso", "saucer", "tea cup"] },
-      { id: "water-cups", label: "Water Cups", matchSlugs: ["water-cups"], keywords: ["water cup", "tumbler"] },
+    ],
+  },
+  {
+    id: "table-decor",
+    label: "Wholesale Table Decor",
+    matchSlugs: ["table-decor", "decor"],
+    keywords: ["decor", "vase", "jar", "tray", "candle"],
+    children: [
+      { id: "vase", label: "Vase", matchSlugs: ["vase", "vases"], keywords: ["vase", "flower vase"] },
+      { id: "storage-condiment-jars", label: "Storage & Condiment Jars", matchSlugs: ["storage-jars", "condiment-jars", "jars"], keywords: ["jar", "storage jar", "condiment", "canister"] },
+      { id: "serving-trays", label: "Serving Trays", matchSlugs: ["serving-trays", "trays"], keywords: ["tray", "serving tray", "platter tray"] },
+      { id: "candle-holders", label: "Candle Holders", matchSlugs: ["candle-holders"], keywords: ["candle", "candle holder", "tealight"] },
     ],
   },
 ]
