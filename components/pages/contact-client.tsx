@@ -1,10 +1,16 @@
 "use client"
 
-import { useState } from "react"
-import { Mail, Phone, Send, Check } from "lucide-react"
+import { useRef, useState } from "react"
+import { Mail, Phone, Send, Check, Paperclip, X } from "lucide-react"
 import { Footer } from "@/components/layout/footer"
 import { SiloBreadcrumb } from "@/components/silo/SiloBreadcrumb"
 import { companyInfo } from "@/lib/data"
+import {
+  ATTACHMENT_ACCEPT,
+  ATTACHMENT_HINT,
+  mergeFilesWithinLimit,
+  readFileAsBase64,
+} from "@/lib/attachments"
 
 interface ContactClientProps {
   locale: string
@@ -20,18 +26,38 @@ export function ContactClient({ locale }: ContactClientProps) {
     quantity: "",
     details: "",
   })
+  const [files, setFiles] = useState<File[]>([])
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [showSuccessModal, setShowSuccessModal] = useState(false)
+  const fileInputRef = useRef<HTMLInputElement>(null)
+
+  const handleFilesSelected = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const selected = e.target.files ? Array.from(e.target.files) : []
+    if (selected.length === 0) return
+    const next = mergeFilesWithinLimit(files, selected)
+    if (!next) {
+      alert("Total attachment size cannot exceed 10MB.")
+      return
+    }
+    setFiles(next)
+    if (fileInputRef.current) fileInputRef.current.value = ""
+  }
+
+  const removeFile = (index: number) => {
+    setFiles(files.filter((_, i) => i !== index))
+  }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
 
     try {
+      const attachments = await Promise.all(files.map(readFileAsBase64))
+
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ ...formData, attachments }),
       })
 
       const data = await res.json()
@@ -217,6 +243,53 @@ Details: ${formData.details}`
                       onChange={(e) => setFormData({ ...formData, details: e.target.value })}
                       className="w-full px-4 py-3 rounded-xl border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all resize-none"
                     />
+                  </div>
+
+                  {/* 附件上传 */}
+                  <div>
+                    <input
+                      ref={fileInputRef}
+                      type="file"
+                      multiple
+                      onChange={handleFilesSelected}
+                      className="hidden"
+                      accept={ATTACHMENT_ACCEPT}
+                    />
+                    <button
+                      type="button"
+                      onClick={() => fileInputRef.current?.click()}
+                      className="inline-flex items-center gap-2 px-4 py-2.5 border border-dashed border-border rounded-xl text-sm font-medium text-muted-foreground bg-background hover:border-primary hover:text-primary transition-colors"
+                    >
+                      <Paperclip className="w-4 h-4" />
+                      Add Attachment
+                    </button>
+                    <p className="text-xs text-muted-foreground mt-2">{ATTACHMENT_HINT}</p>
+
+                    {files.length > 0 && (
+                      <ul className="mt-3 flex flex-col gap-2">
+                        {files.map((file, index) => (
+                          <li
+                            key={`${file.name}-${index}`}
+                            className="flex items-center justify-between gap-3 px-3 py-2 bg-muted border border-border rounded-lg"
+                          >
+                            <span className="text-sm text-foreground truncate">
+                              {file.name}
+                              <span className="text-xs text-muted-foreground ml-2">
+                                {(file.size / 1024).toFixed(0)} KB
+                              </span>
+                            </span>
+                            <button
+                              type="button"
+                              onClick={() => removeFile(index)}
+                              className="text-muted-foreground hover:text-red-500 transition-colors flex-shrink-0"
+                              aria-label={`Remove ${file.name}`}
+                            >
+                              <X className="w-4 h-4" />
+                            </button>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
                   </div>
 
                   <button

@@ -1,6 +1,13 @@
 "use client"
 
-import { useEffect, useState, type FormEvent } from "react"
+import { useEffect, useRef, useState, type FormEvent } from "react"
+import { Paperclip, X } from "lucide-react"
+import {
+  ATTACHMENT_ACCEPT,
+  ATTACHMENT_HINT,
+  mergeFilesWithinLimit,
+  readFileAsBase64,
+} from "@/lib/attachments"
 
 /**
  * 全站统一的 WhatsApp 询盘浮动按钮 + 居中表单弹窗。
@@ -28,7 +35,25 @@ export function WhatsAppFloat({
   const [company, setCompany] = useState("")
   const [email, setEmail] = useState("")
   const [requirement, setRequirement] = useState("")
+  const [files, setFiles] = useState<File[]>([])
   const [submitting, setSubmitting] = useState(false)
+  const fileInputRef = useRef<HTMLInputElement>(null)
+
+  const handleFilesSelected = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const selected = e.target.files ? Array.from(e.target.files) : []
+    if (selected.length === 0) return
+    const next = mergeFilesWithinLimit(files, selected)
+    if (!next) {
+      alert("Total attachment size cannot exceed 10MB.")
+      return
+    }
+    setFiles(next)
+    if (fileInputRef.current) fileInputRef.current.value = ""
+  }
+
+  const removeFile = (index: number) => {
+    setFiles(files.filter((_, i) => i !== index))
+  }
 
   // 打开弹窗时锁定页面滚动 + 支持 Esc 关闭
   useEffect(() => {
@@ -60,6 +85,7 @@ export function WhatsAppFloat({
 
     setSubmitting(true)
     try {
+      const attachments = await Promise.all(files.map(readFileAsBase64))
       // 第一步（必等异步）：复用全站 contact 表单已验证通过的邮件通道（/api/contact，Resend）。
       // payload 字段结构与全站 contact 表单完全一致：fullName / company / email / phone / category / quantity / details。
       const res = await fetch("/api/contact", {
@@ -73,6 +99,7 @@ export function WhatsAppFloat({
           category: "WhatsApp Inquiry",
           quantity: "",
           details: r,
+          attachments,
         }),
       })
 
@@ -85,6 +112,7 @@ export function WhatsAppFloat({
         setCompany("")
         setEmail("")
         setRequirement("")
+        setFiles([])
       } else {
         // 邮件发送失败：不跳转，透出服务端真实错误（与全站 contact 表单一致）
         console.error("提交失败", data)
@@ -207,6 +235,53 @@ export function WhatsAppFloat({
                   placeholder="Products, quantity, customization, target price..."
                   className="w-full resize-none rounded-lg border border-input bg-background px-3 py-2 text-sm text-foreground outline-none focus:ring-2 focus:ring-ring"
                 />
+              </div>
+
+              {/* 附件上传 */}
+              <div>
+                <input
+                  ref={fileInputRef}
+                  type="file"
+                  multiple
+                  onChange={handleFilesSelected}
+                  className="hidden"
+                  accept={ATTACHMENT_ACCEPT}
+                />
+                <button
+                  type="button"
+                  onClick={() => fileInputRef.current?.click()}
+                  className="inline-flex items-center gap-2 rounded-lg border border-dashed border-input bg-background px-4 py-2.5 text-sm font-medium text-muted-foreground hover:border-foreground hover:text-foreground transition-colors"
+                >
+                  <Paperclip className="w-4 h-4" />
+                  Add Attachment
+                </button>
+                <p className="mt-2 text-xs text-muted-foreground">{ATTACHMENT_HINT}</p>
+
+                {files.length > 0 && (
+                  <ul className="mt-3 flex flex-col gap-2">
+                    {files.map((file, index) => (
+                      <li
+                        key={`${file.name}-${index}`}
+                        className="flex items-center justify-between gap-3 rounded-lg border border-input bg-muted px-3 py-2"
+                      >
+                        <span className="truncate text-sm text-foreground">
+                          {file.name}
+                          <span className="ml-2 text-xs text-muted-foreground">
+                            {(file.size / 1024).toFixed(0)} KB
+                          </span>
+                        </span>
+                        <button
+                          type="button"
+                          onClick={() => removeFile(index)}
+                          className="flex-shrink-0 text-muted-foreground hover:text-red-500 transition-colors"
+                          aria-label={`Remove ${file.name}`}
+                        >
+                          <X className="w-4 h-4" />
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                )}
               </div>
 
               <button

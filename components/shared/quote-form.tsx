@@ -1,7 +1,13 @@
 "use client"
 
-import { useState } from "react"
-import { Send, Mail, Phone, MapPin, Clock, Check } from "lucide-react"
+import { useRef, useState } from "react"
+import { Send, Mail, Phone, MapPin, Clock, Check, Paperclip, X } from "lucide-react"
+import {
+  ATTACHMENT_ACCEPT,
+  ATTACHMENT_HINT,
+  mergeFilesWithinLimit,
+  readFileAsBase64,
+} from "@/lib/attachments"
 
 interface QuoteFormProps {
   variant?: "full" | "compact"
@@ -16,20 +22,40 @@ export function QuoteForm({ variant = "full", className = "" }: QuoteFormProps) 
     phone: "",
     message: "",
   })
+  const [files, setFiles] = useState<File[]>([])
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [showSuccessModal, setShowSuccessModal] = useState(false)
+  const fileInputRef = useRef<HTMLInputElement>(null)
+
+  const handleFilesSelected = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const selected = e.target.files ? Array.from(e.target.files) : []
+    if (selected.length === 0) return
+    const next = mergeFilesWithinLimit(files, selected)
+    if (!next) {
+      alert("Total attachment size cannot exceed 10MB.")
+      return
+    }
+    setFiles(next)
+    if (fileInputRef.current) fileInputRef.current.value = ""
+  }
+
+  const removeFile = (index: number) => {
+    setFiles(files.filter((_, i) => i !== index))
+  }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
 
     try {
+      const attachments = await Promise.all(files.map(readFileAsBase64))
       await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           ...formData,
           details: formData.message,
+          attachments,
         }),
       })
     } catch {
@@ -59,8 +85,55 @@ Message: ${formData.message}`;
         phone: "",
         message: "",
       })
+      setFiles([])
     }, 2000)
   }
+
+  const attachmentField = (
+    <div className="mb-5">
+      <input
+        ref={fileInputRef}
+        type="file"
+        multiple
+        onChange={handleFilesSelected}
+        className="hidden"
+        accept={ATTACHMENT_ACCEPT}
+      />
+      <button
+        type="button"
+        onClick={() => fileInputRef.current?.click()}
+        className="inline-flex items-center gap-2 px-4 py-2.5 border border-dashed border-[#d1d5db] rounded-md text-sm font-medium text-[#6b7280] bg-white hover:border-[#8b7355] hover:text-[#8b7355] transition-colors"
+      >
+        <Paperclip className="w-4 h-4" />
+        Add Attachment
+      </button>
+      <p className="text-xs text-[#9ca3af] mt-2">{ATTACHMENT_HINT}</p>
+
+      {files.length > 0 && (
+        <ul className="mt-3 flex flex-col gap-2">
+          {files.map((file, index) => (
+            <li
+              key={`${file.name}-${index}`}
+              className="flex items-center justify-between gap-3 px-3 py-2 bg-[#f9fafb] border border-[#e5e7eb] rounded-md"
+            >
+              <span className="text-sm text-[#1a1a1a] truncate">
+                {file.name}
+                <span className="text-xs text-[#9ca3af] ml-2">{(file.size / 1024).toFixed(0)} KB</span>
+              </span>
+              <button
+                type="button"
+                onClick={() => removeFile(index)}
+                className="text-[#9ca3af] hover:text-red-500 transition-colors flex-shrink-0"
+                aria-label={`Remove ${file.name}`}
+              >
+                <X className="w-4 h-4" />
+              </button>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  )
 
   if (variant === "compact") {
     return (
@@ -213,6 +286,8 @@ Message: ${formData.message}`;
                       placeholder="Tell us your requirements..."
                     />
                   </div>
+
+                  {attachmentField}
 
                   <button
                     type="submit"
@@ -379,6 +454,8 @@ Message: ${formData.message}`;
                     placeholder="Tell us about your product, quantity, design..."
                   />
                 </div>
+
+                {attachmentField}
 
                 <button
                   type="submit"
