@@ -1,8 +1,4 @@
 /** @type {import('next').NextConfig} */
-
-// 旧扁平产品分类 slug → 新四大 Silo 层级路径（/[silo]/[l2]）的唯一映射。
-// 与 lib/silo/l2-config.ts 的 productCategorySlugs 完全对齐，
-// 用于把历史 /en/products/[categorySlug]/[productSlug] 301 收敛到 Silo 层级详情页，杜绝死链与重复 URL。
 const LEGACY_CATEGORY_TO_SILO = {
   // Bakeware
   ramekins: 'bakeware/ramekin-bowls',
@@ -31,8 +27,6 @@ const LEGACY_CATEGORY_TO_SILO = {
   'new-mold-development': 'oem-custom-ceramics/new-mold-development',
   'oem-odm-case-studies': 'oem-custom-ceramics/oem-odm-case-studies',
 }
-
-// 由映射表生成旧产品路由的 301 跳转（保留产品 slug，层级集合页与单品页各一条）
 const legacyProductRedirects = Object.entries(LEGACY_CATEGORY_TO_SILO).flatMap(
   ([categorySlug, target]) => [
     {
@@ -47,13 +41,14 @@ const legacyProductRedirects = Object.entries(LEGACY_CATEGORY_TO_SILO).flatMap(
     },
   ],
 )
-
 const nextConfig = {
+  output: 'export', // ✅ 静态导出，Cloudflare Pages核心配置
+  trailingSlash: true, // ✅ 静态页面路径带 /，避免404
   typescript: {
     ignoreBuildErrors: true,
   },
   images: {
-    unoptimized: false,
+    unoptimized: true, // ✅ 静态导出必须改成true！Next不再优化图片，Cloudflare负责图片
     formats: ['image/avif', 'image/webp'],
     deviceSizes: [640, 750, 828, 1080, 1280, 1920],
     remotePatterns: [
@@ -64,6 +59,8 @@ const nextConfig = {
     ],
   },
   productionBrowserSourceMaps: false,
+  // 【重要注释】下面redirects这段代码保留仅做记录，静态打包不会执行。
+  // 所有301跳转，需要复制到Cloudflare Redirect Rules后台配置
   redirects: async () => {
     return [
       {
@@ -71,7 +68,6 @@ const nextConfig = {
         destination: '/en/about',
         permanent: true,
       },
-      // 旧 OEM 落地页统一收敛到第四大 Silo（/oem-odm 路由已下线）
       {
         source: '/en/oem-odm',
         destination: '/en/oem-custom-ceramics',
@@ -87,11 +83,9 @@ const nextConfig = {
         destination: '/en/oem-custom-ceramics',
         permanent: true,
       },
-      // 旧扁平产品浏览/详情路由 → 新 Silo 层级路径
       ...legacyProductRedirects,
     ]
   },
-  // 新增：官方CSS优化，自动内联关键CSS、消除渲染阻塞资源，SEO友好
   experimental: {
     optimizeCss: true,
   },
